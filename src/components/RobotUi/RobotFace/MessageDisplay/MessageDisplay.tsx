@@ -1,21 +1,22 @@
-import React from 'react';
-import { useSelector } from 'typeDux';
+import React from "react";
+import { useSelector } from "typeDux";
 
 /** Mui Components */
+import { Button } from "@mui/material";
 
 /** Components */
-import DeliverForm from './DeliverForm/DeliverForm';
-import Dashboard from './Dashboard/Dashboard';
-import MingleForm from './MingleForm/MingleForm';
-import { Button, Text } from 'shared-components';
+import DeliverForm from "./DeliverForm/DeliverForm";
+import Dashboard from "./Dashboard/Dashboard";
+import MingleForm from "./MingleForm/MingleForm";
+import Text from "components/Text/Text";
 
 /** styles */
 
 /** redux */
-import { getDisplayMessage, getDisplayScreen } from 'state/ui/ui.selectors';
+import { getDisplayMessage, getDisplayScreen } from "state/ui/ui.selectors";
 
 /** helpers */
-import { DisplayScreenOptions } from 'appConstants';
+import { DisplayScreenOptions } from "appConstants";
 
 interface MessageDisplayProps {
   formRef: React.RefObject<HTMLFormElement>;
@@ -28,7 +29,7 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   if (displayMessage) {
     return (
       <>
-        <Text variant='h2'>{displayMessage}</Text>
+        <Text variant="h2">{displayMessage}</Text>
         {/* TODO: What to emit here to confirm the user has pressed button? */}
         <Button>Done</Button>
       </>
@@ -41,5 +42,5 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <MingleForm formRef={formRef} />;
   }
 
-  return <Text variant='h2'>Hello, I'm Hal</Text>;
+  return <Text variant="h2">Hello, I'm Hal</Text>;
 }

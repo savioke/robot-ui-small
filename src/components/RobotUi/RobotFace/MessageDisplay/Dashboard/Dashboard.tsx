@@ -1,24 +1,24 @@
-import React from 'react';
-import { useDispatch } from 'typeDux';
-import { useIntl } from 'react-intl';
+import React from "react";
+import { useDispatch } from "typeDux";
+import { useIntl } from "react-intl";
 
 /** Mui Components */
-import { Box } from '@mui/material';
+import { Box, Button } from "@mui/material";
 
 /** Components */
-import DeliverIcon from 'components/RobotUi/SvgIcons/DeliverIcon/DeliverIcon';
-import MingleIcon from 'components/RobotUi/SvgIcons/MingleIcon/MingleIcon';
-import SettingsIcon from 'components/RobotUi/SvgIcons/SettingsIcon/SettingsIcon';
-import { Button, Text } from 'shared-components';
+import DeliverIcon from "components/RobotUi/SvgIcons/DeliverIcon/DeliverIcon";
+import MingleIcon from "components/RobotUi/SvgIcons/MingleIcon/MingleIcon";
+import SettingsIcon from "components/RobotUi/SvgIcons/SettingsIcon/SettingsIcon";
+import Text from "components/Text/Text";
 
 /** styles */
-import { styles } from './Dashboard.styles';
+import { styles } from "./Dashboard.styles";
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen } from "state/ui/ui.slice";
 
 /** helpers */
-import { DisplayScreenOptions } from 'appConstants';
+import { DisplayScreenOptions } from "appConstants";
 
 export default function Dashboard() {
   const intl = useIntl();
@@ -31,11 +31,8 @@ export default function Dashboard() {
         sx={styles.choiceContainer}
       >
         <DeliverIcon />
-        <Text
-          variant='subtitle2'
-          sx={styles.text}
-        >
-          {intl.formatMessage({ id: 'deliver' })}
+        <Text variant="subtitle2" sx={styles.text}>
+          {intl.formatMessage({ id: "deliver" })}
         </Text>
       </Button>
       <Button
@@ -43,11 +40,8 @@ export default function Dashboard() {
         sx={styles.choiceContainer}
       >
         <MingleIcon />
-        <Text
-          variant='subtitle2'
-          sx={styles.text}
-        >
-          {intl.formatMessage({ id: 'mingle' })}
+        <Text variant="subtitle2" sx={styles.text}>
+          {intl.formatMessage({ id: "mingle" })}
         </Text>
       </Button>
       {/* TODO: Do we want GoTo in RobotUi */}
@@ -72,12 +66,9 @@ export default function Dashboard() {
         onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Settings))}
         sx={styles.choiceContainer}
       >
-        <SettingsIcon variant='black' />
-        <Text
-          variant='subtitle2'
-          sx={styles.text}
-        >
-          {intl.formatMessage({ id: 'settings' })}
+        <SettingsIcon variant="black" />
+        <Text variant="subtitle2" sx={styles.text}>
+          {intl.formatMessage({ id: "settings" })}
         </Text>
       </Button>
     </Box>

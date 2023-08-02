@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 /** Mui Components */
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 
 /** Components */
-import { Text } from 'shared-components';
+import Text from "components/Text/Text";
 
 /** styles */
-import { styles } from './Help.styles';
+import { styles } from "./Help.styles";
 
 /** redux */
 
@@ -18,11 +18,11 @@ export default function Help() {
   return (
     <Box sx={styles.container}>
       <Box>
-        <Text component='b'>Email</Text>
+        <Text component="b">Email</Text>
         <Text>support@relayrobotics.com</Text>
       </Box>
       <Box>
-        <Text component='b'>Phone</Text>
+        <Text component="b">Phone</Text>
         <Text>123.456.7890</Text>
       </Box>
     </Box>

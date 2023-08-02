@@ -1,22 +1,21 @@
-import React from 'react';
-import { useIntl } from 'react-intl';
-import { useDispatch } from 'typeDux';
+import React from "react";
+import { useIntl } from "react-intl";
+import { useDispatch } from "typeDux";
 
 /** Mui Components */
-import { Grid, Fab, IconButton } from '@mui/material';
+import { Grid, Fab, IconButton, Button } from "@mui/material";
 
 /** Components */
-import { Button } from 'shared-components';
 
 /** styles */
-import { styles } from './Keypad.styles';
-import BackspaceIcon from '../SvgIcons/BackspaceIcon/BackspaceIcon';
+import { styles } from "./Keypad.styles";
+import BackspaceIcon from "../SvgIcons/BackspaceIcon/BackspaceIcon";
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen } from "state/ui/ui.slice";
 
 /** helpers */
-import { DisplayScreenOptions } from 'appConstants';
+import { DisplayScreenOptions } from "appConstants";
 
 interface KeypadProps {
   keypadValues: string;
@@ -38,166 +37,60 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
   };
 
   return (
-    <Grid
-      container
-      rowSpacing={2}
-    >
-      <Grid
-        container
-        item
-        xs={12}
-      >
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={1}
-          >
-            {intl.formatMessage({ id: '1' })}
+    <Grid container rowSpacing={2}>
+      <Grid container item xs={12}>
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={1}>
+            {intl.formatMessage({ id: "1" })}
           </Fab>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={2}
-          >
-            {intl.formatMessage({ id: '2' })}
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={2}>
+            {intl.formatMessage({ id: "2" })}
           </Fab>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={3}
-          >
-            {intl.formatMessage({ id: '3' })}
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={3}>
+            {intl.formatMessage({ id: "3" })}
           </Fab>
         </Grid>
       </Grid>
-      <Grid
-        container
-        item
-        spacing={1}
-        xs={12}
-      >
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={4}
-          >
-            {intl.formatMessage({ id: '4' })}
+      <Grid container item spacing={1} xs={12}>
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={4}>
+            {intl.formatMessage({ id: "4" })}
           </Fab>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={5}
-          >
-            {intl.formatMessage({ id: '5' })}
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={5}>
+            {intl.formatMessage({ id: "5" })}
           </Fab>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={6}
-          >
-            {intl.formatMessage({ id: '6' })}
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={6}>
+            {intl.formatMessage({ id: "6" })}
           </Fab>
         </Grid>
       </Grid>
-      <Grid
-        container
-        item
-        spacing={1}
-        xs={12}
-      >
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={7}
-          >
-            {intl.formatMessage({ id: '7' })}
+      <Grid container item spacing={1} xs={12}>
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={7}>
+            {intl.formatMessage({ id: "7" })}
           </Fab>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={8}
-          >
-            {intl.formatMessage({ id: '8' })}
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={8}>
+            {intl.formatMessage({ id: "8" })}
           </Fab>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            size='large'
-            sx={styles.fab}
-            value={9}
-          >
-            {intl.formatMessage({ id: '9' })}
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab onClick={addToKeypadValues} size="large" sx={styles.fab} value={9}>
+            {intl.formatMessage({ id: "9" })}
           </Fab>
         </Grid>
       </Grid>
-      <Grid
-        container
-        item
-        xs={12}
-      >
-        <Grid
-          item
-          xs={4}
-          sx={[styles.fabContainer, styles.iconButtonContainer]}
-        >
+      <Grid container item xs={12}>
+        <Grid item xs={4} sx={[styles.fabContainer, styles.iconButtonContainer]}>
           <IconButton
             onClick={() => setKeypadValues((accessCode) => accessCode.slice(0, -1))}
             sx={styles.iconButton}
@@ -205,31 +98,18 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
             <BackspaceIcon />
           </IconButton>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            size='large'
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={0}
-          >
-            {intl.formatMessage({ id: '0' })}
+        <Grid item xs={4} sx={styles.fabContainer}>
+          <Fab size="large" onClick={addToKeypadValues} sx={styles.fab} value={0}>
+            {intl.formatMessage({ id: "0" })}
           </Fab>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
+        <Grid item xs={4} sx={styles.fabContainer}>
           <Button
-            size='large'
+            size="large"
             sx={styles.button}
             onClick={() => {
               // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-              if (keypadValues !== '1234') {
+              if (keypadValues !== "1234") {
                 return;
                 // return setErrorMessage('Invalid passcode')
               }
@@ -237,7 +117,7 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
               return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
             }}
           >
-            {intl.formatMessage({ id: 'ok' })}
+            {intl.formatMessage({ id: "ok" })}
           </Button>
         </Grid>
       </Grid>

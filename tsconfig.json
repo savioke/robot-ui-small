@@ -1,0 +1,16 @@
+{
+  "extends": "../../packages/tsconfig/tsconfig.json",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "paths": {
+      "components/*": ["components/*"],
+      "appConstants": ["constants"],
+      "typeDux": ["redux/typeDux"],
+      "store": ["redux/store"],
+      "state/*": ["redux/*"],
+      "utilities/*": ["utilities/*"]
+    }
+  }
+}

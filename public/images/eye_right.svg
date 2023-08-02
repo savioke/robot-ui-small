@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="right_eye"
+   class="eye"
+   viewBox="0 0 700 700"
+   version="1.1"
+   sodipodi:docname="eye_right.svg"
+   inkscape:version="0.92.4 (f8dce91, 2019-08-02)">
+  <metadata
+     id="metadata3774">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="992"
+     inkscape:window-height="661"
+     id="namedview3772"
+     showgrid="false"
+     inkscape:zoom="0.33714286"
+     inkscape:cx="350"
+     inkscape:cy="350"
+     inkscape:window-x="841"
+     inkscape:window-y="214"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="right_eye" />
+  <path
+     d="m 363.32531,694.47641 c 0,0 -7.16133,0.44046 -7.16133,0.44046 C 192.14977,705.00449 50.182763,596.53116 38.734866,452.70591 c 0,0 -13.653966,-171.54112 -13.653966,-171.54112 C 13.633003,137.33954 137.03284,12.544931 300.64921,2.4817771 c 0,0 7.16132,-0.4404542 7.16132,-0.4404542 163.71583,-10.0692714 305.68283,98.4040671 317.13073,242.2293071 0,0 13.62613,171.1914 13.62613,171.1914 11.77412,144.15662 -111.62572,268.95123 -275.24208,279.01438 0,0 0,0 0,0"
+     id="path3765"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;stroke-width:0.93481463" />
+  <desc
+     id="desc3767">Created with Snap</desc>
+  <defs
+     id="defs3769" />
+</svg>

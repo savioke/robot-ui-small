@@ -1,0 +1,9 @@
+.simple-keyboard.hg-layout-default .hg-button.hg-blue {
+  background: #1895da;
+  color: white;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.hg-red {
+  background: rgb(255, 0, 0, 0.7);
+  color: white;
+}

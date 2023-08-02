@@ -7,7 +7,6 @@
     "outDir": "./built",
     "allowJs": true,
     "target": "es6",
-    // "baseUrl": ".",
     "jsx": "preserve",
     "moduleResolution": "node",
     "noImplicitAny": true,

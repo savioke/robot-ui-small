@@ -5,12 +5,12 @@ import Document, {
   Html,
   Main,
   NextScript,
-} from 'next/document';
-import { AppType } from 'next/dist/shared/lib/utils';
-import createEmotionServer from '@emotion/server/create-instance';
-import { EmotionCache } from '@emotion/cache';
-import React from 'react';
-import { createEmotionCache, theme } from 'mui-theme';
+} from "next/document";
+import { AppType } from "next/dist/shared/lib/utils";
+import createEmotionServer from "@emotion/server/create-instance";
+import { EmotionCache } from "@emotion/cache";
+import React from "react";
+import { createEmotionCache, theme } from "../theme";
 
 interface RelayDocumentProps extends DocumentInitialProps {
   emotionStyleTags: React.ReactNode[];
@@ -18,15 +18,12 @@ interface RelayDocumentProps extends DocumentInitialProps {
 
 export default function RelayRobotDocument({ emotionStyleTags }: RelayDocumentProps) {
   return (
-    <Html lang='en'>
+    <Html lang="en">
       <Head>
-        <meta
-          name='theme-color'
-          content={theme.palette.primary.main}
-        />
+        <meta name="theme-color" content={theme.palette.primary.main} />
         <link
-          rel='stylesheet'
-          href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
         {emotionStyleTags}
       </Head>
@@ -50,12 +47,7 @@ RelayRobotDocument.getInitialProps = async (ctx: DocumentContext): Promise<Relay
     originalRenderPage({
       enhanceApp: (App: AppType | React.ComponentType<{ emotionCache: EmotionCache }>) =>
         function EnhanceApp(props) {
-          return (
-            <App
-              emotionCache={cache}
-              {...props}
-            />
-          );
+          return <App emotionCache={cache} {...props} />;
         },
     });
 
@@ -65,7 +57,7 @@ RelayRobotDocument.getInitialProps = async (ctx: DocumentContext): Promise<Relay
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style) => (
     <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      data-emotion={`${style.key} ${style.ids.join(" ")}`}
       key={style.key}
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: style.css }}

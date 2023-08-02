@@ -1,6 +1,6 @@
 import { createSlice } from "typeDux";
 import { DisplayScreenOptions } from "../../constants";
-import { NavigationGoal } from "relay-types";
+import { NavigationGoal } from "types/r2c2";
 
 interface RobotUiState {
   deliverLocations: NavigationGoal[];

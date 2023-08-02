@@ -7,7 +7,7 @@
     "outDir": "./built",
     "allowJs": true,
     "target": "es6",
-    "baseUrl": ".",
+    // "baseUrl": ".",
     "jsx": "preserve",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -22,7 +22,7 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    // "baseUrl": "./src/",
+    "baseUrl": "./src/",
     "paths": {
       "components/*": ["components/*"],
       "appConstants": ["constants"],

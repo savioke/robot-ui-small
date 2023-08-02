@@ -1,11 +1,10 @@
 import { AppProps } from 'next/app';
 import React from 'react';
-import { theme } from 'mui-theme';
+import { theme } from '../theme';
 import { wrapper } from 'store';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
-import { LicenseInfo } from '@mui/x-license-pro';
 import '../styles/globals.css';
 
 /** Internationalization */
@@ -16,15 +15,11 @@ import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
 import Footer from 'components/RobotUi/Footer/Footer';
-import { CommonHead, ErrorBoundary } from 'shared-components';
 
 /** actions */
 import { setTheme } from 'state/ui/ui.slice';
 
 /** Mui Premium License Key */
-LicenseInfo.setLicenseKey(
-  '03726c0d01363569b57811563d0b3cc8Tz02MjU4NixFPTE3MTExMjQzNjU3OTIsUz1wcmVtaXVtLExNPXN1YnNjcmlwdGlvbixLVj0y',
-);
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
@@ -80,8 +75,7 @@ export default function App({ Component, ...rest }: AppProps) {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <CommonHead />
-          <ErrorBoundary>
+          {/* <ErrorBoundary> */}
             <Box
               sx={{
                 display: 'flex',

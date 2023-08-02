@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'typeDux';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
 import { Button } from '@mui/material';
@@ -28,6 +29,7 @@ interface MessageDisplayProps {
 }
 
 export default function MessageDisplay({ formRef }: MessageDisplayProps) {
+  const intl = useIntl();
   const dispatch = useDispatch();
   const socket = useSocketIo(dispatch);
   const displayMessage = useSelector(getDisplayMessage);
@@ -38,14 +40,13 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return (
       <>
         <Text variant='h2'>{displayMessage}</Text>
-        {/* TODO: What to emit here to confirm the user has pressed button? */}
         {isConfirmationNeeded && (
           <Button
             onClick={() => {
               socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
             }}
           >
-            Done
+            {intl.formatMessage({ id: 'done' })}
           </Button>
         )}
       </>

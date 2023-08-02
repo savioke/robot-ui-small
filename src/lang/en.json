@@ -30,5 +30,6 @@
   "choices": "Choices",
   "duration": "Duration",
   "theme": "Theme",
-  "language": "Language"
+  "language": "Language",
+  "done": "Done"
 }

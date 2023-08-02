@@ -46,7 +46,6 @@ const nextConfig = {
     locales: ["en", "ja", "es"],
     defaultLocale: "en",
   },
-  output: "standalone",
   headers() {
     return [
       {

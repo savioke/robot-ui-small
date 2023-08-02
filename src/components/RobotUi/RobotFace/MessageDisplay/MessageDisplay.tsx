@@ -1,37 +1,53 @@
-import React from "react";
-import { useSelector } from "typeDux";
+import React from 'react';
+import { useSelector, useDispatch } from 'typeDux';
 
 /** Mui Components */
-import { Button } from "@mui/material";
+import { Button } from '@mui/material';
 
 /** Components */
-import DeliverForm from "./DeliverForm/DeliverForm";
-import Dashboard from "./Dashboard/Dashboard";
-import MingleForm from "./MingleForm/MingleForm";
-import Text from "components/Text/Text";
+import DeliverForm from './DeliverForm/DeliverForm';
+import Dashboard from './Dashboard/Dashboard';
+import MingleForm from './MingleForm/MingleForm';
+import Text from 'components/Text/Text';
 
 /** styles */
 
 /** redux */
-import { getDisplayMessage, getDisplayScreen } from "state/ui/ui.selectors";
+import {
+  getDisplayMessage,
+  getDisplayScreen,
+  getIsConfirmationNeeded,
+} from 'state/ui/ui.selectors';
 
 /** helpers */
-import { DisplayScreenOptions } from "appConstants";
+import useSocketIo from 'utilities/useSocketIo/useSocketIo';
+import { DisplayScreenOptions } from 'appConstants';
 
 interface MessageDisplayProps {
   formRef: React.RefObject<HTMLFormElement>;
 }
 
 export default function MessageDisplay({ formRef }: MessageDisplayProps) {
+  const dispatch = useDispatch();
+  const socket = useSocketIo(dispatch);
   const displayMessage = useSelector(getDisplayMessage);
   const displayScreen = useSelector(getDisplayScreen);
+  const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
 
   if (displayMessage) {
     return (
       <>
-        <Text variant="h2">{displayMessage}</Text>
+        <Text variant='h2'>{displayMessage}</Text>
         {/* TODO: What to emit here to confirm the user has pressed button? */}
-        <Button>Done</Button>
+        {isConfirmationNeeded && (
+          <Button
+            onClick={() => {
+              socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
+            }}
+          >
+            Done
+          </Button>
+        )}
       </>
     );
   } else if (displayScreen === DisplayScreenOptions.Dashboard) {
@@ -42,5 +58,5 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <MingleForm formRef={formRef} />;
   }
 
-  return <Text variant="h2">Hello, I'm Hal</Text>;
+  return <Text variant='h2'>Hello, I'm Hal</Text>;
 }

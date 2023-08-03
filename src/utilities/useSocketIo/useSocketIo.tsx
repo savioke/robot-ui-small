@@ -7,8 +7,10 @@ import {
 } from 'state/ui/ui.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
+import { DisplayMessageOptions } from 'appConstants';
+import { IntlShape } from 'react-intl';
 
-export default function useSocketIo(dispatch: any) {
+export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   const [returnSocket, setReturnSocket] =
     React.useState<Socket<ServerToClientEvents, ClientToServerEvents>>();
   let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
@@ -35,18 +37,29 @@ export default function useSocketIo(dispatch: any) {
           // socket.emit('pong');
         });
 
-        socket.on('display_message', (message) => {
-          dispatch(setDisplayMessage(message));
-        });
+        if (dispatch && intl) {
+          socket.on('display_message', (message) => {
+            if (DisplayMessageOptions(intl)[message]) {
+              return dispatch(setDisplayMessage(DisplayMessageOptions(intl)[message]));
+            }
 
-        socket.on('navigation_goals', ({ goals }) => {
-          dispatch(setNavigationLocations(goals));
-        });
+            return dispatch(setDisplayMessage(message));
+          });
 
-        socket.on('display_confirm', ({ confirm_text }) => {
-          dispatch(setDisplayMessage(confirm_text));
-          dispatch(setIsConfirmationNeeded(true));
-        });
+          socket.on('navigation_goals', ({ goals }) => {
+            dispatch(setNavigationLocations(goals));
+          });
+
+          socket.on('display_confirm', ({ confirm_text }) => {
+            if (DisplayMessageOptions(intl)[confirm_text]) {
+              dispatch(setDisplayMessage(DisplayMessageOptions(intl)[confirm_text]));
+              return dispatch(setIsConfirmationNeeded(true));
+            }
+
+            dispatch(setDisplayMessage(confirm_text));
+            return dispatch(setIsConfirmationNeeded(true));
+          });
+        }
       };
 
       initializeSocketConnection();

@@ -1,46 +1,48 @@
-import { createSlice } from "typeDux";
-import { DisplayScreenOptions } from "../../constants";
-import { NavigationGoal } from "types/r2c2";
+import { createSlice } from 'typeDux';
+import { DisplayScreenOptions } from '../../constants';
+import { NavigationGoal } from 'types/r2c2';
 
 interface RobotUiState {
   deliverLocations: NavigationGoal[];
   mingleLocations: NavigationGoal[];
   displayScreen:
-    | "Deliver Form"
-    | "Mingle Form"
-    | "Go-To Form"
-    | "Dashboard"
-    | "Home"
-    | "Passcode"
-    | "Settings";
+    | 'Deliver Form'
+    | 'Mingle Form'
+    | 'Go-To Form'
+    | 'Dashboard'
+    | 'Home'
+    | 'Passcode'
+    | 'Settings';
   displayMessage: string;
   isConfirmationNeeded: boolean;
   inputName: string;
   theme: string;
-  language: "en" | "es" | "ja";
+  language: 'en' | 'es' | 'ja';
   deliverFormValues: {
     dropoff_location: string;
     dropoff_message: string;
+    transit_message: string;
   };
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.Home,
+  displayScreen: DisplayScreenOptions.DeliverForm,
   deliverLocations: [],
   mingleLocations: [],
-  displayMessage: "",
+  displayMessage: '',
   isConfirmationNeeded: false,
-  inputName: "",
-  theme: "",
-  language: "en",
+  inputName: '',
+  theme: '',
+  language: 'en',
   deliverFormValues: {
-    dropoff_location: "",
-    dropoff_message: "",
+    dropoff_location: '',
+    dropoff_message: '',
+    transit_message: '',
   },
 };
 
 const uiSlice = createSlice({
-  name: "uiSlice",
+  name: 'uiSlice',
   initialState,
   reducers: {
     setInputName: (state, { payload }) => {
@@ -63,10 +65,10 @@ const uiSlice = createSlice({
     },
     setNavigationLocations: (state, { payload }) => {
       state.deliverLocations = payload.filter(
-        (location: NavigationGoal) => !location?.tags?.includes("internal")
+        (location: NavigationGoal) => !location?.tags?.includes('internal'),
       );
       state.mingleLocations = payload.filter(
-        (location: NavigationGoal) => location?.tags?.includes("Mingle")
+        (location: NavigationGoal) => location?.tags?.includes('Mingle'),
       );
     },
     setDeliverFormValues: (state, { payload }) => {

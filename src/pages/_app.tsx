@@ -1,39 +1,39 @@
-import { AppProps } from "next/app";
-import React from "react";
-import { theme } from "../theme";
-import { wrapper } from "store";
-import { Provider } from "react-redux";
-import { IntlProvider } from "react-intl";
-import { useRouter } from "next/router";
-import "../styles/globals.css";
+import { AppProps } from 'next/app';
+import React from 'react';
+import { theme } from '../theme';
+import { wrapper } from 'store';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
+import { useRouter } from 'next/router';
+import '../styles/globals.css';
 
 /** Internationalization */
-import { english, spanish, japanese } from "lang";
+import { english, spanish, japanese } from 'lang';
 
 /** Mui Components */
-import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
-import Footer from "components/RobotUi/Footer/Footer";
+import Footer from 'components/RobotUi/Footer/Footer';
 
 /** actions */
-import { setTheme } from "state/ui/ui.slice";
+import { setTheme } from 'state/ui/ui.slice';
 
 /** Mui Premium License Key */
 
 /** helpers */
-import useSocketIo from "utilities/useSocketIo/useSocketIo";
+import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function App({ Component, ...rest }: AppProps) {
   const router = useRouter();
   const { store, props } = wrapper.useWrappedStore(rest);
   const stateTheme = store.getState().ui.theme;
-  useSocketIo(store.dispatch);
+  useSocketIo();
 
   // TODO: Need to audit and internationalize all of the robot UI.
 
   React.useEffect(() => {
-    const languagePreference = localStorage.getItem("languagePreference");
+    const languagePreference = localStorage.getItem('languagePreference');
 
     if (languagePreference) {
       router.push(router.pathname, router.pathname, { locale: languagePreference });
@@ -44,7 +44,7 @@ export default function App({ Component, ...rest }: AppProps) {
   }, [router.pathname, store]);
 
   React.useEffect(() => {
-    const theme = localStorage.getItem("theme");
+    const theme = localStorage.getItem('theme');
 
     if (theme) {
       store.dispatch(setTheme(theme));
@@ -55,11 +55,11 @@ export default function App({ Component, ...rest }: AppProps) {
 
   const messages = React.useMemo(() => {
     switch (router.locale) {
-      case "en":
+      case 'en':
         return english;
-      case "ja":
+      case 'ja':
         return japanese;
-      case "es":
+      case 'es':
         return spanish;
       default:
         return english;
@@ -69,7 +69,7 @@ export default function App({ Component, ...rest }: AppProps) {
   return (
     <IntlProvider
       messages={messages}
-      locale={router?.locale || ""}
+      locale={router?.locale || ''}
       defaultLocale={router.defaultLocale}
     >
       <Provider store={store}>
@@ -78,18 +78,18 @@ export default function App({ Component, ...rest }: AppProps) {
           {/* <ErrorBoundary> */}
           <Box
             sx={{
-              display: "flex",
-              minHeight: "100vh",
-              flexDirection: "column",
+              display: 'flex',
+              minHeight: '100vh',
+              flexDirection: 'column',
               backgroundImage: `${stateTheme}`,
             }}
           >
             <Box
-              component="main"
+              component='main'
               sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
                 flexGrow: 1,
               }}
             >

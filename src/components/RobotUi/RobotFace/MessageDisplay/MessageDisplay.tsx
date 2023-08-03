@@ -31,7 +31,7 @@ interface MessageDisplayProps {
 export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo(dispatch);
+  const socket = useSocketIo(dispatch, intl);
   const displayMessage = useSelector(getDisplayMessage);
   const displayScreen = useSelector(getDisplayScreen);
   const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
@@ -42,6 +42,9 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
         <Text variant='h2'>{displayMessage}</Text>
         {isConfirmationNeeded && (
           <Button
+            sx={{ marginTop: 1 }}
+            size='large'
+            variant='contained'
             onClick={() => {
               socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
             }}

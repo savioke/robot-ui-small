@@ -31,5 +31,11 @@
   "duration": "Duration",
   "theme": "Theme",
   "language": "Language",
-  "done": "Done"
+  "done": "Done",
+  "pleaseLoadTheItem": "Please load the item",
+  "yourOrderHasArrived!": "Your order has arrived!",
+  "thankYouHaveANiceDay": "Thank you, have a nice day!",
+  "headingBackToMyDock": "Heading back to my dock",
+  "deliveringTo": "Delivering to",
+  "closingTheLid": "Closing the lid"
 }

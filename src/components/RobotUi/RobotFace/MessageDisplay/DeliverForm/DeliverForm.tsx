@@ -69,7 +69,7 @@ interface DeliverFormProps {
 export default function DeliverForm({ formRef }: DeliverFormProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo(dispatch);
+  const socket = useSocketIo(dispatch, intl);
   const deliverFormValues = useSelector(getDeliverFormValues);
   const deliverLocations = useSelector(getDeliverLocations);
   let inputRef = React.useRef<HTMLInputElement>(null);
@@ -110,7 +110,6 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
           component='form'
           sx={styles.form}
           onSubmit={async (event) => {
-            // TODO: Submit deliverFormValues and display transmitting delivery screen with message
             event.preventDefault();
             // TODO: Need to send locationId instead of locationName - Will need to work on Autocomplete
             await socket?.emit('ui_request', deliverFormValues);
@@ -138,6 +137,11 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
             onChange={(event, value, reason) => {
               if (reason === 'selectOption') {
                 dispatch(setDeliverFormValues({ dropoff_location: value.name }));
+                dispatch(
+                  setDeliverFormValues({
+                    transit_message: `${intl.formatMessage({ id: 'deliveringTo' })} ${value.name}`,
+                  }),
+                );
               }
             }}
             renderInput={(params) => (
@@ -212,6 +216,13 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
             value={deliverFormValues.dropoff_message}
             onFocus={handleFocus}
             label={intl.formatMessage({ id: 'dropOffMessage' })}
+            onChange={(event) => {
+              dispatch(
+                setDeliverFormValues({
+                  dropoff_message: event.target.value,
+                }),
+              );
+            }}
           />
         </Box>
       </Box>

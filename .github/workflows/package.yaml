@@ -1,7 +1,9 @@
 name: "packages"
 
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   package:

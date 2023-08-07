@@ -22,7 +22,6 @@ echo "Building ${NAME} version ${VERSION}"
 dch -v "${VERSION}" --distribution 'unstable' --preserve --upstream "Auto-built by GH Actions" 2>&1 > /dev/null
 
 # Install deps, build stuff
-yarn set version stable
 yarn install
 yarn build
 

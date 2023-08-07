@@ -15,7 +15,7 @@ jobs:
           curl https://bringup-static.savioke.com/aptly-savioke-com.asc | sudo apt-key add -
           sudo add-apt-repository 'deb http://public-aptly.savioke.com/nodejs20/ focal main'
           sudo apt-get -y update
-          sudo apt-get -y install nodejs devscripts
+          sudo apt-get -y install nodejs build-essential devscripts
           sudo corepack enable
       # Build and deploy the package
       - name: Build PR package

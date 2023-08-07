@@ -22,7 +22,5 @@ jobs:
         env:
           APTLY_USER: ${{ secrets.APTLY_USER }}
           APTLY_PASSWD: ${{ secrets.APTLY_PASSWD }}
-          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |-
           ./build_pr.sh ${{ github.event.number }}

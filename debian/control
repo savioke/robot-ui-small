@@ -12,6 +12,6 @@ Priority: optional
 Depends: ${misc:Depends}, relaycore
 Pre-Depends: dpkg (>= 1.16.1), nodejs (>=20), ${misc:Pre-Depends}
 Provides: robot-ui
-Conflicts: robot-ui, r2c2-ui
-Replaces: robot-ui, r2c2-ui
+Conflicts: robot-ui, r2c2-ui, relaycore-ui
+Replaces: robot-ui, r2c2-ui, relaycore-ui
 Description: Web UI for RelayCore

@@ -1,0 +1,15 @@
+[Unit]
+Description=RelayCore Robot UI
+StartLimitIntervalSec=30
+StartLimitBurst=100
+
+[Service]
+User=savibot
+Group=savibot
+Restart=always
+RestartSec=5
+WorkingDirectory=/opt/robot-ui/
+ExecStart=yarn start
+
+[Install]
+WantedBy=multi-user.target

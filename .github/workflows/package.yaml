@@ -1,0 +1,28 @@
+name: "packages"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  package:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |-
+          curl https://bringup-static.savioke.com/aptly-savioke-com.asc | sudo apt-key add -
+          sudo add-apt-repository 'deb http://public-aptly.savioke.com/nodejs20/ focal main'
+          sudo apt-get -y update
+          sudo apt-get -y install nodejs build-essential devscripts debhelper
+          sudo corepack enable
+      # Build and deploy the package
+      - name: Build package
+        env:
+          APTLY_USER: ${{ secrets.APTLY_USER }}
+          APTLY_PASSWD: ${{ secrets.APTLY_PASSWD }}
+        run: |-
+          ./build.sh

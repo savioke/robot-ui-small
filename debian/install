@@ -7,3 +7,4 @@ package.json /opt/robot-ui/
 node_modules/ /opt/robot-ui/
 public/ /opt/robot-ui/
 src/ /opt/robot-ui/
+.next/ /opt/robot-ui/

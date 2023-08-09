@@ -18,8 +18,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        // TODO: Swap to localhost:3000 for R2C2 server
-        socket = io('http://localhost:5000');
+        socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
         socket.on('connect', () => {

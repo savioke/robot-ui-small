@@ -3,6 +3,7 @@ next-env.d.ts /opt/robot-ui/
 tsconfig.json /opt/robot-ui/
 yarn.lock /opt/robot-ui/
 package.json /opt/robot-ui/
+.yarnrc.yml /opt/robot-ui/
 node_modules/ /opt/robot-ui/
 public/ /opt/robot-ui/
 src/ /opt/robot-ui/

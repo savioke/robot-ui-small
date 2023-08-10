@@ -24,7 +24,8 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
-          socket.emit('pong');
+          // TODO: Is this needed?
+          // socket.emit('pong');
         });
 
         socket.onAny((eventName, ...args) => {
@@ -34,7 +35,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         socket.on('ping', () => {
           console.info('Ping: Connected to server');
           // TODO: Is this needed?
-          // socket.emit('pong');
+          socket.emit('pong');
         });
 
         if (dispatch && intl) {

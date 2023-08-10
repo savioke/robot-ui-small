@@ -28,10 +28,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           // socket.emit('pong');
         });
 
-        socket.onAny((eventName, ...args) => {
-          console.info(eventName, args);
-        });
-
         socket.on('ping', () => {
           console.info('Ping: Connected to server');
           // TODO: Is this needed?

@@ -24,12 +24,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
-          // TODO: Is this needed?
-          // socket.emit('pong');
-        });
-
-        socket.onAny((eventName, ...args) => {
-          console.info(eventName, args);
+          socket.emit('pong');
         });
 
         socket.on('ping', () => {

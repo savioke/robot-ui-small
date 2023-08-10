@@ -4,10 +4,11 @@ import {
   setDisplayMessage,
   setNavigationLocations,
   setIsConfirmationNeeded,
+  setDisplayScreen,
 } from 'state/ui/ui.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
-import { DisplayMessageOptions } from 'appConstants';
+import { DisplayMessageOptions, DisplayScreenOptions } from 'appConstants';
 import { IntlShape } from 'react-intl';
 
 export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
@@ -18,7 +19,8 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        socket = io('http://localhost:3000');
+        // TODO: Swap back to 3000 for R2C2
+        socket = io('http://localhost:5000');
         setReturnSocket(socket);
 
         socket.on('connect', () => {
@@ -38,6 +40,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
         if (dispatch && intl) {
           socket.on('display_message', (message) => {
+            dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             if (DisplayMessageOptions(intl)[message]) {
               return dispatch(setDisplayMessage(DisplayMessageOptions(intl)[message]));
             }
@@ -50,6 +53,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket.on('display_confirm', ({ confirm_text }) => {
+            dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             if (DisplayMessageOptions(intl)[confirm_text]) {
               dispatch(setDisplayMessage(DisplayMessageOptions(intl)[confirm_text]));
               return dispatch(setIsConfirmationNeeded(true));

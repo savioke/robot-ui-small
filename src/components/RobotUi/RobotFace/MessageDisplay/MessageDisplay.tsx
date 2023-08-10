@@ -12,6 +12,7 @@ import MingleForm from './MingleForm/MingleForm';
 import Text from 'components/Text/Text';
 
 /** styles */
+import { styles } from './MessageDisplay.styles';
 
 /** redux */
 import {
@@ -39,7 +40,12 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   if (displayMessage) {
     return (
       <>
-        <Text variant='h2'>{displayMessage}</Text>
+        <Text
+          sx={styles.centeredText}
+          variant='h2'
+        >
+          {displayMessage}
+        </Text>
         {isConfirmationNeeded && (
           <Button
             sx={{ marginTop: 1 }}
@@ -62,5 +68,12 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <MingleForm formRef={formRef} />;
   }
 
-  return <Text variant='h2'>Hello, I'm Hal</Text>;
+  return (
+    <Text
+      sx={styles.centeredText}
+      variant='h2'
+    >
+      Hello, I'm Hal
+    </Text>
+  );
 }

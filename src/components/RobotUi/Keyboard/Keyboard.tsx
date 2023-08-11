@@ -43,6 +43,7 @@ export default function Keyboard({ formRef, keyboardRef }: KeyboardProps) {
       <Box sx={styles.keyboard}>
         <KeyboardReact
           mergeDisplay
+          useButtonTag
           inputName={inputName}
           buttonTheme={[
             {
@@ -54,7 +55,7 @@ export default function Keyboard({ formRef, keyboardRef }: KeyboardProps) {
               buttons: '{escape}',
             },
           ]}
-          // @ts-ignore - Current says read-only. Should revisit to fix Typescript
+          // @ts-ignore - TODO: Current says read-only. Should revisit to fix Typescript
           keyboardRef={(ref) => (keyboardRef.current = ref)}
           onChangeAll={(inputs) => {
             dispatch(

@@ -5,6 +5,6 @@ export interface NavigationGoals {
 export interface NavigationGoal {
   id: string;
   name: string;
-  containing_map: string;
+  floor_name: string;
   tags: string[];
 }

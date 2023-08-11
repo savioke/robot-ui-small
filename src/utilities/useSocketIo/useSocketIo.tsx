@@ -33,6 +33,11 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           // socket.emit('pong');
         });
 
+        // TODO: Disable after testing
+        socket.onAny((eventName, ...args) => {
+          console.info(eventName, args);
+        });
+
         if (dispatch && intl) {
           socket.on('display_message', (message) => {
             dispatch(setDisplayScreen(DisplayScreenOptions.Home));

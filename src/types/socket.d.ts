@@ -21,7 +21,7 @@ export interface NextApiResponseWithSocket extends NextApiResponse {
 export interface ServerToClientEvents {
   ping: () => void;
   connect: () => void;
-  display_message: (message: string) => void;
+  display_message: ({ message }: { message: string }) => void;
   disconnect: () => void;
   userServerConnection: () => void;
   userServerDisconnection: (socketId: string) => void;

@@ -40,7 +40,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
         if (dispatch && intl) {
           socket.on('display_message', ({ message }) => {
-            dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+            // dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             if (DisplayMessageOptions(intl)[message]) {
               return dispatch(setDisplayMessage(DisplayMessageOptions(intl)[message]));
             }

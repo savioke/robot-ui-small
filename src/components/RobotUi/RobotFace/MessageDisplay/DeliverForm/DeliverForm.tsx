@@ -84,7 +84,7 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
             open={isPopupOpen}
             inputValue={deliverFormValues.context.dropoff_location}
             options={deliverLocations}
-            groupBy={(option) => `Floor ${option.floor_name}`}
+            groupBy={(option) => `${intl.formatMessage({ id: 'floor' })} ${option.floor_name}`}
             getOptionLabel={(option) => option.name}
             onOpen={() => {
               setIsPopupOpen(true);

@@ -37,7 +37,13 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   const displayScreen = useSelector(getDisplayScreen);
   const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
 
-  if (displayMessage) {
+  if (displayScreen === DisplayScreenOptions.Dashboard) {
+    return <Dashboard />;
+  } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
+    return <DeliverForm formRef={formRef} />;
+  } else if (displayScreen === DisplayScreenOptions.MingleForm) {
+    return <MingleForm formRef={formRef} />;
+  } else if (displayMessage) {
     return (
       <>
         <Text
@@ -60,12 +66,6 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
         )}
       </>
     );
-  } else if (displayScreen === DisplayScreenOptions.Dashboard) {
-    return <Dashboard />;
-  } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
-    return <DeliverForm formRef={formRef} />;
-  } else if (displayScreen === DisplayScreenOptions.MingleForm) {
-    return <MingleForm formRef={formRef} />;
   }
 
   return (
@@ -73,7 +73,7 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
       sx={styles.centeredText}
       variant='h2'
     >
-      Hello, I'm Hal
+      Connecting...
     </Text>
   );
 }

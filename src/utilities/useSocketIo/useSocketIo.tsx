@@ -29,13 +29,17 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
         socket.on('ping', () => {
           console.info('Ping: Connected to server');
-          // TODO: Is this needed?
           socket.emit('pong');
         });
 
+        // TODO: Disable after testing
+        socket.onAny((eventName, ...args) => {
+          console.info(eventName, args);
+        });
+
         if (dispatch && intl) {
-          socket.on('display_message', (message) => {
-            dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+          socket.on('display_message', ({ message }) => {
+            // dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             if (DisplayMessageOptions(intl)[message]) {
               return dispatch(setDisplayMessage(DisplayMessageOptions(intl)[message]));
             }

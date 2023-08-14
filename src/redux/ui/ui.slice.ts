@@ -19,9 +19,14 @@ interface RobotUiState {
   theme: string;
   language: 'en' | 'es' | 'ja';
   deliverFormValues: {
-    dropoff_location: string;
-    dropoff_message: string;
-    transit_message: string;
+    data: {
+      name: 'start_delivery';
+      context: {
+        dropoff_location: string;
+        dropoff_message: string;
+        transit_message: string;
+      };
+    };
   };
 }
 
@@ -35,9 +40,14 @@ export const initialState: RobotUiState = {
   theme: '',
   language: 'en',
   deliverFormValues: {
-    dropoff_location: '',
-    dropoff_message: '',
-    transit_message: '',
+    data: {
+      name: 'start_delivery',
+      context: {
+        dropoff_location: '',
+        dropoff_message: '',
+        transit_message: '',
+      },
+    },
   },
 };
 
@@ -74,8 +84,14 @@ const uiSlice = createSlice({
     setDeliverFormValues: (state, { payload }) => {
       state.deliverFormValues = {
         ...state.deliverFormValues,
-        ...payload,
+        context: {
+          ...state.deliverFormValues.context,
+          ...payload,
+        },
       };
+    },
+    resetDeliverFormValues: (state) => {
+      state.deliverFormValues = initialState.deliverFormValues;
     },
   },
 });
@@ -89,6 +105,7 @@ export const {
   setDisplayMessage,
   setTheme,
   setLanguage,
+  resetDeliverFormValues,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

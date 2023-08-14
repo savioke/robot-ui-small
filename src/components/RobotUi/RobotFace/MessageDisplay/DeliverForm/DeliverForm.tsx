@@ -11,41 +11,17 @@ import { Autocomplete, Box, TextField, styled, lighten, darken } from '@mui/mate
 import { styles } from './DeliverForm.styles';
 
 /** redux */
-import { setDeliverFormValues, setInputName } from 'state/ui/ui.slice';
+import {
+  setDeliverFormValues,
+  setInputName,
+  setDisplayScreen,
+  resetDeliverFormValues,
+} from 'state/ui/ui.slice';
 import { getDeliverFormValues, getDeliverLocations } from 'state/ui/ui.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
-
-const top100Films = [
-  { title: 'The Shawshank Redemption', floor: '178' },
-  { title: 'The Godfather', floor: '597' },
-  { title: 'The Godfather: Part II', floor: '197' },
-  { title: 'The Dark Knight', floor: '204' },
-  { title: '12 Angry Men', floor: '395' },
-  { title: "Schindler's List", floor: '499' },
-  { title: 'Pulp Fiction', floor: '399' },
-  {
-    title: 'The Lord of the Rings: The Return of the King',
-    floor: '200',
-  },
-  { title: 'The Good, the Bad and the Ugly', floor: '196' },
-  { title: 'Fight Club', floor: '192' },
-  {
-    title: 'The Lord of the Rings: The Fellowship of the Ring',
-    floor: '203',
-  },
-  {
-    title: 'Star Wars: Episode V - The Empire Strikes Back',
-    floor: '198',
-  },
-  { title: 'Forrest Gump', floor: '199' },
-  { title: 'Inception', floor: '201' },
-  {
-    title: 'The Lord of the Rings: The Two Towers',
-    floor: '209',
-  },
-];
+import { DisplayScreenOptions } from 'appConstants';
 
 const GroupHeader = styled('div')(({ theme }) => ({
   position: 'sticky',
@@ -74,14 +50,6 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
   const deliverLocations = useSelector(getDeliverLocations);
   let inputRef = React.useRef<HTMLInputElement>(null);
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-  // const options = top100Films.map((option) => {
-  //   const firstLetter = option.floor[0];
-
-  //   return {
-  //     firstLetter,
-  //     ...option,
-  //   };
-  // });
 
   React.useEffect(() => {
     if (inputRef) {
@@ -111,17 +79,18 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
           sx={styles.form}
           onSubmit={async (event) => {
             event.preventDefault();
-            // TODO: Need to send locationId instead of locationName - Will need to work on Autocomplete
             await socket?.emit('ui_request', deliverFormValues);
+            dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+            dispatch(resetDeliverFormValues());
           }}
         >
           <Autocomplete
             fullWidth
             disableClearable
             open={isPopupOpen}
-            inputValue={deliverFormValues.dropoff_location}
+            inputValue={deliverFormValues.data.context.dropoff_location}
             options={deliverLocations}
-            // groupBy={(option) => `Floor ${option.firstLetter}`}
+            groupBy={(option) => `${intl.formatMessage({ id: 'floor' })} ${option.floor_name}`}
             getOptionLabel={(option) => option.name}
             onOpen={() => {
               setIsPopupOpen(true);
@@ -130,7 +99,7 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
               setIsPopupOpen(false);
             }}
             onInputChange={() => {
-              if (deliverFormValues.dropoff_location.length === 1) {
+              if (deliverFormValues.data.context.dropoff_location.length === 1) {
                 setIsPopupOpen(true);
               }
             }}
@@ -158,62 +127,17 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
                 }}
               />
             )}
-            // renderGroup={(params) => (
-            //   <li key={params.key}>
-            //     <GroupHeader>{params.group}</GroupHeader>
-            //     <GroupItems>{params.children}</GroupItems>
-            //   </li>
-            // )}
-          />
-          {/* <Autocomplete
-            fullWidth
-            disableClearable
-            open={isPopupOpen}
-            inputValue={deliverFormValues.dropoff_location}
-            options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
-            groupBy={(option) => `Floor ${option.firstLetter}`}
-            getOptionLabel={(option) => option.floor}
-            onOpen={() => {
-              setIsPopupOpen(true);
-            }}
-            onClose={() => {
-              setIsPopupOpen(false);
-            }}
-            onInputChange={() => {
-              if (deliverFormValues.dropoff_location.length === 1) {
-                setIsPopupOpen(true);
-              }
-            }}
-            onChange={(event, value, reason) => {
-              if (reason === 'selectOption') {
-                dispatch(setDeliverdeliverFormValues({ dropoff_location: value.floor }));
-              }
-            }}
-            renderInput={(params) => (
-              <TextField
-                required
-                ref={inputRef}
-                autoFocus
-                name='dropoff_location'
-                onFocus={handleFocus}
-                label={intl.formatMessage({ id: 'dropOffLocation' })}
-                {...params}
-                inputRef={(input) => {
-                  inputRef = input;
-                }}
-              />
-            )}
             renderGroup={(params) => (
               <li key={params.key}>
                 <GroupHeader>{params.group}</GroupHeader>
                 <GroupItems>{params.children}</GroupItems>
               </li>
             )}
-          /> */}
+          />
           <TextField
             required
             name='dropoff_message'
-            value={deliverFormValues.dropoff_message}
+            value={deliverFormValues.data.context.dropoff_message}
             onFocus={handleFocus}
             label={intl.formatMessage({ id: 'dropOffMessage' })}
             onChange={(event) => {

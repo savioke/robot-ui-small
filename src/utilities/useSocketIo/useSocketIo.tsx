@@ -39,7 +39,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
         if (dispatch && intl) {
           socket.on('display_message', ({ message }) => {
-            // dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+            dispatch(setIsConfirmationNeeded(false));
             if (DisplayMessageOptions(intl)[message]) {
               return dispatch(setDisplayMessage(DisplayMessageOptions(intl)[message]));
             }
@@ -52,7 +52,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket.on('display_confirm', ({ confirm_text }) => {
-            dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             if (DisplayMessageOptions(intl)[confirm_text]) {
               dispatch(setDisplayMessage(DisplayMessageOptions(intl)[confirm_text]));
               return dispatch(setIsConfirmationNeeded(true));

@@ -43,7 +43,7 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <DeliverForm formRef={formRef} />;
   } else if (displayScreen === DisplayScreenOptions.MingleForm) {
     return <MingleForm formRef={formRef} />;
-  } else if (displayMessage) {
+  } else if (isConfirmationNeeded) {
     return (
       <>
         <Text
@@ -52,19 +52,26 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
         >
           {displayMessage}
         </Text>
-        {isConfirmationNeeded && (
-          <Button
-            sx={{ marginTop: 1 }}
-            size='large'
-            variant='contained'
-            onClick={() => {
-              socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
-            }}
-          >
-            {intl.formatMessage({ id: 'done' })}
-          </Button>
-        )}
+        <Button
+          sx={{ marginTop: 1 }}
+          size='large'
+          variant='contained'
+          onClick={() => {
+            socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
+          }}
+        >
+          {intl.formatMessage({ id: 'done' })}
+        </Button>
       </>
+    );
+  } else if (displayMessage) {
+    return (
+      <Text
+        sx={styles.centeredText}
+        variant='h2'
+      >
+        {displayMessage}
+      </Text>
     );
   }
 

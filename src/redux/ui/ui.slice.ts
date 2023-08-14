@@ -84,9 +84,12 @@ const uiSlice = createSlice({
     setDeliverFormValues: (state, { payload }) => {
       state.deliverFormValues = {
         ...state.deliverFormValues,
-        context: {
-          ...state.deliverFormValues.context,
-          ...payload,
+        data: {
+          ...state.deliverFormValues.data,
+          context: {
+            ...state.deliverFormValues.data.context,
+            ...payload,
+          },
         },
       };
     },

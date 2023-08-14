@@ -25,7 +25,7 @@ export const getLanguage = (state: RootState) => {
 };
 
 export const getDeliverLocations = (state: RootState) => {
-  return state.ui.deliverLocations;
+  return [...state.ui.deliverLocations].sort((a, b) => -b.floor_name.localeCompare(a.floor_name));
 };
 
 export const getMingleLocations = (state: RootState) => {

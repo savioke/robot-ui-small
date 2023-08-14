@@ -11,7 +11,12 @@ import { Autocomplete, Box, TextField, styled, lighten, darken } from '@mui/mate
 import { styles } from './DeliverForm.styles';
 
 /** redux */
-import { setDeliverFormValues, setInputName, setDisplayScreen } from 'state/ui/ui.slice';
+import {
+  setDeliverFormValues,
+  setInputName,
+  setDisplayScreen,
+  resetDeliverFormValues,
+} from 'state/ui/ui.slice';
 import { getDeliverFormValues, getDeliverLocations } from 'state/ui/ui.selectors';
 
 /** helpers */
@@ -76,6 +81,7 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
             event.preventDefault();
             await socket?.emit('ui_request', deliverFormValues);
             dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+            dispatch(resetDeliverFormValues());
           }}
         >
           <Autocomplete
@@ -84,7 +90,7 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
             open={isPopupOpen}
             inputValue={deliverFormValues.context.dropoff_location}
             options={deliverLocations}
-            groupBy={(option) => `Floor ${option.floor_name}`}
+            groupBy={(option) => `${intl.formatMessage({ id: 'floor' })} ${option.floor_name}`}
             getOptionLabel={(option) => option.name}
             onOpen={() => {
               setIsPopupOpen(true);

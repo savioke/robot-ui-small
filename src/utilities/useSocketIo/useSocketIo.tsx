@@ -19,7 +19,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        socket = io('http://localhost:5000');
+        socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
         socket.on('connect', () => {
@@ -29,7 +29,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
         socket.on('ping', () => {
           console.info('Ping: Connected to server');
-          // TODO: Is this needed?
           socket.emit('pong');
         });
 

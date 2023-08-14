@@ -86,6 +86,9 @@ const uiSlice = createSlice({
         },
       };
     },
+    resetDeliverFormValues: (state) => {
+      state.deliverFormValues = initialState.deliverFormValues;
+    },
   },
 });
 
@@ -98,6 +101,7 @@ export const {
   setDisplayMessage,
   setTheme,
   setLanguage,
+  resetDeliverFormValues,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

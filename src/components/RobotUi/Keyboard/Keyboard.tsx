@@ -77,7 +77,10 @@ export default function Keyboard({ formRef, keyboardRef }: KeyboardProps) {
             }
           }}
           onKeyPress={(button, event) => {
-            if (button === '{backspace}') {
+            if (
+              button === '{backspace}' &&
+              (inputName === 'dropoff_location' || inputName === 'dropoff_message')
+            ) {
               const removeLastCharacter = deliverFormValues.context[inputName].slice(
                 0,
                 deliverFormValues.context[inputName].length - 1,

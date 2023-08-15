@@ -19,7 +19,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        socket = io('http://localhost:5000');
+        socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
         socket.on('connect', () => {

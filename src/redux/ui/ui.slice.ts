@@ -15,7 +15,7 @@ interface RobotUiState {
     | 'Settings';
   displayMessage: string;
   isConfirmationNeeded: boolean;
-  inputName: string;
+  inputName: 'dropoff_location' | 'dropoff_message';
   theme: string;
   language: 'en' | 'es' | 'ja';
   deliverFormValues: {
@@ -29,7 +29,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.Home,
+  displayScreen: DisplayScreenOptions.DeliverForm,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

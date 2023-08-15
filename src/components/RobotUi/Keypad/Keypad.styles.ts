@@ -6,6 +6,8 @@ export const styles = {
   },
   fab: {
     backgroundColor: 'white',
+    height: 64,
+    width: 64,
   },
   fabContainer: {
     textAlign: 'center',

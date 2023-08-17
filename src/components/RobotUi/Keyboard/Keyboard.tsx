@@ -13,8 +13,8 @@ import 'react-simple-keyboard/build/css/index.css';
 import { styles } from './Keyboard.styles';
 
 /** redux */
-import { getInputName, getDisplayScreen } from 'state/ui/ui.selectors';
-import { setDeliverFormValues, setDisplayScreen } from 'state/ui/ui.slice';
+import { getInputName, getDisplayScreen, getDeliverFormValues } from 'state/ui/ui.selectors';
+import { setDeliverFormValues, setDisplayScreen, resetDeliverFormValues } from 'state/ui/ui.slice';
 import { DisplayScreenOptions } from 'appConstants';
 
 /** helpers */
@@ -28,6 +28,7 @@ export default function Keyboard({ formRef, keyboardRef }: KeyboardProps) {
   const dispatch = useDispatch();
   const inputName = useSelector(getInputName);
   const displayScreen = useSelector(getDisplayScreen);
+  const deliverFormValues = useSelector(getDeliverFormValues);
   const displayKeyboard =
     displayScreen === DisplayScreenOptions.DeliverForm ||
     displayScreen === DisplayScreenOptions.GoToForm;
@@ -58,19 +59,38 @@ export default function Keyboard({ formRef, keyboardRef }: KeyboardProps) {
           // @ts-ignore - TODO: Current says read-only. Should revisit to fix Typescript
           keyboardRef={(ref) => (keyboardRef.current = ref)}
           onChangeAll={(inputs) => {
+            // console.log(inputs);
             dispatch(
               setDeliverFormValues({
                 ...inputs,
               }),
             );
           }}
-          onKeyPress={(button) => {
+          onKeyReleased={(button) => {
             if (button === '{enter}' && formRef.current) {
               formRef.current.requestSubmit();
-            } else if (button === '{shift}') {
-              setLayoutName(layoutName === 'default' ? 'shift' : 'default');
             } else if (button === '{escape}') {
               dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+              dispatch(resetDeliverFormValues());
+            } else if (button === '{shift}') {
+              setLayoutName(layoutName === 'default' ? 'shift' : 'default');
+            }
+          }}
+          onKeyPress={(button, event) => {
+            if (
+              button === '{backspace}' &&
+              (inputName === 'dropoff_location' || inputName === 'dropoff_message')
+            ) {
+              const removeLastCharacter = deliverFormValues.context[inputName].slice(
+                0,
+                deliverFormValues.context[inputName].length - 1,
+              );
+
+              dispatch(
+                setDeliverFormValues({
+                  [inputName]: removeLastCharacter,
+                }),
+              );
             }
           }}
           theme='hg-theme-default hg-theme-ios'

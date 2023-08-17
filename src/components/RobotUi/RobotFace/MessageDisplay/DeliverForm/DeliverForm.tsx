@@ -88,7 +88,7 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
             fullWidth
             disableClearable
             open={isPopupOpen}
-            inputValue={deliverFormValues.data.context.dropoff_location}
+            inputValue={deliverFormValues.context.dropoff_location}
             options={deliverLocations}
             groupBy={(option) => `${intl.formatMessage({ id: 'floor' })} ${option.floor_name}`}
             getOptionLabel={(option) => option.name}
@@ -99,7 +99,7 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
               setIsPopupOpen(false);
             }}
             onInputChange={() => {
-              if (deliverFormValues.data.context.dropoff_location.length === 1) {
+              if (deliverFormValues.context.dropoff_location.length === 1) {
                 setIsPopupOpen(true);
               }
             }}
@@ -137,7 +137,7 @@ export default function DeliverForm({ formRef }: DeliverFormProps) {
           <TextField
             required
             name='dropoff_message'
-            value={deliverFormValues.data.context.dropoff_message}
+            value={deliverFormValues.context.dropoff_message}
             onFocus={handleFocus}
             label={intl.formatMessage({ id: 'dropOffMessage' })}
             onChange={(event) => {

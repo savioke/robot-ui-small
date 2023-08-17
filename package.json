@@ -16,7 +16,7 @@
     "@emotion/styled": "^11.10.8",
     "@mui/material": "^5.13.3",
     "@reduxjs/toolkit": "^1.9.5",
-    "next": "^13.4.10",
+    "next": "13.4.10",
     "next-redux-wrapper": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

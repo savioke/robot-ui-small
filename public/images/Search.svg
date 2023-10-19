@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="158" height="158" viewBox="0 0 158 158">
+  <defs>
+    <filter id="Path_55" x="0" y="0" width="158" height="158" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Union_33" x="7.5" y="7.427" width="150.475" height="149.182" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Search" transform="translate(12 6)">
+    <g transform="matrix(1, 0, 0, 1, -12, -6)" filter="url(#Path_55)">
+      <path id="Path_55-2" data-name="Path 55" d="M30.035,0h79.931A30.035,30.035,0,0,1,140,30.035v79.931A30.035,30.035,0,0,1,109.965,140H30.035A30.035,30.035,0,0,1,0,109.965V30.035A30.035,30.035,0,0,1,30.035,0Z" transform="translate(12 6)" fill="#fff"/>
+    </g>
+    <g id="Group_1" data-name="Group 1" transform="translate(-3887.5 163.427)">
+      <path id="Path_55-3" data-name="Path 55" d="M26.98,0h71.8a26.98,26.98,0,0,1,26.98,26.98v71.8a26.98,26.98,0,0,1-26.98,26.98H26.98A26.98,26.98,0,0,1,0,98.781V26.98A26.98,26.98,0,0,1,26.98,0Z" transform="translate(3899.491 -156)" fill="none"/>
+      <g transform="matrix(1, 0, 0, 1, 3875.5, -169.43)" filter="url(#Union_33)">
+        <path id="Union_33-2" data-name="Union 33" d="M23.119,108.239V85.809a11.167,11.167,0,0,1,5.395-9.565V67.972a32.708,32.708,0,0,1-8.039-2.308A33.376,33.376,0,0,1,9.819,58.34,34.117,34.117,0,0,1,2.634,47.477a34.9,34.9,0,0,1,0-26.6A34.117,34.117,0,0,1,9.819,10.009,33.376,33.376,0,0,1,20.475,2.686a33.043,33.043,0,0,1,26.1,0,33.376,33.376,0,0,1,10.656,7.323,34.117,34.117,0,0,1,7.185,10.863,34.9,34.9,0,0,1,0,26.6A34.117,34.117,0,0,1,57.228,58.34a33.376,33.376,0,0,1-10.656,7.323A32.73,32.73,0,0,1,39.3,67.845v7.973a11.174,11.174,0,0,1,6.165,9.991v22.431a11.175,11.175,0,1,1-22.35,0Zm-13.1-74.066A23.763,23.763,0,0,0,33.523,58.136,23.763,23.763,0,0,0,57.028,34.174,23.764,23.764,0,0,0,33.523,10.212,23.764,23.764,0,0,0,10.018,34.174Z" transform="matrix(0.69, -0.72, 0.72, 0.69, 19.5, 61.66)" fill="#414141"/>
+      </g>
+    </g>
+  </g>
+</svg>

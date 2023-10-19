@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53" height="53" viewBox="0 0 53 53">
+  <defs>
+    <filter id="_Color" x="0" y="0" width="53" height="53" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Exit" transform="translate(10 4)">
+    <rect id="Boundary" width="38" height="38" fill="none"/>
+    <g transform="matrix(1, 0, 0, 1, -10, -4)" filter="url(#_Color)">
+      <path id="_Color-2" data-name=" ↳Color" d="M17.5,35A17.506,17.506,0,0,1,5.121,5.121,17.507,17.507,0,0,1,29.879,29.879,17.389,17.389,0,0,1,17.5,35Zm0-15.032h0l6.281,6.281,2.468-2.468L19.968,17.5l6.283-6.283L23.783,8.751,17.5,15.032,11.217,8.751,8.751,11.217,15.032,17.5,8.751,23.783l2.466,2.468L17.5,19.969Z" transform="translate(12 6)" fill="#dbd7df"/>
+    </g>
+  </g>
+</svg>

@@ -84,12 +84,11 @@ export default function App({ Component, ...rest }: AppProps) {
               backgroundImage: `${stateTheme}`,
             }}
           >
+            <Box sx={{ minHeight: '68px' }}></Box>
             <Box
               component='main'
               sx={{
                 display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
                 flexGrow: 1,
               }}
             >

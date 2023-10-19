@@ -1,0 +1,15 @@
+<svg id="Back_Arrow" data-name="Back Arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="70" viewBox="0 0 70 70">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_78" data-name="Rectangle 78" width="20.383" height="28.265" fill="#bebbba"/>
+    </clipPath>
+  </defs>
+  <g id="Group_60" data-name="Group 60" transform="translate(-142 -68)">
+    <circle id="Ellipse_22" data-name="Ellipse 22" cx="35" cy="35" r="35" transform="translate(142 68)" fill="none"/>
+    <g id="Group_59" data-name="Group 59" transform="translate(163.762 88.867)">
+      <g id="Group_58" data-name="Group 58" transform="translate(0 0)" clip-path="url(#clip-path)">
+        <path id="Path_30" data-name="Path 30" d="M.934,16l15.71,11.792a2.337,2.337,0,0,0,3.739-1.869V2.341A2.336,2.336,0,0,0,16.644.472L.934,12.264A2.337,2.337,0,0,0,.934,16" transform="translate(0 0)" fill="#bebbba"/>
+      </g>
+    </g>
+  </g>
+</svg>

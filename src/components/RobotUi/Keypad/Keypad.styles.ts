@@ -1,8 +1,4 @@
 export const styles = {
-  button: {
-    width: '100%',
-    // height: '100%',
-  },
   fabContainer: {
     textAlign: 'center',
   },
@@ -18,8 +14,8 @@ export const styles = {
   },
   numberButtons: {
     backgroundColor: '#414141',
-    height: '75px',
-    width: '75px',
+    height: '100px',
+    width: '100px',
     borderRadius: '25px',
   },
 };

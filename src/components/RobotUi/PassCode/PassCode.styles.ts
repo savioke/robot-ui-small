@@ -21,6 +21,7 @@ export const styles = {
     },
   },
   messageContainer: {
+    width: '80%',
     minWidth: '1137px',
     position: 'relative',
   },

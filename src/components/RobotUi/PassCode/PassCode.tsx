@@ -3,7 +3,7 @@ import OtpInput from 'react-otp-input';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, Paper, Grid } from '@mui/material';
+import { Box, Paper, TextField } from '@mui/material';
 
 /** Components */
 import Text from 'components/Text/Text';
@@ -28,17 +28,27 @@ export default function PassCode() {
           sx={styles.paper}
         >
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
               <Text
                 sx={{ marginBottom: 4, fontSize: '55px' }}
                 variant='h4'
-                id='enterYourPasscode'
+                id='enterPasscode'
               />
+              <Box sx={{ display: 'flex', flex: 1, alignItems: 'flex-start' }}>
+                <TextField
+                  fullWidth
+                  variant='standard'
+                  type='password'
+                  value={passCode}
+                  InputProps={{ disableUnderline: true }}
+                  sx={{ '& .MuiInput-root': { fontSize: '200px' } }}
+                />
+              </Box>
             </Box>
-            <Box sx={{ flex: 0.5 }}>
+            <Box sx={{ flex: 0.8 }}>
               <Keypad
-                keypadValues={passCode}
-                setKeypadValues={setPassCode}
+                passCode={passCode}
+                setPasscode={setPassCode}
               />
             </Box>
           </Box>

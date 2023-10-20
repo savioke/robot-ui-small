@@ -3,13 +3,13 @@ import { useIntl } from 'react-intl';
 import { useDispatch } from 'typeDux';
 
 /** Mui Components */
-import { Grid, Fab, IconButton, Button } from '@mui/material';
+import { Grid, IconButton, Button } from '@mui/material';
+import { Backspace } from '@mui/icons-material';
 
 /** Components */
 
 /** styles */
 import { styles } from './Keypad.styles';
-import BackspaceIcon from '../SvgIcons/BackspaceIcon/BackspaceIcon';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
@@ -18,19 +18,20 @@ import { setDisplayScreen } from 'state/ui/ui.slice';
 import { DisplayScreenOptions } from 'appConstants';
 
 interface KeypadProps {
-  keypadValues: string;
-  setKeypadValues: React.Dispatch<React.SetStateAction<string>>;
+  passCode: string;
+  setPasscode: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
+export default function Keypad({ passCode, setPasscode }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const addToKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setKeypadValues((previousValue) => {
-      if (previousValue.length === 4) {
-        return previousValue;
-      }
+  const handleKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setPasscode((previousValue) => {
+      // TODO: This needs to be dynamic to accept any number of pins...
+      // if (previousValue.length === 4) {
+      //   return previousValue;
+      // }
 
       return previousValue + event.currentTarget.value;
     });
@@ -39,7 +40,7 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
   return (
     <Grid
       container
-      rowSpacing={3}
+      rowSpacing={2}
     >
       <Grid
         container
@@ -54,6 +55,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={1}
           >
             {intl.formatMessage({ id: '1' })}
           </Button>
@@ -66,6 +69,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={2}
           >
             {intl.formatMessage({ id: '2' })}
           </Button>
@@ -78,6 +83,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={3}
           >
             {intl.formatMessage({ id: '3' })}
           </Button>
@@ -97,6 +104,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={4}
           >
             {intl.formatMessage({ id: '4' })}
           </Button>
@@ -109,6 +118,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={5}
           >
             {intl.formatMessage({ id: '5' })}
           </Button>
@@ -121,6 +132,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={6}
           >
             {intl.formatMessage({ id: '6' })}
           </Button>
@@ -140,6 +153,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={7}
           >
             {intl.formatMessage({ id: '7' })}
           </Button>
@@ -152,6 +167,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={8}
           >
             {intl.formatMessage({ id: '8' })}
           </Button>
@@ -164,6 +181,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={9}
           >
             {intl.formatMessage({ id: '9' })}
           </Button>
@@ -187,6 +206,8 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
+            onClick={handleKeypadValues}
+            value={0}
           >
             {intl.formatMessage({ id: '0' })}
           </Button>
@@ -197,28 +218,30 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           sx={styles.fabContainer}
         >
           <IconButton
-            onClick={() => setKeypadValues((accessCode) => accessCode.slice(0, -1))}
-            sx={styles.iconButton}
+            sx={styles.numberButtons}
+            onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+            // sx={styles.iconButton}
           >
-            <BackspaceIcon />
+            <Backspace sx={{ color: 'white' }} />
           </IconButton>
         </Grid>
-        <Button
-          sx={styles.button}
-          variant='contained'
-          onClick={() => {
-            // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-            if (keypadValues !== '1234') {
-              return;
-              // return setErrorMessage('Invalid passcode')
-            }
-
-            return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-          }}
-        >
-          {intl.formatMessage({ id: 'ok' })}
-        </Button>
       </Grid>
+      <Button
+        fullWidth
+        sx={{ marginTop: 3, height: '56px' }}
+        variant='contained'
+        onClick={() => {
+          // TODO: Hook in error message for invalid code... This might be verified from R2C2.
+          if (keypadValues !== '1234') {
+            return;
+            // return setErrorMessage('Invalid passcode')
+          }
+
+          return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+        }}
+      >
+        {intl.formatMessage({ id: 'ok' })}
+      </Button>
     </Grid>
   );
 }

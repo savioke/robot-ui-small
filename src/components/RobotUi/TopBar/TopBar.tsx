@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Divider, Fab } from '@mui/material';
+import { Box, Divider, Fab, Fade } from '@mui/material';
 import { Wifi, Clear } from '@mui/icons-material';
 
 /** Components */
@@ -31,40 +31,42 @@ export default function TopBar() {
   }
 
   return (
-    <Box sx={styles.container}>
-      {displayScreen !== DisplayScreenOptions.Home ? (
-        <Fab
-          size='small'
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
-        >
-          <Clear fontSize='large' />
-        </Fab>
-      ) : (
-        // TODO: Used to keep styling consistent on home page for sticking icons to the right.
-        <Box></Box>
-      )}
-      {/* TODO: Should we use FAB instead of this image? */}
-      {/* <Image
+    <Fade in={isScreenTouched}>
+      <Box sx={styles.container}>
+        {displayScreen !== DisplayScreenOptions.Home ? (
+          <Fab
+            size='small'
+            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+          >
+            <Clear fontSize='large' />
+          </Fab>
+        ) : (
+          // TODO: Used to keep styling consistent on home page for sticking icons to the right.
+          <Box></Box>
+        )}
+        {/* TODO: Should we use FAB instead of this image? */}
+        {/* <Image
         priority
         src='images/exit.svg'
         height={48}
         width={48}
         alt={intl.formatMessage({ id: 'returnHome' })}
       /> */}
-      <Box sx={styles.metricContainer}>
-        <Box sx={styles.rightContainer}>
-          {/* TODO: Conditional display if not connected */}
-          <Wifi fontSize='large' />
-          <Text id='connected' />
+        <Box sx={styles.metricContainer}>
+          <Box sx={styles.rightContainer}>
+            {/* TODO: Conditional display if not connected */}
+            <Wifi fontSize='large' />
+            <Text id='connected' />
+          </Box>
+          <Divider
+            flexItem
+            sx={styles.divider}
+            orientation='vertical'
+            variant='middle'
+          />
+          <BatteryIcon />
         </Box>
-        <Divider
-          flexItem
-          sx={styles.divider}
-          orientation='vertical'
-          variant='middle'
-        />
-        <BatteryIcon />
       </Box>
-    </Box>
+    </Fade>
   );
 }

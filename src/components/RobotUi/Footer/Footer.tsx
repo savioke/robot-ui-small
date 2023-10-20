@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Fab } from '@mui/material';
+import { Box, Fab, Fade } from '@mui/material';
 import { Lock } from '@mui/icons-material';
 
 /** Components */
@@ -37,14 +37,16 @@ export default function Footer() {
     return null;
   } else if (displayScreen === DisplayScreenOptions.Home) {
     return (
-      <Box sx={styles.iconContainer}>
-        <Fab
-          size='large'
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
-        >
-          <Lock fontSize='large' />
-        </Fab>
-      </Box>
+      <Fade in={isScreenTouched}>
+        <Box sx={styles.iconContainer}>
+          <Fab
+            size='large'
+            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
+          >
+            <Lock fontSize='large' />
+          </Fab>
+        </Box>
+      </Fade>
     );
   }
 

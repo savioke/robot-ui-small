@@ -15,6 +15,7 @@ import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
 import Footer from 'components/RobotUi/Footer/Footer';
+import TopBar from 'components/RobotUi/TopBar/TopBar';
 
 /** actions */
 import { setTheme } from 'state/ui/ui.slice';
@@ -82,9 +83,10 @@ export default function App({ Component, ...rest }: AppProps) {
               minHeight: '100vh',
               flexDirection: 'column',
               backgroundImage: `${stateTheme}`,
+              backgroundSize: 'cover',
             }}
           >
-            <Box sx={{ minHeight: '68px' }}></Box>
+            <TopBar />
             <Box
               component='main'
               sx={{

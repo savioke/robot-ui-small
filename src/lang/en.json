@@ -40,5 +40,8 @@
   "closingTheLid": "Closing the lid",
   "floor": "Floor",
   "general": "General",
-  "help": "Help"
+  "help": "Help",
+  "connected": "Connected",
+  "battery": "Battery",
+  "returnHome": "Return home"
 }

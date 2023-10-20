@@ -84,6 +84,7 @@ export default function App({ Component, ...rest }: AppProps) {
               flexDirection: 'column',
               backgroundImage: `${stateTheme}`,
               backgroundSize: 'cover',
+              paddingX: 2,
             }}
           >
             <TopBar />

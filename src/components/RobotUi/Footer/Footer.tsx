@@ -3,7 +3,8 @@ import { useSelector } from 'typeDux';
 import { useDispatch } from 'typeDux';
 
 /** Mui Components */
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Fab } from '@mui/material';
+import { Lock } from '@mui/icons-material';
 
 /** Components */
 import HomeIcon from '../SvgIcons/HomeIcon/HomeIcon';
@@ -24,48 +25,52 @@ export default function Footer() {
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
 
-  if (
-    displayScreen !== DisplayScreenOptions.PassCode &&
-    displayScreen !== DisplayScreenOptions.Home &&
-    displayScreen !== DisplayScreenOptions.Dashboard &&
-    displayScreen !== DisplayScreenOptions.Settings &&
-    displayScreen !== DisplayScreenOptions.MingleForm
-  ) {
-    return null;
-  } else if (displayScreen === DisplayScreenOptions.Home) {
-    return (
-      <Box sx={styles.iconContainer}>
-        <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}>
-          <SettingsIcon variant='white' />
-        </IconButton>
-      </Box>
-    );
-  } else if (
-    displayScreen === DisplayScreenOptions.Settings ||
-    displayScreen === DisplayScreenOptions.MingleForm
-  ) {
-    return (
-      <Box sx={styles.iconContainer}>
-        <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}>
-          <BackArrowIcon />
-        </IconButton>
-      </Box>
-    );
-  } else if (displayScreen === DisplayScreenOptions.Dashboard) {
-    return (
-      <Box sx={styles.iconContainer}>
-        <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}>
-          <BackArrowIcon />
-        </IconButton>
-      </Box>
-    );
-  }
+  // if (
+  //   displayScreen !== DisplayScreenOptions.PassCode &&
+  //   displayScreen !== DisplayScreenOptions.Home &&
+  //   displayScreen !== DisplayScreenOptions.Dashboard &&
+  //   displayScreen !== DisplayScreenOptions.Settings &&
+  //   displayScreen !== DisplayScreenOptions.MingleForm
+  // ) {
+  //   return null;
+  // } else if (displayScreen === DisplayScreenOptions.Home) {
+  //   return (
+  //     <Box sx={styles.iconContainer}>
+  //       <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}>
+  //         <SettingsIcon variant='white' />
+  //       </IconButton>
+  //     </Box>
+  //   );
+  // } else if (
+  //   displayScreen === DisplayScreenOptions.Settings ||
+  //   displayScreen === DisplayScreenOptions.MingleForm
+  // ) {
+  //   return (
+  //     <Box sx={styles.iconContainer}>
+  //       <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}>
+  //         <BackArrowIcon />
+  //       </IconButton>
+  //     </Box>
+  //   );
+  // } else if (displayScreen === DisplayScreenOptions.Dashboard) {
+  //   return (
+  //     <Box sx={styles.iconContainer}>
+  //       <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}>
+  //         <BackArrowIcon />
+  //       </IconButton>
+  //     </Box>
+  //   );
+  // }
 
   return (
     <Box sx={styles.iconContainer}>
-      <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}>
-        <HomeIcon />
-      </IconButton>
+      <Fab
+        size='large'
+        // sx={{ color: 'white' }}
+        onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+      >
+        <Lock fontSize='large' />
+      </Fab>
     </Box>
   );
 }

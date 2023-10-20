@@ -3,10 +3,11 @@ import Image from 'next/image';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import { Wifi } from '@mui/icons-material';
 
 /** Components */
+import BatteryIcon from './BatteryIcon/BatteryIcon';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -26,51 +27,21 @@ export default function TopBar() {
         src='images/exit.svg'
         height={48}
         width={48}
-        alt={intl.formatMessage({ id: 'leftEye' })}
+        alt={intl.formatMessage({ id: 'returnHome' })}
       />
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          color: 'white',
-          width: '15%',
-        }}
-      >
-        <Text>m8888</Text>
-        <Image
-          priority
-          src='images/battery_1_of_4.svg'
-          height={48}
-          width={48}
-          alt={intl.formatMessage({ id: 'leftEye' })}
+      <Box sx={styles.metricContainer}>
+        <Box sx={styles.rightContainer}>
+          {/* TODO: Conditional display if not connected */}
+          <Wifi fontSize='large' />
+          <Text id='connected' />
+        </Box>
+        <Divider
+          flexItem
+          sx={styles.divider}
+          orientation='vertical'
+          variant='middle'
         />
-        {/* TODO: Display battery by percentage reported */}
-        {/* <Image
-          priority
-          src='images/battery_2_of_4.svg'
-          height={48}
-          width={48}
-          alt={intl.formatMessage({ id: 'leftEye' })}
-        />
-        <Image
-          priority
-          src='images/battery_3_of_4.svg'
-          height={48}
-          width={48}
-          alt={intl.formatMessage({ id: 'leftEye' })}
-        />
-        <Image
-          priority
-          src='images/battery_4_of_4.svg'
-          height={48}
-          width={48}
-          alt={intl.formatMessage({ id: 'leftEye' })}
-        /> */}
-        <Wifi
-          // sx={{ color: 'white' }}
-          fontSize='large'
-        />
+        <BatteryIcon />
       </Box>
     </Box>
   );

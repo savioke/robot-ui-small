@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
 import { useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Divider } from '@mui/material';
-import { Wifi } from '@mui/icons-material';
+import { Box, Divider, Fab } from '@mui/material';
+import { Wifi, Clear } from '@mui/icons-material';
 
 /** Components */
 import BatteryIcon from './BatteryIcon/BatteryIcon';
@@ -14,21 +14,43 @@ import Text from 'components/Text/Text';
 import { styles } from './TopBar.styles';
 
 /** redux */
+import { setDisplayScreen } from 'state/ui/ui.slice';
+import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 
 /** helpers */
+import { DisplayScreenOptions } from 'appConstants';
 
 export default function TopBar() {
   const intl = useIntl();
+  const dispatch = useDispatch();
+  const displayScreen = useSelector(getDisplayScreen);
+  const isScreenTouched = useSelector(getIsScreenTouched);
+
+  if (!isScreenTouched) {
+    return <Box sx={styles.container} />;
+  }
 
   return (
     <Box sx={styles.container}>
-      <Image
+      {displayScreen !== DisplayScreenOptions.Home ? (
+        <Fab
+          size='small'
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+        >
+          <Clear fontSize='large' />
+        </Fab>
+      ) : (
+        // TODO: Used to keep styling consistent on home page for sticking icons to the right.
+        <Box></Box>
+      )}
+      {/* TODO: Should we use FAB instead of this image? */}
+      {/* <Image
         priority
         src='images/exit.svg'
         height={48}
         width={48}
         alt={intl.formatMessage({ id: 'returnHome' })}
-      />
+      /> */}
       <Box sx={styles.metricContainer}>
         <Box sx={styles.rightContainer}>
           {/* TODO: Conditional display if not connected */}

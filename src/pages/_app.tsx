@@ -18,7 +18,7 @@ import Footer from 'components/RobotUi/Footer/Footer';
 import TopBar from 'components/RobotUi/TopBar/TopBar';
 
 /** actions */
-import { setTheme } from 'state/ui/ui.slice';
+import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';
 
 /** Mui Premium License Key */
 
@@ -86,6 +86,7 @@ export default function App({ Component, ...rest }: AppProps) {
               backgroundSize: 'cover',
               paddingX: 2,
             }}
+            onClick={() => store.dispatch(setIsScreenTouched(true))}
           >
             <TopBar />
             <Box

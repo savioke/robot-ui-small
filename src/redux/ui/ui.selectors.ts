@@ -35,3 +35,7 @@ export const getMingleLocations = (state: RootState) => {
 export const getIsConfirmationNeeded = (state: RootState) => {
   return state.ui.isConfirmationNeeded;
 };
+
+export const getIsScreenTouched = (state: RootState) => {
+  return state.ui.isScreenTouched;
+};

@@ -15,6 +15,7 @@ interface RobotUiState {
     | 'Settings';
   displayMessage: string;
   isConfirmationNeeded: boolean;
+  isScreenTouched: boolean;
   inputName: 'dropoff_location' | 'dropoff_message' | string;
   theme: string;
   language: 'en' | 'es' | 'ja';
@@ -34,6 +35,7 @@ export const initialState: RobotUiState = {
   mingleLocations: [],
   displayMessage: '',
   isConfirmationNeeded: false,
+  isScreenTouched: false,
   inputName: '',
   theme: '',
   language: 'en',
@@ -59,6 +61,9 @@ const uiSlice = createSlice({
     },
     setIsConfirmationNeeded: (state, { payload }) => {
       state.isConfirmationNeeded = payload;
+    },
+    setIsScreenTouched: (state, { payload }) => {
+      state.isScreenTouched = payload;
     },
     setLanguage: (state, { payload }) => {
       state.language = payload;
@@ -99,6 +104,7 @@ export const {
   setInputName,
   setDisplayScreen,
   setDisplayMessage,
+  setIsScreenTouched,
   setTheme,
   setLanguage,
   resetDeliverFormValues,

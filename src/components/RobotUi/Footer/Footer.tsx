@@ -1,22 +1,18 @@
 import React from 'react';
-import { useSelector } from 'typeDux';
-import { useDispatch } from 'typeDux';
+import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, IconButton, Fab } from '@mui/material';
+import { Box, Fab } from '@mui/material';
 import { Lock } from '@mui/icons-material';
 
 /** Components */
-import HomeIcon from '../SvgIcons/HomeIcon/HomeIcon';
-import SettingsIcon from '../SvgIcons/SettingsIcon/SettingsIcon';
-import BackArrowIcon from '../SvgIcons/BackArrowIcon/BackArrowIcon';
 
 /** styles */
 import { styles } from './Footer.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
-import { getDisplayScreen } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -24,7 +20,9 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function Footer() {
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
+  const isScreenTouched = useSelector(getIsScreenTouched);
 
+  // TODO: This will be displaying the small face on certain pages. Leave for now.
   // if (
   //   displayScreen !== DisplayScreenOptions.PassCode &&
   //   displayScreen !== DisplayScreenOptions.Home &&
@@ -33,40 +31,27 @@ export default function Footer() {
   //   displayScreen !== DisplayScreenOptions.MingleForm
   // ) {
   //   return null;
-  // } else if (displayScreen === DisplayScreenOptions.Home) {
-  //   return (
-  //     <Box sx={styles.iconContainer}>
-  //       <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}>
-  //         <SettingsIcon variant='white' />
-  //       </IconButton>
-  //     </Box>
-  //   );
-  // } else if (
-  //   displayScreen === DisplayScreenOptions.Settings ||
-  //   displayScreen === DisplayScreenOptions.MingleForm
-  // ) {
-  //   return (
-  //     <Box sx={styles.iconContainer}>
-  //       <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}>
-  //         <BackArrowIcon />
-  //       </IconButton>
-  //     </Box>
-  //   );
-  // } else if (displayScreen === DisplayScreenOptions.Dashboard) {
-  //   return (
-  //     <Box sx={styles.iconContainer}>
-  //       <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}>
-  //         <BackArrowIcon />
-  //       </IconButton>
-  //     </Box>
-  //   );
   // }
+
+  if (!isScreenTouched) {
+    return null;
+  } else if (displayScreen === DisplayScreenOptions.Home) {
+    return (
+      <Box sx={styles.iconContainer}>
+        <Fab
+          size='large'
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
+        >
+          <Lock fontSize='large' />
+        </Fab>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={styles.iconContainer}>
       <Fab
         size='large'
-        // sx={{ color: 'white' }}
         onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
       >
         <Lock fontSize='large' />

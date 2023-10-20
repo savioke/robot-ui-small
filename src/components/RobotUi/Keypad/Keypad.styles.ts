@@ -1,13 +1,7 @@
 export const styles = {
   button: {
     width: '100%',
-    height: '100%',
-    color: 'white',
-  },
-  fab: {
-    backgroundColor: 'white',
-    height: 64,
-    width: 64,
+    // height: '100%',
   },
   fabContainer: {
     textAlign: 'center',
@@ -19,7 +13,13 @@ export const styles = {
   },
   iconButton: {
     paddingLeft: 0,
-    width: 40,
-    height: 40,
+    width: '75px',
+    height: '75px',
+  },
+  numberButtons: {
+    backgroundColor: '#414141',
+    height: '75px',
+    width: '75px',
+    borderRadius: '25px',
   },
 };

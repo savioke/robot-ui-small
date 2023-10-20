@@ -39,7 +39,7 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
   return (
     <Grid
       container
-      rowSpacing={4}
+      rowSpacing={3}
     >
       <Grid
         container
@@ -51,39 +51,36 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={1}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '1' })}
-          </Fab>
+          </Button>
         </Grid>
         <Grid
           item
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={2}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '2' })}
-          </Fab>
+          </Button>
         </Grid>
         <Grid
           item
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={3}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '3' })}
-          </Fab>
+          </Button>
         </Grid>
       </Grid>
       <Grid
@@ -97,39 +94,36 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={4}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '4' })}
-          </Fab>
+          </Button>
         </Grid>
         <Grid
           item
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={5}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '5' })}
-          </Fab>
+          </Button>
         </Grid>
         <Grid
           item
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={6}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '6' })}
-          </Fab>
+          </Button>
         </Grid>
       </Grid>
       <Grid
@@ -143,39 +137,36 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={7}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '7' })}
-          </Fab>
+          </Button>
         </Grid>
         <Grid
           item
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={8}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '8' })}
-          </Fab>
+          </Button>
         </Grid>
         <Grid
           item
           xs={4}
           sx={styles.fabContainer}
         >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={9}
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
           >
             {intl.formatMessage({ id: '9' })}
-          </Fab>
+          </Button>
         </Grid>
       </Grid>
       <Grid
@@ -187,6 +178,23 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
           item
           xs={4}
           sx={[styles.fabContainer, styles.iconButtonContainer]}
+        ></Grid>
+        <Grid
+          item
+          xs={4}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+          >
+            {intl.formatMessage({ id: '0' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={4}
+          sx={styles.fabContainer}
         >
           <IconButton
             onClick={() => setKeypadValues((accessCode) => accessCode.slice(0, -1))}
@@ -195,39 +203,21 @@ export default function Keypad({ keypadValues, setKeypadValues }: KeypadProps) {
             <BackspaceIcon />
           </IconButton>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Fab
-            onClick={addToKeypadValues}
-            sx={styles.fab}
-            value={0}
-          >
-            {intl.formatMessage({ id: '0' })}
-          </Fab>
-        </Grid>
-        <Grid
-          item
-          xs={4}
-          sx={styles.fabContainer}
-        >
-          <Button
-            sx={styles.button}
-            onClick={() => {
-              // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-              if (keypadValues !== '1234') {
-                return;
-                // return setErrorMessage('Invalid passcode')
-              }
+        <Button
+          sx={styles.button}
+          variant='contained'
+          onClick={() => {
+            // TODO: Hook in error message for invalid code... This might be verified from R2C2.
+            if (keypadValues !== '1234') {
+              return;
+              // return setErrorMessage('Invalid passcode')
+            }
 
-              return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-            }}
-          >
-            {intl.formatMessage({ id: 'ok' })}
-          </Button>
-        </Grid>
+            return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+          }}
+        >
+          {intl.formatMessage({ id: 'ok' })}
+        </Button>
       </Grid>
     </Grid>
   );

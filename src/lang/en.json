@@ -43,5 +43,6 @@
   "help": "Help",
   "connected": "Connected",
   "battery": "Battery",
-  "returnHome": "Return home"
+  "returnHome": "Return home",
+  "miniRobotFace": "Mini robot face"
 }

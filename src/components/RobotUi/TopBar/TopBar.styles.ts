@@ -1,9 +1,10 @@
 export const styles = {
   container: {
-    minHeight: 68,
+    minHeight: 48,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: 1,
   },
   metricContainer: {
     display: 'flex',

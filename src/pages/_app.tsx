@@ -84,7 +84,7 @@ export default function App({ Component, ...rest }: AppProps) {
               flexDirection: 'column',
               backgroundImage: `${stateTheme}`,
               backgroundSize: 'cover',
-              paddingX: 2,
+              padding: 3,
             }}
             onClick={() => store.dispatch(setIsScreenTouched(true))}
           >

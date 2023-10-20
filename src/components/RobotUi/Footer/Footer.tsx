@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'typeDux';
+import Image from 'next/image';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
 import { Box, Fab, Fade } from '@mui/material';
@@ -18,6 +20,7 @@ import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function Footer() {
+  const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
@@ -35,6 +38,18 @@ export default function Footer() {
 
   if (!isScreenTouched) {
     return null;
+  } else if (displayScreen === DisplayScreenOptions.PassCode) {
+    return (
+      <Box sx={styles.iconContainer}>
+        <Image
+          priority
+          src='images/mini-robot-face.svg'
+          height={70}
+          width={70}
+          alt={intl.formatMessage({ id: 'miniRobotFace' })}
+        />
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.Home) {
     return (
       <Fade in={isScreenTouched}>

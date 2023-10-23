@@ -36,7 +36,10 @@ export default function Footer() {
   //   return null;
   // }
 
-  if (!isScreenTouched) {
+  if (
+    !isScreenTouched ||
+    (displayScreen !== DisplayScreenOptions.PassCode && displayScreen !== DisplayScreenOptions.Home)
+  ) {
     return null;
   } else if (displayScreen === DisplayScreenOptions.PassCode) {
     return (

@@ -44,5 +44,8 @@
   "connected": "Connected",
   "battery": "Battery",
   "returnHome": "Return home",
-  "miniRobotFace": "Mini robot face"
+  "miniRobotFace": "Mini robot face",
+  "delivery": "Delivery",
+  "utility": "Utility",
+  "hiHowCanIHelp": "Hi!, How can I help you?"
 }

@@ -18,11 +18,10 @@ export const styles = {
     marginBottom: displayScreen !== DisplayScreenOptions.DeliverForm ? 7 : 3.5,
   }),
   paper: {
-    minHeight: 300,
+    minHeight: 350,
     height: '100%',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderRadius: '20px',
     borderBottom: '5px solid white',
     flexDirection: 'column',
     padding: 2,

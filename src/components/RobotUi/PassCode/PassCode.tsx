@@ -40,8 +40,11 @@ export default function PassCode() {
                   variant='standard'
                   type='password'
                   value={passCode}
+                  inputProps={{ style: { textAlign: 'center' } }}
                   InputProps={{ disableUnderline: true }}
-                  sx={{ '& .MuiInput-root': { fontSize: '200px' } }}
+                  sx={{
+                    '& .MuiInput-root': { fontSize: '200px' },
+                  }}
                 />
               </Box>
             </Box>

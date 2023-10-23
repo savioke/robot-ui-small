@@ -29,9 +29,9 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
   const handleKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setPasscode((previousValue) => {
       // TODO: This needs to be dynamic to accept any number of pins...
-      // if (previousValue.length === 4) {
-      //   return previousValue;
-      // }
+      if (previousValue.length === 6) {
+        return previousValue;
+      }
 
       return previousValue + event.currentTarget.value;
     });
@@ -218,9 +218,15 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
           sx={styles.fabContainer}
         >
           <IconButton
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              {
+                '&:hover': {
+                  backgroundColor: '#1272b2',
+                },
+              },
+            ]}
             onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
-            // sx={styles.iconButton}
           >
             <Backspace sx={{ color: 'white' }} />
           </IconButton>
@@ -232,10 +238,11 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         variant='contained'
         onClick={() => {
           // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-          if (keypadValues !== '1234') {
-            return;
-            // return setErrorMessage('Invalid passcode')
-          }
+          // TODO: Passcode validation from R2C2
+          // if (keypadValues !== '1234') {
+          //   return;
+          //   // return setErrorMessage('Invalid passcode')
+          // }
 
           return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
         }}

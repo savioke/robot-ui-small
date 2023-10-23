@@ -228,7 +228,10 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
             ]}
             onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
           >
-            <Backspace sx={{ color: 'white' }} />
+            <Backspace
+              fontSize='large'
+              sx={{ color: 'white' }}
+            />
           </IconButton>
         </Grid>
       </Grid>

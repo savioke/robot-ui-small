@@ -17,5 +17,6 @@ export const styles = {
     height: '100px',
     width: '100px',
     borderRadius: '25px',
+    fontSize: '32px',
   },
 };

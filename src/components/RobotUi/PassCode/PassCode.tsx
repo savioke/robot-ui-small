@@ -1,9 +1,10 @@
 import React from 'react';
-import OtpInput from 'react-otp-input';
 import { useIntl } from 'react-intl';
+import { useDispatch } from 'typeDux';
 
 /** Mui Components */
-import { Box, Paper, TextField } from '@mui/material';
+import { Box, Paper, TextField, IconButton } from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 
 /** Components */
 import Text from 'components/Text/Text';
@@ -13,11 +14,14 @@ import Keypad from '../Keypad/Keypad';
 import { styles } from './PassCode.styles';
 
 /** redux */
+import { setDisplayScreen } from 'state/ui/ui.slice';
 
 /** helpers */
+import { DisplayScreenOptions } from 'appConstants';
 
 export default function PassCode() {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const [passCode, setPassCode] = React.useState('');
 
   return (
@@ -28,12 +32,26 @@ export default function PassCode() {
           sx={styles.paper}
         >
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-              <Text
-                sx={{ marginBottom: 4, fontSize: '55px' }}
-                variant='h4'
-                id='enterPasscode'
-              />
+            <Box
+              sx={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                <IconButton
+                  sx={{ color: '#000000' }}
+                  onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+                >
+                  <ArrowBack fontSize='large' />
+                </IconButton>
+                <Text
+                  sx={{ fontSize: '55px' }}
+                  variant='h4'
+                  id='enterPasscode'
+                />
+              </Box>
               <Box sx={{ display: 'flex', flex: 1, alignItems: 'flex-start' }}>
                 <TextField
                   fullWidth

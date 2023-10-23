@@ -1,41 +1,46 @@
-import React from "react";
-import { useDispatch } from "typeDux";
-import { useIntl } from "react-intl";
+import React from 'react';
+import { useDispatch } from 'typeDux';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, Button } from "@mui/material";
+import { Box, Button } from '@mui/material';
 
 /** Components */
-import DeliverIcon from "components/RobotUi/SvgIcons/DeliverIcon/DeliverIcon";
-import MingleIcon from "components/RobotUi/SvgIcons/MingleIcon/MingleIcon";
-import SettingsIcon from "components/RobotUi/SvgIcons/SettingsIcon/SettingsIcon";
-import Text from "components/Text/Text";
+import DeliverIcon from 'components/RobotUi/SvgIcons/DeliverIcon/DeliverIcon';
+import MingleIcon from 'components/RobotUi/SvgIcons/MingleIcon/MingleIcon';
+import SettingsIcon from 'components/RobotUi/SvgIcons/SettingsIcon/SettingsIcon';
+import Text from 'components/Text/Text';
 
 /** styles */
-import { styles } from "./Dashboard.styles";
+import { styles } from './Dashboard.styles';
 
 /** redux */
-import { setDisplayScreen } from "state/ui/ui.slice";
+import { setDisplayScreen } from 'state/ui/ui.slice';
 
 /** helpers */
-import { DisplayScreenOptions } from "appConstants";
+import { DisplayScreenOptions } from 'appConstants';
 
 export default function Dashboard() {
   const intl = useIntl();
   const dispatch = useDispatch();
 
   return (
-    <Box sx={styles.rootContainer}>
-      <Button
-        onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliverForm))}
-        sx={styles.choiceContainer}
-      >
-        <DeliverIcon />
-        <Text variant="subtitle2" sx={styles.text}>
-          {intl.formatMessage({ id: "deliver" })}
-        </Text>
-      </Button>
-      <Button
+    <Box>
+      <Text variant='h2'>Hi, how can I help you?</Text>
+      <Box sx={styles.rootContainer}>
+        <Button
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliverForm))}
+          sx={styles.choiceContainer}
+        >
+          <DeliverIcon />
+          <Text
+            variant='subtitle2'
+            sx={styles.text}
+          >
+            {intl.formatMessage({ id: 'deliver' })}
+          </Text>
+        </Button>
+        {/* <Button
         onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.MingleForm))}
         sx={styles.choiceContainer}
       >
@@ -43,9 +48,9 @@ export default function Dashboard() {
         <Text variant="subtitle2" sx={styles.text}>
           {intl.formatMessage({ id: "mingle" })}
         </Text>
-      </Button>
-      {/* TODO: Do we want GoTo in RobotUi */}
-      {/* <Button
+      </Button> */}
+        {/* TODO: Do we want GoTo in RobotUi */}
+        {/* <Button
         onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.GoToForm))}
         sx={styles.choiceContainer}
       >
@@ -62,15 +67,19 @@ export default function Dashboard() {
         </svg>
         <Text sx={{ marginTop: 1 }}>Go-To</Text>
       </Button> */}
-      <Button
-        onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Settings))}
-        sx={styles.choiceContainer}
-      >
-        <SettingsIcon variant="black" />
-        <Text variant="subtitle2" sx={styles.text}>
-          {intl.formatMessage({ id: "settings" })}
-        </Text>
-      </Button>
+        <Button
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Settings))}
+          sx={styles.choiceContainer}
+        >
+          <SettingsIcon variant='black' />
+          <Text
+            variant='subtitle2'
+            sx={styles.text}
+          >
+            {intl.formatMessage({ id: 'settings' })}
+          </Text>
+        </Button>
+      </Box>
     </Box>
   );
 }

@@ -13,6 +13,7 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
+import EnterRoomNumber from './RobotFace/MessageDisplay/EnterRoomNumber/EnterRoomNumber';
 
 export default function RobotUi() {
   const displayScreen = useSelector(getDisplayScreen);
@@ -21,6 +22,8 @@ export default function RobotUi() {
     return <PassCode />;
   } else if (displayScreen === DisplayScreenOptions.Settings) {
     return <Settings />;
+  } else if (displayScreen === DisplayScreenOptions.EnterRoomNumber) {
+    return <EnterRoomNumber />;
   }
 
   return <RobotFace />;

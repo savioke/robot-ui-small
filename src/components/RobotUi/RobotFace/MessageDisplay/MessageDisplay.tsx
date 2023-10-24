@@ -7,8 +7,8 @@ import { Button, Box } from '@mui/material';
 
 /** Components */
 import DeliverForm from './DeliverForm/DeliverForm';
+import EnterRoomNumber from './EnterRoomNumber/EnterRoomNumber';
 import Dashboard from './Dashboard/Dashboard';
-import MingleForm from './MingleForm/MingleForm';
 import Text from 'components/Text/Text';
 
 /** styles */

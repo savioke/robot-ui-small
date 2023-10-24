@@ -36,7 +36,9 @@ export default function Dashboard() {
             elevation={4}
             sx={styles.paper}
           >
-            <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliverForm))}>
+            <Button
+              onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.EnterRoomNumber))}
+            >
               <Image
                 priority
                 src='images/delivery.svg'

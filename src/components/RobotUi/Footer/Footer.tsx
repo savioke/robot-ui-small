@@ -38,10 +38,15 @@ export default function Footer() {
 
   if (
     !isScreenTouched ||
-    (displayScreen !== DisplayScreenOptions.PassCode && displayScreen !== DisplayScreenOptions.Home)
+    (displayScreen !== DisplayScreenOptions.PassCode &&
+      displayScreen !== DisplayScreenOptions.Home &&
+      displayScreen !== DisplayScreenOptions.EnterRoomNumber)
   ) {
     return null;
-  } else if (displayScreen === DisplayScreenOptions.PassCode) {
+  } else if (
+    displayScreen === DisplayScreenOptions.PassCode ||
+    displayScreen === DisplayScreenOptions.EnterRoomNumber
+  ) {
     return (
       <Box sx={styles.iconContainer}>
         <Image

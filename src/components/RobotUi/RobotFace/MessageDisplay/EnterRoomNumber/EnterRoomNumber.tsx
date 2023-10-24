@@ -8,10 +8,10 @@ import { ArrowBack } from '@mui/icons-material';
 
 /** Components */
 import Text from 'components/Text/Text';
-import Keypad from '../Keypad/Keypad';
+import Keypad from 'components/RobotUi/Keypad/Keypad';
 
 /** styles */
-import { styles } from './PassCode.styles';
+import { styles } from './EnterRoomNumber.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
@@ -19,10 +19,10 @@ import { setDisplayScreen } from 'state/ui/ui.slice';
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 
-export default function PassCode() {
+export default function EnterRoomNumber() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const [passCode, setPassCode] = React.useState('');
+  const [roomNumber, setRoomNumber] = React.useState('');
 
   return (
     <Box sx={styles.container}>
@@ -42,34 +42,34 @@ export default function PassCode() {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                 <IconButton
                   sx={{ color: '#000000' }}
-                  onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+                  onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
                 >
                   <ArrowBack fontSize='large' />
                 </IconButton>
                 <Text
                   sx={{ fontSize: '55px' }}
                   variant='h4'
-                  id='enterPasscode'
+                  id='enterRoomNumber'
                 />
               </Box>
               <Box sx={{ display: 'flex', flex: 1, alignItems: 'center' }}>
                 <TextField
                   fullWidth
                   variant='standard'
-                  type='password'
-                  value={passCode}
+                  type='number'
+                  value={roomNumber}
                   inputProps={{ style: { textAlign: 'center' } }}
                   InputProps={{ disableUnderline: true }}
                   sx={{
-                    '& .MuiInput-root': { fontSize: '200px' },
+                    '& .MuiInput-root': { fontSize: '100px' },
                   }}
                 />
               </Box>
             </Box>
-            <Box sx={{ flex: 0.8 }}>
+            <Box sx={styles.keypadContainer}>
               <Keypad
-                passCode={passCode}
-                setPasscode={setPassCode}
+                passCode={roomNumber}
+                setPasscode={setRoomNumber}
               />
             </Box>
           </Box>

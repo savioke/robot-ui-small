@@ -31,4 +31,7 @@ export const styles = {
     marginBottom: -4,
     borderRadius: '20px',
   },
+  keypadContainer: {
+    flex: 0.8,
+  },
 };

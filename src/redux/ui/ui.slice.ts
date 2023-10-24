@@ -7,12 +7,14 @@ interface RobotUiState {
   mingleLocations: NavigationGoal[];
   displayScreen:
     | 'Deliver Form'
-    | 'Mingle Form'
-    | 'Go-To Form'
     | 'Dashboard'
     | 'Home'
     | 'Passcode'
-    | 'Settings';
+    | 'Settings'
+    | 'Delivery main screen'
+    | 'Enter room number'
+    | 'Enter room number message'
+    | 'View room number summary';
   displayMessage: string;
   isConfirmationNeeded: boolean;
   isScreenTouched: boolean;
@@ -30,7 +32,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.Home,
+  displayScreen: DisplayScreenOptions.EnterRoomNumber,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

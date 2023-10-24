@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { useDispatch } from 'typeDux';
 
 /** Mui Components */
@@ -20,7 +19,6 @@ import { setDisplayScreen } from 'state/ui/ui.slice';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function PassCode() {
-  const intl = useIntl();
   const dispatch = useDispatch();
   const [passCode, setPassCode] = React.useState('');
 
@@ -31,28 +29,22 @@ export default function PassCode() {
           elevation={5}
           sx={styles.paper}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Box
-              sx={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={styles.innerPaper}>
+            <Box sx={styles.roomNumberContainer}>
+              <Box sx={styles.arrowBackContainer}>
                 <IconButton
-                  sx={{ color: '#000000' }}
+                  sx={styles.iconButton}
                   onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
                 >
                   <ArrowBack fontSize='large' />
                 </IconButton>
                 <Text
-                  sx={{ fontSize: '55px' }}
+                  sx={styles.rooNumberText}
                   variant='h4'
                   id='enterPasscode'
                 />
               </Box>
-              <Box sx={{ display: 'flex', flex: 1, alignItems: 'center' }}>
+              <Box sx={styles.textFieldContainer}>
                 <TextField
                   fullWidth
                   variant='standard'
@@ -60,13 +52,11 @@ export default function PassCode() {
                   value={passCode}
                   inputProps={{ style: { textAlign: 'center' } }}
                   InputProps={{ disableUnderline: true }}
-                  sx={{
-                    '& .MuiInput-root': { fontSize: '200px' },
-                  }}
+                  sx={styles.textfield}
                 />
               </Box>
             </Box>
-            <Box sx={{ flex: 0.8 }}>
+            <Box sx={styles.keypadContainer}>
               <Keypad
                 passCode={passCode}
                 setPasscode={setPassCode}

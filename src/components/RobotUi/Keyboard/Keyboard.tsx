@@ -29,9 +29,7 @@ export default function Keyboard({ formRef, keyboardRef }: KeyboardProps) {
   const inputName = useSelector(getInputName);
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);
-  const displayKeyboard =
-    displayScreen === DisplayScreenOptions.DeliverForm ||
-    displayScreen === DisplayScreenOptions.GoToForm;
+  const displayKeyboard = displayScreen === DisplayScreenOptions.DeliverForm;
   const [layoutName, setLayoutName] = React.useState('default');
 
   return (

@@ -32,7 +32,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.EnterRoomNumber,
+  displayScreen: DisplayScreenOptions.Home,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

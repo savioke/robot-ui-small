@@ -31,28 +31,22 @@ export default function EnterRoomNumber() {
           elevation={5}
           sx={styles.paper}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Box
-              sx={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+          <Box sx={styles.innerPaper}>
+            <Box sx={styles.roomNumberContainer}>
+              <Box sx={styles.arrowBackContainer}>
                 <IconButton
-                  sx={{ color: '#000000' }}
+                  sx={styles.iconButton}
                   onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
                 >
                   <ArrowBack fontSize='large' />
                 </IconButton>
                 <Text
-                  sx={{ fontSize: '55px' }}
+                  sx={styles.rooNumberText}
                   variant='h4'
                   id='enterRoomNumber'
                 />
               </Box>
-              <Box sx={{ display: 'flex', flex: 1, alignItems: 'center' }}>
+              <Box sx={styles.textFieldContainer}>
                 <TextField
                   fullWidth
                   variant='standard'
@@ -60,9 +54,7 @@ export default function EnterRoomNumber() {
                   value={roomNumber}
                   inputProps={{ style: { textAlign: 'center' } }}
                   InputProps={{ disableUnderline: true }}
-                  sx={{
-                    '& .MuiInput-root': { fontSize: '100px' },
-                  }}
+                  sx={styles.textfield}
                 />
               </Box>
             </Box>

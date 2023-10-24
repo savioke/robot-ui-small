@@ -39,7 +39,7 @@ export default function PassCode() {
                 flexDirection: 'column',
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <IconButton
                   sx={{ color: '#000000' }}
                   onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}

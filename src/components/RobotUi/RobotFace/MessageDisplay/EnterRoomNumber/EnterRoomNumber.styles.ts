@@ -34,4 +34,32 @@ export const styles = {
   keypadContainer: {
     flex: 0.8,
   },
+  textfield: {
+    '& .MuiInput-root': { fontSize: '100px' },
+  },
+  textFieldContainer: {
+    display: 'flex',
+    flex: 1,
+    alignItems: 'center',
+  },
+  arrowBackContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 1,
+  },
+  roomNumberContainer: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  innerPaper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  iconButton: {
+    color: '#000000',
+  },
+  rooNumberText: {
+    fontSize: '55px',
+  },
 };

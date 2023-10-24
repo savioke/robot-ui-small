@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { useDispatch } from 'typeDux';
 
 /** Mui Components */
@@ -20,7 +19,6 @@ import { setDisplayScreen } from 'state/ui/ui.slice';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function EnterRoomNumber() {
-  const intl = useIntl();
   const dispatch = useDispatch();
   const [roomNumber, setRoomNumber] = React.useState('');
 

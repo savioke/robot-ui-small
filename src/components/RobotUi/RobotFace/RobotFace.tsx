@@ -41,7 +41,7 @@ export default function RobotFace() {
           src='images/eye_1.svg'
           // height={64}
           // width={64}
-          height={162}
+          height={158}
           width={112}
           alt={intl.formatMessage({ id: 'leftEye' })}
         />
@@ -49,7 +49,7 @@ export default function RobotFace() {
           priority
           // src='/images/eye_right.svg'
           src='/images/eye_2.svg'
-          height={162}
+          height={158}
           width={112}
           // height={64}
           // width={64}

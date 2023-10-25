@@ -40,12 +40,12 @@ export default function Footer() {
     !isScreenTouched ||
     (displayScreen !== DisplayScreenOptions.PassCode &&
       displayScreen !== DisplayScreenOptions.Home &&
-      displayScreen !== DisplayScreenOptions.EnterRoomNumber)
+      displayScreen !== DisplayScreenOptions.RoomNumber)
   ) {
     return null;
   } else if (
     displayScreen === DisplayScreenOptions.PassCode ||
-    displayScreen === DisplayScreenOptions.EnterRoomNumber
+    displayScreen === DisplayScreenOptions.RoomNumber
   ) {
     return (
       <Box sx={styles.iconContainer}>
@@ -63,7 +63,8 @@ export default function Footer() {
       <Fade in={isScreenTouched}>
         <Box sx={styles.iconContainer}>
           <Fab
-            size='large'
+            sx={{ width: '60px', height: '60px' }}
+            // size='large'
             onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
           >
             <Lock fontSize='large' />

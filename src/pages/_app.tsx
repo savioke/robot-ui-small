@@ -85,8 +85,8 @@ export default function App({ Component, ...rest }: AppProps) {
               backgroundImage: `${stateTheme}`,
               backgroundSize: 'cover',
               paddingX: 3,
-              paddingBottom: 3,
-              paddingTop: 2,
+              // paddingBottom: 3,
+              // paddingTop: 2,
             }}
             onClick={() => store.dispatch(setIsScreenTouched(true))}
           >

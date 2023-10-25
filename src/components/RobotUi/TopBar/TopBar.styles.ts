@@ -4,7 +4,7 @@ export const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 1,
+    marginBottom: 0.5,
   },
   metricContainer: {
     display: 'flex',

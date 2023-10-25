@@ -1,6 +1,7 @@
 export const styles = {
   fabContainer: {
     textAlign: 'center',
+    maxHeight: '55px',
   },
   iconButtonContainer: {
     justifyContent: 'center',
@@ -16,7 +17,7 @@ export const styles = {
     backgroundColor: '#414141',
     height: '55px',
     width: '55px',
-    // borderRadius: '15px',
+    borderRadius: '10px',
     fontSize: '24px',
   },
 };

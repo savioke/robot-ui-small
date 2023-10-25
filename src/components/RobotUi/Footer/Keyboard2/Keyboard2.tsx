@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Grid, IconButton, Button } from '@mui/material';
-import { Backspace } from '@mui/icons-material';
+import { Backspace, ArrowUpward } from '@mui/icons-material';
 
 /** Components */
 
@@ -29,13 +29,8 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
   const displayScreen = useSelector(getDisplayScreen);
   const [isNumberDisplay, setIsNumberDisplay] = useState(true);
 
-  const handleKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleKeyboardValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setPasscode((previousValue) => {
-      // TODO: This needs to be dynamic to accept any number of pins...
-      if (previousValue.length === 6) {
-        return previousValue;
-      }
-
       return previousValue + event.currentTarget.value;
     });
   };
@@ -44,7 +39,8 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
     return (
       <Grid
         container
-        rowSpacing={2}
+        rowSpacing={3}
+        sx={{ minHeight: '565px' }}
       >
         <Grid
           container
@@ -59,7 +55,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={1}
             >
               {intl.formatMessage({ id: '1' })}
@@ -73,7 +69,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={2}
             >
               {intl.formatMessage({ id: '2' })}
@@ -87,7 +83,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={3}
             >
               {intl.formatMessage({ id: '3' })}
@@ -101,7 +97,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={4}
             >
               {intl.formatMessage({ id: '4' })}
@@ -115,7 +111,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={5}
             >
               {intl.formatMessage({ id: '5' })}
@@ -129,7 +125,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={6}
             >
               {intl.formatMessage({ id: '6' })}
@@ -150,7 +146,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={7}
             >
               {intl.formatMessage({ id: '7' })}
@@ -164,7 +160,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={8}
             >
               {intl.formatMessage({ id: '8' })}
@@ -178,7 +174,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={9}
             >
               {intl.formatMessage({ id: '9' })}
@@ -192,7 +188,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={0}
             >
               {intl.formatMessage({ id: '0' })}
@@ -206,7 +202,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={0}
             >
               +
@@ -220,7 +216,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value={0}
             >
               -
@@ -241,7 +237,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='.'
             >
               .
@@ -255,7 +251,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value=','
             >
               ,
@@ -269,7 +265,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='!'
             >
               !
@@ -283,7 +279,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='?'
             >
               ?
@@ -297,7 +293,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='('
             >
               {'('}
@@ -311,7 +307,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value=')'
             >
               {')'}
@@ -332,7 +328,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='\'
             >
               \
@@ -346,7 +342,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='/'
             >
               /
@@ -360,7 +356,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value=':'
             >
               :
@@ -374,7 +370,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value=';'
             >
               ;
@@ -388,7 +384,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='~'
             >
               ~
@@ -402,7 +398,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='*'
             >
               *
@@ -423,7 +419,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='&'
             >
               &
@@ -437,7 +433,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='@'
             >
               @
@@ -451,7 +447,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='#'
             >
               #
@@ -465,7 +461,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='%'
             >
               %
@@ -479,7 +475,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='='
             >
               =
@@ -493,10 +489,145 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              onClick={handleKeyboardValues}
               value='$'
             >
               $
+            </Button>
+          </Grid>
+        </Grid>
+        {/* <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={7}
+            >
+              {intl.formatMessage({ id: '7' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={8}
+            >
+              {intl.formatMessage({ id: '8' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={9}
+            >
+              {intl.formatMessage({ id: '9' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={0}
+            >
+              {intl.formatMessage({ id: '0' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={0}
+            >
+              +
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={0}
+            >
+              -
+            </Button>
+          </Grid>
+        </Grid> */}
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={10}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={{ width: '100%', height: '55px', backgroundColor: '#414141' }}
+              // sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=' '
+            >
+              Space
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              sx={[
+                styles.numberButtons,
+                {
+                  '&:hover': {
+                    backgroundColor: '#1272b2',
+                  },
+                },
+              ]}
+              onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+            >
+              <Backspace
+                fontSize='large'
+                sx={{ color: 'white' }}
+              />
             </Button>
           </Grid>
         </Grid>
@@ -512,82 +643,25 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             sx={styles.fabContainer}
           >
             <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeypadValues}
+              variant='outlined'
+              sx={{ width: '100%', height: '55px', color: '#414141', borderColor: '#414141' }}
+              onClick={() => setIsNumberDisplay(false)}
               value={7}
             >
-              {intl.formatMessage({ id: '7' })}
+              abc
             </Button>
           </Grid>
           <Grid
             item
-            xs={2}
+            xs={10}
             sx={styles.fabContainer}
           >
             <Button
               variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeypadValues}
-              value={8}
+              sx={{ width: '100%', height: '55px' }}
+              onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
             >
-              {intl.formatMessage({ id: '8' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeypadValues}
-              value={9}
-            >
-              {intl.formatMessage({ id: '9' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeypadValues}
-              value={0}
-            >
-              {intl.formatMessage({ id: '0' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeypadValues}
-              value={0}
-            >
-              +
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeypadValues}
-              value={0}
-            >
-              -
+              Confirm
             </Button>
           </Grid>
         </Grid>
@@ -598,7 +672,8 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
   return (
     <Grid
       container
-      rowSpacing={2}
+      rowSpacing={3}
+      sx={{ minHeight: '565px' }}
     >
       <Grid
         container
@@ -607,93 +682,86 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
       >
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={1}
           >
-            {intl.formatMessage({ id: '1' })}
+            A
           </Button>
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={2}
           >
-            {intl.formatMessage({ id: '2' })}
+            B
           </Button>
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={3}
           >
-            {intl.formatMessage({ id: '3' })}
+            C
           </Button>
         </Grid>
-      </Grid>
-      <Grid
-        container
-        item
-        spacing={1}
-        xs={12}
-      >
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={4}
           >
-            {intl.formatMessage({ id: '4' })}
+            D
           </Button>
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={5}
           >
-            {intl.formatMessage({ id: '5' })}
+            E
           </Button>
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={6}
           >
-            {intl.formatMessage({ id: '6' })}
+            F
           </Button>
         </Grid>
       </Grid>
@@ -705,13 +773,377 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
       >
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
+            value={7}
+          >
+            G
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={8}
+          >
+            H
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={9}
+          >
+            I
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={0}
+          >
+            J
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={0}
+          >
+            K
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={0}
+          >
+            L
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='.'
+          >
+            M
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value=','
+          >
+            N
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='!'
+          >
+            O
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='?'
+          >
+            P
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='('
+          >
+            Q
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value=')'
+          >
+            R
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='\'
+          >
+            S
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='/'
+          >
+            T
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value=':'
+          >
+            U
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value=';'
+          >
+            V
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='~'
+          >
+            W
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='*'
+          >
+            X
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='&'
+          >
+            Y
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='@'
+          >
+            Z
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='#'
+          >
+            .
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='%'
+          >
+            ,
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='='
+          >
+            !
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='$'
+          >
+            ?
+          </Button>
+        </Grid>
+      </Grid>
+      {/* <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
             value={7}
           >
             {intl.formatMessage({ id: '7' })}
@@ -719,13 +1151,13 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={8}
           >
             {intl.formatMessage({ id: '8' })}
@@ -733,38 +1165,27 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={9}
           >
             {intl.formatMessage({ id: '9' })}
           </Button>
         </Grid>
-      </Grid>
-      <Grid
-        container
-        item
-        xs={12}
-      >
         <Grid
           item
-          xs={4}
-          sx={[styles.fabContainer, styles.iconButtonContainer]}
-        ></Grid>
-        <Grid
-          item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleKeyboardValues}
             value={0}
           >
             {intl.formatMessage({ id: '0' })}
@@ -772,10 +1193,74 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={styles.fabContainer}
         >
-          <IconButton
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={0}
+          >
+            +
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={0}
+          >
+            -
+          </Button>
+        </Grid>
+      </Grid> */}
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={{ width: '100%', height: '55px', backgroundColor: '#414141' }}
+            // sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value=' '
+          >
+            <ArrowUpward />
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={8}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={{ width: '100%', height: '55px', backgroundColor: '#414141' }}
+            onClick={handleKeyboardValues}
+            value=' '
+          >
+            Space
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
             sx={[
               styles.numberButtons,
               {
@@ -790,25 +1275,43 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               fontSize='large'
               sx={{ color: 'white' }}
             />
-          </IconButton>
+          </Button>
         </Grid>
       </Grid>
-      <Button
-        fullWidth
-        sx={{ marginTop: 3, height: '56px' }}
-        variant='contained'
-        onClick={() => {
-          // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-          // TODO: Passcode validation from R2C2
-          if (displayScreen === DisplayScreenOptions.RoomNumber) {
-            return dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage));
-          }
-
-          return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-        }}
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
       >
-        {intl.formatMessage({ id: 'ok' })}
-      </Button>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='outlined'
+            sx={{ width: '100%', height: '55px', color: '#414141', borderColor: '#414141' }}
+            onClick={() => setIsNumberDisplay(true)}
+            value={7}
+          >
+            ?123
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={10}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={{ width: '100%', height: '55px' }}
+            onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+          >
+            Confirm
+          </Button>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }

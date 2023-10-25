@@ -7,8 +7,8 @@ export const DisplayScreenOptions = {
   PassCode: 'Passcode' as const,
   Settings: 'Settings' as const,
   DeliveryDashboard: 'Delivery dashboard' as const,
-  EnterRoomNumber: 'Enter room number' as const,
-  EnterRoomMessage: 'Enter room number message' as const,
+  RoomNumber: 'Room number' as const,
+  RoomMessage: 'Room message' as const,
   ViewRoomSummary: 'View room number summary' as const,
 };
 

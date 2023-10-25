@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch } from 'typeDux';
+import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Grid, IconButton, Button } from '@mui/material';
@@ -13,6 +13,7 @@ import { styles } from './Keypad.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
+import { getDisplayScreen } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -25,6 +26,7 @@ interface KeypadProps {
 export default function Keypad({ passCode, setPasscode }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const displayScreen = useSelector(getDisplayScreen);
 
   const handleKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setPasscode((previousValue) => {
@@ -242,10 +244,9 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         onClick={() => {
           // TODO: Hook in error message for invalid code... This might be verified from R2C2.
           // TODO: Passcode validation from R2C2
-          // if (keypadValues !== '1234') {
-          //   return;
-          //   // return setErrorMessage('Invalid passcode')
-          // }
+          if (displayScreen === DisplayScreenOptions.RoomNumber) {
+            return dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage));
+          }
 
           return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
         }}

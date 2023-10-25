@@ -1,17 +1,53 @@
 import React from 'react';
 
 /** Mui Components */
-import { Box }  from '@mui/material';
+import { Box, Paper, TextField } from '@mui/material';
 
 /** Components */
+import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
+import Keypad from 'components/RobotUi/Keypad/Keypad';
 
 /** styles */
+import { styles } from './RoomMessage.styles';
 
 /** redux */
 
 /** helpers */
 
 export default function RoomMessage() {
+  const [roomNumber, setRoomNumber] = React.useState('');
 
-  return ();
-};
+  return (
+    <Box sx={styles.container}>
+      <Box sx={styles.messageContainer}>
+        <Paper
+          elevation={5}
+          sx={styles.paper}
+        >
+          <Box sx={styles.innerPaper}>
+            <Box sx={styles.roomNumberContainer}>
+              <ArrowBackTopBar />
+              <Box sx={styles.textFieldContainer}>
+                <TextField
+                  fullWidth
+                  variant='standard'
+                  type='number'
+                  value={roomNumber}
+                  inputProps={{ style: { textAlign: 'center' } }}
+                  InputProps={{ disableUnderline: true }}
+                  sx={styles.textfield}
+                />
+              </Box>
+            </Box>
+            <Box sx={styles.keypadContainer}>
+              <Keypad
+                passCode={roomNumber}
+                setPasscode={setRoomNumber}
+              />
+            </Box>
+          </Box>
+        </Paper>
+      </Box>
+    </Box>
+  );
+}

@@ -22,7 +22,7 @@ export default function ArrowBackTopBar() {
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
 
-  if (displayScreen === DisplayScreenOptions.EnterRoomNumber) {
+  if (displayScreen === DisplayScreenOptions.RoomNumber) {
     return (
       <Box sx={styles.arrowBackContainer}>
         <IconButton
@@ -44,6 +44,22 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <IconButton
+          sx={styles.iconButton}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}
+        >
+          <ArrowBack fontSize='large' />
+        </IconButton>
+        <Text
+          variant='h5'
+          component='h1'
+          id='roomMessage'
+        />
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.PassCode) {
     return (
       <Box sx={styles.arrowBackContainer}>
@@ -54,7 +70,7 @@ export default function ArrowBackTopBar() {
           <ArrowBack fontSize='large' />
         </IconButton>
         <Text
-          variant='h4'
+          variant='h5'
           component='h1'
           id='enterPasscode'
         />

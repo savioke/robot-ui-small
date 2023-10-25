@@ -12,8 +12,8 @@ interface RobotUiState {
     | 'Passcode'
     | 'Settings'
     | 'Delivery dashboard'
-    | 'Enter room number'
-    | 'Enter room number message'
+    | 'Room number'
+    | 'Room message'
     | 'View room number summary';
   displayMessage: string;
   isConfirmationNeeded: boolean;

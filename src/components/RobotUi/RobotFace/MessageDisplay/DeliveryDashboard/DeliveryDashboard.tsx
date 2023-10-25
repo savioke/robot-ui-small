@@ -35,7 +35,7 @@ export default function DeliveryDashboard() {
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.EnterRoomNumber))}>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
             <Image
               priority
               src='images/room.svg'
@@ -63,7 +63,7 @@ export default function DeliveryDashboard() {
           </Box>
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.EnterRoomNumber))}>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
             <Image
               priority
               src='images/settings.svg'
@@ -91,7 +91,7 @@ export default function DeliveryDashboard() {
           </Box>
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.EnterRoomNumber))}>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
             <Image
               priority
               src='images/search.svg'

@@ -14,7 +14,7 @@ import { styles } from './RoomNumber.styles';
 
 /** helpers */
 
-export default function EnterRoomNumber() {
+export default function RoomNumber() {
   const [roomNumber, setRoomNumber] = React.useState('');
 
   return (

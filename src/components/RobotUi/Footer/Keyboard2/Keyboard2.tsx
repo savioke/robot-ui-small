@@ -559,6 +559,9 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
                 color: '#414141',
                 borderColor: '#414141',
                 fontSize: '24px',
+                '&:hover': {
+                  borderColor: '#414141',
+                },
               }}
               onClick={() => setIsNumberDisplay(false)}
               value={7}
@@ -1212,6 +1215,9 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               color: '#414141',
               borderColor: '#414141',
               fontSize: '24px',
+              '&:hover': {
+                borderColor: '#414141',
+              },
             }}
             onClick={() => setIsNumberDisplay(true)}
             value={7}

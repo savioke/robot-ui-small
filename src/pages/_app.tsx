@@ -84,7 +84,9 @@ export default function App({ Component, ...rest }: AppProps) {
               flexDirection: 'column',
               backgroundImage: `${stateTheme}`,
               backgroundSize: 'cover',
-              paddingX: 3,
+              // paddingX: 3,
+              paddingRight: 2,
+              paddingLeft: 1,
               // paddingBottom: 3,
               // paddingTop: 2,
             }}

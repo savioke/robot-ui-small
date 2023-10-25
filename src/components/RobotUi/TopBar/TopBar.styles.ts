@@ -4,7 +4,8 @@ export const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 0.5,
+    marginY: 1,
+    paddingLeft: 2,
   },
   metricContainer: {
     display: 'flex',

@@ -25,35 +25,17 @@ export default function Footer() {
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
 
-  // TODO: This will be displaying the small face on certain pages. Leave for now.
-  // if (
-  //   displayScreen !== DisplayScreenOptions.PassCode &&
-  //   displayScreen !== DisplayScreenOptions.Home &&
-  //   displayScreen !== DisplayScreenOptions.Dashboard &&
-  //   displayScreen !== DisplayScreenOptions.Settings &&
-  //   displayScreen !== DisplayScreenOptions.MingleForm
-  // ) {
-  //   return null;
-  // }
-
   if (
-    !isScreenTouched ||
-    (displayScreen !== DisplayScreenOptions.PassCode &&
-      displayScreen !== DisplayScreenOptions.Home &&
-      displayScreen !== DisplayScreenOptions.RoomNumber)
-  ) {
-    return null;
-  } else if (
     displayScreen === DisplayScreenOptions.PassCode ||
     displayScreen === DisplayScreenOptions.RoomNumber
   ) {
     return (
-      <Box sx={styles.iconContainer}>
+      <Box sx={{ position: 'relative', left: 0 }}>
         <Image
           priority
-          src='images/mini-robot-face.svg'
-          height={70}
-          width={70}
+          src='/images/robot-face.png'
+          height={75}
+          width={100}
           alt={intl.formatMessage({ id: 'miniRobotFace' })}
         />
       </Box>
@@ -74,14 +56,5 @@ export default function Footer() {
     );
   }
 
-  return (
-    <Box sx={styles.iconContainer}>
-      <Fab
-        size='large'
-        onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
-      >
-        <Lock fontSize='large' />
-      </Fab>
-    </Box>
-  );
+  return null;
 }

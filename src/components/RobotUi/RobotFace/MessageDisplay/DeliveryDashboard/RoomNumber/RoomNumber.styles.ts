@@ -6,18 +6,17 @@ export const styles = {
     alignItems: 'flex-end',
     position: 'relative',
     height: '100%',
-    marginBottom: -4,
     '&::after': {
       content: "''",
       position: 'absolute',
       left: 0,
-      right: '84%',
-      bottom: -32,
+      right: '81%',
+      bottom: -40,
       margin: '0 auto',
       width: 0,
       height: 0,
       borderBottom: '50px solid white',
-      borderLeft: '50px solid transparent',
+      borderLeft: '35px solid transparent',
     },
   },
   messageContainer: {
@@ -26,9 +25,9 @@ export const styles = {
     position: 'relative',
   },
   paper: {
-    minHeight: '500px',
+    minHeight: '597px',
     padding: 2,
-    marginBottom: -4,
+    marginBottom: -5,
     borderRadius: '20px',
   },
   keypadContainer: {

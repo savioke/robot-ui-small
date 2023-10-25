@@ -9,7 +9,7 @@ import { Backspace, ArrowUpward } from '@mui/icons-material';
 /** Components */
 
 /** styles */
-import { styles } from './keyboard.styles';
+import { styles } from './Keyboard.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';

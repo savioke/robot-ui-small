@@ -1,17 +1,17 @@
-import React from "react";
-import Image from "next/image";
-import { useIntl } from "react-intl";
+import React from 'react';
+import Image from 'next/image';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, Divider, List, ListItemButton, Paper } from "@mui/material";
+import { Box, Divider, List, ListItemButton, Paper } from '@mui/material';
 
 /** Components */
-import Help from "./Help/Help";
-import General from "./General/General";
-import Text from "components/Text/Text";
+import Help from './Help/Help';
+import General from './General/General';
+import Text from 'components/Text/Text';
 
 /** styles */
-import { styles } from "./Settings.styles";
+import { styles } from './Settings.styles';
 
 /** redux */
 
@@ -24,11 +24,17 @@ export default function Settings() {
   return (
     <Box sx={styles.container}>
       <Box sx={styles.messageContainer}>
-        <Paper elevation={5} sx={styles.paper}>
+        <Paper
+          elevation={5}
+          sx={styles.paper}
+        >
           <Box>
-            <List sx={{ display: "flex", flexDirection: "column", alignItems: "space-between" }}>
-              <ListItemButton selected={selectedIndex === 0} onClick={() => setSelectedIndex(0)}>
-                <Text id="general" />
+            <List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'space-between' }}>
+              <ListItemButton
+                selected={selectedIndex === 0}
+                onClick={() => setSelectedIndex(0)}
+              >
+                <Text id='general' />
               </ListItemButton>
               {/* TODO: Is Actions needed for customers to do ROS specific actions? */}
               {/* <ListItemButton
@@ -37,31 +43,38 @@ export default function Settings() {
               >
                 <Text id='actions' />
               </ListItemButton> */}
-              <ListItemButton selected={selectedIndex === 2} onClick={() => setSelectedIndex(2)}>
-                <Text id="help" />
+              <ListItemButton
+                selected={selectedIndex === 2}
+                onClick={() => setSelectedIndex(2)}
+              >
+                <Text id='help' />
               </ListItemButton>
             </List>
           </Box>
-          <Divider flexItem orientation="vertical" variant="middle" />
+          <Divider
+            flexItem
+            orientation='vertical'
+            variant='middle'
+          />
           {selectedIndex === 0 && <General />}
-          {selectedIndex === 1 && "Actions"}
+          {selectedIndex === 1 && 'Actions'}
           {selectedIndex === 2 && <Help />}
         </Paper>
       </Box>
       <Box sx={styles.eyesContainer}>
         <Image
           priority
-          src="images/eye_left.svg"
+          src='images/eye_left.svg'
           height={64}
           width={64}
-          alt={intl.formatMessage({ id: "leftEye" })}
+          alt={intl.formatMessage({ id: 'leftEye' })}
         />
         <Image
           priority
-          src="/images/eye_right.svg"
+          src='/images/eye_right.svg'
           height={64}
           width={64}
-          alt={intl.formatMessage({ id: "rightEye" })}
+          alt={intl.formatMessage({ id: 'rightEye' })}
         />
       </Box>
     </Box>

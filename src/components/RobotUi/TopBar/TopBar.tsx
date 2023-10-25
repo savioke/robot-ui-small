@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
@@ -21,7 +20,6 @@ import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function TopBar() {
-  const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);

@@ -11,7 +11,7 @@ interface RobotUiState {
     | 'Home'
     | 'Passcode'
     | 'Settings'
-    | 'Delivery main screen'
+    | 'Delivery dashboard'
     | 'Enter room number'
     | 'Enter room number message'
     | 'View room number summary';

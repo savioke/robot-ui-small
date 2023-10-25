@@ -37,7 +37,7 @@ export default function Dashboard() {
             sx={styles.paper}
           >
             <Button
-              onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.EnterRoomNumber))}
+              onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
             >
               <Image
                 priority

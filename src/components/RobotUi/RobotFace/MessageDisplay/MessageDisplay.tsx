@@ -7,7 +7,7 @@ import { Button, Box } from '@mui/material';
 
 /** Components */
 import DeliverForm from './DeliverForm/DeliverForm';
-import EnterRoomNumber from './EnterRoomNumber/EnterRoomNumber';
+import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
 import Text from 'components/Text/Text';
 
@@ -41,6 +41,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <Dashboard />;
   } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
     return <DeliverForm formRef={formRef} />;
+  } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
+    return <DeliveryDashboard />;
   } else if (isConfirmationNeeded) {
     return (
       <>

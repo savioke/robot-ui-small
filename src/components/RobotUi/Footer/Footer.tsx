@@ -27,7 +27,8 @@ export default function Footer() {
 
   if (
     displayScreen === DisplayScreenOptions.PassCode ||
-    displayScreen === DisplayScreenOptions.RoomNumber
+    displayScreen === DisplayScreenOptions.RoomNumber ||
+    displayScreen === DisplayScreenOptions.RoomMessage
   ) {
     return (
       <Box sx={{ position: 'relative', left: 0 }}>

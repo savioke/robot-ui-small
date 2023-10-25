@@ -56,7 +56,19 @@ export default function ArrowBackTopBar() {
         <Text
           variant='h5'
           component='h1'
-          id='roomMessage'
+          id='delivery'
+        />
+        -
+        <Text
+          variant='h5'
+          component='h1'
+          id='roomNumber'
+        />
+        -
+        <Text
+          variant='h5'
+          component='h1'
+          id='message'
         />
       </Box>
     );

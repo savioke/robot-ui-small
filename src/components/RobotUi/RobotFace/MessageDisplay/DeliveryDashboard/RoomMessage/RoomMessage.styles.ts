@@ -16,7 +16,7 @@ export const styles = {
       width: 0,
       height: 0,
       borderBottom: '50px solid white',
-      borderLeft: '50px solid transparent',
+      borderLeft: '35px solid transparent',
     },
   },
   messageContainer: {
@@ -39,7 +39,9 @@ export const styles = {
   textFieldContainer: {
     display: 'flex',
     flex: 1,
-    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    marginRight: 2,
   },
   roomNumberContainer: {
     flex: 1,

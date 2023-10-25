@@ -6,6 +6,8 @@ import { Box, Paper, TextField } from '@mui/material';
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
 import Keypad from 'components/RobotUi/Keypad/Keypad';
+import Keyboard2 from 'components/RobotUi/Footer/Keyboard2/Keyboard2';
+import Text from 'components/Text/Text';
 
 /** styles */
 import { styles } from './RoomMessage.styles';
@@ -15,7 +17,7 @@ import { styles } from './RoomMessage.styles';
 /** helpers */
 
 export default function RoomMessage() {
-  const [roomNumber, setRoomNumber] = React.useState('');
+  const [roomMessage, setRoomMessage] = React.useState('');
 
   return (
     <Box sx={styles.container}>
@@ -28,21 +30,24 @@ export default function RoomMessage() {
             <Box sx={styles.roomNumberContainer}>
               <ArrowBackTopBar />
               <Box sx={styles.textFieldContainer}>
+                <Text variant='h4'>
+                  Delivery to <strong>(Room 101)</strong>
+                </Text>
+                <Text variant='h4'>What I will say on delivery!</Text>
                 <TextField
-                  fullWidth
-                  variant='standard'
-                  type='number'
-                  value={roomNumber}
+                  multiline
+                  rows={10}
+                  value={roomMessage}
                   inputProps={{ style: { textAlign: 'center' } }}
-                  InputProps={{ disableUnderline: true }}
+                  InputProps={{ disableUnderline: true, sx: { borderRadius: '20px' } }}
                   sx={styles.textfield}
                 />
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <Keypad
-                passCode={roomNumber}
-                setPasscode={setRoomNumber}
+              <Keyboard2
+                passCode={roomMessage}
+                setPasscode={setRoomMessage}
               />
             </Box>
           </Box>

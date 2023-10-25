@@ -40,7 +40,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
       <Grid
         container
         rowSpacing={3}
-        sx={{ minHeight: '565px' }}
+        sx={styles.gridContainer}
       >
         <Grid
           container
@@ -496,97 +496,6 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             </Button>
           </Grid>
         </Grid>
-        {/* <Grid
-          container
-          item
-          spacing={1}
-          xs={12}
-        >
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
-              value={7}
-            >
-              {intl.formatMessage({ id: '7' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
-              value={8}
-            >
-              {intl.formatMessage({ id: '8' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
-              value={9}
-            >
-              {intl.formatMessage({ id: '9' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
-              value={0}
-            >
-              {intl.formatMessage({ id: '0' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
-              value={0}
-            >
-              +
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={styles.fabContainer}
-          >
-            <Button
-              variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
-              value={0}
-            >
-              -
-            </Button>
-          </Grid>
-        </Grid> */}
         <Grid
           container
           item
@@ -600,7 +509,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={{ width: '100%', height: '55px', backgroundColor: '#414141' }}
+              sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
               // sx={styles.numberButtons}
               onClick={handleKeyboardValues}
               value=' '
@@ -644,7 +553,13 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='outlined'
-              sx={{ width: '100%', height: '55px', color: '#414141', borderColor: '#414141' }}
+              sx={{
+                width: '100%',
+                height: '55px',
+                color: '#414141',
+                borderColor: '#414141',
+                fontSize: '24px',
+              }}
               onClick={() => setIsNumberDisplay(false)}
               value={7}
             >
@@ -658,7 +573,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={{ width: '100%', height: '55px' }}
+              sx={{ width: '100%', height: '55px', fontSize: '24px' }}
               onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
             >
               Confirm
@@ -673,7 +588,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
     <Grid
       container
       rowSpacing={3}
-      sx={{ minHeight: '565px' }}
+      sx={styles.gridContainer}
     >
       <Grid
         container
@@ -1233,7 +1148,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '55px', backgroundColor: '#414141' }}
+            sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
             // sx={styles.numberButtons}
             onClick={handleKeyboardValues}
             value=' '
@@ -1248,7 +1163,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '55px', backgroundColor: '#414141' }}
+            sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
             onClick={handleKeyboardValues}
             value=' '
           >
@@ -1286,12 +1201,18 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
       >
         <Grid
           item
-          xs={2}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
             variant='outlined'
-            sx={{ width: '100%', height: '55px', color: '#414141', borderColor: '#414141' }}
+            sx={{
+              width: '100%',
+              height: '55px',
+              color: '#414141',
+              borderColor: '#414141',
+              fontSize: '24px',
+            }}
             onClick={() => setIsNumberDisplay(true)}
             value={7}
           >
@@ -1300,12 +1221,12 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={10}
+          xs={9}
           sx={styles.fabContainer}
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '55px' }}
+            sx={{ width: '100%', height: '55px', fontSize: '24px' }}
             onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
           >
             Confirm

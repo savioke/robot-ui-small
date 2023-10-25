@@ -9,7 +9,7 @@ import { Backspace, ArrowUpward } from '@mui/icons-material';
 /** Components */
 
 /** styles */
-import { styles } from './Keyboard2.styles';
+import { styles } from './keyboard.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
@@ -23,7 +23,7 @@ interface KeypadProps {
   setPasscode: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
+export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);

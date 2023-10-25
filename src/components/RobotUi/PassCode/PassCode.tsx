@@ -1,25 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'typeDux';
 
 /** Mui Components */
-import { Box, Paper, TextField, IconButton } from '@mui/material';
-import { ArrowBack } from '@mui/icons-material';
+import { Box, Paper, TextField } from '@mui/material';
 
 /** Components */
-import Text from 'components/Text/Text';
+import ArrowBackTopBar from '../RobotFace/MessageDisplay/ArrowBackTopBar/ArrowBackTopBar';
 import Keypad from '../Keypad/Keypad';
 
 /** styles */
 import { styles } from './PassCode.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
 
 /** helpers */
-import { DisplayScreenOptions } from 'appConstants';
 
 export default function PassCode() {
-  const dispatch = useDispatch();
   const [passCode, setPassCode] = React.useState('');
 
   return (
@@ -31,19 +26,7 @@ export default function PassCode() {
         >
           <Box sx={styles.innerPaper}>
             <Box sx={styles.roomNumberContainer}>
-              <Box sx={styles.arrowBackContainer}>
-                <IconButton
-                  sx={styles.iconButton}
-                  onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
-                >
-                  <ArrowBack fontSize='large' />
-                </IconButton>
-                <Text
-                  sx={styles.rooNumberText}
-                  variant='h4'
-                  id='enterPasscode'
-                />
-              </Box>
+              <ArrowBackTopBar />
               <Box sx={styles.textFieldContainer}>
                 <TextField
                   fullWidth

@@ -26,9 +26,10 @@ export default function Dashboard() {
   return (
     <Box sx={styles.rootContainer}>
       <Text
-        variant='h2'
+        variant='h3'
         component='h1'
         id='hiHowCanIHelp'
+        sx={{ marginTop: '57px', marginLeft: '56px' }}
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>

@@ -18,7 +18,7 @@ export const styles = {
     marginBottom: displayScreen !== DisplayScreenOptions.DeliverForm ? 7 : 3.5,
   }),
   paper: {
-    minHeight: 350,
+    minHeight: 386,
     height: '100%',
     display: 'flex',
     borderRadius: '20px',

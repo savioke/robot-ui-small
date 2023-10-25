@@ -48,5 +48,6 @@
   "delivery": "Delivery",
   "utility": "Utility",
   "hiHowCanIHelp": "Hi! How can I help you?",
-  "enterRoomNumber": "Enter room number"
+  "enterRoomNumber": "Enter room number",
+  "roomNumber": "Room number"
 }

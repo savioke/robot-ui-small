@@ -4,10 +4,10 @@ import { useIntl } from 'react-intl';
 import Image from 'next/image';
 
 /** Mui Components */
-import { Box, Button, IconButton, Paper } from '@mui/material';
-import { Settings } from '@mui/icons-material';
+import { Box, Button } from '@mui/material';
 
 /** Components */
+import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -26,10 +26,12 @@ export default function DeliveryDashboard() {
   // TODO: Add in favorites
   return (
     <Box sx={styles.rootContainer}>
+      <ArrowBackTopBar />
       <Text
-        variant='h2'
+        variant='h3'
         component='h1'
         id='hiHowCanIHelp'
+        sx={{ marginLeft: 7 }}
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>

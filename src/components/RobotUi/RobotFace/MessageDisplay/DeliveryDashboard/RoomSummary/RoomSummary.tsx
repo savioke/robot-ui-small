@@ -9,13 +9,13 @@ import Keyboard2 from 'components/RobotUi/Footer/Keyboard2/Keyboard2';
 import Text from 'components/Text/Text';
 
 /** styles */
-import { styles } from './RoomMessage.styles';
+import { styles } from './RoomSummary.styles';
 
 /** redux */
 
 /** helpers */
 
-export default function RoomMessage() {
+export default function RoomSummary() {
   const [roomMessage, setRoomMessage] = React.useState('');
 
   return (

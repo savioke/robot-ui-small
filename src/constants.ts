@@ -9,7 +9,7 @@ export const DisplayScreenOptions = {
   DeliveryDashboard: 'Delivery dashboard' as const,
   RoomNumber: 'Room number' as const,
   RoomMessage: 'Room message' as const,
-  ViewRoomSummary: 'View room number summary' as const,
+  RoomSummary: 'Room summary' as const,
 };
 
 export const Themes = {

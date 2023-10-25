@@ -205,7 +205,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='+'
             >
-              +
+              {intl.formatMessage({ id: '+' })}
             </Button>
           </Grid>
           <Grid
@@ -219,7 +219,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='-'
             >
-              -
+              {intl.formatMessage({ id: '-' })}
             </Button>
           </Grid>
         </Grid>
@@ -240,7 +240,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='.'
             >
-              .
+              {intl.formatMessage({ id: '.' })}
             </Button>
           </Grid>
           <Grid
@@ -254,7 +254,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value=','
             >
-              ,
+              {intl.formatMessage({ id: ',' })}
             </Button>
           </Grid>
           <Grid
@@ -268,7 +268,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='!'
             >
-              !
+              {intl.formatMessage({ id: '!' })}
             </Button>
           </Grid>
           <Grid
@@ -282,7 +282,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='?'
             >
-              ?
+              {intl.formatMessage({ id: '?' })}
             </Button>
           </Grid>
           <Grid
@@ -296,7 +296,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='('
             >
-              {'('}
+              {intl.formatMessage({ id: '(' })}
             </Button>
           </Grid>
           <Grid
@@ -310,7 +310,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value=')'
             >
-              {')'}
+              {intl.formatMessage({ id: ')' })}
             </Button>
           </Grid>
         </Grid>
@@ -359,7 +359,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value=':'
             >
-              :
+              {intl.formatMessage({ id: ':' })}
             </Button>
           </Grid>
           <Grid
@@ -373,7 +373,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value=';'
             >
-              ;
+              {intl.formatMessage({ id: ';' })}
             </Button>
           </Grid>
           <Grid
@@ -387,7 +387,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='~'
             >
-              ~
+              {intl.formatMessage({ id: '~' })}
             </Button>
           </Grid>
           <Grid
@@ -401,7 +401,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='*'
             >
-              *
+              {intl.formatMessage({ id: '*' })}
             </Button>
           </Grid>
         </Grid>
@@ -422,7 +422,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='&'
             >
-              &
+              {intl.formatMessage({ id: '&' })}
             </Button>
           </Grid>
           <Grid
@@ -436,7 +436,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='@'
             >
-              @
+              {intl.formatMessage({ id: '@' })}
             </Button>
           </Grid>
           <Grid
@@ -450,7 +450,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='#'
             >
-              #
+              {intl.formatMessage({ id: '#' })}
             </Button>
           </Grid>
           <Grid
@@ -464,7 +464,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='%'
             >
-              %
+              {intl.formatMessage({ id: '%' })}
             </Button>
           </Grid>
           <Grid
@@ -478,7 +478,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='='
             >
-              =
+              {intl.formatMessage({ id: '=' })}
             </Button>
           </Grid>
           <Grid
@@ -492,7 +492,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               onClick={handleKeyboardValues}
               value='$'
             >
-              $
+              {intl.formatMessage({ id: '$' })}
             </Button>
           </Grid>
         </Grid>
@@ -510,7 +510,6 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
-              // sx={styles.numberButtons}
               onClick={handleKeyboardValues}
               value=' '
             >
@@ -565,7 +564,7 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
               }}
               onClick={() => setIsNumberDisplay(false)}
             >
-              abc
+              {intl.formatMessage({ id: 'abc' })}
             </Button>
           </Grid>
           <Grid
@@ -576,10 +575,13 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
             <Button
               variant='contained'
               sx={{ width: '100%', height: '55px', fontSize: '24px' }}
-              // TODO: Go to next page
-              // onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+              onClick={() => {
+                if (displayScreen === DisplayScreenOptions.RoomMessage) {
+                  dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));
+                }
+              }}
             >
-              Confirm
+              {intl.formatMessage({ id: 'confirm' })}
             </Button>
           </Grid>
         </Grid>
@@ -1140,8 +1142,11 @@ export default function Keyboard2({ passCode, setPasscode }: KeypadProps) {
           <Button
             variant='contained'
             sx={{ width: '100%', height: '55px', fontSize: '24px' }}
-            // TODO: Go to next page
-            // onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+            onClick={() => {
+              if (displayScreen === DisplayScreenOptions.RoomMessage) {
+                dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));
+              }
+            }}
           >
             {intl.formatMessage({ id: 'confirm' })}
           </Button>

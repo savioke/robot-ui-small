@@ -1,4 +1,7 @@
 export const styles = {
+  gridContainer: {
+    minHeight: '565px',
+  },
   fabContainer: {
     textAlign: 'center',
   },

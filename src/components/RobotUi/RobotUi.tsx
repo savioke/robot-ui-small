@@ -13,7 +13,7 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
-import EnterRoomNumber from './RobotFace/MessageDisplay/DeliveryDashboard/EnterRoomNumber/EnterRoomNumber';
+import EnterRoomNumber from './RobotFace/MessageDisplay/DeliveryDashboard/RoomNumber/RoomNumber';
 
 export default function RobotUi() {
   const displayScreen = useSelector(getDisplayScreen);

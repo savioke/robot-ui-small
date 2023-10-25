@@ -8,7 +8,7 @@ import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
 import Keypad from 'components/RobotUi/Keypad/Keypad';
 
 /** styles */
-import { styles } from './EnterRoomNumber.styles';
+import { styles } from './RoomNumber.styles';
 
 /** redux */
 

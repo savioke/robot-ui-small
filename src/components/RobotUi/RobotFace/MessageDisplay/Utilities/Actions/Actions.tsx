@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 import Image from 'next/image';
 
@@ -14,14 +13,11 @@ import Text from 'components/Text/Text';
 import { styles } from './Actions.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
 
 /** helpers */
-import { DisplayScreenOptions } from 'appConstants';
 
 export default function Actions() {
   const intl = useIntl();
-  const dispatch = useDispatch();
 
   return (
     <Box sx={styles.rootContainer}>
@@ -34,9 +30,8 @@ export default function Actions() {
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
-          <Button
-            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-          >
+          {/* TODO: Add in socket events */}
+          <Button>
             <Image
               priority
               src='images/open-lid.svg'
@@ -52,7 +47,8 @@ export default function Actions() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
+          {/* TODO: Add in socket events */}
+          <Button>
             <Image
               priority
               src='images/close-lid.svg'
@@ -68,7 +64,8 @@ export default function Actions() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
+          {/* TODO: Add in socket events */}
+          <Button>
             <Image
               priority
               src='images/go-to-location.svg'
@@ -84,7 +81,8 @@ export default function Actions() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
+          {/* TODO: Add in socket events */}
+          <Button>
             <Image
               priority
               src='images/return-to-dock.svg'

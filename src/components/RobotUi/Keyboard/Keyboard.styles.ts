@@ -18,8 +18,8 @@ export const styles = {
   },
   numberButtons: {
     backgroundColor: '#414141',
-    height: '55px',
-    width: '55px',
+    minHeight: '55px',
+    minWidth: '55px',
     borderRadius: '10px',
     fontSize: '24px',
   },

@@ -36,6 +36,20 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
     });
   };
 
+  const handleCapitalLetters = ({
+    letter,
+    isCapitalLetters,
+  }: {
+    letter: string;
+    isCapitalLetters: boolean;
+  }) => {
+    if (isCapitalLetters) {
+      return letter.toUpperCase();
+    }
+
+    return letter.toLowerCase();
+  };
+
   if (isNumberDisplay) {
     return (
       <Grid
@@ -608,9 +622,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value={isCapitalLetters ? 'A' : 'a'}
+            value={handleCapitalLetters({ letter: 'a', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'a' })}
           </Button>
@@ -622,9 +639,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='b'
+            value={handleCapitalLetters({ letter: 'b', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'b' })}
           </Button>
@@ -636,9 +656,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='c'
+            value={handleCapitalLetters({ letter: 'c', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'c' })}
           </Button>
@@ -650,9 +673,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='d'
+            value={handleCapitalLetters({ letter: 'd', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'd' })}
           </Button>
@@ -664,9 +690,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='e'
+            value={handleCapitalLetters({ letter: 'e', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'e' })}
           </Button>
@@ -678,9 +707,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='f'
+            value={handleCapitalLetters({ letter: 'f', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'f' })}
           </Button>
@@ -699,9 +731,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='g'
+            value={handleCapitalLetters({ letter: 'g', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'g' })}
           </Button>
@@ -713,9 +748,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='h'
+            value={handleCapitalLetters({ letter: 'h', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'h' })}
           </Button>
@@ -727,9 +765,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='i'
+            value={handleCapitalLetters({ letter: 'i', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'i' })}
           </Button>
@@ -741,9 +782,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='j'
+            value={handleCapitalLetters({ letter: 'j', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'j' })}
           </Button>
@@ -755,9 +799,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='k'
+            value={handleCapitalLetters({ letter: 'k', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'k' })}
           </Button>
@@ -769,9 +816,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='l'
+            value={handleCapitalLetters({ letter: 'l', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'l' })}
           </Button>
@@ -790,9 +840,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='m'
+            value={handleCapitalLetters({ letter: 'm', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'm' })}
           </Button>
@@ -804,9 +857,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='n'
+            value={handleCapitalLetters({ letter: 'n', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'n' })}
           </Button>
@@ -818,9 +874,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='o'
+            value={handleCapitalLetters({ letter: 'o', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'o' })}
           </Button>
@@ -832,9 +891,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='p'
+            value={handleCapitalLetters({ letter: 'p', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'p' })}
           </Button>
@@ -846,9 +908,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='q'
+            value={handleCapitalLetters({ letter: 'q', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'q' })}
           </Button>
@@ -860,9 +925,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='r'
+            value={handleCapitalLetters({ letter: 'r', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'r' })}
           </Button>
@@ -881,9 +949,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='s'
+            value={handleCapitalLetters({ letter: 's', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 's' })}
           </Button>
@@ -895,9 +966,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='t'
+            value={handleCapitalLetters({ letter: 't', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 't' })}
           </Button>
@@ -909,9 +983,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='u'
+            value={handleCapitalLetters({ letter: 'u', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'u' })}
           </Button>
@@ -923,9 +1000,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='v'
+            value={handleCapitalLetters({ letter: 'v', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'v' })}
           </Button>
@@ -937,9 +1017,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='w'
+            value={handleCapitalLetters({ letter: 'w', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'w' })}
           </Button>
@@ -951,9 +1034,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='x'
+            value={handleCapitalLetters({ letter: 'x', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'x' })}
           </Button>
@@ -972,9 +1058,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='y'
+            value={handleCapitalLetters({ letter: 'y', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'y' })}
           </Button>
@@ -986,9 +1075,12 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={styles.numberButtons}
+            sx={[
+              styles.numberButtons,
+              { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
+            ]}
             onClick={handleKeyboardValues}
-            value='z'
+            value={handleCapitalLetters({ letter: 'z', isCapitalLetters })}
           >
             {intl.formatMessage({ id: 'z' })}
           </Button>

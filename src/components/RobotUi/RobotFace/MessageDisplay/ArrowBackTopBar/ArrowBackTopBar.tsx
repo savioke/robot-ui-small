@@ -85,6 +85,7 @@ export default function ArrowBackTopBar() {
           variant='h5'
           component='h1'
           id='enterPasscode'
+          sx={{ fontSize: '55px' }}
         />
       </Box>
     );

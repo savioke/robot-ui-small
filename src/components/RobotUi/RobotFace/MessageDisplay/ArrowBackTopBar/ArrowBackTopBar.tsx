@@ -125,7 +125,7 @@ export default function ArrowBackTopBar() {
       <Box sx={styles.arrowBackContainer}>
         <IconButton
           sx={styles.iconButton}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
         >
           <ArrowBack fontSize='large' />
         </IconButton>

@@ -42,7 +42,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
   return (
     <Grid
       container
-      rowSpacing={2}
+      rowSpacing='22px'
       sx={styles.gridContainer}
     >
       <Grid

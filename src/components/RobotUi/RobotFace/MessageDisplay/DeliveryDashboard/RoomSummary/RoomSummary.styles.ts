@@ -34,7 +34,6 @@ export const styles = {
     flex: 0.8,
   },
   textfield: {
-    fontSize: '24px',
     '& .MuiInput-root': { fontSize: '100px' },
   },
   textFieldContainer: {

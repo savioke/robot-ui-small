@@ -43,6 +43,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
     <Grid
       container
       rowSpacing={2}
+      sx={styles.gridContainer}
     >
       <Grid
         container
@@ -239,7 +240,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
       </Grid>
       <Button
         fullWidth
-        sx={{ marginTop: 3, height: '56px' }}
+        sx={{ marginTop: 3, height: '56px', fontSize: '24px' }}
         variant='contained'
         onClick={() => {
           // TODO: Hook in error message for invalid code... This might be verified from R2C2.

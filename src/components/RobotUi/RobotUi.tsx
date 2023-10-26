@@ -15,6 +15,7 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 import RoomNumber from './RobotFace/MessageDisplay/DeliveryDashboard/RoomNumber/RoomNumber';
 import RoomMessage from './RobotFace/MessageDisplay/DeliveryDashboard/RoomMessage/RoomMessage';
+import RoomSummary from './RobotFace/MessageDisplay/DeliveryDashboard/RoomSummary/RoomSummary';
 
 export default function RobotUi() {
   const displayScreen = useSelector(getDisplayScreen);
@@ -27,6 +28,8 @@ export default function RobotUi() {
     return <RoomNumber />;
   } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
     return <RoomMessage />;
+  } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
+    return <RoomSummary />;
   }
 
   return <RobotFace />;

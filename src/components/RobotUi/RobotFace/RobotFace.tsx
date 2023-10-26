@@ -8,7 +8,6 @@ import { Box, Paper } from '@mui/material';
 
 /** Components */
 import MessageDisplay from './MessageDisplay/MessageDisplay';
-import Keyboard from '../Keyboard/Keyboard';
 
 /** styles */
 import { styles } from './RobotFace.styles';
@@ -56,10 +55,6 @@ export default function RobotFace() {
           alt={intl.formatMessage({ id: 'rightEye' })}
         />
       </Box>
-      <Keyboard
-        keyboardRef={keyboardRef}
-        formRef={formRef}
-      />
     </Box>
   );
 }

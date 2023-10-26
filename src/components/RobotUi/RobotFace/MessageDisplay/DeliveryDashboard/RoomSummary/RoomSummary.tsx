@@ -5,18 +5,18 @@ import { Box, Paper, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
-import Keyboard from 'components/RobotUi/Keyboard/Keyboard';
+import keyboard from 'components/RobotUi/Footer/keyboard/keyboard';
 import Text from 'components/Text/Text';
 
 /** styles */
-import { styles } from './RoomMessage.styles';
+import { styles } from './RoomSummary.styles';
 
 /** redux */
 
 /** helpers */
 
-export default function RoomMessage() {
-  const [roomMessage, setRoomMessage] = React.useState('Your order has arrived');
+export default function RoomSummary() {
+  const [roomMessage, setRoomMessage] = React.useState('');
 
   return (
     <Box sx={styles.container}>
@@ -35,21 +35,16 @@ export default function RoomMessage() {
                 <Text variant='h4'>What I will say on delivery!</Text>
                 <TextField
                   multiline
-                  rows={5}
+                  rows={10}
                   value={roomMessage}
-                  InputProps={{
-                    disableUnderline: true,
-                    sx: {
-                      borderRadius: '20px',
-                      fontSize: '32px',
-                    },
-                  }}
+                  inputProps={{ style: { textAlign: 'center' } }}
+                  InputProps={{ disableUnderline: true, sx: { borderRadius: '20px' } }}
                   sx={styles.textfield}
                 />
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <Keyboard
+              <keyboard
                 passCode={roomMessage}
                 setPasscode={setRoomMessage}
               />

@@ -1,121 +1,1158 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
-import { useSelector, useDispatch } from 'typeDux';
+import React, { useState } from 'react';
+import { useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Slide } from '@mui/material';
+import { Grid, Button } from '@mui/material';
+import { Backspace, ArrowUpward, ArrowDownward } from '@mui/icons-material';
 
 /** Components */
-const KeyboardReact = dynamic(import('react-simple-keyboard'), { ssr: false });
 
 /** styles */
-import 'react-simple-keyboard/build/css/index.css';
 import { styles } from './Keyboard.styles';
 
 /** redux */
-import { getInputName, getDisplayScreen, getDeliverFormValues } from 'state/ui/ui.selectors';
-import { setDeliverFormValues, setDisplayScreen, resetDeliverFormValues } from 'state/ui/ui.slice';
-import { DisplayScreenOptions } from 'appConstants';
+import { setDisplayScreen } from 'state/ui/ui.slice';
+import { getDisplayScreen } from 'state/ui/ui.selectors';
 
 /** helpers */
+import { DisplayScreenOptions } from 'appConstants';
 
-interface KeyboardProps {
-  formRef: React.RefObject<HTMLFormElement>;
-  keyboardRef: React.RefObject<any>;
+interface KeypadProps {
+  passCode: string;
+  setPasscode: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Keyboard({ formRef, keyboardRef }: KeyboardProps) {
+export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
+  const intl = useIntl();
   const dispatch = useDispatch();
-  const inputName = useSelector(getInputName);
   const displayScreen = useSelector(getDisplayScreen);
-  const deliverFormValues = useSelector(getDeliverFormValues);
-  const displayKeyboard = displayScreen === DisplayScreenOptions.DeliverForm;
-  const [layoutName, setLayoutName] = React.useState('default');
+  const [isNumberDisplay, setIsNumberDisplay] = useState(false);
+  const [isCapitalLetters, setIsCapitalLetters] = useState(false);
+
+  const handleKeyboardValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setPasscode((previousValue) => {
+      return previousValue + event.currentTarget.value;
+    });
+  };
+
+  if (isNumberDisplay) {
+    return (
+      <Grid
+        container
+        rowSpacing={3}
+        sx={styles.gridContainer}
+      >
+        <Grid
+          container
+          item
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={1}
+            >
+              {intl.formatMessage({ id: '1' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={2}
+            >
+              {intl.formatMessage({ id: '2' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={3}
+            >
+              {intl.formatMessage({ id: '3' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={4}
+            >
+              {intl.formatMessage({ id: '4' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={5}
+            >
+              {intl.formatMessage({ id: '5' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={6}
+            >
+              {intl.formatMessage({ id: '6' })}
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={7}
+            >
+              {intl.formatMessage({ id: '7' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={8}
+            >
+              {intl.formatMessage({ id: '8' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={9}
+            >
+              {intl.formatMessage({ id: '9' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value={0}
+            >
+              {intl.formatMessage({ id: '0' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='+'
+            >
+              {intl.formatMessage({ id: '+' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='-'
+            >
+              {intl.formatMessage({ id: '-' })}
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='.'
+            >
+              {intl.formatMessage({ id: '.' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=','
+            >
+              {intl.formatMessage({ id: ',' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='!'
+            >
+              {intl.formatMessage({ id: '!' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='?'
+            >
+              {intl.formatMessage({ id: '?' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='('
+            >
+              {intl.formatMessage({ id: '(' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=')'
+            >
+              {intl.formatMessage({ id: ')' })}
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='\'
+            >
+              \
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='/'
+            >
+              /
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=':'
+            >
+              {intl.formatMessage({ id: ':' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=';'
+            >
+              {intl.formatMessage({ id: ';' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='~'
+            >
+              {intl.formatMessage({ id: '~' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='*'
+            >
+              {intl.formatMessage({ id: '*' })}
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='&'
+            >
+              {intl.formatMessage({ id: '&' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='@'
+            >
+              {intl.formatMessage({ id: '@' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='#'
+            >
+              {intl.formatMessage({ id: '#' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='%'
+            >
+              {intl.formatMessage({ id: '%' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='='
+            >
+              {intl.formatMessage({ id: '=' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='$'
+            >
+              {intl.formatMessage({ id: '$' })}
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={10}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
+              onClick={handleKeyboardValues}
+              value=' '
+            >
+              {intl.formatMessage({ id: 'space' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              sx={[
+                styles.numberButtons,
+                {
+                  '&:hover': {
+                    backgroundColor: '#1272b2',
+                  },
+                },
+              ]}
+              onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+            >
+              <Backspace
+                fontSize='large'
+                sx={{ color: 'white' }}
+              />
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='outlined'
+              sx={{
+                width: '100%',
+                height: '55px',
+                color: '#414141',
+                borderColor: '#414141',
+                fontSize: '24px',
+                '&:hover': {
+                  borderColor: '#414141',
+                },
+              }}
+              onClick={() => setIsNumberDisplay(false)}
+            >
+              {intl.formatMessage({ id: 'abc' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            sx={styles.fabContainer}
+          >
+            <Button
+              variant='contained'
+              sx={{ width: '100%', height: '55px', fontSize: '24px' }}
+              onClick={() => {
+                if (displayScreen === DisplayScreenOptions.RoomMessage) {
+                  dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));
+                }
+              }}
+            >
+              {intl.formatMessage({ id: 'confirm' })}
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    );
+  }
 
   return (
-    <Slide
-      mountOnEnter
-      unmountOnExit
-      in={displayKeyboard}
-      direction='up'
+    <Grid
+      container
+      rowSpacing={3}
+      sx={styles.gridContainer}
     >
-      <Box sx={styles.keyboard}>
-        <KeyboardReact
-          mergeDisplay
-          useButtonTag
-          inputName={inputName}
-          buttonTheme={[
-            {
-              class: 'hg-blue',
-              buttons: '{enter}',
-            },
-            {
-              class: 'hg-red',
-              buttons: '{escape}',
-            },
-          ]}
-          // @ts-ignore - TODO: Current says read-only. Should revisit to fix Typescript
-          keyboardRef={(ref) => (keyboardRef.current = ref)}
-          onChangeAll={(inputs) => {
-            // console.log(inputs);
-            dispatch(
-              setDeliverFormValues({
-                ...inputs,
-              }),
-            );
-          }}
-          onKeyReleased={(button) => {
-            if (button === '{enter}' && formRef.current) {
-              formRef.current.requestSubmit();
-            } else if (button === '{escape}') {
-              dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-              dispatch(resetDeliverFormValues());
-            } else if (button === '{shift}') {
-              setLayoutName(layoutName === 'default' ? 'shift' : 'default');
-            }
-          }}
-          onKeyPress={(button, event) => {
-            if (
-              button === '{backspace}' &&
-              (inputName === 'dropoff_location' || inputName === 'dropoff_message')
-            ) {
-              const removeLastCharacter = deliverFormValues.context[inputName].slice(
-                0,
-                deliverFormValues.context[inputName].length - 1,
-              );
-
-              dispatch(
-                setDeliverFormValues({
-                  [inputName]: removeLastCharacter,
-                }),
-              );
-            }
-          }}
-          theme='hg-theme-default hg-theme-ios'
-          layoutName={layoutName}
-          layout={{
-            default: [
-              '{escape} 1 2 3 4 5 6 7 8 9 0 {backspace}',
-              'q w e r t y u i o p',
-              'a s d f g h j k l {enter}',
-              '{shift} z x c v b n m',
-              '{space}',
-            ],
-            shift: [
-              '{escape} 1 2 3 4 5 6 7 8 9 0 {backspace}',
-              'Q W E R T Y U I O P',
-              'A S D F G H J K L {enter}',
-              '{shift} Z X C V B N M',
-              '{space}',
-            ],
-          }}
-          display={{
-            '{enter}': 'Enter',
-            '{backspace}': '⌫',
-            '{escape}': 'Cancel',
-          }}
-        />
-      </Box>
-    </Slide>
+      <Grid
+        container
+        item
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value={isCapitalLetters ? 'A' : 'a'}
+          >
+            {intl.formatMessage({ id: 'a' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='b'
+          >
+            {intl.formatMessage({ id: 'b' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='c'
+          >
+            {intl.formatMessage({ id: 'c' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='d'
+          >
+            {intl.formatMessage({ id: 'd' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='e'
+          >
+            {intl.formatMessage({ id: 'e' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='f'
+          >
+            {intl.formatMessage({ id: 'f' })}
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='g'
+          >
+            {intl.formatMessage({ id: 'g' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='h'
+          >
+            {intl.formatMessage({ id: 'h' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='i'
+          >
+            {intl.formatMessage({ id: 'i' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='j'
+          >
+            {intl.formatMessage({ id: 'j' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='k'
+          >
+            {intl.formatMessage({ id: 'k' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='l'
+          >
+            {intl.formatMessage({ id: 'l' })}
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='m'
+          >
+            {intl.formatMessage({ id: 'm' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='n'
+          >
+            {intl.formatMessage({ id: 'n' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='o'
+          >
+            {intl.formatMessage({ id: 'o' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='p'
+          >
+            {intl.formatMessage({ id: 'p' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='q'
+          >
+            {intl.formatMessage({ id: 'q' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='r'
+          >
+            {intl.formatMessage({ id: 'r' })}
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='s'
+          >
+            {intl.formatMessage({ id: 's' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='t'
+          >
+            {intl.formatMessage({ id: 't' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='u'
+          >
+            {intl.formatMessage({ id: 'u' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='v'
+          >
+            {intl.formatMessage({ id: 'v' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='w'
+          >
+            {intl.formatMessage({ id: 'w' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='x'
+          >
+            {intl.formatMessage({ id: 'x' })}
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='y'
+          >
+            {intl.formatMessage({ id: 'y' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='z'
+          >
+            {intl.formatMessage({ id: 'z' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='.'
+          >
+            {intl.formatMessage({ id: '.' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value=','
+          >
+            {intl.formatMessage({ id: ',' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='!'
+          >
+            {intl.formatMessage({ id: '!' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={styles.numberButtons}
+            onClick={handleKeyboardValues}
+            value='?'
+          >
+            {intl.formatMessage({ id: '?' })}
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
+            onClick={() => setIsCapitalLetters((previousValue) => !previousValue)}
+          >
+            {isCapitalLetters ? <ArrowDownward /> : <ArrowUpward />}
+            {/* <ArrowUpward /> */}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={8}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
+            onClick={handleKeyboardValues}
+            value=' '
+          >
+            {intl.formatMessage({ id: 'space' })}
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={styles.fabContainer}
+        >
+          <Button
+            sx={[
+              styles.numberButtons,
+              {
+                '&:hover': {
+                  backgroundColor: '#1272b2',
+                },
+              },
+            ]}
+            onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+          >
+            <Backspace
+              fontSize='large'
+              sx={{ color: 'white' }}
+            />
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        spacing={1}
+        xs={12}
+      >
+        <Grid
+          item
+          xs={3}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='outlined'
+            sx={{
+              width: '100%',
+              height: '55px',
+              color: '#414141',
+              borderColor: '#414141',
+              fontSize: '24px',
+              '&:hover': {
+                borderColor: '#414141',
+              },
+            }}
+            onClick={() => setIsNumberDisplay(true)}
+          >
+            ?123
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={9}
+          sx={styles.fabContainer}
+        >
+          <Button
+            variant='contained'
+            sx={{ width: '100%', height: '55px', fontSize: '24px' }}
+            onClick={() => {
+              if (displayScreen === DisplayScreenOptions.RoomMessage) {
+                dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));
+              }
+            }}
+          >
+            {intl.formatMessage({ id: 'confirm' })}
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }

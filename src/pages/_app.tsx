@@ -5,6 +5,7 @@ import { wrapper } from 'store';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
+import { useIdleTimer } from 'react-idle-timer';
 import '../styles/globals.css';
 
 /** Internationalization */
@@ -31,7 +32,10 @@ export default function App({ Component, ...rest }: AppProps) {
   const stateTheme = store.getState().ui.theme;
   useSocketIo();
 
-  // TODO: Need to audit and internationalize all of the robot UI.
+  useIdleTimer({
+    onIdle: () => store.dispatch(setIsScreenTouched(false)),
+    timeout: 10000,
+  });
 
   React.useEffect(() => {
     const languagePreference = localStorage.getItem('languagePreference');
@@ -84,11 +88,8 @@ export default function App({ Component, ...rest }: AppProps) {
               flexDirection: 'column',
               backgroundImage: `${stateTheme}`,
               backgroundSize: 'cover',
-              // paddingX: 3,
               paddingRight: 2,
               paddingLeft: 1,
-              // paddingBottom: 3,
-              // paddingTop: 2,
             }}
             onClick={() => store.dispatch(setIsScreenTouched(true))}
           >

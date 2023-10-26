@@ -34,7 +34,6 @@ export default function Actions() {
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
-          {/* TODO: Add in socket events */}
           <Button onClick={() => socket?.emit('choice_made', { name: 'Open Lid', context: {} })}>
             <Image
               priority
@@ -51,8 +50,7 @@ export default function Actions() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          {/* TODO: Add in socket events */}
-          <Button>
+          <Button onClick={() => socket?.emit('choice_made', { name: 'Close Lid', context: {} })}>
             <Image
               priority
               src='images/close-lid.svg'

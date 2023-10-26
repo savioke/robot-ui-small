@@ -19,17 +19,16 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 interface KeypadProps {
-  passCode: string;
-  setPasscode: React.Dispatch<React.SetStateAction<string>>;
+  setValues: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Keypad({ passCode, setPasscode }: KeypadProps) {
+export default function Keypad({ setValues }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
 
   const handleKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setPasscode((previousValue) => {
+    setValues((previousValue) => {
       // TODO: This needs to be dynamic to accept any number of pins...
       if (previousValue.length === 6) {
         return previousValue;
@@ -232,7 +231,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
                 },
               },
             ]}
-            onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+            onClick={() => setValues((previousValues) => previousValues.slice(0, -1))}
           >
             <Backspace
               fontSize='large'

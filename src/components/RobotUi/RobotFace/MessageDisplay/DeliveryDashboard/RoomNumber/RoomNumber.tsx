@@ -39,10 +39,7 @@ export default function RoomNumber() {
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <Keypad
-                passCode={roomNumber}
-                setPasscode={setRoomNumber}
-              />
+              <Keypad setValues={setPassCode} />
             </Box>
           </Box>
         </Paper>

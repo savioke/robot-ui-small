@@ -40,10 +40,7 @@ export default function PassCode() {
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <Keypad
-                passCode={passCode}
-                setPasscode={setPassCode}
-              />
+              <Keypad setValues={setPassCode} />
             </Box>
           </Box>
         </Paper>

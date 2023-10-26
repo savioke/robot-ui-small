@@ -31,7 +31,6 @@ export default function RoomNumber() {
                 <TextField
                   fullWidth
                   variant='standard'
-                  type='number'
                   value={roomNumber}
                   inputProps={{ style: { textAlign: 'center' } }}
                   InputProps={{ disableUnderline: true }}

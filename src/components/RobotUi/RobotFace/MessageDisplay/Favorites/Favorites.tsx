@@ -64,8 +64,10 @@ export default function Favorites() {
           </Button>
           <Text
             variant='h5'
-            id='delivery'
-          />
+            sx={{ fontWeight: 600 }}
+          >
+            Favorite 1
+          </Text>
         </Box>
         <Box sx={styles.paperContainer}>
           <Button
@@ -86,8 +88,10 @@ export default function Favorites() {
           </Button>
           <Text
             variant='h5'
-            id='favorites'
-          />
+            sx={{ fontWeight: 600 }}
+          >
+            Favorite 2
+          </Text>
         </Box>
         <Box sx={styles.paperContainer}>
           <Button
@@ -108,8 +112,10 @@ export default function Favorites() {
           </Button>
           <Text
             variant='h5'
-            id='utility'
-          />
+            sx={{ fontWeight: 600 }}
+          >
+            Favorite 3
+          </Text>
         </Box>
       </Box>
     </Box>

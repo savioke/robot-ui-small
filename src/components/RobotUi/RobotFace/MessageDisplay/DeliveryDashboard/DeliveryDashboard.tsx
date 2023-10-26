@@ -41,7 +41,7 @@ export default function DeliveryDashboard() {
               src='images/room.svg'
               height={150}
               width={144}
-              alt={intl.formatMessage({ id: 'delivery' })}
+              alt={intl.formatMessage({ id: 'enterRoomNumber' })}
             />
           </Button>
           <Box
@@ -66,7 +66,7 @@ export default function DeliveryDashboard() {
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
             <Image
               priority
-              src='images/settings.svg'
+              src='images/department-or-area.svg'
               height={150}
               width={144}
               alt={intl.formatMessage({ id: 'delivery' })}
@@ -97,7 +97,7 @@ export default function DeliveryDashboard() {
               src='images/search.svg'
               height={150}
               width={144}
-              alt={intl.formatMessage({ id: 'delivery' })}
+              alt={intl.formatMessage({ id: 'search' })}
             />
           </Button>
           <Box sx={{ height: '64.03px' }}>

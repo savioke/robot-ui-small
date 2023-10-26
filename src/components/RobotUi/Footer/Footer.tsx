@@ -47,7 +47,6 @@ export default function Footer() {
         <Box sx={styles.iconContainer}>
           <Fab
             sx={{ width: '60px', height: '60px' }}
-            // size='large'
             onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
           >
             <Lock fontSize='large' />

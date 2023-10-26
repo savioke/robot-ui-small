@@ -55,6 +55,24 @@ export default function Dashboard() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
+          <Button
+            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
+          >
+            <Image
+              priority
+              src='images/favorites.svg'
+              height={150}
+              width={144}
+              alt={intl.formatMessage({ id: 'favorites' })}
+            />
+          </Button>
+
+          <Text
+            variant='h5'
+            id='favorites'
+          />
+        </Box>
+        <Box sx={styles.paperContainer}>
           <Paper
             elevation={4}
             sx={styles.paper}

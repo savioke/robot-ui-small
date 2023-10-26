@@ -13,7 +13,6 @@ export const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 2,
   },
   paper: {
     display: 'flex',

@@ -1,56 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="right_eye"
-   class="eye"
-   viewBox="0 0 700 700"
-   version="1.1"
-   sodipodi:docname="eye_right.svg"
-   inkscape:version="0.92.4 (f8dce91, 2019-08-02)">
-  <metadata
-     id="metadata3774">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="992"
-     inkscape:window-height="661"
-     id="namedview3772"
-     showgrid="false"
-     inkscape:zoom="0.33714286"
-     inkscape:cx="350"
-     inkscape:cy="350"
-     inkscape:window-x="841"
-     inkscape:window-y="214"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="right_eye" />
-  <path
-     d="m 363.32531,694.47641 c 0,0 -7.16133,0.44046 -7.16133,0.44046 C 192.14977,705.00449 50.182763,596.53116 38.734866,452.70591 c 0,0 -13.653966,-171.54112 -13.653966,-171.54112 C 13.633003,137.33954 137.03284,12.544931 300.64921,2.4817771 c 0,0 7.16132,-0.4404542 7.16132,-0.4404542 163.71583,-10.0692714 305.68283,98.4040671 317.13073,242.2293071 0,0 13.62613,171.1914 13.62613,171.1914 11.77412,144.15662 -111.62572,268.95123 -275.24208,279.01438 0,0 0,0 0,0"
-     id="path3765"
-     inkscape:connector-curvature="0"
-     style="fill:#ffffff;stroke-width:0.93481463" />
-  <desc
-     id="desc3767">Created with Snap</desc>
-  <defs
-     id="defs3769" />
+<svg xmlns="http://www.w3.org/2000/svg" width="110.655" height="159.743" viewBox="0 0 110.655 159.743">
+  <g id="Group_224" data-name="Group 224" transform="translate(-783.539 -532.5)">
+    <path id="Subtraction_22" data-name="Subtraction 22" d="M51.8,0A66.668,66.668,0,0,0,35.791,1.786,42.716,42.716,0,0,0,23.613,6.8a36.643,36.643,0,0,0-8.89,7.728,44.085,44.085,0,0,0-6.148,9.928C1.963,38.931,1.218,57.71.5,75.87.127,85.2-.257,94.849.228,104.083c.548,10.429,2.163,18.881,4.936,25.841a44.561,44.561,0,0,0,6.066,10.785,39.553,39.553,0,0,0,9.343,8.7,49.477,49.477,0,0,0,13.278,6.109,80.427,80.427,0,0,0,17.872,3.023c2.125.137,4.214.206,6.208.206a66.66,66.66,0,0,0,16.011-1.786,42.711,42.711,0,0,0,12.178-5.014,36.64,36.64,0,0,0,8.89-7.728,44.086,44.086,0,0,0,6.147-9.928c6.611-14.475,7.356-33.252,8.076-51.412.371-9.33.755-18.978.27-28.213-.548-10.429-2.162-18.882-4.936-25.843A44.563,44.563,0,0,0,98.5,18.033a39.551,39.551,0,0,0-9.343-8.7A49.475,49.475,0,0,0,75.88,3.228,80.419,80.419,0,0,0,58.008.206C55.886.069,53.8,0,51.8,0Zm5.742,148.691c-1.742,0-3.567-.061-5.423-.18-21.207-1.366-34.508-9.54-40.664-24.989C6.045,109.938,6.725,92.844,7.382,76.313c.63-15.862,1.281-32.263,7.055-44.9C21,17.037,33.351,10.051,52.19,10.05c1.736,0,3.56.061,5.42.18C78.817,11.6,92.119,19.77,98.274,35.22c5.413,13.586,4.732,30.679,4.074,47.21-.629,15.861-1.279,32.261-7.053,44.9C88.732,141.705,76.383,148.691,57.545,148.691Z" transform="translate(893.732 691.743) rotate(180)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Path_130" data-name="Path 130" d="M176.67,29.834c.638,8.162,7.3,14.219,14.875,13.53s13.2-7.858,12.565-16.02-7.3-14.219-14.877-13.53-13.2,7.858-12.563,16.02" transform="translate(666.246 550.474)" fill="#fff"/>
+    <path id="Path_131" data-name="Path 131" d="M167.807,29.872c.379,4.85,4.337,8.448,8.838,8.04s7.847-4.671,7.465-9.521-4.337-8.448-8.838-8.037-7.844,4.668-7.465,9.518" transform="translate(642.447 562.005)" fill="#fff"/>
+  </g>
 </svg>

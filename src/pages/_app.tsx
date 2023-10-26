@@ -19,12 +19,13 @@ import Footer from 'components/RobotUi/Footer/Footer';
 import TopBar from 'components/RobotUi/TopBar/TopBar';
 
 /** actions */
-import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';
+import { setTheme, setIsScreenTouched, setDisplayScreen } from 'state/ui/ui.slice';
 
 /** Mui Premium License Key */
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
+import { DisplayScreenOptions } from 'appConstants';
 
 export default function App({ Component, ...rest }: AppProps) {
   const router = useRouter();
@@ -33,7 +34,10 @@ export default function App({ Component, ...rest }: AppProps) {
   useSocketIo();
 
   useIdleTimer({
-    onIdle: () => store.dispatch(setIsScreenTouched(false)),
+    onIdle: () => {
+      store.dispatch(setIsScreenTouched(false));
+      store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+    },
     timeout: 10000,
   });
 

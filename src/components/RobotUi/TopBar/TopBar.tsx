@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Box, Divider, Fab, Fade } from '@mui/material';
-import { Wifi, Clear } from '@mui/icons-material';
+import { Wifi, WifiOff, Clear } from '@mui/icons-material';
 
 /** Components */
 import BatteryIcon from './BatteryIcon/BatteryIcon';
@@ -23,6 +23,7 @@ export default function TopBar() {
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
+  const [isNetworkConnected, setIsNetworkConnected] = useState(true);
 
   if (!isScreenTouched) {
     return <Box sx={styles.container} />;
@@ -42,22 +43,11 @@ export default function TopBar() {
           // TODO: Used to keep styling consistent on home page for sticking icons to the right.
           <Box></Box>
         )}
-        {/* TODO: Should we use FAB instead of this image? */}
-        {/* <Image
-        priority
-        src='images/exit.svg'
-        height={48}
-        width={48}
-        alt={intl.formatMessage({ id: 'returnHome' })}
-      /> */}
         <Box sx={styles.metricContainer}>
           <Box sx={styles.rightContainer}>
-            {/* TODO: Conditional display if not connected */}
-            <Wifi fontSize='large' />
-            <Text
-              id='connected'
-              sx={{ color: '#FFFFFF' }}
-            />
+            {/* TODO: Condtiionally display this from socket connection sent from robot */}
+            {isNetworkConnected ? <Wifi fontSize='large' /> : <WifiOff fontSize='large' />}
+            <Text sx={{ color: '#FFFFFF' }}>m2012</Text>
           </Box>
           <Divider
             flexItem

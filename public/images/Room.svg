@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="158" height="158" viewBox="0 0 158 158">
+  <defs>
+    <filter id="Path_55" x="0" y="0" width="158" height="158" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Subtraction_11" x="32.401" y="18.63" width="93.069" height="119.739" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-2"/>
+    </filter>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_523" data-name="Rectangle 523" width="74.569" height="101.433" fill="#006990"/>
+    </clipPath>
+  </defs>
+  <g id="Room" transform="translate(12 6)">
+    <g transform="matrix(1, 0, 0, 1, -12, -6)" filter="url(#Path_55)">
+      <path id="Path_55-2" data-name="Path 55" d="M30.035,0h79.931A30.035,30.035,0,0,1,140,30.035v79.931A30.035,30.035,0,0,1,109.965,140H30.035A30.035,30.035,0,0,1,0,109.965V30.035A30.035,30.035,0,0,1,30.035,0Z" transform="translate(12 6)" fill="#fff"/>
+    </g>
+    <g id="Group_108" data-name="Group 108" transform="translate(591.222 -2617.695)">
+      <g transform="matrix(1, 0, 0, 1, -603.22, 2611.7)" filter="url(#Subtraction_11)">
+        <path id="Subtraction_11-2" data-name="Subtraction 11" d="M68.069,101.739H7a7.008,7.008,0,0,1-7-7V7A7.008,7.008,0,0,1,7,0H68.069a7.008,7.008,0,0,1,7,7V94.739A7.008,7.008,0,0,1,68.069,101.739ZM61.951,46.509a6.54,6.54,0,1,0,6.559,6.54A6.558,6.558,0,0,0,61.951,46.509ZM22.492,8.72a5.006,5.006,0,0,0-5,5v5.261a5.006,5.006,0,0,0,5,5H52.578a5.006,5.006,0,0,0,5-5V13.72a5.006,5.006,0,0,0-5-5Z" transform="translate(44.4 24.63)" fill="#fff"/>
+      </g>
+      <g id="Group_104" data-name="Group 104" transform="translate(-572.649 2636.142)">
+        <g id="Group_103" data-name="Group 103" transform="translate(13.485 0)">
+          <path id="Path_58" data-name="Path 58" d="M880.733,301.247h-2.27l-.475,3.4h-1.662l.475-3.4h-2.27l-.475,3.4h-1.795l-.285,2.09h1.786l-.266,1.928H871.7l-.294,2.089h1.8l-.494,3.457h2.146l.484-3.457h1.919l-.484,3.457h2.137l.484-3.457h2l.295-2.089h-2l.275-1.928h2l.295-2.09h-2Zm-3.181,7.417h-1.919l.266-1.928h1.928Z" transform="translate(-839.742 -291.395)" fill="#006990"/>
+          <g id="Group_102" data-name="Group 102" transform="translate(0 0)">
+            <g id="Group_101" data-name="Group 101" clip-path="url(#clip-path)">
+              <path id="Path_59" data-name="Path 59" d="M69.657,0H4.912A4.912,4.912,0,0,0,0,4.914V96.522a4.912,4.912,0,0,0,4.912,4.912H69.657a4.912,4.912,0,0,0,4.912-4.912V4.914A4.912,4.912,0,0,0,69.657,0M20.738,23.583a3.1,3.1,0,0,1-3.1-3.1V11.722a3.1,3.1,0,0,1,3.1-3.1H53.832a3.1,3.1,0,0,1,3.1,3.1v8.763a3.1,3.1,0,0,1-3.1,3.1Zm40.8,35.244A6.259,6.259,0,1,1,67.8,52.569a6.259,6.259,0,0,1-6.259,6.259" transform="translate(0 -0.002)" fill="#006990"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Rectangle_526" data-name="Rectangle 526" width="100.751" height="100.751" transform="translate(0 0.183)" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

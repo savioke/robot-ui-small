@@ -1,17 +1,30 @@
 export const styles = {
   rootContainer: {
     display: 'flex',
+    flexDirection: 'column',
+    gap: 5,
+  },
+  dashboardContainer: {
+    display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    width: '100%',
   },
-  choiceContainer: {
+  paperContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    gap: 2,
   },
-  text: {
-    marginTop: 1,
-    color: '#191919',
+  paper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '150px',
+    height: '144px',
+    borderRadius: '30px',
+  },
+  settingsIcon: {
+    fontSize: 112,
   },
 };

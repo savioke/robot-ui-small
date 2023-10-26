@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="158" height="158" viewBox="0 0 158 158">
+  <defs>
+    <filter id="Path_55" x="0" y="0" width="158" height="158" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_555" data-name="Rectangle 555" width="100.438" height="97.531" fill="#e7ab44"/>
+    </clipPath>
+  </defs>
+  <g id="Return_to_Dock" data-name="Return to Dock" transform="translate(12 6)">
+    <g id="Group_1" data-name="Group 1" transform="translate(-3902.75 154)">
+      <g transform="matrix(1, 0, 0, 1, 3890.75, -160)" filter="url(#Path_55)">
+        <path id="Path_55-2" data-name="Path 55" d="M30.035,0h79.931A30.035,30.035,0,0,1,140,30.035v79.931A30.035,30.035,0,0,1,109.965,140H30.035A30.035,30.035,0,0,1,0,109.965V30.035A30.035,30.035,0,0,1,30.035,0Z" transform="translate(12 6)" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Group_128" data-name="Group 128" transform="translate(19.281 20.955)">
+      <g id="Group_127" data-name="Group 127" clip-path="url(#clip-path)">
+        <path id="Path_73" data-name="Path 73" d="M99.891,40.858,53.57,1.237a5.156,5.156,0,0,0-6.7,0L.548,40.858a1.555,1.555,0,0,0,1.011,2.736H14.3A1.555,1.555,0,0,1,15.86,45.15V95.976a1.555,1.555,0,0,0,1.555,1.555H83.024a1.555,1.555,0,0,0,1.555-1.555V45.15a1.555,1.555,0,0,1,1.555-1.555H98.88a1.555,1.555,0,0,0,1.011-2.736M34.769,88.164l12.686-28.48H31.01l29.006-34.2L48.574,52.471l17.658.455Z" transform="translate(0 0)" fill="#e7ab44"/>
+      </g>
+    </g>
+  </g>
+</svg>

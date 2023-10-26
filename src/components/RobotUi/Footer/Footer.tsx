@@ -1,71 +1,61 @@
 import React from 'react';
-import { useSelector } from 'typeDux';
-import { useDispatch } from 'typeDux';
+import { useDispatch, useSelector } from 'typeDux';
+import Image from 'next/image';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, IconButton } from '@mui/material';
+import { Box, Fab, Fade } from '@mui/material';
+import { Lock } from '@mui/icons-material';
 
 /** Components */
-import HomeIcon from '../SvgIcons/HomeIcon/HomeIcon';
-import SettingsIcon from '../SvgIcons/SettingsIcon/SettingsIcon';
-import BackArrowIcon from '../SvgIcons/BackArrowIcon/BackArrowIcon';
 
 /** styles */
 import { styles } from './Footer.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
-import { getDisplayScreen } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function Footer() {
+  const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
+  const isScreenTouched = useSelector(getIsScreenTouched);
 
   if (
-    displayScreen !== DisplayScreenOptions.PassCode &&
-    displayScreen !== DisplayScreenOptions.Home &&
-    displayScreen !== DisplayScreenOptions.Dashboard &&
-    displayScreen !== DisplayScreenOptions.Settings &&
-    displayScreen !== DisplayScreenOptions.MingleForm
+    displayScreen === DisplayScreenOptions.PassCode ||
+    displayScreen === DisplayScreenOptions.RoomNumber ||
+    displayScreen === DisplayScreenOptions.RoomMessage
   ) {
-    return null;
+    return (
+      <Box sx={{ position: 'relative', left: 0 }}>
+        <Image
+          priority
+          src='/images/robot-face.png'
+          height={75}
+          width={100}
+          alt={intl.formatMessage({ id: 'miniRobotFace' })}
+        />
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.Home) {
     return (
-      <Box sx={styles.iconContainer}>
-        <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}>
-          <SettingsIcon variant='white' />
-        </IconButton>
-      </Box>
-    );
-  } else if (
-    displayScreen === DisplayScreenOptions.Settings ||
-    displayScreen === DisplayScreenOptions.MingleForm
-  ) {
-    return (
-      <Box sx={styles.iconContainer}>
-        <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}>
-          <BackArrowIcon />
-        </IconButton>
-      </Box>
-    );
-  } else if (displayScreen === DisplayScreenOptions.Dashboard) {
-    return (
-      <Box sx={styles.iconContainer}>
-        <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}>
-          <BackArrowIcon />
-        </IconButton>
-      </Box>
+      <Fade in={isScreenTouched}>
+        <Box sx={styles.iconContainer}>
+          <Fab
+            sx={{ width: '60px', height: '60px' }}
+            // size='large'
+            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
+          >
+            <Lock fontSize='large' />
+          </Fab>
+        </Box>
+      </Fade>
     );
   }
 
-  return (
-    <Box sx={styles.iconContainer}>
-      <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}>
-        <HomeIcon />
-      </IconButton>
-    </Box>
-  );
+  return null;
 }

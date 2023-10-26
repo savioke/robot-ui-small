@@ -2,12 +2,14 @@ import { IntlShape } from 'react-intl';
 
 export const DisplayScreenOptions = {
   DeliverForm: 'Deliver Form' as const,
-  MingleForm: 'Mingle Form' as const,
-  GoToForm: 'Go-To Form' as const,
   Dashboard: 'Dashboard' as const,
   Home: 'Home' as const,
   PassCode: 'Passcode' as const,
   Settings: 'Settings' as const,
+  DeliveryDashboard: 'Delivery dashboard' as const,
+  RoomNumber: 'Room number' as const,
+  RoomMessage: 'Room message' as const,
+  ViewRoomSummary: 'View room number summary' as const,
 };
 
 export const Themes = {

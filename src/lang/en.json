@@ -13,7 +13,7 @@
   "9": "9",
   "ok": "Ok",
   "enter": "Enter",
-  "enterYourPasscode": "Enter your passcode",
+  "enterPasscode": "Enter passcode",
   "mingle": "Mingle",
   "deliver": "Deliver",
   "settings": "Settings",
@@ -40,5 +40,15 @@
   "closingTheLid": "Closing the lid",
   "floor": "Floor",
   "general": "General",
-  "help": "Help"
+  "help": "Help",
+  "connected": "Connected",
+  "battery": "Battery",
+  "returnHome": "Return home",
+  "miniRobotFace": "Mini robot face",
+  "delivery": "Delivery",
+  "utility": "Utility",
+  "hiHowCanIHelp": "Hi! How can I help you?",
+  "enterRoomNumber": "Enter room number",
+  "roomNumber": "Room number",
+  "message": "Message"
 }

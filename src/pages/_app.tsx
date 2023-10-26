@@ -15,9 +15,10 @@ import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
 import Footer from 'components/RobotUi/Footer/Footer';
+import TopBar from 'components/RobotUi/TopBar/TopBar';
 
 /** actions */
-import { setTheme } from 'state/ui/ui.slice';
+import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';
 
 /** Mui Premium License Key */
 
@@ -82,14 +83,20 @@ export default function App({ Component, ...rest }: AppProps) {
               minHeight: '100vh',
               flexDirection: 'column',
               backgroundImage: `${stateTheme}`,
+              backgroundSize: 'cover',
+              // paddingX: 3,
+              paddingRight: 2,
+              paddingLeft: 1,
+              // paddingBottom: 3,
+              // paddingTop: 2,
             }}
+            onClick={() => store.dispatch(setIsScreenTouched(true))}
           >
+            <TopBar />
             <Box
               component='main'
               sx={{
                 display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
                 flexGrow: 1,
               }}
             >

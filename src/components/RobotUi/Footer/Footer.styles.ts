@@ -1,7 +1,8 @@
 export const styles = {
   iconContainer: {
     height: '50px',
-    marginLeft: 1,
-    marginBottom: 3,
+    position: 'relative',
+    bottom: 35,
+    left: 5,
   },
 };

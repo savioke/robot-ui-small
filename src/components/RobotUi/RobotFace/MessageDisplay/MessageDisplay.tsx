@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
 
 /** Components */
 import DeliverForm from './DeliverForm/DeliverForm';
+import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
-import MingleForm from './MingleForm/MingleForm';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -41,8 +41,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <Dashboard />;
   } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
     return <DeliverForm formRef={formRef} />;
-  } else if (displayScreen === DisplayScreenOptions.MingleForm) {
-    return <MingleForm formRef={formRef} />;
+  } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
+    return <DeliveryDashboard />;
   } else if (isConfirmationNeeded) {
     return (
       <>
@@ -76,11 +76,13 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   }
 
   return (
-    <Text
-      sx={styles.centeredText}
-      variant='h2'
-    >
-      Connecting...
-    </Text>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+      <Text
+        sx={styles.centeredText}
+        variant='h2'
+      >
+        Connecting...
+      </Text>
+    </Box>
   );
 }

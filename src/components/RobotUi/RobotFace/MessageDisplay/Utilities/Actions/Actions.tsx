@@ -1,6 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import Image from 'next/image';
+import { useDispatch } from 'typeDux';
 
 /** Mui Components */
 import { Box, Button } from '@mui/material';
@@ -15,9 +16,12 @@ import { styles } from './Actions.styles';
 /** redux */
 
 /** helpers */
+import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function Actions() {
   const intl = useIntl();
+  const dispatch = useDispatch();
+  const socket = useSocketIo(dispatch, intl);
 
   return (
     <Box sx={styles.rootContainer}>
@@ -31,7 +35,7 @@ export default function Actions() {
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
           {/* TODO: Add in socket events */}
-          <Button>
+          <Button onClick={() => socket?.emit('choice_made', { name: 'Open Lid', context: {} })}>
             <Image
               priority
               src='images/open-lid.svg'

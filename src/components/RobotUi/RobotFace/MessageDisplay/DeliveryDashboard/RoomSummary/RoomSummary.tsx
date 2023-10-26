@@ -5,7 +5,7 @@ import { Box, Paper, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
-import keyboard from 'components/RobotUi/Footer/keyboard/keyboard';
+import Keyboard from 'components/RobotUi/Keyboard/Keyboard';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -44,7 +44,7 @@ export default function RoomSummary() {
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <keyboard
+              <Keyboard
                 passCode={roomMessage}
                 setPasscode={setRoomMessage}
               />

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Grid, Button } from '@mui/material';
-import { Backspace, ArrowUpward } from '@mui/icons-material';
+import { Backspace, ArrowUpward, ArrowDownward } from '@mui/icons-material';
 
 /** Components */
 
@@ -27,7 +27,8 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
-  const [isNumberDisplay, setIsNumberDisplay] = useState(true);
+  const [isNumberDisplay, setIsNumberDisplay] = useState(false);
+  const [isCapitalLetters, setIsCapitalLetters] = useState(false);
 
   const handleKeyboardValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setPasscode((previousValue) => {
@@ -609,7 +610,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
             variant='contained'
             sx={styles.numberButtons}
             onClick={handleKeyboardValues}
-            value='a'
+            value={isCapitalLetters ? 'A' : 'a'}
           >
             {intl.formatMessage({ id: 'a' })}
           </Button>
@@ -1063,10 +1064,10 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
           <Button
             variant='contained'
             sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
-            // TODO: Handle capitalizing letters
-            onClick={handleKeyboardValues}
+            onClick={() => setIsCapitalLetters((previousValue) => !previousValue)}
           >
-            <ArrowUpward />
+            {isCapitalLetters ? <ArrowDownward /> : <ArrowUpward />}
+            {/* <ArrowUpward /> */}
           </Button>
         </Grid>
         <Grid

@@ -16,7 +16,7 @@ import { styles } from './RoomMessage.styles';
 /** helpers */
 
 export default function RoomMessage() {
-  const [roomMessage, setRoomMessage] = React.useState('');
+  const [roomMessage, setRoomMessage] = React.useState('Your order has arrived');
 
   return (
     <Box sx={styles.container}>
@@ -35,10 +35,15 @@ export default function RoomMessage() {
                 <Text variant='h4'>What I will say on delivery!</Text>
                 <TextField
                   multiline
-                  rows={10}
+                  rows={5}
                   value={roomMessage}
-                  inputProps={{ style: { textAlign: 'center' } }}
-                  InputProps={{ disableUnderline: true, sx: { borderRadius: '20px' } }}
+                  InputProps={{
+                    disableUnderline: true,
+                    sx: {
+                      borderRadius: '20px',
+                      fontSize: '32px',
+                    },
+                  }}
                   sx={styles.textfield}
                 />
               </Box>

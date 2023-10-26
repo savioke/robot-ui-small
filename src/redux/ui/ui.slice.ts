@@ -15,7 +15,8 @@ interface RobotUiState {
     | 'Room number'
     | 'Room message'
     | 'Room summary'
-    | 'Favorites';
+    | 'Favorites'
+    | 'Utilities';
   displayMessage: string;
   isConfirmationNeeded: boolean;
   isScreenTouched: boolean;
@@ -33,7 +34,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.Home,
+  displayScreen: DisplayScreenOptions.Dashboard,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

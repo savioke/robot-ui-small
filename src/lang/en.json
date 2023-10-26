@@ -98,5 +98,12 @@
   "%": "%",
   "=": "=",
   "$": "$",
-  "favorites": "Favorites"
+  "favorites": "Favorites",
+  "utilities": "Utilities",
+  "status": "Status",
+  "notifications": "Notifications",
+  "actions": "Actions",
+  "needHelp?": "Need help?",
+  "adminAccess": "Admin Access",
+  "lookingForSomethingElse?": "Looking for something else?"
 }

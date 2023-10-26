@@ -10,6 +10,7 @@ import DeliverForm from './DeliverForm/DeliverForm';
 import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
 import Favorites from './Favorites/Favorites';
+import Utilities from './Utilities/Utilities';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -46,6 +47,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <DeliveryDashboard />;
   } else if (displayScreen === DisplayScreenOptions.Favorites) {
     return <Favorites />;
+  } else if (displayScreen === DisplayScreenOptions.Utilities) {
+    return <Utilities />;
   } else if (isConfirmationNeeded) {
     return (
       <>

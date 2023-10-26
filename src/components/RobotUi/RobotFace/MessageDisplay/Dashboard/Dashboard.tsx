@@ -67,7 +67,7 @@ export default function Dashboard() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Favorites))}>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
             <Image
               priority
               src='images/settings.svg'
@@ -78,7 +78,7 @@ export default function Dashboard() {
           </Button>
           <Text
             variant='h5'
-            id='utility'
+            id='utilities'
             sx={{ color: '#707070', fontWeight: 600 }}
           />
         </Box>

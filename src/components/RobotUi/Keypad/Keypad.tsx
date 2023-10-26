@@ -29,8 +29,7 @@ export default function Keypad({ setValues }: KeypadProps) {
 
   const handleKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setValues((previousValue) => {
-      // TODO: This needs to be dynamic to accept any number of pins...
-      if (previousValue.length === 6) {
+      if (previousValue.length === 16) {
         return previousValue;
       }
 

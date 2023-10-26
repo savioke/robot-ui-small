@@ -41,6 +41,7 @@ export default function ArrowBackTopBar() {
           variant='h5'
           component='h1'
           id='roomNumber'
+          sx={{ fontWeight: 600 }}
         />
       </Box>
     );
@@ -69,6 +70,7 @@ export default function ArrowBackTopBar() {
           variant='h5'
           component='h1'
           id='message'
+          sx={{ fontWeight: 600 }}
         />
       </Box>
     );

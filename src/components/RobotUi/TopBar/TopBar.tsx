@@ -34,6 +34,7 @@ export default function TopBar() {
       <Box sx={styles.container}>
         {displayScreen !== DisplayScreenOptions.Home ? (
           <Fab
+            sx={{ marginTop: 1 }}
             size='small'
             onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
           >

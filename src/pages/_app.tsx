@@ -37,7 +37,6 @@ export default function App({ Component, ...rest }: AppProps) {
     // TODO: Don't fire off idle if websockets are still coming from a delivery or running tests.
     onIdle: () => {
       store.dispatch(setIsScreenTouched(false));
-      store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
     },
     timeout: 10000,
   });

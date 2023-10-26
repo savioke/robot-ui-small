@@ -38,7 +38,7 @@ export default function Dashboard() {
           >
             <Image
               priority
-              src='images/delivery.svg'
+              src='images/delivery2.svg'
               height={140}
               width={140}
               alt={intl.formatMessage({ id: 'delivery' })}
@@ -54,7 +54,7 @@ export default function Dashboard() {
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Favorites))}>
             <Image
               priority
-              src='images/favorites.svg'
+              src='images/favorites2.svg'
               height={140}
               width={140}
               alt={intl.formatMessage({ id: 'favorites' })}

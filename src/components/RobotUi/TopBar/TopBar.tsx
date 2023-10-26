@@ -47,7 +47,7 @@ export default function TopBar() {
           <Box sx={styles.rightContainer}>
             {/* TODO: Condtiionally display this from socket connection sent from robot */}
             {isNetworkConnected ? <Wifi fontSize='large' /> : <WifiOff fontSize='large' />}
-            <Text sx={{ color: '#FFFFFF' }}>m2012</Text>
+            <Text sx={{ color: '#FFFFFF', fontSize: '20px' }}>m2012</Text>
           </Box>
           <Divider
             flexItem

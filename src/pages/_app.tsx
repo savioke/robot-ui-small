@@ -38,7 +38,7 @@ export default function App({ Component, ...rest }: AppProps) {
     onIdle: () => {
       store.dispatch(setIsScreenTouched(false));
     },
-    timeout: 10000,
+    timeout: 20000,
   });
 
   React.useEffect(() => {

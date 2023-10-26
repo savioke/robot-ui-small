@@ -54,7 +54,10 @@ export default function TopBar() {
           <Box sx={styles.rightContainer}>
             {/* TODO: Conditional display if not connected */}
             <Wifi fontSize='large' />
-            <Text id='connected' />
+            <Text
+              id='connected'
+              sx={{ color: '#FFFFFF' }}
+            />
           </Box>
           <Divider
             flexItem

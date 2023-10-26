@@ -99,7 +99,7 @@ export default function ArrowBackTopBar() {
         <ArrowBack fontSize='large' />
       </IconButton>
       <Text
-        variant='h5'
+        variant='h6'
         component='h1'
         id='delivery'
       />

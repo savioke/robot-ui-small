@@ -9,6 +9,7 @@ import { Button, Box } from '@mui/material';
 import DeliverForm from './DeliverForm/DeliverForm';
 import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
+import Favorites from './Favorites/Favorites';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -43,6 +44,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <DeliverForm formRef={formRef} />;
   } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
     return <DeliveryDashboard />;
+  } else if (displayScreen === DisplayScreenOptions.Favorites) {
+    return <Favorites />;
   } else if (isConfirmationNeeded) {
     return (
       <>

@@ -14,7 +14,8 @@ interface RobotUiState {
     | 'Delivery dashboard'
     | 'Room number'
     | 'Room message'
-    | 'Room summary';
+    | 'Room summary'
+    | 'Favorites';
   displayMessage: string;
   isConfirmationNeeded: boolean;
   isScreenTouched: boolean;

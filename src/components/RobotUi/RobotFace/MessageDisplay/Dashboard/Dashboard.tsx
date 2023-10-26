@@ -29,61 +29,57 @@ export default function Dashboard() {
         variant='h3'
         component='h1'
         id='hiHowCanIHelp'
-        sx={{ marginTop: '57px', marginLeft: '56px' }}
+        sx={{ marginTop: '51px', marginLeft: '56px', marginBottom: 1 }}
       />
       <Box sx={styles.dashboardContainer}>
-        <Box sx={styles.paperContainer}>
-          <Paper
-            elevation={4}
-            sx={styles.paper}
-          >
-            <Button
-              onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-            >
-              <Image
-                priority
-                src='images/delivery.svg'
-                height={150}
-                width={144}
-                alt={intl.formatMessage({ id: 'delivery' })}
-              />
-            </Button>
-          </Paper>
-          <Text
-            variant='h5'
-            id='delivery'
-          />
-        </Box>
         <Box sx={styles.paperContainer}>
           <Button
             onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
           >
             <Image
               priority
-              src='images/favorites.svg'
-              height={150}
-              width={144}
-              alt={intl.formatMessage({ id: 'favorites' })}
+              src='images/Delivery3.svg'
+              height={140}
+              width={140}
+              alt={intl.formatMessage({ id: 'delivery' })}
             />
           </Button>
-
           <Text
             variant='h5'
-            id='favorites'
+            id='delivery'
+            sx={{ color: '#00A0DB', fontWeight: 600 }}
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Paper
-            elevation={4}
-            sx={styles.paper}
-          >
-            <IconButton onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Settings))}>
-              <Settings sx={styles.settingsIcon} />
-            </IconButton>
-          </Paper>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Favorites))}>
+            <Image
+              priority
+              src='images/favorites.svg'
+              height={140}
+              width={140}
+              alt={intl.formatMessage({ id: 'favorites' })}
+            />
+          </Button>
+          <Text
+            variant='h5'
+            id='favorites'
+            sx={{ color: '#C23F42', fontWeight: 600 }}
+          />
+        </Box>
+        <Box sx={styles.paperContainer}>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Favorites))}>
+            <Image
+              priority
+              src='images/settings.svg'
+              height={140}
+              width={140}
+              alt={intl.formatMessage({ id: 'utilities' })}
+            />
+          </Button>
           <Text
             variant='h5'
             id='utility'
+            sx={{ color: '#707070', fontWeight: 600 }}
           />
         </Box>
       </Box>

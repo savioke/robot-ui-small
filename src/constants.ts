@@ -10,6 +10,7 @@ export const DisplayScreenOptions = {
   RoomNumber: 'Room number' as const,
   RoomMessage: 'Room message' as const,
   RoomSummary: 'Room summary' as const,
+  Favorites: 'Favorites' as const,
 };
 
 export const Themes = {

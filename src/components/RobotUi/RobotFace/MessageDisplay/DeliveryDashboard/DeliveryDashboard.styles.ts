@@ -2,7 +2,6 @@ export const styles = {
   rootContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 1,
   },
   dashboardContainer: {
     display: 'flex',

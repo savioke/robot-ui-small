@@ -7,11 +7,11 @@ import Image from 'next/image';
 import { Box, Button } from '@mui/material';
 
 /** Components */
-import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
+import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
 import Text from 'components/Text/Text';
 
 /** styles */
-import { styles } from './Utilities.styles';
+import { styles } from './Actions.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
@@ -19,7 +19,7 @@ import { setDisplayScreen } from 'state/ui/ui.slice';
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 
-export default function Utilities() {
+export default function Actions() {
   const intl = useIntl();
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export default function Utilities() {
       <Text
         variant='h3'
         component='h1'
-        id='lookingForSomethingElse?'
+        id='whatCanIDoForYou?'
         sx={{ marginLeft: 7, marginBottom: '24px' }}
       />
       <Box sx={styles.dashboardContainer}>
@@ -39,31 +39,15 @@ export default function Utilities() {
           >
             <Image
               priority
-              src='images/Status.svg'
+              src='images/open-lid.svg'
               height={140}
               width={140}
-              alt={intl.formatMessage({ id: 'status' })}
+              alt={intl.formatMessage({ id: 'openLid' })}
             />
           </Button>
           <Text
             variant='h5'
-            id='status'
-            sx={{ fontWeight: 600 }}
-          />
-        </Box>
-        <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Actions))}>
-            <Image
-              priority
-              src='images/Actions.svg'
-              height={140}
-              width={140}
-              alt={intl.formatMessage({ id: 'actions' })}
-            />
-          </Button>
-          <Text
-            variant='h5'
-            id='actions'
+            id='openLid'
             sx={{ fontWeight: 600 }}
           />
         </Box>
@@ -71,15 +55,15 @@ export default function Utilities() {
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
             <Image
               priority
-              src='images/Help.svg'
+              src='images/close-lid.svg'
               height={140}
               width={140}
-              alt={intl.formatMessage({ id: 'needHelp?' })}
+              alt={intl.formatMessage({ id: 'closeLid' })}
             />
           </Button>
           <Text
             variant='h5'
-            id='needHelp?'
+            id='closeLid'
             sx={{ fontWeight: 600 }}
           />
         </Box>
@@ -87,15 +71,31 @@ export default function Utilities() {
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
             <Image
               priority
-              src='images/Admin Access.svg'
+              src='images/go-to-location.svg'
               height={140}
               width={140}
-              alt={intl.formatMessage({ id: 'adminAccess' })}
+              alt={intl.formatMessage({ id: 'goToLocation' })}
             />
           </Button>
           <Text
             variant='h5'
-            id='adminAccess'
+            id='goToLocation'
+            sx={{ fontWeight: 600 }}
+          />
+        </Box>
+        <Box sx={styles.paperContainer}>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
+            <Image
+              priority
+              src='images/return-to-dock.svg'
+              height={140}
+              width={140}
+              alt={intl.formatMessage({ id: 'returnToDock' })}
+            />
+          </Button>
+          <Text
+            variant='h5'
+            id='returnToDock'
             sx={{ fontWeight: 600 }}
           />
         </Box>

@@ -2,21 +2,24 @@ import { createSlice } from 'typeDux';
 import { DisplayScreenOptions } from '../../constants';
 import { NavigationGoal } from 'types/r2c2';
 
+type DisplayScreen =
+  | 'Actions'
+  | 'Deliver Form'
+  | 'Dashboard'
+  | 'Home'
+  | 'Passcode'
+  | 'Settings'
+  | 'Delivery dashboard'
+  | 'Room number'
+  | 'Room message'
+  | 'Room summary'
+  | 'Favorites'
+  | 'Utilities';
+
 interface RobotUiState {
   deliverLocations: NavigationGoal[];
   mingleLocations: NavigationGoal[];
-  displayScreen:
-    | 'Deliver Form'
-    | 'Dashboard'
-    | 'Home'
-    | 'Passcode'
-    | 'Settings'
-    | 'Delivery dashboard'
-    | 'Room number'
-    | 'Room message'
-    | 'Room summary'
-    | 'Favorites'
-    | 'Utilities';
+  displayScreen: DisplayScreen;
   displayMessage: string;
   isConfirmationNeeded: boolean;
   isScreenTouched: boolean;
@@ -34,7 +37,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.Dashboard,
+  displayScreen: DisplayScreenOptions.Actions,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

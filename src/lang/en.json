@@ -105,5 +105,10 @@
   "actions": "Actions",
   "needHelp?": "Need help?",
   "adminAccess": "Admin Access",
-  "lookingForSomethingElse?": "Looking for something else?"
+  "lookingForSomethingElse?": "Looking for something else?",
+  "whatCanIDoForYou?": "What can I do for you?",
+  "openLid": "Open lid",
+  "closeLid": "Close lid",
+  "goToLocation": "Go to location",
+  "returnToDock": "Return to dock"
 }

@@ -120,6 +120,28 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.Actions) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <IconButton
+          sx={styles.iconButton}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
+        >
+          <ArrowBack fontSize='large' />
+        </IconButton>
+        <Text
+          variant='h5'
+          component='h1'
+          id='utilities'
+        />
+        -
+        <Text
+          variant='h5'
+          component='h1'
+          id='actions'
+        />
+      </Box>
+    );
   }
 
   return (

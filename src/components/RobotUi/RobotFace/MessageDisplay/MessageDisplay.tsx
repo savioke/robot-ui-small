@@ -6,6 +6,7 @@ import { useIntl } from 'react-intl';
 import { Button, Box } from '@mui/material';
 
 /** Components */
+import Actions from './Utilities/Actions/Actions';
 import DeliverForm from './DeliverForm/DeliverForm';
 import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
@@ -49,6 +50,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <Favorites />;
   } else if (displayScreen === DisplayScreenOptions.Utilities) {
     return <Utilities />;
+  } else if (displayScreen === DisplayScreenOptions.Actions) {
+    return <Actions />;
   } else if (isConfirmationNeeded) {
     return (
       <>

@@ -42,17 +42,19 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
   return (
     <Grid
       container
+      justifyContent='flex-end'
       rowSpacing='22px'
       sx={styles.gridContainer}
     >
       <Grid
         container
         item
+        justifyContent='flex-end'
         xs={12}
       >
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -66,7 +68,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -80,7 +82,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -96,12 +98,12 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
       <Grid
         container
         item
-        spacing={1}
+        justifyContent='flex-end'
         xs={12}
       >
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -115,7 +117,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -129,7 +131,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -145,12 +147,12 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
       <Grid
         container
         item
-        spacing={1}
+        justifyContent='flex-end'
         xs={12}
       >
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -164,7 +166,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -178,7 +180,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -194,16 +196,17 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
       <Grid
         container
         item
+        justifyContent='flex-end'
         xs={12}
       >
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={[styles.fabContainer, styles.iconButtonContainer]}
         ></Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <Button
@@ -217,7 +220,7 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
           sx={styles.fabContainer}
         >
           <IconButton
@@ -238,22 +241,27 @@ export default function Keypad({ passCode, setPasscode }: KeypadProps) {
           </IconButton>
         </Grid>
       </Grid>
-      <Button
-        fullWidth
-        sx={{ marginTop: 3, height: '56px', fontSize: '24px' }}
-        variant='contained'
-        onClick={() => {
-          // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-          // TODO: Passcode validation from R2C2
-          if (displayScreen === DisplayScreenOptions.RoomNumber) {
-            return dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage));
-          }
-
-          return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-        }}
+      <Grid
+        item
+        xs={9}
       >
-        {intl.formatMessage({ id: 'ok' })}
-      </Button>
+        <Button
+          fullWidth
+          sx={{ marginTop: 3, height: '72px', fontSize: '24px' }}
+          variant='contained'
+          onClick={() => {
+            // TODO: Hook in error message for invalid code... This might be verified from R2C2.
+            // TODO: Passcode validation from R2C2
+            if (displayScreen === DisplayScreenOptions.RoomNumber) {
+              return dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage));
+            }
+
+            return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+          }}
+        >
+          {intl.formatMessage({ id: 'ok' })}
+        </Button>
+      </Grid>
     </Grid>
   );
 }

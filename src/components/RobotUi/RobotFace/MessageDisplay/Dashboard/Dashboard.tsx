@@ -38,7 +38,7 @@ export default function Dashboard() {
           >
             <Image
               priority
-              src='images/Delivery3.svg'
+              src='images/delivery.svg'
               height={140}
               width={140}
               alt={intl.formatMessage({ id: 'delivery' })}

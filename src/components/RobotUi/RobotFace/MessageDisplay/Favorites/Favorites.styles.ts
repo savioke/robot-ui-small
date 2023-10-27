@@ -25,4 +25,11 @@ export const styles = {
   settingsIcon: {
     fontSize: 112,
   },
+  boldFont: {
+    fontWeight: 600,
+  },
+  title: {
+    marginLeft: 7,
+    marginBottom: 3,
+  },
 };

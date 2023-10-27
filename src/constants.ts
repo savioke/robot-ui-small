@@ -40,3 +40,16 @@ export const DisplayMessageOptions = (
   'Heading back to my dock': intl.formatMessage({ id: 'headingBackToMyDock' }),
   'Closing the lid': intl.formatMessage({ id: 'closingTheLid' }),
 });
+
+export const AvatarBackgroundColors = [
+  '#004B66',
+  '#0AA15B',
+  '#7B5097',
+  '#E7AB44',
+  '#0A89A1',
+  '#D34E87',
+  '#B476DC',
+  '#9F6A0D',
+  '#186212',
+  '#4B0AA1',
+];

@@ -30,7 +30,7 @@ export default function Actions() {
         variant='h3'
         component='h1'
         id='whatCanIDoForYou?'
-        sx={{ marginLeft: 7, marginBottom: '24px' }}
+        sx={styles.title}
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
@@ -51,7 +51,7 @@ export default function Actions() {
           <Text
             variant='h5'
             id='openLid'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
         <Box sx={styles.paperContainer}>
@@ -72,7 +72,7 @@ export default function Actions() {
           <Text
             variant='h5'
             id='closeLid'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
         <Box sx={styles.paperContainer}>
@@ -89,7 +89,7 @@ export default function Actions() {
           <Text
             variant='h5'
             id='goToLocation'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
         <Box sx={styles.paperContainer}>
@@ -106,7 +106,7 @@ export default function Actions() {
           <Text
             variant='h5'
             id='returnToDock'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
       </Box>

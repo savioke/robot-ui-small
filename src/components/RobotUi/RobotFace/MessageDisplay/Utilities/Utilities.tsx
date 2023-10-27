@@ -30,7 +30,7 @@ export default function Utilities() {
         variant='h3'
         component='h1'
         id='lookingForSomethingElse?'
-        sx={{ marginLeft: 7, marginBottom: '24px' }}
+        sx={styles.title}
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
@@ -48,7 +48,7 @@ export default function Utilities() {
           <Text
             variant='h5'
             id='status'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
         <Box sx={styles.paperContainer}>
@@ -64,7 +64,7 @@ export default function Utilities() {
           <Text
             variant='h5'
             id='actions'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
         <Box sx={styles.paperContainer}>
@@ -80,7 +80,7 @@ export default function Utilities() {
           <Text
             variant='h5'
             id='needHelp?'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
         <Box sx={styles.paperContainer}>
@@ -96,7 +96,7 @@ export default function Utilities() {
           <Text
             variant='h5'
             id='adminAccess'
-            sx={{ fontWeight: 600 }}
+            sx={styles.boldFont}
           />
         </Box>
       </Box>

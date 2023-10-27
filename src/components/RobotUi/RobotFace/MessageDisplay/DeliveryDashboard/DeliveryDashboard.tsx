@@ -23,7 +23,6 @@ export default function DeliveryDashboard() {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  // TODO: Add in favorites
   return (
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />
@@ -31,7 +30,7 @@ export default function DeliveryDashboard() {
         variant='h3'
         component='h1'
         id='hiHowCanIHelp'
-        sx={{ marginLeft: 7 }}
+        sx={styles.title}
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
@@ -44,15 +43,7 @@ export default function DeliveryDashboard() {
               alt={intl.formatMessage({ id: 'enterRoomNumber' })}
             />
           </Button>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '64.03px',
-            }}
-          >
+          <Box sx={[styles.descriptionContainer, styles.descriptionHeight]}>
             <Text variant='h5'>Enter</Text>
             <Text
               component='strong'
@@ -72,15 +63,7 @@ export default function DeliveryDashboard() {
               alt={intl.formatMessage({ id: 'delivery' })}
             />
           </Button>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '64.03px',
-            }}
-          >
+          <Box sx={[styles.descriptionContainer, styles.descriptionHeight]}>
             <Text variant='h5'>Find By</Text>
             <Text
               component='strong'
@@ -100,7 +83,7 @@ export default function DeliveryDashboard() {
               alt={intl.formatMessage({ id: 'search' })}
             />
           </Button>
-          <Box sx={{ height: '64.03px' }}>
+          <Box sx={styles.descriptionHeight}>
             <Text
               variant='h5'
               component='strong'

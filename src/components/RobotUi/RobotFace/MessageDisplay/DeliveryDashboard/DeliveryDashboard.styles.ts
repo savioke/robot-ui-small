@@ -25,4 +25,16 @@ export const styles = {
   settingsIcon: {
     fontSize: 112,
   },
+  title: {
+    marginLeft: 7,
+  },
+  descriptionContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  descriptionHeight: {
+    height: '64.03px',
+  },
 };

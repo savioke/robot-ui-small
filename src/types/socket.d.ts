@@ -45,7 +45,7 @@ export interface ClientToServerEvents {
   userServerDisconnection: (socketId: string) => void;
   ui_request: (formValues: any) => void;
   ui_event: ({ name, context }: { name: string; context: {} }) => void;
-  choice_made: ({ name, context }: { name: string; context: {} }) => void;
+  choice_made: ({ string }: { name: string }) => void;
 
   // TODO: Mocking R2C2 Socket Server
   display_message: (message: string) => void;

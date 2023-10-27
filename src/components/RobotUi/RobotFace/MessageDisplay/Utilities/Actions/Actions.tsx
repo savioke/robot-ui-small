@@ -34,7 +34,12 @@ export default function Actions() {
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => socket?.emit('choice_made', { name: 'Open Lid', context: {} })}>
+          <Button
+            onClick={() => {
+              console.log('OPENING LID');
+              socket?.emit('choice_made', { name: 'Open Lid' });
+            }}
+          >
             <Image
               priority
               src='images/open-lid.svg'
@@ -50,7 +55,13 @@ export default function Actions() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => socket?.emit('choice_made', { name: 'Close Lid', context: {} })}>
+          <Button
+            onClick={() => {
+              console.log('CLOSING LID');
+
+              socket?.emit('choice_made', { name: 'Close Lid' });
+            }}
+          >
             <Image
               priority
               src='images/close-lid.svg'

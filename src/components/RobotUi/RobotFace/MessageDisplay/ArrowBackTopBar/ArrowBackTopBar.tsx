@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'typeDux';
+import Image from 'next/image';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Button } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 
 /** Components */
@@ -21,16 +23,23 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function ArrowBackTopBar() {
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
+  const intl = useIntl();
 
   if (displayScreen === DisplayScreenOptions.RoomNumber) {
     return (
       <Box sx={styles.arrowBackContainer}>
-        <IconButton
-          sx={styles.iconButton}
+        <Button
+          sx={{ padding: 0 }}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
         >
-          <ArrowBack fontSize='large' />
-        </IconButton>
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
         <Text
           variant='h5'
           component='h1'
@@ -48,12 +57,18 @@ export default function ArrowBackTopBar() {
   } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
     return (
       <Box sx={styles.arrowBackContainer}>
-        <IconButton
-          sx={styles.iconButton}
+        <Button
+          sx={{ padding: 0 }}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}
         >
-          <ArrowBack fontSize='large' />
-        </IconButton>
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
         <Text
           variant='h5'
           component='h1'
@@ -77,12 +92,18 @@ export default function ArrowBackTopBar() {
   } else if (displayScreen === DisplayScreenOptions.PassCode) {
     return (
       <Box sx={styles.arrowBackContainer}>
-        <IconButton
-          sx={styles.iconButton}
+        <Button
+          sx={{ padding: 0 }}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
         >
-          <ArrowBack fontSize='large' />
-        </IconButton>
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
         <Text
           variant='h5'
           component='h1'
@@ -94,12 +115,18 @@ export default function ArrowBackTopBar() {
   } else if (displayScreen === DisplayScreenOptions.Utilities) {
     return (
       <Box sx={styles.arrowBackContainer}>
-        <IconButton
-          sx={styles.iconButton}
+        <Button
+          sx={{ padding: 0 }}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
         >
-          <ArrowBack fontSize='large' />
-        </IconButton>
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
         <Text
           variant='h5'
           component='h1'
@@ -110,12 +137,18 @@ export default function ArrowBackTopBar() {
   } else if (displayScreen === DisplayScreenOptions.Favorites) {
     return (
       <Box sx={styles.arrowBackContainer}>
-        <IconButton
-          sx={styles.iconButton}
+        <Button
+          sx={{ padding: 0 }}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
         >
-          <ArrowBack fontSize='large' />
-        </IconButton>
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
         <Text
           variant='h5'
           component='h1'
@@ -126,12 +159,18 @@ export default function ArrowBackTopBar() {
   } else if (displayScreen === DisplayScreenOptions.Actions) {
     return (
       <Box sx={styles.arrowBackContainer}>
-        <IconButton
-          sx={styles.iconButton}
+        <Button
+          sx={{ padding: 0 }}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
         >
-          <ArrowBack fontSize='large' />
-        </IconButton>
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
         <Text
           variant='h5'
           component='h1'

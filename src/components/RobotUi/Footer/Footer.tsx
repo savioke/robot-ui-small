@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, Fab, Fade } from '@mui/material';
+import { Box, Fab, Fade, Button } from '@mui/material';
 import { Lock } from '@mui/icons-material';
 
 /** Components */
@@ -45,8 +45,23 @@ export default function Footer() {
     return (
       <Fade in={isScreenTouched}>
         <Box sx={styles.iconContainer}>
+          {/* <Button sx={{ position: 'relative', left: '25px', bottom: '10px' }}>
+            <Image
+              priority
+              src='/images/lock.svg'
+              height={75}
+              width={100}
+              alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            />
+          </Button> */}
           <Fab
-            sx={{ width: '60px', height: '60px' }}
+            sx={{
+              width: '60px',
+              height: '60px',
+              position: 'relative',
+              left: '25px',
+              bottom: '10px',
+            }}
             onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
           >
             <Lock fontSize='large' />

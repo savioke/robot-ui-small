@@ -33,13 +33,13 @@ export default function App({ Component, ...rest }: AppProps) {
   const stateTheme = store.getState().ui.theme;
   useSocketIo();
 
-  useIdleTimer({
-    // TODO: Don't fire off idle if websockets are still coming from a delivery or running tests.
-    onIdle: () => {
-      store.dispatch(setIsScreenTouched(false));
-    },
-    timeout: 20000,
-  });
+  // useIdleTimer({
+  //   // TODO: Don't fire off idle if websockets are still coming from a delivery or running tests.
+  //   onIdle: () => {
+  //     store.dispatch(setIsScreenTouched(false));
+  //   },
+  //   timeout: 20000,
+  // });
 
   React.useEffect(() => {
     const languagePreference = localStorage.getItem('languagePreference');

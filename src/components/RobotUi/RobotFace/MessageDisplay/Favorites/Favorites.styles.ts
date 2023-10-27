@@ -1,4 +1,10 @@
 export const styles = {
+  avatar: {
+    minWidth: '132px',
+    minHeight: '132px',
+    borderRadius: '30px',
+    fontSize: '70px',
+  },
   rootContainer: {
     display: 'flex',
     flexDirection: 'column',

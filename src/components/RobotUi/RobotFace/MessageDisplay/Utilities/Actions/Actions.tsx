@@ -36,7 +36,7 @@ export default function Actions() {
         <Box sx={styles.paperContainer}>
           <Button
             onClick={() => {
-              console.log('OPENING LID');
+              console.info('OPENING LID');
               socket?.emit('choice_made', { name: 'Open Lid' });
             }}
           >
@@ -57,8 +57,7 @@ export default function Actions() {
         <Box sx={styles.paperContainer}>
           <Button
             onClick={() => {
-              console.log('CLOSING LID');
-
+              console.info('CLOSING LID');
               socket?.emit('choice_made', { name: 'Close Lid' });
             }}
           >

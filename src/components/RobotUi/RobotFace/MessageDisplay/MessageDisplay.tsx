@@ -40,18 +40,15 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   const displayScreen = useSelector(getDisplayScreen);
   const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
 
-  if (displayScreen === DisplayScreenOptions.Dashboard) {
-    return <Dashboard />;
-  } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
-    return <DeliverForm formRef={formRef} />;
-  } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
-    return <DeliveryDashboard />;
-  } else if (displayScreen === DisplayScreenOptions.Favorites) {
-    return <Favorites />;
-  } else if (displayScreen === DisplayScreenOptions.Utilities) {
-    return <Utilities />;
-  } else if (displayScreen === DisplayScreenOptions.Actions) {
-    return <Actions />;
+  if (displayMessage) {
+    return (
+      <Text
+        sx={styles.centeredText}
+        variant='h2'
+      >
+        {displayMessage}
+      </Text>
+    );
   } else if (isConfirmationNeeded) {
     return (
       <>
@@ -73,15 +70,18 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
         </Button>
       </>
     );
-  } else if (displayMessage) {
-    return (
-      <Text
-        sx={styles.centeredText}
-        variant='h2'
-      >
-        {displayMessage}
-      </Text>
-    );
+  } else if (displayScreen === DisplayScreenOptions.Dashboard) {
+    return <Dashboard />;
+  } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
+    return <DeliverForm formRef={formRef} />;
+  } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
+    return <DeliveryDashboard />;
+  } else if (displayScreen === DisplayScreenOptions.Favorites) {
+    return <Favorites />;
+  } else if (displayScreen === DisplayScreenOptions.Utilities) {
+    return <Utilities />;
+  } else if (displayScreen === DisplayScreenOptions.Actions) {
+    return <Actions />;
   }
 
   return (

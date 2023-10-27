@@ -37,7 +37,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.Home,
+  displayScreen: DisplayScreenOptions.Actions,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

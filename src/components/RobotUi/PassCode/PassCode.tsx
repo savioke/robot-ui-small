@@ -4,8 +4,8 @@ import React from 'react';
 import { Box, Paper, TextField } from '@mui/material';
 
 /** Components */
-import ArrowBackTopBar from '../RobotFace/MessageDisplay/ArrowBackTopBar/ArrowBackTopBar';
 import Keypad from '../Keypad/Keypad';
+import Text from 'components/Text/Text';
 
 /** styles */
 import { styles } from './PassCode.styles';
@@ -26,7 +26,12 @@ export default function PassCode() {
         >
           <Box sx={styles.innerPaper}>
             <Box sx={styles.roomNumberContainer}>
-              <ArrowBackTopBar />
+              <Text
+                variant='h5'
+                component='h1'
+                id='enterPasscode'
+                sx={{ fontSize: '55px' }}
+              />
               <Box sx={styles.textFieldContainer}>
                 <TextField
                   fullWidth

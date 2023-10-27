@@ -77,7 +77,7 @@ export default function DeliveryDashboard() {
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
             <Image
               priority
-              src='images/search2.svg'
+              src='images/search-icon.svg'
               height={150}
               width={144}
               alt={intl.formatMessage({ id: 'search' })}

@@ -4,8 +4,7 @@ import { useIntl } from 'react-intl';
 import Image from 'next/image';
 
 /** Mui Components */
-import { Box, Button, IconButton, Paper } from '@mui/material';
-import { Settings } from '@mui/icons-material';
+import { Box, Button } from '@mui/material';
 
 /** Components */
 import Text from 'components/Text/Text';
@@ -38,7 +37,7 @@ export default function Dashboard() {
           >
             <Image
               priority
-              src='images/delivery2.svg'
+              src='images/delivery-icon.svg'
               height={140}
               width={140}
               alt={intl.formatMessage({ id: 'delivery' })}
@@ -54,7 +53,7 @@ export default function Dashboard() {
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Favorites))}>
             <Image
               priority
-              src='images/favorites2.svg'
+              src='images/favorites-icon.svg'
               height={140}
               width={140}
               alt={intl.formatMessage({ id: 'favorites' })}
@@ -70,7 +69,7 @@ export default function Dashboard() {
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
             <Image
               priority
-              src='images/settings.svg'
+              src='images/utilities-icon.svg'
               height={140}
               width={140}
               alt={intl.formatMessage({ id: 'utilities' })}

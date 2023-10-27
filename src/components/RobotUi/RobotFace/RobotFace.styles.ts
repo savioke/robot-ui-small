@@ -12,11 +12,11 @@ export const styles = {
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-  messageContainer: (displayScreen: string) => ({
-    minWidth: '1160px',
+  messageContainer: {
+    minWidth: '1060px',
     position: 'relative',
-    marginBottom: displayScreen !== DisplayScreenOptions.DeliverForm ? 7 : 3.5,
-  }),
+    marginBottom: 7,
+  },
   paper: {
     minHeight: 386,
     height: '100%',

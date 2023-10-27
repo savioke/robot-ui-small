@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { useIntl } from 'react-intl';
-import { useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Box, Paper } from '@mui/material';
@@ -13,18 +12,16 @@ import MessageDisplay from './MessageDisplay/MessageDisplay';
 import { styles } from './RobotFace.styles';
 
 /** redux */
-import { getDisplayScreen } from 'state/ui/ui.selectors';
 
 /** helpers */
 
 export default function RobotFace() {
   const intl = useIntl();
   const formRef = React.useRef<HTMLFormElement>(null);
-  const displayScreen = useSelector(getDisplayScreen);
 
   return (
     <Box sx={styles.container}>
-      <Box sx={styles.messageContainer(displayScreen)}>
+      <Box sx={styles.messageContainer}>
         <Paper
           elevation={5}
           sx={styles.paper}

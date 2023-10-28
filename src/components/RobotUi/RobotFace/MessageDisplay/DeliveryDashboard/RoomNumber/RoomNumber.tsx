@@ -17,6 +17,16 @@ import { styles } from './RoomNumber.styles';
 export default function RoomNumber() {
   const [roomNumber, setRoomNumber] = React.useState('');
 
+  const handleSetRoomNumber = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setRoomNumber((previousValue) => {
+      if (previousValue.length === 4) {
+        return previousValue;
+      }
+
+      return previousValue + event.currentTarget.value;
+    });
+  };
+
   return (
     <Box sx={styles.container}>
       <Box sx={styles.messageContainer}>
@@ -40,7 +50,10 @@ export default function RoomNumber() {
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <Keypad setValues={setRoomNumber} />
+              <Keypad
+                setValues={setRoomNumber}
+                handleSetValues={handleSetRoomNumber}
+              />
             </Box>
           </Box>
         </Paper>

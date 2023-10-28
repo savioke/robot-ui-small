@@ -35,6 +35,9 @@ export const styles = {
   },
   textfield: {
     '& .MuiInput-root': { fontSize: '100px' },
+    '& .MuiInputBase-input.Mui-disabled': {
+      WebkitTextFillColor: '#000000',
+    },
   },
   textFieldContainer: {
     display: 'flex',

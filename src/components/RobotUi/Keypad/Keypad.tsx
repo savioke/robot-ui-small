@@ -20,22 +20,14 @@ import { DisplayScreenOptions } from 'appConstants';
 
 interface KeypadProps {
   setValues: React.Dispatch<React.SetStateAction<string>>;
+  // eslint-disable-next-line no-unused-vars
+  handleSetValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export default function Keypad({ setValues }: KeypadProps) {
+export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
-
-  const handleKeypadValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setValues((previousValue) => {
-      if (previousValue.length === 16) {
-        return previousValue;
-      }
-
-      return previousValue + event.currentTarget.value;
-    });
-  };
 
   return (
     <Grid
@@ -58,7 +50,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={1}
           >
             {intl.formatMessage({ id: '1' })}
@@ -72,7 +64,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={2}
           >
             {intl.formatMessage({ id: '2' })}
@@ -86,7 +78,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={3}
           >
             {intl.formatMessage({ id: '3' })}
@@ -107,7 +99,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={4}
           >
             {intl.formatMessage({ id: '4' })}
@@ -121,7 +113,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={5}
           >
             {intl.formatMessage({ id: '5' })}
@@ -135,7 +127,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={6}
           >
             {intl.formatMessage({ id: '6' })}
@@ -156,7 +148,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={7}
           >
             {intl.formatMessage({ id: '7' })}
@@ -170,7 +162,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={8}
           >
             {intl.formatMessage({ id: '8' })}
@@ -184,7 +176,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={9}
           >
             {intl.formatMessage({ id: '9' })}
@@ -210,7 +202,7 @@ export default function Keypad({ setValues }: KeypadProps) {
           <Button
             variant='contained'
             sx={styles.numberButtons}
-            onClick={handleKeypadValues}
+            onClick={handleSetValues}
             value={0}
           >
             {intl.formatMessage({ id: '0' })}

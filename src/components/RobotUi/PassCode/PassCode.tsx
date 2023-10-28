@@ -18,6 +18,16 @@ import { styles } from './PassCode.styles';
 export default function PassCode() {
   const [passCode, setPassCode] = React.useState('');
 
+  const handleSetPassCode = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setPassCode((previousValue) => {
+      if (previousValue.length === 16) {
+        return previousValue;
+      }
+
+      return previousValue + event.currentTarget.value;
+    });
+  };
+
   return (
     <Box sx={styles.container}>
       <Box sx={styles.messageContainer}>
@@ -48,7 +58,10 @@ export default function PassCode() {
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <Keypad setValues={setPassCode} />
+              <Keypad
+                setValues={setPassCode}
+                handleSetValues={handleSetPassCode}
+              />
             </Box>
           </Box>
         </Paper>

@@ -32,9 +32,8 @@ export default function Favorites() {
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
-          <Button
-            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-          >
+          {/* TODO: Initiate Favorite Delivery */}
+          <Button>
             <Avatar
               variant='square'
               sx={[styles.avatar, { backgroundColor: AvatarBackgroundColors[0] }]}
@@ -50,9 +49,8 @@ export default function Favorites() {
           </Text>
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button
-            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-          >
+          {/* TODO: Initiate Favorite Delivery */}
+          <Button>
             <Avatar
               variant='square'
               sx={[styles.avatar, { backgroundColor: AvatarBackgroundColors[1] }]}
@@ -68,9 +66,8 @@ export default function Favorites() {
           </Text>
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button
-            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-          >
+          {/* TODO: Initiate Favorite Delivery */}
+          <Button>
             <Avatar
               variant='square'
               sx={[styles.avatar, { backgroundColor: AvatarBackgroundColors[2] }]}

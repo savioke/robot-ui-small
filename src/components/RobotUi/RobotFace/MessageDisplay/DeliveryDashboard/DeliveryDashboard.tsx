@@ -54,7 +54,8 @@ export default function DeliveryDashboard() {
           </Box>
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
+          {/* TODO: Begin search by work deparment flow */}
+          <Button>
             <Image
               priority
               src='images/department-or-area.svg'
@@ -74,7 +75,8 @@ export default function DeliveryDashboard() {
           </Box>
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
+          {/* TODO: Begin search flow*/}
+          <Button>
             <Image
               priority
               src='images/search-icon.svg'

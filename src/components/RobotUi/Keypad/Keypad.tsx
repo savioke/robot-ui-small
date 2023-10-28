@@ -237,7 +237,7 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
       >
         <Button
           fullWidth
-          sx={{ height: '72px', fontSize: '24px' }}
+          sx={{ height: '65px', fontSize: '24px' }}
           variant='contained'
           onClick={() => {
             // TODO: Hook in error message for invalid code... This might be verified from R2C2.

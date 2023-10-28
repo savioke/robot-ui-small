@@ -524,7 +524,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
+              sx={{ width: '100%', height: '65px', backgroundColor: '#414141', fontSize: '24px' }}
               onClick={handleKeyboardValues}
               value=' '
             >
@@ -569,7 +569,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
               variant='outlined'
               sx={{
                 width: '100%',
-                height: '55px',
+                height: '65px',
                 color: '#414141',
                 borderColor: '#414141',
                 fontSize: '24px',
@@ -589,7 +589,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={{ width: '100%', height: '55px', fontSize: '24px' }}
+              sx={{ width: '100%', height: '65px', fontSize: '24px' }}
               onClick={() => {
                 if (displayScreen === DisplayScreenOptions.RoomMessage) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));
@@ -1155,7 +1155,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
+            sx={{ width: '100%', height: '65px', backgroundColor: '#414141', fontSize: '24px' }}
             onClick={() => setIsCapitalLetters((previousValue) => !previousValue)}
           >
             {isCapitalLetters ? <ArrowDownward /> : <ArrowUpward />}
@@ -1169,7 +1169,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '55px', backgroundColor: '#414141', fontSize: '24px' }}
+            sx={{ width: '100%', height: '65px', backgroundColor: '#414141', fontSize: '24px' }}
             onClick={handleKeyboardValues}
             value=' '
           >
@@ -1214,7 +1214,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
             variant='outlined'
             sx={{
               width: '100%',
-              height: '55px',
+              height: '65px',
               color: '#414141',
               borderColor: '#414141',
               fontSize: '24px',
@@ -1234,7 +1234,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '55px', fontSize: '24px' }}
+            sx={{ width: '100%', height: '65px', fontSize: '24px' }}
             onClick={() => {
               if (displayScreen === DisplayScreenOptions.RoomMessage) {
                 dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));

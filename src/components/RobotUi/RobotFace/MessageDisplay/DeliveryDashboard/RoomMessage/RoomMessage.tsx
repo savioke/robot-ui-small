@@ -29,7 +29,12 @@ export default function RoomMessage() {
             <Box sx={styles.roomNumberContainer}>
               <ArrowBackTopBar />
               <Box sx={styles.textFieldContainer}>
-                <Text variant='h4'>What I will say on delivery!</Text>
+                <Text
+                  variant='h4'
+                  sx={{ marginTop: 2 }}
+                >
+                  What I will say on delivery!
+                </Text>
                 <TextField
                   multiline
                   rows={5}

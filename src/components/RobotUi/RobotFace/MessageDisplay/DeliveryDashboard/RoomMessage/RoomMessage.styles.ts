@@ -41,7 +41,7 @@ export const styles = {
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     marginRight: 2,
   },
   roomNumberContainer: {

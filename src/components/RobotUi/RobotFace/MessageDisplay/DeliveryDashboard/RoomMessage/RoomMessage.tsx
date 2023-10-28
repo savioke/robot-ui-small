@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /** Mui Components */
 import { Box, Paper, TextField } from '@mui/material';
@@ -16,7 +16,7 @@ import { styles } from './RoomMessage.styles';
 /** helpers */
 
 export default function RoomMessage() {
-  const [roomMessage, setRoomMessage] = React.useState('Your order has arrived');
+  const [roomMessage, setRoomMessage] = useState('Your order has arrived');
 
   return (
     <Box sx={styles.container}>
@@ -29,9 +29,6 @@ export default function RoomMessage() {
             <Box sx={styles.roomNumberContainer}>
               <ArrowBackTopBar />
               <Box sx={styles.textFieldContainer}>
-                <Text variant='h4'>
-                  Delivery to <strong>(Room 101)</strong>
-                </Text>
                 <Text variant='h4'>What I will say on delivery!</Text>
                 <TextField
                   multiline

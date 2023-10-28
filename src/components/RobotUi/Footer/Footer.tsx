@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, Fab, Fade, Button } from '@mui/material';
+import { Box, Fab, Fade } from '@mui/material';
 import { Lock } from '@mui/icons-material';
 
 /** Components */
@@ -28,7 +28,8 @@ export default function Footer() {
   if (
     displayScreen === DisplayScreenOptions.PassCode ||
     displayScreen === DisplayScreenOptions.RoomNumber ||
-    displayScreen === DisplayScreenOptions.RoomMessage
+    displayScreen === DisplayScreenOptions.RoomMessage ||
+    displayScreen === DisplayScreenOptions.RoomSummary
   ) {
     return (
       <Box sx={{ position: 'relative', left: 0 }}>

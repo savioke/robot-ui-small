@@ -161,6 +161,35 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={{ padding: 0 }}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
+        <Text
+          variant='h5'
+          component='h1'
+          id='delivery'
+        />
+        -
+        <Text
+          variant='h5'
+          component='h1'
+          id='summary'
+          sx={{ fontWeight: 600 }}
+        />
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.PassCode) {
     return <Box sx={styles.arrowBackContainer}></Box>;
   }

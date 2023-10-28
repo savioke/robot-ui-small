@@ -29,9 +29,6 @@ export default function RoomSummary() {
             <Box sx={styles.roomNumberContainer}>
               <ArrowBackTopBar />
               <Box sx={styles.textFieldContainer}>
-                <Text variant='h4'>
-                  Delivery to <strong>(Room 101)</strong>
-                </Text>
                 <Text variant='h4'>What I will say on delivery!</Text>
                 <TextField
                   multiline

@@ -1,11 +1,10 @@
 import React from 'react';
 
 /** Mui Components */
-import { Box, Paper, TextField } from '@mui/material';
+import { Box, Button, Paper } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
-import Keyboard from 'components/RobotUi/Keyboard/Keyboard';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -16,8 +15,6 @@ import { styles } from './RoomSummary.styles';
 /** helpers */
 
 export default function RoomSummary() {
-  const [roomMessage, setRoomMessage] = React.useState('');
-
   return (
     <Box sx={styles.container}>
       <Box sx={styles.messageContainer}>
@@ -29,22 +26,18 @@ export default function RoomSummary() {
             <Box sx={styles.roomNumberContainer}>
               <ArrowBackTopBar />
               <Box sx={styles.textFieldContainer}>
+                {/* TODO: Display the room Number */}
+
+                <Text variant='h4'>
+                  Delivering to <strong>Room (101)</strong>
+                </Text>
                 <Text variant='h4'>What I will say on delivery!</Text>
-                <TextField
-                  multiline
-                  rows={10}
-                  value={roomMessage}
-                  inputProps={{ style: { textAlign: 'center' } }}
-                  InputProps={{ disableUnderline: true, sx: { borderRadius: '20px' } }}
-                  sx={styles.textfield}
-                />
+                {/* TODO: Display the summar text */}
               </Box>
             </Box>
-            <Box sx={styles.keypadContainer}>
-              <Keyboard
-                passCode={roomMessage}
-                setPasscode={setRoomMessage}
-              />
+            <Box sx={{ flex: 1, display: 'flex', alignItems: 'flex-end' }}>
+              {/* TODO: Pin confirm button in the bottom left of the display */}
+              <Button variant='contained'>Confirm</Button>
             </Box>
           </Box>
         </Paper>

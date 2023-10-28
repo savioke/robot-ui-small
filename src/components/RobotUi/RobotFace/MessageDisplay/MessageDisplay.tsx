@@ -42,33 +42,32 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
 
   if (displayMessage) {
     return (
-      <Text
-        sx={styles.centeredText}
-        variant='h2'
-      >
-        {displayMessage}
-      </Text>
+      <Box sx={styles.displayMessageContainer}>
+        <Text variant='h2'>{displayMessage}</Text>
+      </Box>
     );
   } else if (isConfirmationNeeded) {
     return (
-      <>
-        <Text
-          sx={styles.centeredText}
-          variant='h2'
-        >
-          {displayMessage}
-        </Text>
-        <Button
-          sx={{ marginTop: 1 }}
-          size='large'
-          variant='contained'
-          onClick={() => {
-            socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
-          }}
-        >
-          {intl.formatMessage({ id: 'done' })}
-        </Button>
-      </>
+      <Box sx={{ display: 'flex', justifyContent: 'center', flex: 1 }}>
+        <Box sx={styles.displayConfirmContainer}>
+          <Text
+            variant='h2'
+            sx={{ marginBottom: 5 }}
+          >
+            {displayMessage}
+          </Text>
+          <Button
+            sx={{ height: '65px', width: '373px' }}
+            size='large'
+            variant='contained'
+            onClick={() => {
+              socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
+            }}
+          >
+            {intl.formatMessage({ id: 'done' })}
+          </Button>
+        </Box>
+      </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Dashboard) {
     return <Dashboard />;
@@ -85,13 +84,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   }
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-      <Text
-        sx={styles.centeredText}
-        variant='h2'
-      >
-        Connecting...
-      </Text>
+    <Box sx={styles.displayMessageContainer}>
+      <Text variant='h2'>Connecting...</Text>
     </Box>
   );
 }

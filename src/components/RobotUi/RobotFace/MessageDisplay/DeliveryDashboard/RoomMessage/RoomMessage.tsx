@@ -51,10 +51,7 @@ export default function RoomMessage() {
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>
-              <Keyboard
-                passCode={roomMessage}
-                setPasscode={setRoomMessage}
-              />
+              <Keyboard setPasscode={setRoomMessage} />
             </Box>
           </Box>
         </Paper>

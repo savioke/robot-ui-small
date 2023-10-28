@@ -19,11 +19,10 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 interface KeypadProps {
-  passCode: string;
   setPasscode: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
+export default function Keyboard({ setPasscode }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);

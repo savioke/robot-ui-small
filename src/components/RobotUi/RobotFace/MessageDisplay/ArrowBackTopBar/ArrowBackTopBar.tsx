@@ -161,6 +161,8 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.PassCode) {
+    return <Box sx={styles.arrowBackContainer}></Box>;
   }
 
   return (

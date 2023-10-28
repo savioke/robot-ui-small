@@ -28,7 +28,7 @@ export default function Dashboard() {
         variant='h3'
         component='h1'
         id='hiHowCanIHelp'
-        sx={{ marginTop: '51px', marginLeft: '56px', marginBottom: 1 }}
+        sx={{ marginTop: '60px', marginLeft: '56px', marginBottom: 1 }}
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>

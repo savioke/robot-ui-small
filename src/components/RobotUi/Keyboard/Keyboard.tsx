@@ -524,7 +524,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={{ width: '100%', height: '65px', backgroundColor: '#414141', fontSize: '24px' }}
+              sx={styles.spaceButton}
               onClick={handleKeyboardValues}
               value=' '
             >
@@ -549,7 +549,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
             >
               <Backspace
                 fontSize='large'
-                sx={{ color: 'white' }}
+                sx={styles.backspaceIcon}
               />
             </Button>
           </Grid>
@@ -567,16 +567,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='outlined'
-              sx={{
-                width: '100%',
-                height: '65px',
-                color: '#414141',
-                borderColor: '#414141',
-                fontSize: '24px',
-                '&:hover': {
-                  borderColor: '#414141',
-                },
-              }}
+              sx={styles.transformButton}
               onClick={() => setIsNumberDisplay(false)}
             >
               {intl.formatMessage({ id: 'abc' })}
@@ -589,7 +580,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={{ width: '100%', height: '65px', fontSize: '24px' }}
+              sx={styles.confirmButton}
               onClick={() => {
                 if (displayScreen === DisplayScreenOptions.RoomMessage) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));
@@ -1155,11 +1146,10 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '65px', backgroundColor: '#414141', fontSize: '24px' }}
+            sx={styles.capitalizeButton}
             onClick={() => setIsCapitalLetters((previousValue) => !previousValue)}
           >
             {isCapitalLetters ? <ArrowDownward /> : <ArrowUpward />}
-            {/* <ArrowUpward /> */}
           </Button>
         </Grid>
         <Grid
@@ -1169,7 +1159,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '65px', backgroundColor: '#414141', fontSize: '24px' }}
+            sx={styles.spaceButton}
             onClick={handleKeyboardValues}
             value=' '
           >
@@ -1194,7 +1184,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
           >
             <Backspace
               fontSize='large'
-              sx={{ color: 'white' }}
+              sx={styles.backspaceIcon}
             />
           </Button>
         </Grid>
@@ -1212,16 +1202,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='outlined'
-            sx={{
-              width: '100%',
-              height: '65px',
-              color: '#414141',
-              borderColor: '#414141',
-              fontSize: '24px',
-              '&:hover': {
-                borderColor: '#414141',
-              },
-            }}
+            sx={styles.transformButton}
             onClick={() => setIsNumberDisplay(true)}
           >
             ?123
@@ -1234,7 +1215,7 @@ export default function Keyboard({ passCode, setPasscode }: KeypadProps) {
         >
           <Button
             variant='contained'
-            sx={{ width: '100%', height: '65px', fontSize: '24px' }}
+            sx={styles.confirmButton}
             onClick={() => {
               if (displayScreen === DisplayScreenOptions.RoomMessage) {
                 dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));

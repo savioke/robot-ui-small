@@ -1,8 +1,7 @@
 export const styles = {
-  iconContainer: {
-    height: '50px',
+  lockImageContainer: {
     position: 'relative',
-    bottom: 35,
-    left: 15,
+    left: '15px',
+    bottom: '20px',
   },
 };

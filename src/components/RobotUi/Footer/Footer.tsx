@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, Fab, Fade } from '@mui/material';
-import { Lock } from '@mui/icons-material';
+import { Box, Fade } from '@mui/material';
 
 /** Components */
 
@@ -32,41 +31,28 @@ export default function Footer() {
     displayScreen === DisplayScreenOptions.RoomSummary
   ) {
     return (
-      <Box sx={{ position: 'relative', left: 0 }}>
-        <Image
-          priority
-          src='/images/robot-face.png'
-          height={75}
-          width={100}
-          alt={intl.formatMessage({ id: 'miniRobotFace' })}
-        />
-      </Box>
+      <Image
+        priority
+        src='/images/robot-face.png'
+        height={75}
+        width={100}
+        alt={intl.formatMessage({ id: 'miniRobotFace' })}
+      />
     );
   } else if (displayScreen === DisplayScreenOptions.Home) {
     return (
-      <Fade in={isScreenTouched}>
-        <Box sx={styles.iconContainer}>
-          {/* <Button sx={{ position: 'relative', left: '25px', bottom: '10px' }}>
-            <Image
-              priority
-              src='/images/lock.svg'
-              height={75}
-              width={100}
-              alt={intl.formatMessage({ id: 'miniRobotFace' })}
-            />
-          </Button> */}
-          <Fab
-            sx={{
-              width: '60px',
-              height: '60px',
-              position: 'relative',
-              left: '25px',
-              bottom: '10px',
-            }}
-            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
-          >
-            <Lock fontSize='large' />
-          </Fab>
+      <Fade
+        in={isScreenTouched}
+        onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.PassCode))}
+      >
+        <Box sx={styles.lockImageContainer}>
+          <Image
+            priority
+            src='/images/lock.png'
+            height={60}
+            width={60}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
         </Box>
       </Fade>
     );

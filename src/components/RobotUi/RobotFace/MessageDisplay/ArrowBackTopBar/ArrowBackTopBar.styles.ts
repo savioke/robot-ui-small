@@ -12,4 +12,7 @@ export const styles = {
   breadCrumbTrailText: {
     fontWeight: 400,
   },
+  button: {
+    padding: 0,
+  },
 };

@@ -18,10 +18,11 @@ export const styles = {
   },
   numberButtons: {
     backgroundColor: '#414141',
-    minHeight: '65px',
-    minWidth: '65px',
+    minHeight: '70px',
+    minWidth: '70px',
     borderRadius: '10px',
-    fontSize: '24px',
+    fontSize: '34px',
+    fontWeight: 600,
   },
   confirmButton: {
     width: '100%',

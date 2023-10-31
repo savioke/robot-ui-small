@@ -59,6 +59,7 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
         <Grid
           container
           item
+          spacing={1}
           xs={12}
         >
           <Grid
@@ -603,6 +604,7 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
       <Grid
         container
         item
+        spacing={1}
         xs={12}
       >
         <Grid

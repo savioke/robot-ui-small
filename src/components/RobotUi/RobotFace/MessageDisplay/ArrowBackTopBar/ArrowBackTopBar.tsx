@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, IconButton, Button } from '@mui/material';
-import { ArrowBack } from '@mui/icons-material';
+import { Box, Button } from '@mui/material';
 
 /** Components */
 import Text from 'components/Text/Text';
@@ -29,7 +28,7 @@ export default function ArrowBackTopBar() {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
-          sx={{ padding: 0 }}
+          sx={styles.button}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
         >
           <Image
@@ -58,7 +57,7 @@ export default function ArrowBackTopBar() {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
-          sx={{ padding: 0 }}
+          sx={styles.button}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}
         >
           <Image
@@ -90,83 +89,11 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.Utilities) {
-    return (
-      <Box sx={styles.arrowBackContainer}>
-        <Button
-          sx={{ padding: 0 }}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
-        >
-          <Image
-            priority
-            src='/images/back_arrow.svg'
-            height={70}
-            width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
-          />
-        </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='utilities'
-        />
-      </Box>
-    );
-  } else if (displayScreen === DisplayScreenOptions.Favorites) {
-    return (
-      <Box sx={styles.arrowBackContainer}>
-        <Button
-          sx={{ padding: 0 }}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
-        >
-          <Image
-            priority
-            src='/images/back_arrow.svg'
-            height={70}
-            width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
-          />
-        </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='favorites'
-        />
-      </Box>
-    );
-  } else if (displayScreen === DisplayScreenOptions.Actions) {
-    return (
-      <Box sx={styles.arrowBackContainer}>
-        <Button
-          sx={{ padding: 0 }}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
-        >
-          <Image
-            priority
-            src='/images/back_arrow.svg'
-            height={70}
-            width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
-          />
-        </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='utilities'
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='actions'
-        />
-      </Box>
-    );
   } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
-          sx={{ padding: 0 }}
+          sx={styles.button}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage))}
         >
           <Image
@@ -205,11 +132,83 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.Utilities) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
+        <Text
+          variant='h6'
+          component='h1'
+          id='utilities'
+        />
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.Favorites) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
+        <Text
+          variant='h6'
+          component='h1'
+          id='favorites'
+        />
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.Actions) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
+        <Text
+          variant='h6'
+          component='h1'
+          id='utilities'
+        />
+        -
+        <Text
+          variant='h6'
+          component='h1'
+          id='actions'
+        />
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
-          sx={{ padding: 0 }}
+          sx={styles.button}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
         >
           <Image
@@ -231,7 +230,7 @@ export default function ArrowBackTopBar() {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
-          sx={{ padding: 0 }}
+          sx={styles.button}
           onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
         >
           <Image

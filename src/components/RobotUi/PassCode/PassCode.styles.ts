@@ -25,7 +25,7 @@ export const styles = {
     position: 'relative',
   },
   paper: {
-    height: '600px',
+    height: '613px',
     padding: 2,
     marginBottom: -5,
     borderRadius: '20px',

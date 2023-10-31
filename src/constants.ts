@@ -46,7 +46,6 @@ export const AvatarBackgroundColors = [
   '#0AA15B',
   '#7B5097',
   '#E7AB44',
-  '#0A89A1',
   '#D34E87',
   '#B476DC',
   '#9F6A0D',

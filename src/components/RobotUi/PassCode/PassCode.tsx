@@ -47,12 +47,18 @@ export default function PassCode() {
               <Box sx={styles.textFieldContainer}>
                 <TextField
                   fullWidth
-                  disabled
+                  // disabled
                   variant='standard'
                   type='password'
                   value={passCode}
-                  inputProps={{ style: { textAlign: 'center' } }}
-                  InputProps={{ disableUnderline: true }}
+                  inputProps={{
+                    style: {
+                      textAlign: 'center',
+                    },
+                  }}
+                  InputProps={{
+                    readOnly: true,
+                  }}
                   sx={styles.textfield}
                 />
               </Box>

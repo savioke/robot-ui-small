@@ -49,8 +49,8 @@ export default function Footer() {
           <Image
             priority
             src='/images/lock.png'
-            height={60}
-            width={60}
+            height={75}
+            width={75}
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Box>

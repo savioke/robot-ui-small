@@ -43,6 +43,8 @@ export const styles = {
     display: 'flex',
     flex: 1,
     alignItems: 'center',
+    marginLeft: 3,
+    justifyContent: 'center',
   },
   roomNumberContainer: {
     flex: 1,

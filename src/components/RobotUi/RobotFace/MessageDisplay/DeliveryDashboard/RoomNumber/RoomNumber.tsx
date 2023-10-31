@@ -39,7 +39,6 @@ export default function RoomNumber() {
               <ArrowBackTopBar />
               <Box sx={styles.textFieldContainer}>
                 <TextField
-                  fullWidth
                   variant='standard'
                   value={roomNumber}
                   inputProps={{ style: { textAlign: 'center' } }}

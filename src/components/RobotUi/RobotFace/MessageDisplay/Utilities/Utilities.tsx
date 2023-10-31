@@ -34,24 +34,6 @@ export default function Utilities() {
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
-          <Button
-            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-          >
-            <Image
-              priority
-              src='images/Status.svg'
-              height={140}
-              width={140}
-              alt={intl.formatMessage({ id: 'status' })}
-            />
-          </Button>
-          <Text
-            variant='h5'
-            id='status'
-            sx={styles.boldFont}
-          />
-        </Box>
-        <Box sx={styles.paperContainer}>
           <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Actions))}>
             <Image
               priority
@@ -68,7 +50,29 @@ export default function Utilities() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
+          <Button
+          // TODO: Enable Status
+          // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
+          >
+            <Image
+              priority
+              src='images/Status.svg'
+              height={140}
+              width={140}
+              alt={intl.formatMessage({ id: 'status' })}
+            />
+          </Button>
+          <Text
+            variant='h5'
+            id='status'
+            sx={styles.boldFont}
+          />
+        </Box>
+        <Box sx={styles.paperContainer}>
+          <Button
+          // TODO: Enable Help page
+          // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
+          >
             <Image
               priority
               src='images/Help.svg'
@@ -84,7 +88,10 @@ export default function Utilities() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}>
+          <Button
+          // TODO: Enable Admin Access (Diagnostics page)
+          // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
+          >
             <Image
               priority
               src='images/Admin Access.svg'

@@ -38,25 +38,27 @@ export default function PassCode() {
           <Box sx={styles.innerPaper}>
             <Box sx={styles.roomNumberContainer}>
               <ArrowBackTopBar />
-              <Text
-                variant='h5'
-                component='h1'
-                id='enterPasscode'
-                sx={styles.title}
-              />
-              <Box sx={styles.textFieldContainer}>
-                <TextField
-                  fullWidth
-                  variant='standard'
-                  type='password'
-                  value={passCode}
-                  inputProps={{
-                    style: {
-                      textAlign: 'center',
-                    },
-                  }}
-                  sx={styles.textfield}
+              <Box sx={styles.contentContainer}>
+                <Text
+                  variant='h5'
+                  component='h1'
+                  id='couldYouEnterThePasscode?'
+                  sx={styles.title}
                 />
+                <Box sx={styles.textFieldContainer}>
+                  <TextField
+                    fullWidth
+                    variant='standard'
+                    type='password'
+                    value={passCode}
+                    inputProps={{
+                      style: {
+                        textAlign: 'center',
+                      },
+                    }}
+                    sx={styles.textfield}
+                  />
+                </Box>
               </Box>
             </Box>
             <Box sx={styles.keypadContainer}>

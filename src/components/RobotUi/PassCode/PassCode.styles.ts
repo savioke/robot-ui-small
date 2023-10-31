@@ -34,7 +34,9 @@ export const styles = {
     flex: 0.8,
   },
   textfield: {
-    '& .MuiInput-root': { fontSize: '100px' },
+    '& .MuiInput-root': {
+      fontSize: '100px',
+    },
     // https://stackoverflow.com/questions/70361697/how-to-change-text-color-of-disabled-mui-text-field-mui-v5
     '& .MuiInputBase-input.Mui-disabled': {
       WebkitTextFillColor: '#000000',
@@ -56,5 +58,8 @@ export const styles = {
   },
   title: {
     fontSize: '55px',
+  },
+  contentContainer: {
+    marginLeft: 3,
   },
 };

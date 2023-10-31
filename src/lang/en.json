@@ -111,5 +111,6 @@
   "closeLid": "Close lid",
   "goToLocation": "Go to location",
   "returnToDock": "Return to dock",
-  "summary": "Summary"
+  "summary": "Summary",
+  "couldYouEnterThePasscode?": "Could you enter the passcode?"
 }

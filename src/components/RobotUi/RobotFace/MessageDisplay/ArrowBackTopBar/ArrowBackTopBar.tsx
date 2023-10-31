@@ -35,8 +35,8 @@ export default function ArrowBackTopBar() {
           <Image
             priority
             src='/images/back_arrow.svg'
-            height={60}
-            width={60}
+            height={70}
+            width={70}
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
@@ -64,8 +64,8 @@ export default function ArrowBackTopBar() {
           <Image
             priority
             src='/images/back_arrow.svg'
-            height={60}
-            width={60}
+            height={70}
+            width={70}
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
@@ -99,8 +99,8 @@ export default function ArrowBackTopBar() {
           <Image
             priority
             src='/images/back_arrow.svg'
-            height={60}
-            width={60}
+            height={70}
+            width={70}
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
@@ -121,8 +121,8 @@ export default function ArrowBackTopBar() {
           <Image
             priority
             src='/images/back_arrow.svg'
-            height={60}
-            width={60}
+            height={70}
+            width={70}
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
@@ -143,8 +143,8 @@ export default function ArrowBackTopBar() {
           <Image
             priority
             src='/images/back_arrow.svg'
-            height={60}
-            width={60}
+            height={70}
+            width={70}
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
@@ -171,8 +171,8 @@ export default function ArrowBackTopBar() {
           <Image
             priority
             src='/images/back_arrow.svg'
-            height={60}
-            width={60}
+            height={70}
+            width={70}
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
@@ -190,29 +190,46 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={{ padding: 0 }}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
+        <Text
+          variant='h5'
+          component='h1'
+          id='delivery'
+        />
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.PassCode) {
-    return <Box sx={styles.arrowBackContainer}></Box>;
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={{ padding: 0 }}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
+      </Box>
+    );
   }
 
-  return (
-    <Box sx={styles.arrowBackContainer}>
-      <Button
-        sx={{ padding: 0 }}
-        onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
-      >
-        <Image
-          priority
-          src='/images/back_arrow.svg'
-          height={60}
-          width={60}
-          alt={intl.formatMessage({ id: 'miniRobotFace' })}
-        />
-      </Button>
-      <Text
-        variant='h6'
-        component='h1'
-        id='delivery'
-      />
-    </Box>
-  );
+  return null;
 }

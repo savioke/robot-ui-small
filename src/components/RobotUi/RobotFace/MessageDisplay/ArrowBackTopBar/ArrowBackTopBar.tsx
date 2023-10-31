@@ -41,13 +41,13 @@ export default function ArrowBackTopBar() {
           />
         </Button>
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='delivery'
         />
         -
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='roomNumber'
           sx={{ fontWeight: 600 }}
@@ -70,19 +70,19 @@ export default function ArrowBackTopBar() {
           />
         </Button>
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='delivery'
         />
         -
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='roomNumber'
         />
         -
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='message'
           sx={{ fontWeight: 600 }}
@@ -105,7 +105,7 @@ export default function ArrowBackTopBar() {
           />
         </Button>
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='utilities'
         />
@@ -127,7 +127,7 @@ export default function ArrowBackTopBar() {
           />
         </Button>
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='favorites'
         />
@@ -149,13 +149,13 @@ export default function ArrowBackTopBar() {
           />
         </Button>
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='utilities'
         />
         -
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='actions'
         />
@@ -177,13 +177,13 @@ export default function ArrowBackTopBar() {
           />
         </Button>
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='delivery'
         />
         -
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='summary'
           sx={{ fontWeight: 600 }}
@@ -206,7 +206,7 @@ export default function ArrowBackTopBar() {
           />
         </Button>
         <Text
-          variant='h5'
+          variant='h6'
           component='h1'
           id='delivery'
         />

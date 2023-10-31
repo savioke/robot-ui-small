@@ -31,7 +31,7 @@ export default function RoomMessage() {
               <Box sx={styles.textFieldContainer}>
                 <Text
                   variant='h4'
-                  sx={{ marginTop: 2 }}
+                  sx={{ marginTop: 2, marginLeft: 3 }}
                 >
                   What I will say on delivery!
                 </Text>

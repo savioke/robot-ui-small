@@ -29,30 +29,52 @@ export const styles = {
     padding: 2,
     marginBottom: -5,
     borderRadius: '20px',
+    display: 'flex',
   },
-  keypadContainer: {
-    flex: 0.8,
+  leftSideTextContainer: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    marginRight: 5,
+    marginLeft: 3,
+    marginTop: 6,
   },
-  textfield: {
-    '& .MuiInput-root': { fontSize: '100px' },
+  leftSideContent: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
-  textFieldContainer: {
+  rightSideContent: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    justifyContent: 'flex-end',
+  },
+  button: {
+    height: '65px',
+    width: '350px',
+    fontSize: '24px',
+  },
+  confirmTextContainer: {
+    marginBottom: 2,
+  },
+  messageTextContainer: {
+    width: '75%',
+  },
+  gridItem: {
+    display: 'flex',
+  },
+  summaryTextContainer: {
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-evenly',
-    marginRight: 2,
   },
-  roomNumberContainer: {
-    flex: 1,
+  summaryText: {
     display: 'flex',
     flexDirection: 'column',
-  },
-  innerPaper: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  rooNumberText: {
-    fontSize: '55px',
+    gap: 2,
   },
 };

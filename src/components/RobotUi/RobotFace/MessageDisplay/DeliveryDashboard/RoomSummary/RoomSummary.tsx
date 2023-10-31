@@ -1,7 +1,7 @@
 import React from 'react';
 
 /** Mui Components */
-import { Box, Button, Paper } from '@mui/material';
+import { Box, Button, Paper, Grid } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
@@ -22,24 +22,51 @@ export default function RoomSummary() {
           elevation={5}
           sx={styles.paper}
         >
-          <Box sx={styles.innerPaper}>
-            <Box sx={styles.roomNumberContainer}>
-              <ArrowBackTopBar />
-              <Box sx={styles.textFieldContainer}>
-                {/* TODO: Display the room Number */}
-
-                <Text variant='h4'>
-                  Delivering to <strong>Room (101)</strong>
-                </Text>
-                <Text variant='h4'>What I will say on delivery!</Text>
-                {/* TODO: Display the summar text */}
+          <Grid container>
+            <Grid
+              item
+              xs={8}
+              sx={styles.gridItem}
+            >
+              <Box sx={styles.leftSideContent}>
+                <ArrowBackTopBar />
+                <Box sx={styles.leftSideTextContainer}>
+                  <Text variant='h3'>
+                    Delivery to <strong>Room 101</strong>
+                  </Text>
+                  <Box sx={styles.summaryTextContainer}>
+                    <Box sx={{}}>
+                      <Text variant='h4'>What I will say on delivery!</Text>
+                      <Box sx={styles.messageTextContainer}>
+                        <Text>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                          tempor incididunt
+                        </Text>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
               </Box>
-            </Box>
-            <Box sx={{ flex: 1, display: 'flex', alignItems: 'flex-end' }}>
-              {/* TODO: Pin confirm button in the bottom left of the display */}
-              <Button variant='contained'>Confirm</Button>
-            </Box>
-          </Box>
+            </Grid>
+            <Grid
+              item
+              xs={4}
+            >
+              <Box sx={styles.rightSideContent}>
+                <Box sx={styles.confirmTextContainer}>
+                  <Text variant='h4'>Everything is loaded?</Text>
+                  <Text variant='h4'>I'll be on my way!</Text>
+                </Box>
+                <Button
+                  sx={styles.button}
+                  variant='contained'
+                  // TODO: Create task with all values
+                >
+                  Go!
+                </Button>
+              </Box>
+            </Grid>
+          </Grid>
         </Paper>
       </Box>
     </Box>

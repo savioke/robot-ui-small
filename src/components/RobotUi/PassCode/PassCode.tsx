@@ -47,7 +47,6 @@ export default function PassCode() {
               <Box sx={styles.textFieldContainer}>
                 <TextField
                   fullWidth
-                  // disabled
                   variant='standard'
                   type='password'
                   value={passCode}

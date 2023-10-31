@@ -40,11 +40,12 @@ export default function RoomNumber() {
               <Box sx={styles.textFieldContainer}>
                 <TextField
                   fullWidth
-                  disabled
                   variant='standard'
                   value={roomNumber}
                   inputProps={{ style: { textAlign: 'center' } }}
-                  InputProps={{ disableUnderline: true }}
+                  InputProps={{
+                    readOnly: true,
+                  }}
                   sx={styles.textfield}
                 />
               </Box>

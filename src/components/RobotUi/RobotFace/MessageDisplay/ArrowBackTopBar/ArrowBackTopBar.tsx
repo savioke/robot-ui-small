@@ -231,5 +231,5 @@ export default function ArrowBackTopBar() {
     );
   }
 
-  return null;
+  return <Box sx={{ width: '70px', height: '70px' }}></Box>;
 }

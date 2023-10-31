@@ -42,7 +42,7 @@ export const styles = {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    marginRight: 2,
+    marginRight: 5,
   },
   roomNumberContainer: {
     flex: 1,

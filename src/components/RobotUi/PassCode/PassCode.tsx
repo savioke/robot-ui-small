@@ -42,7 +42,7 @@ export default function PassCode() {
                 variant='h5'
                 component='h1'
                 id='enterPasscode'
-                sx={{ fontSize: '55px' }}
+                sx={styles.title}
               />
               <Box sx={styles.textFieldContainer}>
                 <TextField
@@ -54,9 +54,6 @@ export default function PassCode() {
                     style: {
                       textAlign: 'center',
                     },
-                  }}
-                  InputProps={{
-                    readOnly: true,
                   }}
                   sx={styles.textfield}
                 />

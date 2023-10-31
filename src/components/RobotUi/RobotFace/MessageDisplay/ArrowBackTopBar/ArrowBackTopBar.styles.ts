@@ -9,4 +9,7 @@ export const styles = {
   iconButton: {
     color: '#000000',
   },
+  breadCrumbTrailText: {
+    fontWeight: 400,
+  },
 };

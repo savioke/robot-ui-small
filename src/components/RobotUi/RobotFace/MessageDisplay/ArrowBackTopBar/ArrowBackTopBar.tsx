@@ -44,13 +44,13 @@ export default function ArrowBackTopBar() {
           variant='h6'
           component='h1'
           id='delivery'
+          sx={styles.breadCrumbTrailText}
         />
         -
         <Text
           variant='h6'
           component='h1'
           id='roomNumber'
-          sx={{ fontWeight: 600 }}
         />
       </Box>
     );
@@ -73,19 +73,20 @@ export default function ArrowBackTopBar() {
           variant='h6'
           component='h1'
           id='delivery'
+          sx={styles.breadCrumbTrailText}
         />
         -
         <Text
           variant='h6'
           component='h1'
           id='roomNumber'
+          sx={styles.breadCrumbTrailText}
         />
         -
         <Text
           variant='h6'
           component='h1'
           id='message'
-          sx={{ fontWeight: 600 }}
         />
       </Box>
     );
@@ -166,7 +167,7 @@ export default function ArrowBackTopBar() {
       <Box sx={styles.arrowBackContainer}>
         <Button
           sx={{ padding: 0 }}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage))}
         >
           <Image
             priority
@@ -180,13 +181,27 @@ export default function ArrowBackTopBar() {
           variant='h6'
           component='h1'
           id='delivery'
+          sx={styles.breadCrumbTrailText}
+        />
+        -
+        <Text
+          variant='h6'
+          component='h1'
+          id='roomNumber'
+          sx={styles.breadCrumbTrailText}
+        />
+        -
+        <Text
+          variant='h6'
+          component='h1'
+          id='message'
+          sx={styles.breadCrumbTrailText}
         />
         -
         <Text
           variant='h6'
           component='h1'
           id='summary'
-          sx={{ fontWeight: 600 }}
         />
       </Box>
     );

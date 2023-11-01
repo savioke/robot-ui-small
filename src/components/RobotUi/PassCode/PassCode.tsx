@@ -1,7 +1,7 @@
 import React from 'react';
 
 /** Mui Components */
-import { Box, Paper, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../RobotFace/MessageDisplay/ArrowBackTopBar/ArrowBackTopBar';
@@ -29,46 +29,37 @@ export default function PassCode() {
   };
 
   return (
-    <Box sx={styles.container}>
-      <Box sx={styles.messageContainer}>
-        <Paper
-          elevation={5}
-          sx={styles.paper}
-        >
-          <Box sx={styles.innerPaper}>
-            <Box sx={styles.roomNumberContainer}>
-              <ArrowBackTopBar />
-              <Box sx={styles.contentContainer}>
-                <Text
-                  variant='h5'
-                  component='h1'
-                  id='couldYouEnterThePasscode?'
-                  sx={styles.title}
-                />
-                <Box sx={styles.textFieldContainer}>
-                  <TextField
-                    fullWidth
-                    variant='standard'
-                    type='password'
-                    value={passCode}
-                    inputProps={{
-                      style: {
-                        textAlign: 'center',
-                      },
-                    }}
-                    sx={styles.textfield}
-                  />
-                </Box>
-              </Box>
-            </Box>
-            <Box sx={styles.keypadContainer}>
-              <Keypad
-                setValues={setPassCode}
-                handleSetValues={handleSetPassCode}
-              />
-            </Box>
+    <Box sx={styles.innerPaper}>
+      <Box sx={styles.leftSideContent}>
+        <ArrowBackTopBar />
+        <Box sx={styles.contentContainer}>
+          <Text
+            variant='h5'
+            component='h1'
+            id='couldYouEnterThePasscode?'
+            sx={styles.title}
+          />
+          <Box sx={styles.textFieldContainer}>
+            <TextField
+              fullWidth
+              variant='standard'
+              type='password'
+              value={passCode}
+              inputProps={{
+                style: {
+                  textAlign: 'center',
+                },
+              }}
+              sx={styles.textfield}
+            />
           </Box>
-        </Paper>
+        </Box>
+      </Box>
+      <Box sx={styles.keypadContainer}>
+        <Keypad
+          setValues={setPassCode}
+          handleSetValues={handleSetPassCode}
+        />
       </Box>
     </Box>
   );

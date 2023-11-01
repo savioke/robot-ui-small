@@ -14,7 +14,9 @@ type DisplayScreen =
   | 'Room message'
   | 'Room summary'
   | 'Favorites'
-  | 'Utilities';
+  | 'Utilities'
+  | 'CancelTask'
+  | 'CancelTaskConfirmation';
 
 interface RobotUiState {
   deliverLocations: NavigationGoal[];
@@ -37,7 +39,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.Home,
+  displayScreen: DisplayScreenOptions.CancelTask,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

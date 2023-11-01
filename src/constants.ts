@@ -13,6 +13,8 @@ export const DisplayScreenOptions = {
   Favorites: 'Favorites' as const,
   Utilities: 'Utilities' as const,
   Actions: 'Actions' as const,
+  CancelTask: 'CancelTask' as const,
+  CancelTaskConfirmation: 'CancelTaskConfirmation' as const,
 };
 
 export const Themes = {

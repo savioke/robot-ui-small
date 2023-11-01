@@ -226,7 +226,10 @@ export default function ArrowBackTopBar() {
         />
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.PassCode) {
+  } else if (
+    displayScreen === DisplayScreenOptions.PassCode ||
+    displayScreen === DisplayScreenOptions.CancelTask
+  ) {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button

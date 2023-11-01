@@ -12,6 +12,7 @@ import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
 import Favorites from './Favorites/Favorites';
 import Utilities from './Utilities/Utilities';
+import CancelTask from './CancelTask/CancelTask';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -39,6 +40,9 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   const displayMessage = useSelector(getDisplayMessage);
   const displayScreen = useSelector(getDisplayScreen);
   const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
+
+  // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
+  // and another initiatives need to task precedence
 
   if (displayMessage) {
     return (
@@ -81,6 +85,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <Utilities />;
   } else if (displayScreen === DisplayScreenOptions.Actions) {
     return <Actions />;
+  } else if (displayScreen === DisplayScreenOptions.CancelTask) {
+    return <CancelTask />;
   }
 
   return (

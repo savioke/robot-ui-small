@@ -24,6 +24,7 @@ export const styles = {
     height: '65px',
     width: '350px',
     fontSize: '24px',
+    backgroundColor: '#0AA15B',
   },
   confirmTextContainer: {
     marginBottom: 2,

@@ -1,9 +1,9 @@
 export const styles = {
   keypadContainer: {
-    flex: 0.8,
+    flex: 1,
   },
   gridContainer: {
-    minHeight: '565px',
+    minHeight: '620px',
   },
   fabContainer: {
     textAlign: 'center',

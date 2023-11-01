@@ -4,8 +4,7 @@ import createCache from '@emotion/cache';
 export const theme = createTheme({
   palette: {
     primary: {
-      // main: '#1272b2',
-      main: '#0AA15B',
+      main: '#1272b2',
     },
   },
   components: {

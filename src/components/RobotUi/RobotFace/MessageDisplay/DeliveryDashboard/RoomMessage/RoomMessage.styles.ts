@@ -9,6 +9,8 @@ export const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     marginRight: 5,
+    // TODO: Hacky way to not have the arrow :after from covering the outline
+    zIndex: 2000,
   },
   leftSideContent: {
     flex: 1,

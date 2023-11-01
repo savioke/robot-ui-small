@@ -29,5 +29,6 @@ export const styles = {
     padding: 2,
     marginBottom: -5,
     borderRadius: '20px',
+    display: 'flex',
   },
 };

@@ -56,7 +56,7 @@ export default function RoomSummary() {
             variant='contained'
             // TODO: Create task with all values
           >
-            Go!
+            Go
           </Button>
         </Box>
       </Grid>

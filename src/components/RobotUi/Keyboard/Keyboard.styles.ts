@@ -1,9 +1,9 @@
 export const styles = {
   keyboardContainer: {
-    flex: 0.8,
+    flex: 1,
   },
   gridContainer: {
-    minHeight: '565px',
+    minHeight: '620px',
   },
   fabContainer: {
     textAlign: 'center',
@@ -31,6 +31,7 @@ export const styles = {
     width: '100%',
     height: '65px',
     fontSize: '24px',
+    backgroundColor: '#0AA15B',
   },
   spaceButton: {
     width: '100%',

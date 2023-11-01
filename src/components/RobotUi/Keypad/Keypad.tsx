@@ -34,7 +34,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
       <Grid
         container
         justifyContent='flex-end'
-        rowSpacing='22px'
         sx={styles.gridContainer}
       >
         <Grid
@@ -219,7 +218,7 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
                 styles.numberButtons,
                 {
                   '&:hover': {
-                    backgroundColor: '#1272b2',
+                    backgroundColor: '#0AA15B',
                   },
                 },
               ]}
@@ -238,7 +237,7 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
         >
           <Button
             fullWidth
-            sx={{ height: '65px', fontSize: '24px' }}
+            sx={{ height: '65px', fontSize: '24px', backgroundColor: '#0AA15B' }}
             variant='contained'
             onClick={() => {
               // TODO: Hook in error message for invalid code... This might be verified from R2C2.

@@ -26,6 +26,9 @@ export const styles = {
     fontSize: '55px',
   },
   contentContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
     marginLeft: 3,
   },
 };

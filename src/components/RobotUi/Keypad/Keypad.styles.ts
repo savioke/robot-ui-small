@@ -5,9 +5,6 @@ export const styles = {
   gridContainer: {
     minHeight: '620px',
   },
-  fabContainer: {
-    textAlign: 'center',
-  },
   iconButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -20,8 +17,8 @@ export const styles = {
   },
   numberButtons: {
     backgroundColor: '#414141',
-    height: '100px',
-    width: '100px',
+    width: '100%',
+    height: '100%',
     borderRadius: '25px',
     fontSize: '32px',
   },

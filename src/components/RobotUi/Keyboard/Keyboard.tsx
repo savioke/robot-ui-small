@@ -54,7 +54,7 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
       <Box sx={styles.keyboardContainer}>
         <Grid
           container
-          rowSpacing={3}
+          rowSpacing={2}
           sx={styles.gridContainer}
         >
           <Grid
@@ -66,7 +66,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -80,7 +79,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -94,7 +92,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -108,7 +105,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -122,7 +118,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -136,7 +131,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -157,7 +151,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -171,7 +164,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -185,7 +177,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -199,7 +190,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -213,7 +203,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -227,7 +216,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -248,7 +236,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -262,7 +249,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -276,7 +262,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -290,7 +275,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -304,7 +288,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -318,7 +301,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -339,7 +321,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -353,7 +334,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -367,7 +347,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -381,7 +360,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -395,7 +373,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -409,7 +386,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -430,7 +406,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -444,7 +419,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -458,7 +432,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -472,7 +445,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -486,7 +458,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -500,7 +471,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -521,7 +491,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={10}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -535,7 +504,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 sx={[
@@ -564,7 +532,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={2}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='outlined'
@@ -577,7 +544,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
             <Grid
               item
               xs={10}
-              sx={styles.fabContainer}
             >
               <Button
                 variant='contained'
@@ -601,7 +567,7 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
     <Box sx={styles.keyboardContainer}>
       <Grid
         container
-        rowSpacing={3}
+        rowSpacing={2}
         sx={styles.gridContainer}
       >
         <Grid
@@ -613,7 +579,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -630,7 +595,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -647,7 +611,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -664,7 +627,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -681,7 +643,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -698,7 +659,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -722,7 +682,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -739,7 +698,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -756,7 +714,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -773,7 +730,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -790,7 +746,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -807,7 +762,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -831,7 +785,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -848,7 +801,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -865,7 +817,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -882,7 +833,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -899,7 +849,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -916,7 +865,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -940,7 +888,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -957,7 +904,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -974,7 +920,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -991,7 +936,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1008,7 +952,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1025,7 +968,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1049,7 +991,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1066,7 +1007,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1083,7 +1023,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1097,7 +1036,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1111,7 +1049,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1125,7 +1062,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1146,20 +1082,22 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
               sx={styles.capitalizeButton}
               onClick={() => setIsCapitalLetters((previousValue) => !previousValue)}
             >
-              {isCapitalLetters ? <ArrowDownward /> : <ArrowUpward />}
+              {isCapitalLetters ? (
+                <ArrowDownward fontSize='large' />
+              ) : (
+                <ArrowUpward fontSize='large' />
+              )}
             </Button>
           </Grid>
           <Grid
             item
             xs={8}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -1173,7 +1111,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={2}
-            sx={styles.fabContainer}
           >
             <Button
               sx={[
@@ -1202,7 +1139,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='outlined'
@@ -1215,7 +1151,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           <Grid
             item
             xs={9}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'

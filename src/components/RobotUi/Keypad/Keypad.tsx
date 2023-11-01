@@ -33,19 +33,19 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
     <Box sx={styles.keypadContainer}>
       <Grid
         container
-        justifyContent='flex-end'
+        rowSpacing={2}
         sx={styles.gridContainer}
       >
         <Grid
           container
           item
           justifyContent='flex-end'
+          spacing={2}
           xs={12}
         >
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -59,7 +59,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -73,7 +72,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -88,13 +86,13 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
         <Grid
           container
           item
+          spacing={2}
           justifyContent='flex-end'
           xs={12}
         >
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -108,7 +106,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -122,7 +119,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -137,13 +133,13 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
         <Grid
           container
           item
+          spacing={2}
           justifyContent='flex-end'
           xs={12}
         >
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -157,7 +153,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -171,7 +166,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -186,18 +180,18 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
         <Grid
           container
           item
+          spacing={2}
           justifyContent='flex-end'
           xs={12}
         >
           <Grid
             item
             xs={3}
-            sx={[styles.fabContainer, styles.iconButtonContainer]}
+            sx={styles.iconButtonContainer}
           ></Grid>
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <Button
               variant='contained'
@@ -211,7 +205,6 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={3}
-            sx={styles.fabContainer}
           >
             <IconButton
               sx={[
@@ -232,25 +225,33 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           </Grid>
         </Grid>
         <Grid
+          container
           item
-          xs={9}
+          xs={12}
+          justifyContent='flex-end'
         >
-          <Button
-            fullWidth
-            sx={{ height: '65px', fontSize: '24px', backgroundColor: '#0AA15B' }}
-            variant='contained'
-            onClick={() => {
-              // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-              // TODO: Passcode validation from R2C2
-              if (displayScreen === DisplayScreenOptions.RoomNumber) {
-                return dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage));
-              }
-
-              return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-            }}
+          <Grid
+            item
+            xs={9}
+            sx={{ display: 'flex', alignItems: 'center' }}
           >
-            {intl.formatMessage({ id: 'ok' })}
-          </Button>
+            <Button
+              fullWidth
+              sx={{ height: '65px', fontSize: '24px', backgroundColor: '#0AA15B' }}
+              variant='contained'
+              onClick={() => {
+                // TODO: Hook in error message for invalid code... This might be verified from R2C2.
+                // TODO: Passcode validation from R2C2
+                if (displayScreen === DisplayScreenOptions.RoomNumber) {
+                  return dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage));
+                }
+
+                return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+              }}
+            >
+              {intl.formatMessage({ id: 'ok' })}
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </Box>

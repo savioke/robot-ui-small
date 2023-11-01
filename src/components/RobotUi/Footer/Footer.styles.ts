@@ -1,7 +1,7 @@
 export const styles = {
   lockImageContainer: {
-    position: 'relative',
-    left: '15px',
-    bottom: '30px',
+    position: 'absolute',
+    left: '25px',
+    bottom: '15px',
   },
 };

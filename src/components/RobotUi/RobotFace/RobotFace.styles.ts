@@ -1,5 +1,3 @@
-import { DisplayScreenOptions } from 'appConstants';
-
 export const styles = {
   eyesContainer: {
     width: '40%',
@@ -18,7 +16,7 @@ export const styles = {
     marginBottom: 7,
   },
   paper: {
-    minHeight: 386,
+    minHeight: '390px',
     height: '100%',
     display: 'flex',
     borderRadius: '20px',

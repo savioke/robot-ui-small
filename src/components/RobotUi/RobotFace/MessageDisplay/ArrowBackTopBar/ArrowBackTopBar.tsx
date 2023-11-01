@@ -228,7 +228,8 @@ export default function ArrowBackTopBar() {
     );
   } else if (
     displayScreen === DisplayScreenOptions.PassCode ||
-    displayScreen === DisplayScreenOptions.CancelTask
+    displayScreen === DisplayScreenOptions.CancelTask ||
+    displayScreen === DisplayScreenOptions.CancelTaskConfirmation
   ) {
     return (
       <Box sx={styles.arrowBackContainer}>

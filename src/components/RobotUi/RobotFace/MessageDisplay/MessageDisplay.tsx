@@ -13,6 +13,7 @@ import Dashboard from './Dashboard/Dashboard';
 import Favorites from './Favorites/Favorites';
 import Utilities from './Utilities/Utilities';
 import CancelTask from './CancelTask/CancelTask';
+import CancelTaskConfirmation from './CancelTaskConfirmation/CancelTaskConfirmation';
 import Text from 'components/Text/Text';
 
 /** styles */
@@ -87,6 +88,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
     return <Actions />;
   } else if (displayScreen === DisplayScreenOptions.CancelTask) {
     return <CancelTask />;
+  } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
+    return <CancelTaskConfirmation />;
   }
 
   return (

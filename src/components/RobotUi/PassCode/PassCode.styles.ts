@@ -1,7 +1,4 @@
 export const styles = {
-  keypadContainer: {
-    flex: 0.8,
-  },
   textfield: {
     '& .MuiInput-root': {
       fontSize: '100px',

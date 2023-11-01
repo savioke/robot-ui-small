@@ -55,12 +55,10 @@ export default function PassCode() {
           </Box>
         </Box>
       </Box>
-      <Box sx={styles.keypadContainer}>
-        <Keypad
-          setValues={setPassCode}
-          handleSetValues={handleSetPassCode}
-        />
-      </Box>
+      <Keypad
+        setValues={setPassCode}
+        handleSetValues={handleSetPassCode}
+      />
     </Box>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'typeDux';
 
 /** Mui Components */
-import { Box, Paper, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
@@ -31,36 +31,25 @@ export default function RoomNumber() {
   };
 
   return (
-    <Box sx={styles.container}>
-      <Box sx={styles.messageContainer}>
-        <Paper
-          elevation={5}
-          sx={styles.paper}
-        >
-          <Box sx={styles.innerPaper}>
-            <Box sx={styles.roomNumberContainer}>
-              <ArrowBackTopBar />
-              <Box sx={styles.textFieldContainer}>
-                <TextField
-                  variant='standard'
-                  value={roomNumber}
-                  inputProps={{ style: { textAlign: 'center' } }}
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  sx={styles.textfield}
-                />
-              </Box>
-            </Box>
-            <Box sx={styles.keypadContainer}>
-              <Keypad
-                setValues={setRoomNumber}
-                handleSetValues={handleSetRoomNumber}
-              />
-            </Box>
-          </Box>
-        </Paper>
+    <Box sx={styles.innerPaper}>
+      <Box sx={styles.leftSideContent}>
+        <ArrowBackTopBar />
+        <Box sx={styles.textFieldContainer}>
+          <TextField
+            variant='standard'
+            value={roomNumber}
+            inputProps={{ style: { textAlign: 'center' } }}
+            InputProps={{
+              readOnly: true,
+            }}
+            sx={styles.textfield}
+          />
+        </Box>
       </Box>
+      <Keypad
+        setValues={setRoomNumber}
+        handleSetValues={handleSetRoomNumber}
+      />
     </Box>
   );
 }

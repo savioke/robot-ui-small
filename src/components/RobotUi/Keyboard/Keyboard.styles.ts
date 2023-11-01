@@ -1,4 +1,7 @@
 export const styles = {
+  keyboardContainer: {
+    flex: 0.8,
+  },
   gridContainer: {
     minHeight: '565px',
   },

@@ -37,11 +37,44 @@ export default function RobotUi() {
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.RoomNumber) {
-    return <RoomNumber />;
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <RoomNumber />
+          </Paper>
+        </Box>
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
-    return <RoomMessage />;
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <RoomMessage />
+          </Paper>
+        </Box>
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
-    return <RoomSummary />;
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <RoomSummary />
+          </Paper>
+        </Box>
+      </Box>
+    );
   }
 
   return <RobotFace />;

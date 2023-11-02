@@ -5,8 +5,8 @@ import { Box, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
-import Keyboard from 'components/RobotUi/Keyboard/Keyboard';
-import Text from 'components/Text/Text';
+import Keyboard from 'components/Keyboard/Keyboard';
+import Text from 'sharedComponents/Text/Text';
 
 /** styles */
 import { styles } from './RoomMessage.styles';

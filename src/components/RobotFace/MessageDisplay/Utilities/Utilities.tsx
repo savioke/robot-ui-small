@@ -8,7 +8,7 @@ import { Box, Button } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
-import Text from 'components/Text/Text';
+import Text from 'sharedComponents/Text/Text';
 
 /** styles */
 import { styles } from './Utilities.styles';

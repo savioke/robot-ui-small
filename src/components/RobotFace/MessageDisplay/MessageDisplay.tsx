@@ -14,7 +14,7 @@ import Favorites from './Favorites/Favorites';
 import Utilities from './Utilities/Utilities';
 import CancelTask from './CancelTask/CancelTask';
 import CancelTaskConfirmation from './CancelTaskConfirmation/CancelTaskConfirmation';
-import Text from 'components/Text/Text';
+import Text from 'sharedComponents/Text/Text';
 
 /** styles */
 import { styles } from './MessageDisplay.styles';

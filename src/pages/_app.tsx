@@ -15,8 +15,8 @@ import { english, spanish, japanese } from 'lang';
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
-import Footer from 'components/RobotUi/Footer/Footer';
-import TopBar from 'components/RobotUi/TopBar/TopBar';
+import Footer from 'components/Footer/Footer';
+import TopBar from 'components/TopBar/TopBar';
 
 /** actions */
 import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';

@@ -7,7 +7,7 @@ import { Wifi, WifiOff, Clear } from '@mui/icons-material';
 
 /** Components */
 import BatteryIcon from './BatteryIcon/BatteryIcon';
-import Text from 'components/Text/Text';
+import Text from 'sharedComponents/Text/Text';
 
 /** styles */
 import { styles } from './TopBar.styles';

@@ -6,7 +6,7 @@ import { Box, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
-import Keypad from 'components/RobotUi/Keypad/Keypad';
+import Keypad from 'components/Keypad/Keypad';
 
 /** styles */
 import { styles } from './RoomNumber.styles';

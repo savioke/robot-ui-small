@@ -5,8 +5,8 @@ import { Box, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../RobotFace/MessageDisplay/ArrowBackTopBar/ArrowBackTopBar';
-import Keypad from '../Keypad/Keypad';
-import Text from 'components/Text/Text';
+import Keypad from 'components/Keypad/Keypad';
+import Text from 'sharedComponents/Text/Text';
 
 /** styles */
 import { styles } from './PassCode.styles';

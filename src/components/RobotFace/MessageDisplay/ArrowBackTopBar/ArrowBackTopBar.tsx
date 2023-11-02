@@ -7,7 +7,7 @@ import { useIntl } from 'react-intl';
 import { Box, Button } from '@mui/material';
 
 /** Components */
-import Text from 'components/Text/Text';
+import Text from 'sharedComponents/Text/Text';
 
 /** styles */
 import { styles } from './ArrowBackTopBar.styles';

@@ -5,14 +5,14 @@ import { Box, Button } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
-import Text from 'components/Text/Text';
+import Text from 'sharedComponents/Text/Text';
 
 /** styles */
-import { styles } from './CancelTaskConfirmation.styles';
+import { styles } from './CancelTask.styles';
 
 /** redux */
 
-export default function CancelTaskConfirmation() {
+export default function CancelTask() {
   return (
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />
@@ -21,22 +21,13 @@ export default function CancelTaskConfirmation() {
         component='h1'
         sx={{ marginLeft: 3 }}
       >
-        Ok! Are you sure you want to cancel?
+        Hello I'm currently on a Task
       </Text>
-      <Box
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1, gap: 3 }}
-      >
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
         <Button
           variant='contained'
           color='error'
-          sx={{ height: '65px', fontSize: '24px' }}
-        >
-          Cancel Task
-        </Button>
-        <Button
-          variant='contained'
-          color='error'
-          sx={{ height: '65px', fontSize: '24px' }}
+          sx={{ height: '65px', width: '30%', fontSize: '24px' }}
         >
           Cancel Task
         </Button>

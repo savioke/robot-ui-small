@@ -10,6 +10,7 @@ import RobotFace from 'components/RobotFace/RobotFace';
 import RoomNumber from 'components/RobotFace/MessageDisplay/DeliveryDashboard/RoomNumber/RoomNumber';
 import RoomMessage from 'components/RobotFace/MessageDisplay/DeliveryDashboard/RoomMessage/RoomMessage';
 import RoomSummary from 'components/RobotFace/MessageDisplay/DeliveryDashboard/RoomSummary/RoomSummary';
+import Search from 'components/RobotFace/MessageDisplay/DeliveryDashboard/Search/Search';
 
 /** styles */
 import { styles } from './RobotUi.styles';
@@ -71,6 +72,19 @@ export default function RobotUi() {
             sx={styles.paper}
           >
             <RoomSummary />
+          </Paper>
+        </Box>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.Search) {
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <Search />
           </Paper>
         </Box>
       </Box>

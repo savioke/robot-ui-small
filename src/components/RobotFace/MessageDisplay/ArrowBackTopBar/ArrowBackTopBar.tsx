@@ -141,6 +141,38 @@ export default function ArrowBackTopBar() {
         </Box>
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.Search) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+          />
+        </Button>
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+            sx={styles.breadCrumbTrailText}
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='search'
+          />
+        </Box>
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.Utilities) {
     return (
       <Box sx={styles.arrowBackContainer}>

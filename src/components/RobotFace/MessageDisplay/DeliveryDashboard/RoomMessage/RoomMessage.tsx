@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Box, TextField } from '@mui/material';
 
 /** Components */
-import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
+import ArrowBackTopBar from 'components/RobotFace/MessageDisplay/ArrowBackTopBar/ArrowBackTopBar';
 import Keyboard from 'components/Keyboard/Keyboard';
 import Text from 'sharedComponents/Text/Text';
 

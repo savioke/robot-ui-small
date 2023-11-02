@@ -16,7 +16,8 @@ type DisplayScreen =
   | 'Favorites'
   | 'Utilities'
   | 'CancelTask'
-  | 'CancelTaskConfirmation';
+  | 'CancelTaskConfirmation'
+  | 'Search';
 
 interface RobotUiState {
   deliverLocations: NavigationGoal[];

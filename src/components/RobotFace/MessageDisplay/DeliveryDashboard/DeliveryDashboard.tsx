@@ -75,8 +75,7 @@ export default function DeliveryDashboard() {
           </Box>
         </Box>
         <Box sx={styles.paperContainer}>
-          {/* TODO: Begin search flow*/}
-          <Button>
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Search))}>
             <Image
               priority
               src='images/search-icon.svg'

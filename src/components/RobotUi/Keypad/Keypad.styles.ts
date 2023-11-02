@@ -19,7 +19,11 @@ export const styles = {
     backgroundColor: '#414141',
     width: '100%',
     height: '100%',
-    borderRadius: '25px',
+    borderRadius: '10px',
     fontSize: '32px',
+    fontWeight: 600,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 };

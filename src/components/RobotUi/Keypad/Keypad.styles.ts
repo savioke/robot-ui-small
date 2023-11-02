@@ -10,11 +10,6 @@ export const styles = {
     alignItems: 'center',
     display: 'flex',
   },
-  iconButton: {
-    paddingLeft: 0,
-    width: '75px',
-    height: '75px',
-  },
   numberButtons: {
     backgroundColor: '#414141',
     width: '100%',
@@ -24,6 +19,23 @@ export const styles = {
     fontWeight: 600,
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backSpaceIcon: {
+    color: 'white',
+  },
+  iconButtonHover: {
+    '&:hover': {
+      backgroundColor: '#0AA15B',
+    },
+  },
+  confirmButton: {
+    height: '65px',
+    fontSize: '24px',
+    backgroundColor: '#0AA15B',
+  },
+  confirmButtonGridItem: {
+    display: 'flex',
     alignItems: 'center',
   },
 };

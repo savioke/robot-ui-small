@@ -207,19 +207,12 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
             xs={3}
           >
             <IconButton
-              sx={[
-                styles.numberButtons,
-                {
-                  '&:hover': {
-                    backgroundColor: '#0AA15B',
-                  },
-                },
-              ]}
+              sx={[styles.numberButtons, styles.iconButtonHover]}
               onClick={() => setValues((previousValues) => previousValues.slice(0, -1))}
             >
               <Backspace
                 fontSize='large'
-                sx={{ color: 'white' }}
+                sx={styles.backSpaceIcon}
               />
             </IconButton>
           </Grid>
@@ -233,11 +226,11 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           <Grid
             item
             xs={9}
-            sx={{ display: 'flex', alignItems: 'center' }}
+            sx={styles.confirmButtonGridItem}
           >
             <Button
               fullWidth
-              sx={{ height: '65px', fontSize: '24px', backgroundColor: '#0AA15B' }}
+              sx={styles.confirmButton}
               variant='contained'
               onClick={() => {
                 // TODO: Hook in error message for invalid code... This might be verified from R2C2.

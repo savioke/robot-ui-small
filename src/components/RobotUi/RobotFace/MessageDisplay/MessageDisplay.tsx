@@ -85,7 +85,8 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
 
   return (
     <Box sx={styles.displayMessageContainer}>
-      <Text variant='h2'>Connecting...</Text>
+      <Text variant='h2'>Happy Birthday Payton!</Text>
+      {/* <Text variant='h2'>Connecting...</Text> */}
     </Box>
   );
 }

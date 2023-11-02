@@ -23,6 +23,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "js-confetti": "^0.11.0",
     "next": "13.4.10",
     "next-redux-wrapper": "^8.1.0",
     "react": "^18.2.0",

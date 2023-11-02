@@ -7,6 +7,7 @@ import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
 import { useIdleTimer } from 'react-idle-timer';
 import '../styles/globals.css';
+import JSConfetti from 'js-confetti';
 
 /** Internationalization */
 import { english, spanish, japanese } from 'lang';
@@ -39,6 +40,24 @@ export default function App({ Component, ...rest }: AppProps) {
     },
     timeout: 20000,
   });
+
+  React.useEffect(() => {
+    // Create a new instance of JSConfetti
+    const jsConfetti = new JSConfetti();
+
+    // Function to add confetti
+    const addConfetti = () => {
+      jsConfetti.addConfetti();
+    };
+
+    // Call the addConfetti function every 2 seconds
+    const confettiInterval = setInterval(addConfetti, 1500);
+
+    // Clean up the interval when the component is unmounted
+    return () => {
+      clearInterval(confettiInterval);
+    };
+  }, []); // Empty dependency array ensures that this effect runs once after initial render
 
   React.useEffect(() => {
     const languagePreference = localStorage.getItem('languagePreference');

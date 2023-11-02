@@ -22,6 +22,9 @@ export const styles = {
     borderRadius: '10px',
     fontSize: '34px',
     fontWeight: 600,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   confirmButton: {
     width: '100%',

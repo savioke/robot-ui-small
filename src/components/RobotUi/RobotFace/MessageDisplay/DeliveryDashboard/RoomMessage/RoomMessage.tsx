@@ -16,7 +16,7 @@ import { styles } from './RoomMessage.styles';
 /** helpers */
 
 export default function RoomMessage() {
-  const [roomMessage, setRoomMessage] = useState('Your order has arrived');
+  const [roomMessage, setRoomMessage] = useState('');
 
   return (
     <Box sx={styles.innerPaper}>
@@ -32,6 +32,7 @@ export default function RoomMessage() {
           <TextField
             multiline
             rows={5}
+            placeholder='Your order has arrived'
             value={roomMessage}
             InputProps={{
               disableUnderline: true,

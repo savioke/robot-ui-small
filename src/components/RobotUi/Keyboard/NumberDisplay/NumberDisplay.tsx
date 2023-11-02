@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Box, Grid, Button } from '@mui/material';
-import { Backspace, ArrowUpward, ArrowDownward } from '@mui/icons-material';
+import { Backspace } from '@mui/icons-material';
 
 /** Components */
-import NumberDisplay from './NumberDisplay/NumberDisplay';
 
 /** styles */
-import { styles } from './Keyboard.styles';
+import { styles } from '../Keyboard.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
@@ -19,46 +18,21 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 
-interface KeypadProps {
+interface NumberDisplayProps {
+  // eslint-disable-next-line no-unused-vars
+  handleKeyboardValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
   setPasscode: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Keyboard({ setPasscode }: KeypadProps) {
+export default function NumberDisplay({
+  handleKeyboardValues,
+  setIsNumberDisplay,
+  setPasscode,
+}: NumberDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
-  const [isNumberDisplay, setIsNumberDisplay] = useState(false);
-  const [isCapitalLetters, setIsCapitalLetters] = useState(false);
-
-  const handleKeyboardValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setPasscode((previousValue) => {
-      return previousValue + event.currentTarget.value;
-    });
-  };
-
-  const handleCapitalLetters = ({
-    letter,
-    isCapitalLetters,
-  }: {
-    letter: string;
-    isCapitalLetters: boolean;
-  }) => {
-    if (isCapitalLetters) {
-      return letter.toUpperCase();
-    }
-
-    return letter.toLowerCase();
-  };
-
-  if (isNumberDisplay) {
-    return (
-      <NumberDisplay
-        setIsNumberDisplay={setIsNumberDisplay}
-        setPasscode={setPasscode}
-        handleKeyboardValues={handleKeyboardValues}
-      />
-    );
-  }
 
   return (
     <Box sx={styles.keyboardContainer}>
@@ -79,14 +53,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'a', isCapitalLetters })}
+              value={1}
             >
-              {intl.formatMessage({ id: 'a' })}
+              {intl.formatMessage({ id: '1' })}
             </Button>
           </Grid>
           <Grid
@@ -95,14 +66,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'b', isCapitalLetters })}
+              value={2}
             >
-              {intl.formatMessage({ id: 'b' })}
+              {intl.formatMessage({ id: '2' })}
             </Button>
           </Grid>
           <Grid
@@ -111,14 +79,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'c', isCapitalLetters })}
+              value={3}
             >
-              {intl.formatMessage({ id: 'c' })}
+              {intl.formatMessage({ id: '3' })}
             </Button>
           </Grid>
           <Grid
@@ -127,14 +92,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'd', isCapitalLetters })}
+              value={4}
             >
-              {intl.formatMessage({ id: 'd' })}
+              {intl.formatMessage({ id: '4' })}
             </Button>
           </Grid>
           <Grid
@@ -143,14 +105,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'e', isCapitalLetters })}
+              value={5}
             >
-              {intl.formatMessage({ id: 'e' })}
+              {intl.formatMessage({ id: '5' })}
             </Button>
           </Grid>
           <Grid
@@ -159,14 +118,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'f', isCapitalLetters })}
+              value={6}
             >
-              {intl.formatMessage({ id: 'f' })}
+              {intl.formatMessage({ id: '6' })}
             </Button>
           </Grid>
         </Grid>
@@ -182,14 +138,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'g', isCapitalLetters })}
+              value={7}
             >
-              {intl.formatMessage({ id: 'g' })}
+              {intl.formatMessage({ id: '7' })}
             </Button>
           </Grid>
           <Grid
@@ -198,14 +151,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'h', isCapitalLetters })}
+              value={8}
             >
-              {intl.formatMessage({ id: 'h' })}
+              {intl.formatMessage({ id: '8' })}
             </Button>
           </Grid>
           <Grid
@@ -214,14 +164,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'i', isCapitalLetters })}
+              value={9}
             >
-              {intl.formatMessage({ id: 'i' })}
+              {intl.formatMessage({ id: '9' })}
             </Button>
           </Grid>
           <Grid
@@ -230,14 +177,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'j', isCapitalLetters })}
+              value={0}
             >
-              {intl.formatMessage({ id: 'j' })}
+              {intl.formatMessage({ id: '0' })}
             </Button>
           </Grid>
           <Grid
@@ -246,14 +190,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'k', isCapitalLetters })}
+              value='+'
             >
-              {intl.formatMessage({ id: 'k' })}
+              {intl.formatMessage({ id: '+' })}
             </Button>
           </Grid>
           <Grid
@@ -262,14 +203,11 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
+              sx={styles.numberButtons}
               onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'l', isCapitalLetters })}
+              value='-'
             >
-              {intl.formatMessage({ id: 'l' })}
+              {intl.formatMessage({ id: '-' })}
             </Button>
           </Grid>
         </Grid>
@@ -279,244 +217,6 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           spacing={1}
           xs={12}
         >
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'm', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'm' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'n', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'n' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'o', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'o' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'p', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'p' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'q', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'q' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'r', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'r' })}
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          item
-          spacing={1}
-          xs={12}
-        >
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 's', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 's' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 't', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 't' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'u', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'u' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'v', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'v' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'w', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'w' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'x', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'x' })}
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          item
-          spacing={1}
-          xs={12}
-        >
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'y', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'y' })}
-            </Button>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-          >
-            <Button
-              variant='contained'
-              sx={[
-                styles.numberButtons,
-                { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
-              ]}
-              onClick={handleKeyboardValues}
-              value={handleCapitalLetters({ letter: 'z', isCapitalLetters })}
-            >
-              {intl.formatMessage({ id: 'z' })}
-            </Button>
-          </Grid>
           <Grid
             item
             xs={2}
@@ -569,6 +269,32 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
               {intl.formatMessage({ id: '?' })}
             </Button>
           </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='('
+            >
+              {intl.formatMessage({ id: '(' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=')'
+            >
+              {intl.formatMessage({ id: ')' })}
+            </Button>
+          </Grid>
         </Grid>
         <Grid
           container
@@ -582,19 +308,173 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
           >
             <Button
               variant='contained'
-              sx={styles.capitalizeButton}
-              onClick={() => setIsCapitalLetters((previousValue) => !previousValue)}
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='\'
             >
-              {isCapitalLetters ? (
-                <ArrowDownward fontSize='large' />
-              ) : (
-                <ArrowUpward fontSize='large' />
-              )}
+              \
             </Button>
           </Grid>
           <Grid
             item
-            xs={8}
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='/'
+            >
+              /
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=':'
+            >
+              {intl.formatMessage({ id: ':' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value=';'
+            >
+              {intl.formatMessage({ id: ';' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='~'
+            >
+              {intl.formatMessage({ id: '~' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='*'
+            >
+              {intl.formatMessage({ id: '*' })}
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='&'
+            >
+              {intl.formatMessage({ id: '&' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='@'
+            >
+              {intl.formatMessage({ id: '@' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='#'
+            >
+              {intl.formatMessage({ id: '#' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='%'
+            >
+              {intl.formatMessage({ id: '%' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='='
+            >
+              {intl.formatMessage({ id: '=' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+          >
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
+              onClick={handleKeyboardValues}
+              value='$'
+            >
+              {intl.formatMessage({ id: '$' })}
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          spacing={1}
+          xs={12}
+        >
+          <Grid
+            item
+            xs={10}
           >
             <Button
               variant='contained'
@@ -635,19 +515,19 @@ export default function Keyboard({ setPasscode }: KeypadProps) {
         >
           <Grid
             item
-            xs={3}
+            xs={2}
           >
             <Button
               variant='outlined'
               sx={styles.transformButton}
-              onClick={() => setIsNumberDisplay(true)}
+              onClick={() => setIsNumberDisplay(false)}
             >
-              ?123
+              {intl.formatMessage({ id: 'abc' })}
             </Button>
           </Grid>
           <Grid
             item
-            xs={9}
+            xs={10}
           >
             <Button
               variant='contained'

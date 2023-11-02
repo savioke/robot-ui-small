@@ -39,18 +39,21 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='roomNumber'
-        />
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+            sx={styles.breadCrumbTrailText}
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='roomNumber'
+          />
+        </Box>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
@@ -68,25 +71,28 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='roomNumber'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='message'
-        />
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+            sx={styles.breadCrumbTrailText}
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='roomNumber'
+            sx={styles.breadCrumbTrailText}
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='message'
+          />
+        </Box>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
@@ -104,32 +110,35 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='roomNumber'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='message'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='summary'
-        />
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+            sx={styles.breadCrumbTrailText}
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='roomNumber'
+            sx={styles.breadCrumbTrailText}
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='message'
+            sx={styles.breadCrumbTrailText}
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='summary'
+          />
+        </Box>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Utilities) {
@@ -147,11 +156,14 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='utilities'
-        />
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+          />
+        </Box>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Favorites) {
@@ -169,11 +181,14 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='favorites'
-        />
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='favorites'
+          />
+        </Box>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Actions) {
@@ -191,17 +206,20 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='utilities'
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='actions'
-        />
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+          />
+          -
+          <Text
+            variant='h6'
+            component='h1'
+            id='actions'
+          />
+        </Box>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
@@ -219,11 +237,14 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'miniRobotFace' })}
           />
         </Button>
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-        />
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        <Box sx={styles.textContainer}>
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+          />
+        </Box>
       </Box>
     );
   } else if (

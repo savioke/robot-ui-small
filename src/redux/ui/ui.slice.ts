@@ -39,7 +39,7 @@ interface RobotUiState {
 }
 
 export const initialState: RobotUiState = {
-  displayScreen: DisplayScreenOptions.CancelTaskConfirmation,
+  displayScreen: DisplayScreenOptions.Home,
   deliverLocations: [],
   mingleLocations: [],
   displayMessage: '',

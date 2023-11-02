@@ -15,4 +15,10 @@ export const styles = {
   button: {
     padding: 0,
   },
+  textContainer: {
+    display: 'flex',
+    gap: 1,
+    alignItems: 'center',
+    marginTop: 0.5,
+  },
 };

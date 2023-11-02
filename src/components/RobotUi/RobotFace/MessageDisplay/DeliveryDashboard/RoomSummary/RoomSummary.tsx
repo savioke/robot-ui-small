@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
 import { Box, Button, Grid } from '@mui/material';
@@ -15,6 +16,8 @@ import { styles } from './RoomSummary.styles';
 /** helpers */
 
 export default function RoomSummary() {
+  const intl = useIntl();
+
   return (
     <Grid container>
       <Grid
@@ -25,14 +28,23 @@ export default function RoomSummary() {
         <Box sx={styles.leftSideContent}>
           <ArrowBackTopBar />
           <Box sx={styles.leftSideTextContainer}>
-            <Text variant='h3'>
-              Delivery to <strong>Room 101</strong>
-            </Text>
+            <Text
+              variant='h3'
+              sx={styles.deliveryTitle}
+              id='deliveryTitleConfirmation'
+              values={{
+                dropOffLocation: <Box component='strong'>Room 101</Box>,
+              }}
+            />
             <Box sx={styles.summaryTextContainer}>
               <Box>
-                <Text variant='h4'>What I will say on delivery!</Text>
+                <Text
+                  variant='h4'
+                  sx={styles.whatIWillSayText}
+                  id='whatIWillSayOnDelivery'
+                />
                 <Box sx={styles.messageTextContainer}>
-                  <Text>
+                  <Text sx={styles.messageText}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt
                   </Text>
@@ -48,15 +60,21 @@ export default function RoomSummary() {
       >
         <Box sx={styles.rightSideContent}>
           <Box sx={styles.confirmTextContainer}>
-            <Text variant='h4'>Everything is loaded?</Text>
-            <Text variant='h4'>I'll be on my way!</Text>
+            <Text
+              variant='h4'
+              id='everythingIsLoaded'
+            />
+            <Text
+              variant='h4'
+              id='illBeOnMyWay'
+            />
           </Box>
           <Button
             sx={styles.button}
             variant='contained'
             // TODO: Create task with all values
           >
-            Go
+            {intl.formatMessage({ id: 'go' })}
           </Button>
         </Box>
       </Grid>

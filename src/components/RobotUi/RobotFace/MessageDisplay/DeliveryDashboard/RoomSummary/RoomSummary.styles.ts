@@ -41,4 +41,15 @@ export const styles = {
     flexDirection: 'column',
     justifyContent: 'space-evenly',
   },
+  deliveryTitle: {
+    fontSize: '55px',
+  },
+  messageText: {
+    marginLeft: 2,
+    fontSize: '30px',
+  },
+  whatIWillSayText: {
+    fontSize: '35px',
+    marginBottom: 2,
+  },
 };

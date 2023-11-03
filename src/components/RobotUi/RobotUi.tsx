@@ -8,8 +8,8 @@ import { Box, Paper } from '@mui/material';
 import PassCode from 'components/PassCode/PassCode';
 import RobotFace from 'components/RobotFace/RobotFace';
 import RoomNumber from 'components/RobotFace/MessageDisplay/DeliveryDashboard/RoomNumber/RoomNumber';
-import RoomMessage from 'components/RobotFace/MessageDisplay/DeliveryDashboard/RoomMessage/RoomMessage';
-import RoomSummary from 'components/RobotFace/MessageDisplay/DeliveryDashboard/RoomSummary/RoomSummary';
+import DeliveryMessage from 'components/RobotFace/MessageDisplay/DeliveryDashboard/DeliveryMessage/DeliveryMessage';
+import DeliverySummary from 'components/RobotFace/MessageDisplay/DeliveryDashboard/DeliverySummary/DeliverySummary';
 import Search from 'components/RobotFace/MessageDisplay/DeliveryDashboard/Search/Search';
 
 /** styles */
@@ -50,7 +50,7 @@ export default function RobotUi() {
         </Box>
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
+  } else if (displayScreen === DisplayScreenOptions.DeliveryMessage) {
     return (
       <Box sx={styles.container}>
         <Box sx={styles.messageContainer}>
@@ -58,12 +58,12 @@ export default function RobotUi() {
             elevation={5}
             sx={styles.paper}
           >
-            <RoomMessage />
+            <DeliveryMessage />
           </Paper>
         </Box>
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
+  } else if (displayScreen === DisplayScreenOptions.DeliverySummary) {
     return (
       <Box sx={styles.container}>
         <Box sx={styles.messageContainer}>
@@ -71,7 +71,7 @@ export default function RobotUi() {
             elevation={5}
             sx={styles.paper}
           >
-            <RoomSummary />
+            <DeliverySummary />
           </Paper>
         </Box>
       </Box>

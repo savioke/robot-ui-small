@@ -533,8 +533,10 @@ export default function NumberDisplay({
               variant='contained'
               sx={styles.confirmButton}
               onClick={() => {
-                if (displayScreen === DisplayScreenOptions.RoomMessage) {
-                  dispatch(setDisplayScreen(DisplayScreenOptions.RoomSummary));
+                if (displayScreen === DisplayScreenOptions.DeliveryMessage) {
+                  dispatch(setDisplayScreen(DisplayScreenOptions.DeliverySummary));
+                } else if (displayScreen === DisplayScreenOptions.Search) {
+                  dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                 }
               }}
             >

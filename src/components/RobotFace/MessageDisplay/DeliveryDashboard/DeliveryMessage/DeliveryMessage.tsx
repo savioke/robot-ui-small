@@ -9,13 +9,13 @@ import Keyboard from 'components/Keyboard/Keyboard';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
-import { styles } from './RoomMessage.styles';
+import { styles } from './DeliveryMessage.styles';
 
 /** redux */
 
 /** helpers */
 
-export default function RoomMessage() {
+export default function DeliveryMessage() {
   const [roomMessage, setRoomMessage] = useState('');
 
   return (

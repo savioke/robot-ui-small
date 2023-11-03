@@ -56,7 +56,7 @@ export default function ArrowBackTopBar() {
         </Box>
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
+  } else if (displayScreen === DisplayScreenOptions.DeliveryMessage) {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
@@ -95,12 +95,12 @@ export default function ArrowBackTopBar() {
         </Box>
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
+  } else if (displayScreen === DisplayScreenOptions.DeliverySummary) {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
           sx={styles.button}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage))}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage))}
         >
           <Image
             priority

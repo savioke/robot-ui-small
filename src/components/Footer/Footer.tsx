@@ -27,8 +27,8 @@ export default function Footer() {
   if (
     displayScreen === DisplayScreenOptions.PassCode ||
     displayScreen === DisplayScreenOptions.RoomNumber ||
-    displayScreen === DisplayScreenOptions.RoomMessage ||
-    displayScreen === DisplayScreenOptions.RoomSummary ||
+    displayScreen === DisplayScreenOptions.DeliveryMessage ||
+    displayScreen === DisplayScreenOptions.DeliverySummary ||
     displayScreen === DisplayScreenOptions.Search
   ) {
     return (

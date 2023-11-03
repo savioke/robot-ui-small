@@ -236,7 +236,7 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
                 // TODO: Hook in error message for invalid code... This might be verified from R2C2.
                 // TODO: Passcode validation from R2C2
                 if (displayScreen === DisplayScreenOptions.RoomNumber) {
-                  return dispatch(setDisplayScreen(DisplayScreenOptions.RoomMessage));
+                  return dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                 }
 
                 return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));

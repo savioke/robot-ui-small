@@ -9,13 +9,13 @@ import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
-import { styles } from './RoomSummary.styles';
+import { styles } from './DeliverySummary.styles';
 
 /** redux */
 
 /** helpers */
 
-export default function RoomSummary() {
+export default function DeliverySummary() {
   const intl = useIntl();
 
   return (

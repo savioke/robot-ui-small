@@ -43,18 +43,22 @@ export default function ArrowBackTopBar() {
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
         {/* <Box sx={styles.textContainer}> */}
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='roomNumber'
-        />
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='roomNumber'
+          />
+        </Breadcrumbs>
         {/* </Box> */}
       </Box>
     );
@@ -253,11 +257,16 @@ export default function ArrowBackTopBar() {
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
         {/* <Box sx={styles.textContainer}> */}
-        <Text
-          variant='h6'
-          component='h1'
-          id='utilities'
-        />
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+          />
+        </Breadcrumbs>
         {/* </Box> */}
       </Box>
     );
@@ -303,17 +312,22 @@ export default function ArrowBackTopBar() {
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
         {/* <Box sx={styles.textContainer}> */}
-        <Text
-          variant='h6'
-          component='h1'
-          id='utilities'
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='actions'
-        />
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='actions'
+          />
+        </Breadcrumbs>
         {/* </Box> */}
       </Box>
     );
@@ -362,18 +376,22 @@ export default function ArrowBackTopBar() {
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
         {/* <Box sx={styles.textContainer}> */}
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='search'
-        />
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='search'
+          />
+        </Breadcrumbs>
         {/* </Box> */}
       </Box>
     );

@@ -84,14 +84,6 @@ const uiSlice = createSlice({
     setDisplayMessage: (state, { payload }) => {
       state.displayMessage = payload;
     },
-    setNavigationLocations: (state, { payload }) => {
-      state.deliverLocations = payload.filter(
-        (location: NavigationGoal) => !location?.tags?.includes('internal'),
-      );
-      state.mingleLocations = payload.filter(
-        (location: NavigationGoal) => location?.tags?.includes('Mingle'),
-      );
-    },
     setDeliverFormValues: (state, { payload }) => {
       state.deliverFormValues = {
         ...state.deliverFormValues,
@@ -109,7 +101,6 @@ const uiSlice = createSlice({
 
 export const {
   setIsConfirmationNeeded,
-  setNavigationLocations,
   setDeliverFormValues,
   setInputName,
   setDisplayScreen,

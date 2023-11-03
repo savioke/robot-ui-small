@@ -1,11 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import {
-  setDisplayMessage,
-  setNavigationLocations,
-  setIsConfirmationNeeded,
-  setDisplayScreen,
-} from 'state/ui/ui.slice';
+import { setDisplayMessage, setIsConfirmationNeeded, setDisplayScreen } from 'state/ui/ui.slice';
+import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
 import { DisplayMessageOptions, DisplayScreenOptions } from 'appConstants';
@@ -48,7 +44,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket.on('navigation_goals', ({ goals }) => {
-            dispatch(setNavigationLocations(goals));
+            dispatch(setDeliverLocations(goals));
           });
 
           socket.on('display_confirm', ({ confirm_text }) => {

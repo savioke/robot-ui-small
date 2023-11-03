@@ -15,7 +15,7 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './Search.styles';
 
 /** redux */
-import { getDeliverFormValues, getDeliverLocations } from 'state/ui/ui.selectors';
+import { getDeliverLocations, getDeliverFormValues } from 'state/deliver/deliver.selectors';
 
 /** helpers */
 

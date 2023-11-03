@@ -12,22 +12,32 @@ import Keypad from 'components/Keypad/Keypad';
 import { styles } from './RoomNumber.styles';
 
 /** redux */
-import { setDeliverFormValues } from 'state/ui/ui.slice';
-import { getDeliverFormValues } from 'state/ui/ui.selectors';
+import { setDeliverFormValues } from 'state/deliver/deliver.slice';
+import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 
 /** helpers */
 
 export default function RoomNumber() {
-  const [roomNumber, setRoomNumber] = React.useState('');
+  const dispatch = useDispatch();
+  const deliverFormValues = useSelector(getDeliverFormValues);
 
   const handleSetRoomNumber = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setRoomNumber((previousValue) => {
-      if (previousValue.length === 4) {
-        return previousValue;
-      }
+    if (deliverFormValues.context.dropoff_location.length === 4) {
+      return;
+    }
+    dispatch(
+      setDeliverFormValues({
+        dropoff_location: deliverFormValues.context.dropoff_location + event.currentTarget.value,
+      }),
+    );
+  };
 
-      return previousValue + event.currentTarget.value;
-    });
+  const handleBackspace = () => {
+    dispatch(
+      setDeliverFormValues({
+        dropoff_location: deliverFormValues.context.dropoff_location.slice(0, -1),
+      }),
+    );
   };
 
   return (
@@ -37,17 +47,20 @@ export default function RoomNumber() {
         <Box sx={styles.textFieldContainer}>
           <TextField
             variant='standard'
-            value={roomNumber}
+            value={deliverFormValues.context.dropoff_location}
             inputProps={{ style: { textAlign: 'center' } }}
             InputProps={{
               readOnly: true,
             }}
             sx={styles.textfield}
+            onChange={(event) =>
+              dispatch(setDeliverFormValues({ dropoff_location: event.target.value }))
+            }
           />
         </Box>
       </Box>
       <Keypad
-        setValues={setRoomNumber}
+        setValues={handleBackspace}
         handleSetValues={handleSetRoomNumber}
       />
     </Box>

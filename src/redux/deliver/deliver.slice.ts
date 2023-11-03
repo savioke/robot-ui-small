@@ -1,6 +1,8 @@
 import { createSlice } from 'typeDux';
+import { NavigationGoal } from 'types/r2c2';
 
-interface RobotUiState {
+interface DeliverState {
+  deliverLocations: NavigationGoal[];
   deliverFormValues: {
     name: 'start_delivery';
     context: {
@@ -11,7 +13,8 @@ interface RobotUiState {
   };
 }
 
-export const initialState: RobotUiState = {
+export const initialState: DeliverState = {
+  deliverLocations: [],
   deliverFormValues: {
     name: 'start_delivery',
     context: {
@@ -26,6 +29,11 @@ const deliverSlice = createSlice({
   name: 'deliverSlice',
   initialState,
   reducers: {
+    setDeliverLocations: (state, { payload }) => {
+      state.deliverLocations = payload.filter(
+        (location: NavigationGoal) => !location?.tags?.includes('internal'),
+      );
+    },
     setDeliverFormValues: (state, { payload }) => {
       state.deliverFormValues = {
         ...state.deliverFormValues,
@@ -41,6 +49,7 @@ const deliverSlice = createSlice({
   },
 });
 
-export const { setDeliverFormValues, resetDeliverFormValues } = deliverSlice.actions;
+export const { setDeliverFormValues, resetDeliverFormValues, setDeliverLocations } =
+  deliverSlice.actions;
 
 export default deliverSlice.reducer;

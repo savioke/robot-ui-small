@@ -5,8 +5,12 @@ import { useSelector } from 'typeDux';
 import { Box, Paper } from '@mui/material';
 
 /** Components */
-import PassCode from './PassCode/PassCode';
-import RobotFace from './RobotFace/RobotFace';
+import PassCode from 'components/PassCode/PassCode';
+import RobotFace from 'components/RobotFace/RobotFace';
+import RoomNumber from 'components/RobotFace/MessageDisplay/DeliveryDashboard/RoomNumber/RoomNumber';
+import DeliveryMessage from 'components/RobotFace/MessageDisplay/DeliveryDashboard/DeliveryMessage/DeliveryMessage';
+import DeliverySummary from 'components/RobotFace/MessageDisplay/DeliveryDashboard/DeliverySummary/DeliverySummary';
+import Search from 'components/RobotFace/MessageDisplay/DeliveryDashboard/Search/Search';
 
 /** styles */
 import { styles } from './RobotUi.styles';
@@ -16,9 +20,6 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
-import RoomNumber from './RobotFace/MessageDisplay/DeliveryDashboard/RoomNumber/RoomNumber';
-import RoomMessage from './RobotFace/MessageDisplay/DeliveryDashboard/RoomMessage/RoomMessage';
-import RoomSummary from './RobotFace/MessageDisplay/DeliveryDashboard/RoomSummary/RoomSummary';
 
 export default function RobotUi() {
   const displayScreen = useSelector(getDisplayScreen);
@@ -49,7 +50,7 @@ export default function RobotUi() {
         </Box>
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.RoomMessage) {
+  } else if (displayScreen === DisplayScreenOptions.DeliveryMessage) {
     return (
       <Box sx={styles.container}>
         <Box sx={styles.messageContainer}>
@@ -57,12 +58,12 @@ export default function RobotUi() {
             elevation={5}
             sx={styles.paper}
           >
-            <RoomMessage />
+            <DeliveryMessage />
           </Paper>
         </Box>
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.RoomSummary) {
+  } else if (displayScreen === DisplayScreenOptions.DeliverySummary) {
     return (
       <Box sx={styles.container}>
         <Box sx={styles.messageContainer}>
@@ -70,7 +71,20 @@ export default function RobotUi() {
             elevation={5}
             sx={styles.paper}
           >
-            <RoomSummary />
+            <DeliverySummary />
+          </Paper>
+        </Box>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.Search) {
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <Search />
           </Paper>
         </Box>
       </Box>

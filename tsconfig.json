@@ -1,12 +1,6 @@
 {
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -18,11 +12,7 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es6"
-    ],
+    "lib": ["dom", "dom.iterable", "es6"],
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -33,27 +23,14 @@
     "isolatedModules": true,
     "baseUrl": "./src/",
     "paths": {
-      "components/*": [
-        "components/*"
-      ],
-      "appConstants": [
-        "constants"
-      ],
-      "typeDux": [
-        "redux/typeDux"
-      ],
-      "store": [
-        "redux/store"
-      ],
-      "state/*": [
-        "redux/*"
-      ],
-      "utilities/*": [
-        "utilities/*"
-      ],
-      "types/*": [
-        "types/*"
-      ]
-    },
+      "components/*": ["components/*"],
+      "appConstants": ["constants"],
+      "typeDux": ["redux/typeDux"],
+      "store": ["redux/store"],
+      "state/*": ["redux/*"],
+      "utilities/*": ["utilities/*"],
+      "types/*": ["types/*"],
+      "sharedComponents/*": ["shared-components/*"]
+    }
   }
 }

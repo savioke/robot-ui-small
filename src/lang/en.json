@@ -19,6 +19,7 @@
   "settings": "Settings",
   "dropOffMessage": "Dropoff Message",
   "dropOffLocation": "Dropoff Location",
+  "dropoffLocation(s)": "Dropoff Location(s)",
   "guideMe": "Guide me",
   "makeMeLaugh": "Make me laugh",
   "rockPaperScissors": "Rock Paper Scissors",
@@ -112,5 +113,12 @@
   "goToLocation": "Go to location",
   "returnToDock": "Return to dock",
   "summary": "Summary",
-  "couldYouEnterThePasscode?": "Could you enter the passcode?"
+  "couldYouEnterThePasscode?": "Could you enter the passcode?",
+  "everythingIsLoaded": "Everything is loaded?",
+  "illBeOnMyWay": "I'll be on my way",
+  "go": "Go",
+  "whatIWillSayOnDelivery": "What I will say on delivery!",
+  "deliveryTitleConfirmation": "Delivery to {dropOffLocation}",
+  "search": "Search",
+  "backArrow": "Back arrow"
 }

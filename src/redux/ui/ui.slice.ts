@@ -11,10 +11,13 @@ type DisplayScreen =
   | 'Settings'
   | 'Delivery dashboard'
   | 'Room number'
-  | 'Room message'
-  | 'Room summary'
+  | 'Delivery message'
+  | 'Delivery summary'
   | 'Favorites'
-  | 'Utilities';
+  | 'Utilities'
+  | 'CancelTask'
+  | 'CancelTaskConfirmation'
+  | 'Search';
 
 interface RobotUiState {
   deliverLocations: NavigationGoal[];

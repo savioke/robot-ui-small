@@ -21,8 +21,6 @@ import TopBar from 'components/TopBar/TopBar';
 /** actions */
 import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';
 
-/** Mui Premium License Key */
-
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
@@ -32,23 +30,23 @@ export default function App({ Component, ...rest }: AppProps) {
   const stateTheme = store.getState().ui.theme;
   useSocketIo();
 
-  React.useEffect(() => {
-    // Create a new instance of JSConfetti
-    const jsConfetti = new JSConfetti();
+  // React.useEffect(() => {
+  //   // Create a new instance of JSConfetti
+  //   const jsConfetti = new JSConfetti();
 
-    // Function to add confetti
-    const addConfetti = () => {
-      jsConfetti.addConfetti();
-    };
+  //   // Function to add confetti
+  //   const addConfetti = () => {
+  //     jsConfetti.addConfetti();
+  //   };
 
-    // Call the addConfetti function every 2 seconds
-    const confettiInterval = setInterval(addConfetti, 1500);
+  //   // Call the addConfetti function every 2 seconds
+  //   const confettiInterval = setInterval(addConfetti, 1500);
 
-    // Clean up the interval when the component is unmounted
-    return () => {
-      clearInterval(confettiInterval);
-    };
-  }, []); // Empty dependency array ensures that this effect runs once after initial render
+  //   // Clean up the interval when the component is unmounted
+  //   return () => {
+  //     clearInterval(confettiInterval);
+  //   };
+  // }, []); // Empty dependency array ensures that this effect runs once after initial render
 
   React.useEffect(() => {
     const languagePreference = localStorage.getItem('languagePreference');

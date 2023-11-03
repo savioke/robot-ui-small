@@ -45,7 +45,23 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
   // and another initiatives need to task precedence
 
-  if (displayMessage) {
+  if (displayScreen === DisplayScreenOptions.Dashboard) {
+    return <Dashboard />;
+  } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
+    return <DeliverForm formRef={formRef} />;
+  } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
+    return <DeliveryDashboard />;
+  } else if (displayScreen === DisplayScreenOptions.Favorites) {
+    return <Favorites />;
+  } else if (displayScreen === DisplayScreenOptions.Utilities) {
+    return <Utilities />;
+  } else if (displayScreen === DisplayScreenOptions.Actions) {
+    return <Actions />;
+  } else if (displayScreen === DisplayScreenOptions.CancelTask) {
+    return <CancelTask />;
+  } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
+    return <CancelTaskConfirmation />;
+  } else if (displayMessage) {
     return (
       <Box sx={styles.displayMessageContainer}>
         <Text variant='h2'>{displayMessage}</Text>
@@ -74,22 +90,6 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
         </Box>
       </Box>
     );
-  } else if (displayScreen === DisplayScreenOptions.Dashboard) {
-    return <Dashboard />;
-  } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
-    return <DeliverForm formRef={formRef} />;
-  } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
-    return <DeliveryDashboard />;
-  } else if (displayScreen === DisplayScreenOptions.Favorites) {
-    return <Favorites />;
-  } else if (displayScreen === DisplayScreenOptions.Utilities) {
-    return <Utilities />;
-  } else if (displayScreen === DisplayScreenOptions.Actions) {
-    return <Actions />;
-  } else if (displayScreen === DisplayScreenOptions.CancelTask) {
-    return <CancelTask />;
-  } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
-    return <CancelTaskConfirmation />;
   }
 
   return (

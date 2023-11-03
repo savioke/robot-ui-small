@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Autocomplete, Box, TextField } from '@mui/material';
+import { Autocomplete, Box, Checkbox, TextField, styled, lighten, darken } from '@mui/material';
+import { CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
 
 /** Components */
 import ArrowBackTopBar from 'components/RobotFace/MessageDisplay/ArrowBackTopBar/ArrowBackTopBar';
@@ -17,6 +18,23 @@ import { styles } from './Search.styles';
 import { getDeliverFormValues, getDeliverLocations } from 'state/ui/ui.selectors';
 
 /** helpers */
+
+const GroupHeader = styled('div')(({ theme }) => ({
+  // Makes header have priority over checkboxes
+  zIndex: 2000,
+  position: 'sticky',
+  top: '-8px',
+  padding: '4px 10px',
+  color: theme.palette.primary.main,
+  backgroundColor:
+    theme.palette.mode === 'light'
+      ? lighten(theme.palette.primary.light, 0.85)
+      : darken(theme.palette.primary.main, 0.8),
+}));
+
+const GroupItems = styled('ul')({
+  padding: 0,
+});
 
 export default function Search() {
   const intl = useIntl();
@@ -40,13 +58,13 @@ export default function Search() {
         <Box sx={styles.textFieldContainer}>
           <Text
             variant='h4'
-            sx={{ marginTop: 5, marginLeft: 3 }}
+            sx={{ marginTop: 5 }}
           >
-            What I will say on delivery!
+            What are you looking for?
           </Text>
           <Autocomplete
-            fullWidth
-            disableClearable
+            multiple
+            disableCloseOnSelect
             open={isPopupOpen}
             inputValue={deliverFormValues.context.dropoff_location}
             options={deliverLocations}
@@ -73,6 +91,17 @@ export default function Search() {
               //   );
               // }
             }}
+            renderOption={(props, option, { selected }) => (
+              <li {...props}>
+                <Checkbox
+                  icon={<CheckBoxOutlineBlank />}
+                  checkedIcon={<CheckBox />}
+                  style={{ marginRight: 8 }}
+                  checked={selected}
+                />
+                {option.name}
+              </li>
+            )}
             renderInput={(params) => (
               <TextField
                 autoFocus
@@ -80,19 +109,19 @@ export default function Search() {
                 ref={inputRef}
                 name='dropoff_location'
                 // onFocus={handleFocus}
-                label={intl.formatMessage({ id: 'dropOffLocation' })}
+                label={intl.formatMessage({ id: 'dropoffLocation(s)' })}
                 {...params}
                 inputRef={(input) => {
                   inputRef = input;
                 }}
               />
             )}
-            // renderGroup={(params) => (
-            //   <li key={params.key}>
-            //     <GroupHeader>{params.group}</GroupHeader>
-            //     <GroupItems>{params.children}</GroupItems>
-            //   </li>
-            // )}
+            renderGroup={(params) => (
+              <li key={params.key}>
+                <GroupHeader>{params.group}</GroupHeader>
+                <GroupItems>{params.children}</GroupItems>
+              </li>
+            )}
           />
         </Box>
       </Box>

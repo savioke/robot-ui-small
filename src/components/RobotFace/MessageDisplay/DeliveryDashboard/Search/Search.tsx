@@ -123,6 +123,7 @@ export default function Search() {
           />
         </Box>
       </Box>
+      {/* @ts-ignore */}
       <Keyboard setValues={setRoomMessage} />
     </Box>
   );

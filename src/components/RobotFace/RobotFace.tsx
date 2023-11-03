@@ -17,7 +17,6 @@ import { styles } from './RobotFace.styles';
 
 export default function RobotFace() {
   const intl = useIntl();
-  const formRef = React.useRef<HTMLFormElement>(null);
 
   return (
     <Box sx={styles.container}>
@@ -26,7 +25,7 @@ export default function RobotFace() {
           elevation={5}
           sx={styles.paper}
         >
-          <MessageDisplay formRef={formRef} />
+          <MessageDisplay />
         </Paper>
       </Box>
       <Box sx={styles.eyesContainer}>

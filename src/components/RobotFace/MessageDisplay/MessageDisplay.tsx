@@ -8,7 +8,6 @@ import { Button, Box } from '@mui/material';
 
 /** Components */
 import Actions from './Utilities/Actions/Actions';
-import DeliverForm from './DeliverForm/DeliverForm';
 import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
 import Favorites from './Favorites/Favorites';
@@ -31,11 +30,7 @@ import {
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DisplayScreenOptions } from 'appConstants';
 
-interface MessageDisplayProps {
-  formRef: React.RefObject<HTMLFormElement>;
-}
-
-export default function MessageDisplay({ formRef }: MessageDisplayProps) {
+export default function MessageDisplay() {
   const intl = useIntl();
   const dispatch = useDispatch();
   const socket = useSocketIo(dispatch, intl);
@@ -63,8 +58,6 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
 
   if (displayScreen === DisplayScreenOptions.Dashboard) {
     return <Dashboard />;
-  } else if (displayScreen === DisplayScreenOptions.DeliverForm) {
-    return <DeliverForm formRef={formRef} />;
   } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
     return <DeliveryDashboard />;
   } else if (displayScreen === DisplayScreenOptions.Favorites) {

@@ -20,6 +20,7 @@ type DisplayScreen =
 
 interface RobotUiState {
   displayScreen: DisplayScreen;
+  passCode: string;
   displayMessage: string;
   isConfirmationNeeded: boolean;
   isScreenTouched: boolean;
@@ -36,6 +37,7 @@ export const initialState: RobotUiState = {
   inputName: '',
   theme: '',
   language: 'en',
+  passCode: '',
 };
 
 const uiSlice = createSlice({
@@ -63,6 +65,9 @@ const uiSlice = createSlice({
     setDisplayMessage: (state, { payload }) => {
       state.displayMessage = payload;
     },
+    setPasscode: (state, { payload }) => {
+      state.passCode = payload;
+    },
   },
 });
 
@@ -74,6 +79,7 @@ export const {
   setIsScreenTouched,
   setTheme,
   setLanguage,
+  setPasscode,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

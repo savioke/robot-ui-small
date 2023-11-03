@@ -27,3 +27,7 @@ export const getIsConfirmationNeeded = (state: RootState) => {
 export const getIsScreenTouched = (state: RootState) => {
   return state.ui.isScreenTouched;
 };
+
+export const getPasscode = (state: RootState) => {
+  return state.ui.passCode;
+};

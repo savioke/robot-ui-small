@@ -14,7 +14,7 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './ArrowBackTopBar.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen, setPasscode } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 
@@ -410,7 +410,10 @@ export default function ArrowBackTopBar() {
       <Box sx={styles.arrowBackContainer}>
         <Button
           sx={styles.button}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+          onClick={() => {
+            dispatch(setPasscode(''));
+            dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+          }}
         >
           <Image
             priority

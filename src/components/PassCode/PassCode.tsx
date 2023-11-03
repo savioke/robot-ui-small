@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'typeDux';
 
 /** Mui Components */
 import { Box, TextField } from '@mui/material';
@@ -12,20 +13,25 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './PassCode.styles';
 
 /** redux */
+import { setPasscode } from 'state/ui/ui.slice';
+import { getPasscode } from 'state/ui/ui.selectors';
 
 /** helpers */
 
 export default function PassCode() {
-  const [passCode, setPassCode] = React.useState('');
+  const dispatch = useDispatch();
+  const passCode = useSelector(getPasscode);
 
   const handleSetPassCode = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setPassCode((previousValue) => {
-      if (previousValue.length === 16) {
-        return previousValue;
-      }
+    if (passCode.length === 16) {
+      return passCode;
+    }
 
-      return previousValue + event.currentTarget.value;
-    });
+    dispatch(setPasscode(passCode + event.currentTarget.value));
+  };
+
+  const handleBackspace = () => {
+    dispatch(setPasscode(passCode.slice(0, -1)));
   };
 
   return (
@@ -56,7 +62,7 @@ export default function PassCode() {
         </Box>
       </Box>
       <Keypad
-        setValues={setPassCode}
+        setValues={handleBackspace}
         handleSetValues={handleSetPassCode}
       />
     </Box>

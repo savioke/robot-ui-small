@@ -23,7 +23,7 @@ export default function RoomNumber() {
 
   const handleSetRoomNumber = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (deliverFormValues.context.dropoff_location.length === 4) {
-      return;
+      return deliverFormValues.context.dropoff_location;
     }
     dispatch(
       setDeliverFormValues({

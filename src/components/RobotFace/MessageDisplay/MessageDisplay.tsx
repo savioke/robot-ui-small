@@ -47,7 +47,7 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
   // and another initiatives need to task precedence
 
   React.useEffect(() => {
-    if (displayMessage.includes('Happy Birthday')) {
+    if (displayMessage.toLowerCase().includes('birthday')) {
       const jsConfetti = new JSConfetti();
       const addConfetti = () => {
         jsConfetti.addConfetti();

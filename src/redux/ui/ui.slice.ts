@@ -1,6 +1,5 @@
 import { createSlice } from 'typeDux';
 import { DisplayScreenOptions } from '../../constants';
-import { NavigationGoal } from 'types/r2c2';
 
 type DisplayScreen =
   | 'Actions'
@@ -20,8 +19,6 @@ type DisplayScreen =
   | 'Search';
 
 interface RobotUiState {
-  deliverLocations: NavigationGoal[];
-  mingleLocations: NavigationGoal[];
   displayScreen: DisplayScreen;
   displayMessage: string;
   isConfirmationNeeded: boolean;
@@ -29,34 +26,16 @@ interface RobotUiState {
   inputName: 'dropoff_location' | 'dropoff_message' | string;
   theme: string;
   language: 'en' | 'es' | 'ja';
-  deliverFormValues: {
-    name: 'start_delivery';
-    context: {
-      dropoff_location: string;
-      dropoff_message: string;
-      transit_message: string;
-    };
-  };
 }
 
 export const initialState: RobotUiState = {
   displayScreen: DisplayScreenOptions.Home,
-  deliverLocations: [],
-  mingleLocations: [],
   displayMessage: '',
   isConfirmationNeeded: false,
   isScreenTouched: false,
   inputName: '',
   theme: '',
   language: 'en',
-  deliverFormValues: {
-    name: 'start_delivery',
-    context: {
-      dropoff_location: '',
-      dropoff_message: '',
-      transit_message: '',
-    },
-  },
 };
 
 const uiSlice = createSlice({
@@ -84,31 +63,17 @@ const uiSlice = createSlice({
     setDisplayMessage: (state, { payload }) => {
       state.displayMessage = payload;
     },
-    setDeliverFormValues: (state, { payload }) => {
-      state.deliverFormValues = {
-        ...state.deliverFormValues,
-        context: {
-          ...state.deliverFormValues.context,
-          ...payload,
-        },
-      };
-    },
-    resetDeliverFormValues: (state) => {
-      state.deliverFormValues = initialState.deliverFormValues;
-    },
   },
 });
 
 export const {
   setIsConfirmationNeeded,
-  setDeliverFormValues,
   setInputName,
   setDisplayScreen,
   setDisplayMessage,
   setIsScreenTouched,
   setTheme,
   setLanguage,
-  resetDeliverFormValues,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

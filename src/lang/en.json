@@ -120,5 +120,7 @@
   "whatIWillSayOnDelivery": "What I will say on delivery!",
   "deliveryTitleConfirmation": "Delivery to {dropOffLocation}",
   "search": "Search",
-  "backArrow": "Back arrow"
+  "backArrow": "Back arrow",
+  "whatAreYouLookingFor?": "What are you looking for?",
+  "deliveringTo:": "Delivering to:"
 }

@@ -54,14 +54,12 @@ export default function Search() {
     <Box sx={styles.innerPaper}>
       <Box sx={styles.leftSideContent}>
         <ArrowBackTopBar />
-
         <Box sx={styles.textFieldContainer}>
           <Text
             variant='h4'
             sx={{ marginTop: 5 }}
-          >
-            What are you looking for?
-          </Text>
+            id='whatAreYouLookingFor?'
+          />
           <Autocomplete
             multiple
             disableCloseOnSelect

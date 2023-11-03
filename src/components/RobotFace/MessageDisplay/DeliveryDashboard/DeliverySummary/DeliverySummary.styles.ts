@@ -52,4 +52,13 @@ export const styles = {
     fontSize: '35px',
     marginBottom: 2,
   },
+  list: {
+    listStyleType: 'decimal',
+    marginLeft: 5,
+  },
+  listItemText: {
+    display: 'list-item',
+    fontSize: '24px',
+    color: '#707070',
+  },
 };

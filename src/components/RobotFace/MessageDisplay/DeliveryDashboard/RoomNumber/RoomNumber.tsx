@@ -46,6 +46,7 @@ export default function RoomNumber() {
         <ArrowBackTopBar />
         <Box sx={styles.textFieldContainer}>
           <TextField
+            required
             variant='standard'
             value={deliverFormValues.context.dropoff_location}
             inputProps={{ style: { textAlign: 'center' } }}
@@ -60,6 +61,7 @@ export default function RoomNumber() {
         </Box>
       </Box>
       <Keypad
+        isContinueDisabled={!deliverFormValues.context.dropoff_location.length}
         setValues={handleBackspace}
         handleSetValues={handleSetRoomNumber}
       />

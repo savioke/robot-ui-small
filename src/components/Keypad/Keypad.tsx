@@ -19,12 +19,13 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 interface KeypadProps {
+  isContinueDisabled: boolean;
   setValues: React.Dispatch<React.SetStateAction<string>>;
   // eslint-disable-next-line no-unused-vars
   handleSetValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
+export default function Keypad({ isContinueDisabled, setValues, handleSetValues }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
@@ -230,6 +231,7 @@ export default function Keypad({ setValues, handleSetValues }: KeypadProps) {
           >
             <Button
               fullWidth
+              disabled={isContinueDisabled}
               sx={styles.confirmButton}
               variant='contained'
               onClick={() => {

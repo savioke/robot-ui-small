@@ -4096,6 +4096,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-confetti@npm:^0.11.0":
+  version: 0.11.0
+  resolution: "js-confetti@npm:0.11.0"
+  checksum: 6bd280952842bb9cf0587042fe8f716423bc1e8a652145aeaefb68c70480be4477ae9ff556e569a7fa05763e8e24d0d2700d9cf88e7f210261e83069deb74dbf
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -5102,6 +5109,7 @@ __metadata:
     eslint-plugin-import: ^2.29.0
     eslint-plugin-react: ^7.33.2
     eslint-plugin-react-hooks: ^4.6.0
+    js-confetti: ^0.11.0
     next: 13.4.10
     next-redux-wrapper: ^8.1.0
     prettier: ^3.0.0

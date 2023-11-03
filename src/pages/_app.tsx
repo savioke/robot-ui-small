@@ -20,8 +20,6 @@ import TopBar from 'components/TopBar/TopBar';
 /** actions */
 import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';
 
-/** Mui Premium License Key */
-
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 

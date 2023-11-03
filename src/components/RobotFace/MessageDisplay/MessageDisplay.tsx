@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
+import JSConfetti from 'js-confetti';
 
 /** Mui Components */
 import { Button, Box } from '@mui/material';
@@ -44,6 +45,21 @@ export default function MessageDisplay({ formRef }: MessageDisplayProps) {
 
   // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
   // and another initiatives need to task precedence
+
+  React.useEffect(() => {
+    if (displayMessage.includes('Happy Birthday')) {
+      const jsConfetti = new JSConfetti();
+      const addConfetti = () => {
+        jsConfetti.addConfetti();
+      };
+
+      const confettiInterval = setInterval(addConfetti, 1500);
+
+      return () => {
+        clearInterval(confettiInterval);
+      };
+    }
+  }, [displayMessage]);
 
   if (displayScreen === DisplayScreenOptions.Dashboard) {
     return <Dashboard />;

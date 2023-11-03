@@ -21,4 +21,8 @@ export const styles = {
     display: 'flex',
     justifyContent: 'space-between',
   },
+  title: {
+    marginTop: 5,
+    marginLeft: 3,
+  },
 };

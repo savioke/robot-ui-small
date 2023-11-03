@@ -19,16 +19,16 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 interface LetterDisplayProps {
-  // eslint-disable-next-line no-unused-vars
-  handleKeyboardValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
-  setPasscode: React.Dispatch<React.SetStateAction<string>>;
+  // eslint-disable-next-line no-unused-vars
+  setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleBackspace: () => void;
 }
 
 export default function LetterDisplay({
-  handleKeyboardValues,
+  handleBackspace,
   setIsNumberDisplay,
-  setPasscode,
+  setValues,
 }: LetterDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'a', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'a' })}
@@ -88,7 +88,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'b', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'b' })}
@@ -104,7 +104,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'c', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'c' })}
@@ -120,7 +120,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'd', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'd' })}
@@ -136,7 +136,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'e', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'e' })}
@@ -152,7 +152,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'f', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'f' })}
@@ -175,7 +175,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'g', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'g' })}
@@ -191,7 +191,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'h', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'h' })}
@@ -207,7 +207,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'i', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'i' })}
@@ -223,7 +223,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'j', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'j' })}
@@ -239,7 +239,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'k', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'k' })}
@@ -255,7 +255,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'l', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'l' })}
@@ -278,7 +278,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'm', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'm' })}
@@ -294,7 +294,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'n', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'n' })}
@@ -310,7 +310,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'o', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'o' })}
@@ -326,7 +326,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'p', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'p' })}
@@ -342,7 +342,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'q', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'q' })}
@@ -358,7 +358,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'r', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'r' })}
@@ -381,7 +381,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 's', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 's' })}
@@ -397,7 +397,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 't', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 't' })}
@@ -413,7 +413,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'u', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'u' })}
@@ -429,7 +429,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'v', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'v' })}
@@ -445,7 +445,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'w', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'w' })}
@@ -461,7 +461,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'x', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'x' })}
@@ -484,7 +484,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'y', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'y' })}
@@ -500,7 +500,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 { textTransform: isCapitalLetters ? 'uppercase' : 'lowercase' },
               ]}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={handleCapitalLetters({ letter: 'z', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'z' })}
@@ -513,7 +513,7 @@ export default function LetterDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='.'
             >
               {intl.formatMessage({ id: '.' })}
@@ -526,7 +526,7 @@ export default function LetterDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value=','
             >
               {intl.formatMessage({ id: ',' })}
@@ -539,7 +539,7 @@ export default function LetterDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='!'
             >
               {intl.formatMessage({ id: '!' })}
@@ -552,7 +552,7 @@ export default function LetterDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='?'
             >
               {intl.formatMessage({ id: '?' })}
@@ -588,7 +588,7 @@ export default function LetterDisplay({
             <Button
               variant='contained'
               sx={styles.spaceButton}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value=' '
             >
               {intl.formatMessage({ id: 'space' })}
@@ -607,7 +607,7 @@ export default function LetterDisplay({
                   },
                 },
               ]}
-              onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+              onClick={handleBackspace}
             >
               <Backspace
                 fontSize='large'

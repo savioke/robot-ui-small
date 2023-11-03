@@ -12,34 +12,30 @@ import NumberDisplay from './NumberDisplay/NumberDisplay';
 
 /** helpers */
 
-interface KeypadProps {
-  setPasscode: React.Dispatch<React.SetStateAction<string>>;
+interface KeyboardProps {
+  // eslint-disable-next-line no-unused-vars
+  setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleBackspace: () => void;
 }
 
-export default function Keyboard({ setPasscode }: KeypadProps) {
+export default function Keyboard({ setValues, handleBackspace }: KeyboardProps) {
   const [isNumberDisplay, setIsNumberDisplay] = useState(false);
-
-  const handleKeyboardValues = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setPasscode((previousValue) => {
-      return previousValue + event.currentTarget.value;
-    });
-  };
 
   if (isNumberDisplay) {
     return (
       <NumberDisplay
         setIsNumberDisplay={setIsNumberDisplay}
-        setPasscode={setPasscode}
-        handleKeyboardValues={handleKeyboardValues}
+        setValues={setValues}
+        handleBackspace={handleBackspace}
       />
     );
   }
 
   return (
     <LetterDisplay
-      handleKeyboardValues={handleKeyboardValues}
       setIsNumberDisplay={setIsNumberDisplay}
-      setPasscode={setPasscode}
+      setValues={setValues}
+      handleBackspace={handleBackspace}
     />
   );
 }

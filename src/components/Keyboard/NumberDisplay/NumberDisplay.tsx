@@ -19,16 +19,16 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 interface NumberDisplayProps {
-  // eslint-disable-next-line no-unused-vars
-  handleKeyboardValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
-  setPasscode: React.Dispatch<React.SetStateAction<string>>;
+  // eslint-disable-next-line no-unused-vars
+  setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleBackspace: () => void;
 }
 
 export default function NumberDisplay({
-  handleKeyboardValues,
   setIsNumberDisplay,
-  setPasscode,
+  setValues,
+  handleBackspace,
 }: NumberDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={1}
             >
               {intl.formatMessage({ id: '1' })}
@@ -67,7 +67,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={2}
             >
               {intl.formatMessage({ id: '2' })}
@@ -80,7 +80,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={3}
             >
               {intl.formatMessage({ id: '3' })}
@@ -93,7 +93,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={4}
             >
               {intl.formatMessage({ id: '4' })}
@@ -106,7 +106,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={5}
             >
               {intl.formatMessage({ id: '5' })}
@@ -119,7 +119,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={6}
             >
               {intl.formatMessage({ id: '6' })}
@@ -139,7 +139,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={7}
             >
               {intl.formatMessage({ id: '7' })}
@@ -152,7 +152,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={8}
             >
               {intl.formatMessage({ id: '8' })}
@@ -165,7 +165,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={9}
             >
               {intl.formatMessage({ id: '9' })}
@@ -178,7 +178,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value={0}
             >
               {intl.formatMessage({ id: '0' })}
@@ -191,7 +191,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='+'
             >
               {intl.formatMessage({ id: '+' })}
@@ -204,7 +204,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='-'
             >
               {intl.formatMessage({ id: '-' })}
@@ -224,7 +224,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='.'
             >
               {intl.formatMessage({ id: '.' })}
@@ -237,7 +237,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value=','
             >
               {intl.formatMessage({ id: ',' })}
@@ -250,7 +250,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='!'
             >
               {intl.formatMessage({ id: '!' })}
@@ -263,7 +263,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='?'
             >
               {intl.formatMessage({ id: '?' })}
@@ -276,7 +276,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='('
             >
               {intl.formatMessage({ id: '(' })}
@@ -289,7 +289,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value=')'
             >
               {intl.formatMessage({ id: ')' })}
@@ -309,7 +309,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='\'
             >
               \
@@ -322,7 +322,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='/'
             >
               /
@@ -335,7 +335,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value=':'
             >
               {intl.formatMessage({ id: ':' })}
@@ -348,7 +348,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value=';'
             >
               {intl.formatMessage({ id: ';' })}
@@ -361,7 +361,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='~'
             >
               {intl.formatMessage({ id: '~' })}
@@ -374,7 +374,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='*'
             >
               {intl.formatMessage({ id: '*' })}
@@ -394,7 +394,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='&'
             >
               {intl.formatMessage({ id: '&' })}
@@ -407,7 +407,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='@'
             >
               {intl.formatMessage({ id: '@' })}
@@ -420,7 +420,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='#'
             >
               {intl.formatMessage({ id: '#' })}
@@ -433,7 +433,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='%'
             >
               {intl.formatMessage({ id: '%' })}
@@ -446,7 +446,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='='
             >
               {intl.formatMessage({ id: '=' })}
@@ -459,7 +459,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.numberButtons}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value='$'
             >
               {intl.formatMessage({ id: '$' })}
@@ -479,7 +479,7 @@ export default function NumberDisplay({
             <Button
               variant='contained'
               sx={styles.spaceButton}
-              onClick={handleKeyboardValues}
+              onClick={setValues}
               value=' '
             >
               {intl.formatMessage({ id: 'space' })}
@@ -498,7 +498,7 @@ export default function NumberDisplay({
                   },
                 },
               ]}
-              onClick={() => setPasscode((accessCode) => accessCode.slice(0, -1))}
+              onClick={handleBackspace}
             >
               <Backspace
                 fontSize='large'

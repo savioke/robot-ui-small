@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'typeDux';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
 import { Box, TextField } from '@mui/material';
@@ -12,11 +14,29 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './DeliveryMessage.styles';
 
 /** redux */
+import { setDeliverFormValues } from 'state/deliver/deliver.slice';
+import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 
 /** helpers */
 
 export default function DeliveryMessage() {
-  const [roomMessage, setRoomMessage] = useState('');
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const deliverFormValues = useSelector(getDeliverFormValues);
+
+  const handleDropoffMessage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const dropoffMessage = deliverFormValues.context.dropoff_message;
+
+    dispatch(setDeliverFormValues({ dropoff_message: dropoffMessage + event.currentTarget.value }));
+  };
+
+  const handleBackspace = () => {
+    dispatch(
+      setDeliverFormValues({
+        dropoff_location: deliverFormValues.context.dropoff_message.slice(0, -1),
+      }),
+    );
+  };
 
   return (
     <Box sx={styles.innerPaper}>
@@ -25,15 +45,14 @@ export default function DeliveryMessage() {
         <Box sx={styles.textFieldContainer}>
           <Text
             variant='h4'
-            sx={{ marginTop: 5, marginLeft: 3 }}
-          >
-            What I will say on delivery!
-          </Text>
+            sx={styles.title}
+            id='whatIWillSayOnDelivery'
+          />
           <TextField
             multiline
             rows={5}
-            placeholder='Your order has arrived'
-            value={roomMessage}
+            placeholder={intl.formatMessage({ id: 'yourOrderHasArrived' })}
+            value={deliverFormValues.context.dropoff_message}
             InputProps={{
               disableUnderline: true,
               sx: {
@@ -45,7 +64,10 @@ export default function DeliveryMessage() {
           />
         </Box>
       </Box>
-      <Keyboard setPasscode={setRoomMessage} />
+      <Keyboard
+        setValues={handleDropoffMessage}
+        handleBackspace={handleBackspace}
+      />
     </Box>
   );
 }

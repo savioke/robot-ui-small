@@ -123,7 +123,7 @@ export default function Search() {
           />
         </Box>
       </Box>
-      <Keyboard setPasscode={setRoomMessage} />
+      <Keyboard setValues={setRoomMessage} />
     </Box>
   );
 }

@@ -36,7 +36,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -68,7 +68,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -107,7 +107,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -153,7 +153,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -185,7 +185,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -210,7 +210,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -235,7 +235,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -266,7 +266,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
         {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
@@ -295,7 +295,7 @@ export default function ArrowBackTopBar() {
             src='/images/back_arrow.svg'
             height={70}
             width={70}
-            alt={intl.formatMessage({ id: 'miniRobotFace' })}
+            alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
       </Box>

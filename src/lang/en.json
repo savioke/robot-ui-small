@@ -119,5 +119,6 @@
   "go": "Go",
   "whatIWillSayOnDelivery": "What I will say on delivery!",
   "deliveryTitleConfirmation": "Delivery to {dropOffLocation}",
-  "search": "Search"
+  "search": "Search",
+  "backArrow": "Back arrow"
 }

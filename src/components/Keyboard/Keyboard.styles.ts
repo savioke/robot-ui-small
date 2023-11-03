@@ -26,7 +26,7 @@ export const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     '&:active': {
-      backgroundColor: '#BBBBBB',
+      backgroundColor: '#414141',
     },
     '&:focus': {
       backgroundColor: '#BBBBBB',

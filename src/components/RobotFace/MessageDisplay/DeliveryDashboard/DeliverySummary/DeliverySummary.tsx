@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useSelector } from 'typeDux';
+import { useSelector, useDispatch } from 'typeDux';
 
 /** Mui Components */
 import { Box, Button, Grid } from '@mui/material';
@@ -15,12 +15,15 @@ import { styles } from './DeliverySummary.styles';
 
 /** redux */
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
+import { setDisplayScreen } from 'state/ui/ui.slice';
 
 /** helpers */
+import { DisplayScreenOptions } from 'appConstants';
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function DeliverySummary() {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const socket = useSocketIo();
   const deliverFormValues = useSelector(getDeliverFormValues);
 
@@ -56,7 +59,9 @@ export default function DeliverySummary() {
             variant='contained'
             onClick={async (event) => {
               event.preventDefault();
-              await socket?.emit('ui_request', deliverFormValues);
+              // TODO: Enable when ready to send actual deliveries
+              // await socket?.emit('ui_request', deliverFormValues);
+              dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             }}
           >
             {intl.formatMessage({ id: 'go' })}

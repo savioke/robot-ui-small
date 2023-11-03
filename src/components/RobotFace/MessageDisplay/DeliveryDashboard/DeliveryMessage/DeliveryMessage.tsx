@@ -33,7 +33,7 @@ export default function DeliveryMessage() {
   const handleBackspace = () => {
     dispatch(
       setDeliverFormValues({
-        dropoff_location: deliverFormValues.context.dropoff_message.slice(0, -1),
+        dropoff_message: deliverFormValues.context.dropoff_message.slice(0, -1),
       }),
     );
   };

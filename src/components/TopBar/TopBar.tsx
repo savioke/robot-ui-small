@@ -14,7 +14,7 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './TopBar.styles';
 
 /** redux */
-import { setDisplayScreen, setIsScreenTouched } from 'state/ui/ui.slice';
+import { setDisplayScreen, setIsScreenTouched, setPasscode } from 'state/ui/ui.slice';
 import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 
 /** helpers */
@@ -46,7 +46,10 @@ export default function TopBar() {
           <Fab
             sx={{ position: 'relative', top: '23px', left: '2px' }}
             size='small'
-            onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Home))}
+            onClick={() => {
+              dispatch(setPasscode(''));
+              dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+            }}
           >
             <Clear fontSize='large' />
           </Fab>

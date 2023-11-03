@@ -20,6 +20,12 @@ export const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    '&:active': {
+      backgroundColor: '#BBBBBB',
+    },
+    '&:focus': {
+      backgroundColor: '#BBBBBB',
+    },
   },
   backSpaceIcon: {
     color: 'white',

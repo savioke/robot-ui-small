@@ -25,6 +25,12 @@ export const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    '&:active': {
+      backgroundColor: '#BBBBBB',
+    },
+    '&:focus': {
+      backgroundColor: '#BBBBBB',
+    },
   },
   confirmButton: {
     width: '100%',

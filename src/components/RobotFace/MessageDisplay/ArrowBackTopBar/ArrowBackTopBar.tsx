@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'typeDux';
 import Image from 'next/image';
 import { useIntl } from 'react-intl';
+import { useRouter } from 'next/router';
 
 /** Mui Components */
-import { Box, Button } from '@mui/material';
+import { Box, Button, Breadcrumbs } from '@mui/material';
 
 /** Components */
 import Text from 'sharedComponents/Text/Text';
@@ -20,16 +21,17 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function ArrowBackTopBar() {
-  const dispatch = useDispatch();
-  const displayScreen = useSelector(getDisplayScreen);
   const intl = useIntl();
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const displayScreen = useSelector(getDisplayScreen);
 
   if (displayScreen === DisplayScreenOptions.RoomNumber) {
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
           sx={styles.button}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard))}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
         >
           <Image
             priority
@@ -57,6 +59,49 @@ export default function ArrowBackTopBar() {
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.DeliveryMessage) {
+    if (router.asPath === '/#search') {
+      return (
+        <Box sx={styles.arrowBackContainer}>
+          <Button
+            sx={styles.button}
+            onClick={() => {
+              dispatch(setDisplayScreen(DisplayScreenOptions.Search));
+            }}
+          >
+            <Image
+              priority
+              src='/images/back_arrow.svg'
+              height={70}
+              width={70}
+              alt={intl.formatMessage({ id: 'backArrow' })}
+            />
+          </Button>
+          <Breadcrumbs
+            separator='-'
+            aria-label='breadcrumb'
+          >
+            <Text
+              variant='h6'
+              component='h1'
+              id='delivery'
+              sx={styles.breadCrumbTrailText}
+            />
+            <Text
+              variant='h6'
+              component='h1'
+              id='search'
+              sx={styles.breadCrumbTrailText}
+            />
+            <Text
+              variant='h6'
+              component='h1'
+              id='message'
+            />
+          </Breadcrumbs>
+        </Box>
+      );
+    }
+
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
@@ -71,31 +116,81 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='roomNumber'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='message'
-        />
-        {/* </Box> */}
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='delivery'
+            sx={styles.breadCrumbTrailText}
+          />
+
+          <Text
+            variant='h6'
+            component='h1'
+            id='roomNumber'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='message'
+          />
+        </Breadcrumbs>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.DeliverySummary) {
+    if (router.asPath === '/#search') {
+      return (
+        <Box sx={styles.arrowBackContainer}>
+          <Button
+            sx={styles.button}
+            onClick={() => {
+              dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+            }}
+          >
+            <Image
+              priority
+              src='/images/back_arrow.svg'
+              height={70}
+              width={70}
+              alt={intl.formatMessage({ id: 'backArrow' })}
+            />
+          </Button>
+          <Breadcrumbs
+            separator='-'
+            aria-label='breadcrumb'
+          >
+            <Text
+              variant='h6'
+              component='h1'
+              id='delivery'
+              sx={styles.breadCrumbTrailText}
+            />
+            <Text
+              variant='h6'
+              component='h1'
+              id='search'
+              sx={styles.breadCrumbTrailText}
+            />
+            <Text
+              variant='h6'
+              component='h1'
+              id='message'
+              sx={styles.breadCrumbTrailText}
+            />
+            <Text
+              variant='h6'
+              component='h1'
+              id='summary'
+            />
+          </Breadcrumbs>
+        </Box>
+      );
+    }
+
     return (
       <Box sx={styles.arrowBackContainer}>
         <Button
@@ -137,38 +232,6 @@ export default function ArrowBackTopBar() {
           variant='h6'
           component='h1'
           id='summary'
-        />
-        {/* </Box> */}
-      </Box>
-    );
-  } else if (displayScreen === DisplayScreenOptions.Search) {
-    return (
-      <Box sx={styles.arrowBackContainer}>
-        <Button
-          sx={styles.button}
-          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-        >
-          <Image
-            priority
-            src='/images/back_arrow.svg'
-            height={70}
-            width={70}
-            alt={intl.formatMessage({ id: 'backArrow' })}
-          />
-        </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
-        <Text
-          variant='h6'
-          component='h1'
-          id='delivery'
-          sx={styles.breadCrumbTrailText}
-        />
-        -
-        <Text
-          variant='h6'
-          component='h1'
-          id='search'
         />
         {/* </Box> */}
       </Box>
@@ -275,6 +338,41 @@ export default function ArrowBackTopBar() {
           variant='h6'
           component='h1'
           id='delivery'
+        />
+        {/* </Box> */}
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.Search) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => {
+            router.push(router.pathname);
+            dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard));
+          }}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'backArrow' })}
+          />
+        </Button>
+        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
+        {/* <Box sx={styles.textContainer}> */}
+        <Text
+          variant='h6'
+          component='h1'
+          id='delivery'
+          sx={styles.breadCrumbTrailText}
+        />
+        -
+        <Text
+          variant='h6'
+          component='h1'
+          id='search'
         />
         {/* </Box> */}
       </Box>

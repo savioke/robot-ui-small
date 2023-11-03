@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 /** Mui Components */
 import { Box, Button } from '@mui/material';
@@ -22,6 +23,7 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function DeliveryDashboard() {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const router = useRouter();
 
   return (
     <Box sx={styles.rootContainer}>
@@ -34,7 +36,12 @@ export default function DeliveryDashboard() {
       />
       <Box sx={styles.dashboardContainer}>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber))}>
+          <Button
+            onClick={() => {
+              router.push(`${router.pathname}#room`);
+              dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber));
+            }}
+          >
             <Image
               priority
               src='images/room.svg'
@@ -55,7 +62,12 @@ export default function DeliveryDashboard() {
         </Box>
         <Box sx={styles.paperContainer}>
           {/* TODO: Begin search by work deparment flow */}
-          <Button>
+          <Button
+            onClick={() => {
+              router.push(`${router.pathname}#department`);
+              // dispatch(setDisplayScreen(DisplayScreenOptions.RoomNumber));
+            }}
+          >
             <Image
               priority
               src='images/department-or-area.svg'
@@ -75,7 +87,12 @@ export default function DeliveryDashboard() {
           </Box>
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Search))}>
+          <Button
+            onClick={() => {
+              router.push(`${router.pathname}#search`);
+              dispatch(setDisplayScreen(DisplayScreenOptions.Search));
+            }}
+          >
             <Image
               priority
               src='images/search-icon.svg'

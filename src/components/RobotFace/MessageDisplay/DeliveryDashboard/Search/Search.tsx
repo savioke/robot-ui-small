@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'typeDux';
+import { useSelector } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
@@ -7,7 +7,7 @@ import { Autocomplete, Box, Checkbox, TextField, styled, lighten, darken } from 
 import { CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
 
 /** Components */
-import ArrowBackTopBar from 'components/RobotFace/MessageDisplay/ArrowBackTopBar/ArrowBackTopBar';
+import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
 import Keyboard from 'components/Keyboard/Keyboard';
 import Text from 'sharedComponents/Text/Text';
 
@@ -38,7 +38,6 @@ const GroupItems = styled('ul')({
 
 export default function Search() {
   const intl = useIntl();
-  const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const [roomMessage, setRoomMessage] = useState('');
   const deliverFormValues = useSelector(getDeliverFormValues);
@@ -55,6 +54,7 @@ export default function Search() {
     <Box sx={styles.innerPaper}>
       <Box sx={styles.leftSideContent}>
         <ArrowBackTopBar />
+
         <Box sx={styles.textFieldContainer}>
           <Text
             variant='h4'

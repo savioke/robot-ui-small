@@ -57,7 +57,7 @@ export default function DeliverySummary() {
           <Button
             sx={styles.button}
             variant='contained'
-            onClick={async (event) => {
+            onClick={(event) => {
               event.preventDefault();
               // TODO: Enable when ready to send actual deliveries
               // await socket?.emit('ui_request', deliverFormValues);

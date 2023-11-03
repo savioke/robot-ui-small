@@ -14,11 +14,14 @@ import { styles } from '../Keyboard.styles';
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
+import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
+import { setDeliverFormValues } from 'state/deliver/deliver.slice';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 
 interface LetterDisplayProps {
+  isContinueDisabled?: boolean;
   setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
   // eslint-disable-next-line no-unused-vars
   setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -26,14 +29,22 @@ interface LetterDisplayProps {
 }
 
 export default function LetterDisplay({
+  isContinueDisabled,
   handleBackspace,
   setIsNumberDisplay,
   setValues,
 }: LetterDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const [isCapitalLetters, setIsCapitalLetters] = useState(true);
   const displayScreen = useSelector(getDisplayScreen);
-  const [isCapitalLetters, setIsCapitalLetters] = useState(false);
+  const deliverFormValues = useSelector(getDeliverFormValues);
+
+  React.useEffect(() => {
+    if (deliverFormValues.context.dropoff_message.length === 1) {
+      setIsCapitalLetters(false);
+    }
+  }, [deliverFormValues.context.dropoff_message.length]);
 
   const handleCapitalLetters = ({
     letter,
@@ -639,6 +650,7 @@ export default function LetterDisplay({
             xs={9}
           >
             <Button
+              disabled={isContinueDisabled}
               variant='contained'
               sx={styles.confirmButton}
               onClick={() => {
@@ -646,6 +658,14 @@ export default function LetterDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliverySummary));
                 } else if (displayScreen === DisplayScreenOptions.Search) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+                }
+
+                if (!deliverFormValues.context.dropoff_message) {
+                  dispatch(
+                    setDeliverFormValues({
+                      dropoff_message: intl.formatMessage({ id: 'yourOrderHasArrived!' }),
+                    }),
+                  );
                 }
               }}
             >

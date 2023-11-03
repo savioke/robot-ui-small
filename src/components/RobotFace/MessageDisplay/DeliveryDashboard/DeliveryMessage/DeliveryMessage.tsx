@@ -51,7 +51,7 @@ export default function DeliveryMessage() {
           <TextField
             multiline
             rows={5}
-            placeholder={intl.formatMessage({ id: 'yourOrderHasArrived' })}
+            placeholder={intl.formatMessage({ id: 'yourOrderHasArrived!' })}
             value={deliverFormValues.context.dropoff_message}
             InputProps={{
               disableUnderline: true,

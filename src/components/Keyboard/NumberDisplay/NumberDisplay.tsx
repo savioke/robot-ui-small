@@ -14,11 +14,14 @@ import { styles } from '../Keyboard.styles';
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
+import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
+import { setDeliverFormValues } from 'state/deliver/deliver.slice';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 
 interface NumberDisplayProps {
+  isContinueDisabled?: boolean;
   setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
   // eslint-disable-next-line no-unused-vars
   setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -26,6 +29,7 @@ interface NumberDisplayProps {
 }
 
 export default function NumberDisplay({
+  isContinueDisabled,
   setIsNumberDisplay,
   setValues,
   handleBackspace,
@@ -33,6 +37,7 @@ export default function NumberDisplay({
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
+  const deliverFormValues = useSelector(getDeliverFormValues);
 
   return (
     <Box sx={styles.keyboardContainer}>
@@ -530,6 +535,7 @@ export default function NumberDisplay({
             xs={10}
           >
             <Button
+              disabled={isContinueDisabled}
               variant='contained'
               sx={styles.confirmButton}
               onClick={() => {
@@ -537,6 +543,14 @@ export default function NumberDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliverySummary));
                 } else if (displayScreen === DisplayScreenOptions.Search) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+                }
+
+                if (!deliverFormValues.context.dropoff_message) {
+                  dispatch(
+                    setDeliverFormValues({
+                      dropoff_message: intl.formatMessage({ id: 'yourOrderHasArrived!' }),
+                    }),
+                  );
                 }
               }}
             >

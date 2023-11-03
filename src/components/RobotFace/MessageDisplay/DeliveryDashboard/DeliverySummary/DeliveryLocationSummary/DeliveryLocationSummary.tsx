@@ -56,10 +56,7 @@ export default function DeliveryLocationSummary() {
               id='whatIWillSayOnDelivery'
             />
             <Box sx={styles.messageTextContainer}>
-              <Text sx={styles.messageText}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt
-              </Text>
+              <Text sx={styles.messageText}>{deliverFormValues.context.dropoff_message}</Text>
             </Box>
           </Box>
         </Box>
@@ -72,7 +69,7 @@ export default function DeliveryLocationSummary() {
       <Text
         variant='h3'
         sx={styles.deliveryTitle}
-        id='deliveryTitleConfirmation'
+        id='roomDeliveryTitleConfirmation'
         values={{
           dropOffLocation: (
             <Box component='strong'>{deliverFormValues.context.dropoff_location}</Box>

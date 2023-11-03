@@ -118,7 +118,7 @@
   "illBeOnMyWay": "I'll be on my way",
   "go": "Go",
   "whatIWillSayOnDelivery": "What I will say on delivery!",
-  "deliveryTitleConfirmation": "Delivery to {dropOffLocation}",
+  "roomDeliveryTitleConfirmation": "Delivery to Room {dropOffLocation}",
   "search": "Search",
   "backArrow": "Back arrow",
   "whatAreYouLookingFor?": "What are you looking for?",

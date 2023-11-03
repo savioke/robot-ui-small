@@ -13,17 +13,23 @@ import NumberDisplay from './NumberDisplay/NumberDisplay';
 /** helpers */
 
 interface KeyboardProps {
+  isContinueDisabled?: boolean;
   // eslint-disable-next-line no-unused-vars
   setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleBackspace: () => void;
 }
 
-export default function Keyboard({ setValues, handleBackspace }: KeyboardProps) {
+export default function Keyboard({
+  isContinueDisabled,
+  setValues,
+  handleBackspace,
+}: KeyboardProps) {
   const [isNumberDisplay, setIsNumberDisplay] = useState(false);
 
   if (isNumberDisplay) {
     return (
       <NumberDisplay
+        isContinueDisabled={isContinueDisabled}
         setIsNumberDisplay={setIsNumberDisplay}
         setValues={setValues}
         handleBackspace={handleBackspace}
@@ -33,6 +39,7 @@ export default function Keyboard({ setValues, handleBackspace }: KeyboardProps) 
 
   return (
     <LetterDisplay
+      isContinueDisabled={isContinueDisabled}
       setIsNumberDisplay={setIsNumberDisplay}
       setValues={setValues}
       handleBackspace={handleBackspace}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'typeDux';
+import { useIdleTimer } from 'react-idle-timer';
 
 /** Mui Components */
 import { Box, Divider, Fab, Fade } from '@mui/material';
@@ -13,7 +14,7 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './TopBar.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen, setIsScreenTouched } from 'state/ui/ui.slice';
 import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 
 /** helpers */
@@ -24,6 +25,15 @@ export default function TopBar() {
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
   const [isNetworkConnected, setIsNetworkConnected] = useState(true);
+
+  useIdleTimer({
+    onIdle: () => {
+      if (displayScreen === DisplayScreenOptions.Home) {
+        dispatch(setIsScreenTouched(false));
+      }
+    },
+    timeout: 10000,
+  });
 
   if (!isScreenTouched) {
     return <Box sx={styles.container} />;

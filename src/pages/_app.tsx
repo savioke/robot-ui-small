@@ -5,7 +5,6 @@ import { wrapper } from 'store';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
-import { useIdleTimer } from 'react-idle-timer';
 import '../styles/globals.css';
 
 /** Internationalization */
@@ -31,14 +30,6 @@ export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
   const stateTheme = store.getState().ui.theme;
   useSocketIo();
-
-  useIdleTimer({
-    // TODO: Don't fire off idle if websockets are still coming from a delivery or running tests.
-    onIdle: () => {
-      store.dispatch(setIsScreenTouched(false));
-    },
-    timeout: 20000,
-  });
 
   React.useEffect(() => {
     const languagePreference = localStorage.getItem('languagePreference');

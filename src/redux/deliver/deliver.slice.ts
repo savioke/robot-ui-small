@@ -1,16 +1,9 @@
 import { createSlice } from 'typeDux';
-import { NavigationGoal } from 'types/r2c2';
+import { NavigationGoal, DeliverValues } from 'types/r2c2';
 
 interface DeliverState {
   deliverLocations: NavigationGoal[];
-  formValues: {
-    type: 'DELIVER';
-    version: 2.0;
-    config: {
-      dropoff_location: string;
-      dropoff_message: string;
-    };
-  };
+  formValues: DeliverValues;
 }
 
 export const initialState: DeliverState = {

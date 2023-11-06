@@ -57,10 +57,10 @@ export default function DeliverySummary() {
           <Button
             sx={styles.button}
             variant='contained'
-            onClick={(event) => {
+            onClick={async (event) => {
               event.preventDefault();
-              // TODO: Enable when ready to send actual deliveries
-              // await socket?.emit('ui_request', deliverFormValues);
+
+              await socket?.emit('queue_tasks', [deliverFormValues]);
               dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             }}
           >

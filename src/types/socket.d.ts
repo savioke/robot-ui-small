@@ -4,6 +4,7 @@ import type { NextApiResponse } from 'next';
 import type { Socket as NetSocket } from 'net';
 import type { Server as IOServer } from 'socket.io';
 import { NavigationGoal, NavigationGoals } from 'relay-types';
+import { DeliverValues } from './r2c2';
 
 interface SocketServer extends HTTPServer {
   io?: IOServer | undefined;
@@ -50,6 +51,7 @@ export interface ClientToServerEvents {
   choice_made: ({ string }: { name: string }) => void;
   login_pin: (string) => void;
   logout: () => void;
+  queue_tasks: (tasks: DeliverValues[]) => void;
 
   // TODO: Mocking R2C2 Socket Server
   display_message: (message: string) => void;

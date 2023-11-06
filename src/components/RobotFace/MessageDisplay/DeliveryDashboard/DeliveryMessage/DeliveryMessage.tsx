@@ -25,7 +25,7 @@ export default function DeliveryMessage() {
   const deliverFormValues = useSelector(getDeliverFormValues);
 
   const handleDropoffMessage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const dropoffMessage = deliverFormValues.context.dropoff_message;
+    const dropoffMessage = deliverFormValues.config.dropoff_message;
 
     dispatch(setDeliverFormValues({ dropoff_message: dropoffMessage + event.currentTarget.value }));
   };
@@ -33,7 +33,7 @@ export default function DeliveryMessage() {
   const handleBackspace = () => {
     dispatch(
       setDeliverFormValues({
-        dropoff_message: deliverFormValues.context.dropoff_message.slice(0, -1),
+        dropoff_message: deliverFormValues.config.dropoff_message.slice(0, -1),
       }),
     );
   };
@@ -52,7 +52,7 @@ export default function DeliveryMessage() {
             multiline
             rows={5}
             placeholder={intl.formatMessage({ id: 'yourOrderHasArrived!' })}
-            value={deliverFormValues.context.dropoff_message}
+            value={deliverFormValues.config.dropoff_message}
             InputProps={{
               disableUnderline: true,
               sx: {

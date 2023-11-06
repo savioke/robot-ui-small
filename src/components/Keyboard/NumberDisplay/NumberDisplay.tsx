@@ -545,7 +545,7 @@ export default function NumberDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                 }
 
-                if (!deliverFormValues.context.dropoff_message) {
+                if (!deliverFormValues.config.dropoff_message) {
                   dispatch(
                     setDeliverFormValues({
                       dropoff_message: intl.formatMessage({ id: 'yourOrderHasArrived!' }),

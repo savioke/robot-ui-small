@@ -41,10 +41,10 @@ export default function LetterDisplay({
   const deliverFormValues = useSelector(getDeliverFormValues);
 
   React.useEffect(() => {
-    if (deliverFormValues.context.dropoff_message.length === 1) {
+    if (deliverFormValues.config.dropoff_message.length === 1) {
       setIsCapitalLetters(false);
     }
-  }, [deliverFormValues.context.dropoff_message.length]);
+  }, [deliverFormValues.config.dropoff_message.length]);
 
   const handleCapitalLetters = ({
     letter,
@@ -660,7 +660,7 @@ export default function LetterDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                 }
 
-                if (!deliverFormValues.context.dropoff_message) {
+                if (!deliverFormValues.config.dropoff_message) {
                   dispatch(
                     setDeliverFormValues({
                       dropoff_message: intl.formatMessage({ id: 'yourOrderHasArrived!' }),

@@ -56,7 +56,7 @@ export default function DeliveryLocationSummary() {
               id='whatIWillSayOnDelivery'
             />
             <Box sx={styles.messageTextContainer}>
-              <Text sx={styles.messageText}>{deliverFormValues.context.dropoff_message}</Text>
+              <Text sx={styles.messageText}>{deliverFormValues.config.dropoff_message}</Text>
             </Box>
           </Box>
         </Box>
@@ -72,7 +72,7 @@ export default function DeliveryLocationSummary() {
         id='roomDeliveryTitleConfirmation'
         values={{
           dropOffLocation: (
-            <Box component='strong'>{deliverFormValues.context.dropoff_location}</Box>
+            <Box component='strong'>{deliverFormValues.config.dropoff_location}</Box>
           ),
         }}
       />
@@ -84,7 +84,7 @@ export default function DeliveryLocationSummary() {
             id='whatIWillSayOnDelivery'
           />
           <Box sx={styles.messageTextContainer}>
-            <Text sx={styles.messageText}>{deliverFormValues.context.dropoff_message}</Text>
+            <Text sx={styles.messageText}>{deliverFormValues.config.dropoff_message}</Text>
           </Box>
         </Box>
       </Box>

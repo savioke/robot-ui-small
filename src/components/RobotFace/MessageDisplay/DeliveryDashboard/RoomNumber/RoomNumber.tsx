@@ -22,12 +22,12 @@ export default function RoomNumber() {
   const deliverFormValues = useSelector(getDeliverFormValues);
 
   const handleSetRoomNumber = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (deliverFormValues.context.dropoff_location.length === 4) {
-      return deliverFormValues.context.dropoff_location;
+    if (deliverFormValues.config.dropoff_location.length === 4) {
+      return deliverFormValues.config.dropoff_location;
     }
     dispatch(
       setDeliverFormValues({
-        dropoff_location: deliverFormValues.context.dropoff_location + event.currentTarget.value,
+        dropoff_location: deliverFormValues.config.dropoff_location + event.currentTarget.value,
       }),
     );
   };
@@ -35,7 +35,7 @@ export default function RoomNumber() {
   const handleBackspace = () => {
     dispatch(
       setDeliverFormValues({
-        dropoff_location: deliverFormValues.context.dropoff_location.slice(0, -1),
+        dropoff_location: deliverFormValues.config.dropoff_location.slice(0, -1),
       }),
     );
   };
@@ -48,7 +48,7 @@ export default function RoomNumber() {
           <TextField
             required
             variant='standard'
-            value={deliverFormValues.context.dropoff_location}
+            value={deliverFormValues.config.dropoff_location}
             inputProps={{ style: { textAlign: 'center' } }}
             InputProps={{
               readOnly: true,
@@ -61,7 +61,7 @@ export default function RoomNumber() {
         </Box>
       </Box>
       <Keypad
-        isContinueDisabled={!deliverFormValues.context.dropoff_location.length}
+        isContinueDisabled={!deliverFormValues.config.dropoff_location.length}
         setValues={handleBackspace}
         handleSetValues={handleSetRoomNumber}
       />

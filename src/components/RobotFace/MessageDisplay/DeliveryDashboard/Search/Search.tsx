@@ -64,7 +64,7 @@ export default function Search() {
             multiple
             disableCloseOnSelect
             open={isPopupOpen}
-            inputValue={deliverFormValues.context.dropoff_location}
+            inputValue={deliverFormValues.config.dropoff_location}
             options={deliverLocations}
             groupBy={(option) => `${intl.formatMessage({ id: 'floor' })} ${option.floor_name}`}
             getOptionLabel={(option) => option.name}
@@ -75,7 +75,7 @@ export default function Search() {
               setIsPopupOpen(false);
             }}
             onInputChange={() => {
-              if (deliverFormValues.context.dropoff_location.length === 1) {
+              if (deliverFormValues.config.dropoff_location.length === 1) {
                 setIsPopupOpen(true);
               }
             }}

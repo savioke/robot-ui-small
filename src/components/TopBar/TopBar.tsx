@@ -34,7 +34,6 @@ export default function TopBar() {
   const [isNetworkConnected, setIsNetworkConnected] = useState(true);
 
   React.useEffect(() => {
-    console.log(displayScreen, DisplayScreenOptions.Home);
     if (displayScreen === DisplayScreenOptions.Home) {
       dispatch(setAuthorized(null));
       socket?.emit('logout');

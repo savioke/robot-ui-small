@@ -20,7 +20,8 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        socket = io('http://localhost:3000');
+        console.log('Swap back to 3000');
+        socket = io('http://localhost:5000');
         setReturnSocket(socket);
 
         setInterval(() => {

@@ -16,7 +16,6 @@ import { styles } from './ArrowBackTopBar.styles';
 /** redux */
 import { setDisplayScreen, setPasscode } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
-import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -34,7 +33,6 @@ export default function ArrowBackTopBar() {
           sx={styles.button}
           onClick={() => {
             router.push(router.pathname);
-            dispatch(resetDeliverFormValues());
             dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard));
           }}
         >
@@ -74,7 +72,6 @@ export default function ArrowBackTopBar() {
           sx={styles.button}
           onClick={() => {
             router.push(router.pathname);
-            dispatch(resetDeliverFormValues());
             dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard));
           }}
         >

@@ -1,3 +1,5 @@
+const messageText = '30px';
+
 export const styles = {
   leftSideTextContainer: {
     display: 'flex',
@@ -46,7 +48,7 @@ export const styles = {
   },
   messageText: {
     marginLeft: 2,
-    fontSize: '30px',
+    fontSize: messageText,
   },
   whatIWillSayText: {
     fontSize: '35px',
@@ -60,5 +62,15 @@ export const styles = {
     display: 'list-item',
     fontSize: '24px',
     color: '#707070',
+  },
+  errorMessageContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 5,
+  },
+  errorMessage: {
+    fontSize: messageText,
   },
 };

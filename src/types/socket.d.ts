@@ -34,9 +34,14 @@ export interface ServerToClientEvents {
     confirm_text: string;
     confirm_button_text: string;
   }) => void;
+
+  // Authorization
   login_pass: () => void;
   login_fail: () => void;
-  // TODO: Finalize interface for sending Mingle/Deliver formValues
+
+  // Tasks
+  queue_tasks_error: (string) => void;
+  queue_tasks_success: () => void;
 }
 
 // Event Emitters

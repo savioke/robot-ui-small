@@ -15,17 +15,48 @@ import { styles } from './DeliverySummary.styles';
 
 /** redux */
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
-import { setDisplayScreen } from 'state/ui/ui.slice';
 
 /** helpers */
-import { DisplayScreenOptions } from 'appConstants';
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
+import { setDisplayScreen } from 'state/ui/ui.slice';
+import { DisplayScreenOptions } from 'appConstants';
 
 export default function DeliverySummary() {
   const intl = useIntl();
-  const dispatch = useDispatch();
   const socket = useSocketIo();
+  const dispatch = useDispatch();
   const deliverFormValues = useSelector(getDeliverFormValues);
+  const [errorMessage, setErrorMessage] = React.useState('');
+
+  React.useEffect(() => {
+    socket?.on('queue_tasks_error', (error) => {
+      setErrorMessage(error);
+    });
+  }, [socket]);
+
+  if (errorMessage) {
+    return (
+      <Grid container>
+        <Grid
+          item
+          xs={12}
+          sx={styles.errorMessageContainer}
+        >
+          <Text sx={styles.errorMessage}>{errorMessage}</Text>
+          <Button
+            sx={styles.button}
+            variant='contained'
+            onClick={(event) => {
+              event.preventDefault();
+              dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard));
+            }}
+          >
+            {intl.formatMessage({ id: 'backToDashboard' })}
+          </Button>
+        </Grid>
+      </Grid>
+    );
+  }
 
   return (
     <Grid container>
@@ -57,11 +88,9 @@ export default function DeliverySummary() {
           <Button
             sx={styles.button}
             variant='contained'
-            onClick={async (event) => {
+            onClick={(event) => {
               event.preventDefault();
-
-              await socket?.emit('queue_tasks', [deliverFormValues]);
-              dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+              socket?.emit('queue_tasks', [deliverFormValues]);
             }}
           >
             {intl.formatMessage({ id: 'go' })}

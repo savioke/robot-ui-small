@@ -71,6 +71,11 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
           });
 
+          socket?.on('queue_tasks_success', () => {
+            console.info('Task created successfully');
+            return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+          });
+
           socket?.on('login_fail', () => {
             console.info('Unauthorized');
             return dispatch(setAuthorized(false));

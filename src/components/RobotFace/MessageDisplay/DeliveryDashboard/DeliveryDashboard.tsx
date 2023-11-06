@@ -16,6 +16,7 @@ import { styles } from './DeliveryDashboard.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
+import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -24,6 +25,10 @@ export default function DeliveryDashboard() {
   const intl = useIntl();
   const dispatch = useDispatch();
   const router = useRouter();
+
+  React.useEffect(() => {
+    dispatch(resetDeliverFormValues());
+  }, [dispatch]);
 
   return (
     <Box sx={styles.rootContainer}>

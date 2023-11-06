@@ -10,7 +10,7 @@ export const initialState: DeliverState = {
   deliverLocations: [],
   formValues: {
     type: 'DELIVER',
-    version: 2.0,
+    version: '2.0',
     config: {
       dropoff_location: '',
       dropoff_message: '',

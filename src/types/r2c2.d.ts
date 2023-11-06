@@ -11,7 +11,7 @@ export interface NavigationGoal {
 
 export interface DeliverValues {
   type: 'DELIVER';
-  version: 2.0;
+  version: '2.0';
   config: {
     dropoff_location: string;
     dropoff_message: string;

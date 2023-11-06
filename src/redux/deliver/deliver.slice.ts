@@ -3,24 +3,24 @@ import { NavigationGoal } from 'types/r2c2';
 
 interface DeliverState {
   deliverLocations: NavigationGoal[];
-  deliverFormValues: {
-    name: 'start_delivery';
-    context: {
+  formValues: {
+    type: 'DELIVER';
+    version: 2.0;
+    config: {
       dropoff_location: string;
       dropoff_message: string;
-      transit_message: string;
     };
   };
 }
 
 export const initialState: DeliverState = {
   deliverLocations: [],
-  deliverFormValues: {
-    name: 'start_delivery',
-    context: {
+  formValues: {
+    type: 'DELIVER',
+    version: 2.0,
+    config: {
       dropoff_location: '',
       dropoff_message: '',
-      transit_message: '',
     },
   },
 };
@@ -35,16 +35,16 @@ const deliverSlice = createSlice({
       );
     },
     setDeliverFormValues: (state, { payload }) => {
-      state.deliverFormValues = {
-        ...state.deliverFormValues,
-        context: {
-          ...state.deliverFormValues.context,
+      state.formValues = {
+        ...state.formValues,
+        config: {
+          ...state.formValues.config,
           ...payload,
         },
       };
     },
     resetDeliverFormValues: (state) => {
-      state.deliverFormValues = initialState.deliverFormValues;
+      state.formValues = initialState.formValues;
     },
   },
 });

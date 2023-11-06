@@ -1,7 +1,7 @@
 import { RootState } from 'typeDux';
 
 export const getDeliverFormValues = (state: RootState) => {
-  return state.deliver.deliverFormValues;
+  return state.deliver.formValues;
 };
 
 export const getDeliverLocations = (state: RootState) => {

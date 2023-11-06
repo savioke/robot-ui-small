@@ -13,7 +13,7 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './PassCode.styles';
 
 /** redux */
-import { setPasscode } from 'state/ui/ui.slice';
+import { setAuthorized, setPasscode } from 'state/ui/ui.slice';
 import { getPasscode, getAuthorized } from 'state/ui/ui.selectors';
 
 /** helpers */
@@ -22,6 +22,12 @@ export default function PassCode() {
   const dispatch = useDispatch();
   const passCode = useSelector(getPasscode);
   const authorized = useSelector(getAuthorized);
+
+  React.useEffect(() => {
+    if (!passCode) {
+      dispatch(setAuthorized(null));
+    }
+  }, [dispatch, passCode]);
 
   const handleSetPassCode = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (passCode.length === 16) {

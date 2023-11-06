@@ -5,6 +5,7 @@ import {
   setIsConfirmationNeeded,
   setDisplayScreen,
   setAuthorized,
+  setDisplayState,
 } from 'state/ui/ui.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
@@ -80,6 +81,10 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           socket?.on('login_fail', () => {
             console.info('Unauthorized');
             return dispatch(setAuthorized(false));
+          });
+
+          socket?.on('display_state', (state) => {
+            return dispatch(setDisplayState(state));
           });
         }
       };

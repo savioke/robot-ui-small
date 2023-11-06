@@ -14,6 +14,7 @@ import Favorites from './Favorites/Favorites';
 import Utilities from './Utilities/Utilities';
 import CancelTask from './CancelTask/CancelTask';
 import CancelTaskConfirmation from './CancelTaskConfirmation/CancelTaskConfirmation';
+import MultipleFavoriteSelect from './MultipleFavoriteSelect/MultipleFavoriteSelect';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
@@ -62,6 +63,8 @@ export default function MessageDisplay() {
     return <DeliveryDashboard />;
   } else if (displayScreen === DisplayScreenOptions.Favorites) {
     return <Favorites />;
+  } else if (displayScreen === DisplayScreenOptions.MultipleSelectFavorites) {
+    return <MultipleFavoriteSelect />;
   } else if (displayScreen === DisplayScreenOptions.Utilities) {
     return <Utilities />;
   } else if (displayScreen === DisplayScreenOptions.Actions) {

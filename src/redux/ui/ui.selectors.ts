@@ -35,3 +35,11 @@ export const getPasscode = (state: RootState) => {
 export const getAuthorized = (state: RootState) => {
   return state.ui.authorized;
 };
+
+export const getDisplayState = (state: RootState) => {
+  return state.ui.displayState;
+};
+
+export const getBatteryState = (state: RootState) => {
+  return state.ui.displayState.battery;
+};

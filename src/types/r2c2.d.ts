@@ -17,3 +17,16 @@ export interface DeliverValues {
     dropoff_message: string;
   };
 }
+
+export interface DisplayState {
+  hostname: string;
+  nickname: string;
+  connected: boolean;
+  battery: {
+    voltage: number;
+    percent: number;
+    level: string;
+    chargingDock: boolean;
+    chargingPlug: boolean;
+  };
+}

@@ -1,5 +1,6 @@
 import { createSlice } from 'typeDux';
 import { DisplayScreenOptions } from '../../constants';
+import { DisplayState } from 'types/r2c2';
 
 type DisplayScreen =
   | 'Actions'
@@ -13,6 +14,7 @@ type DisplayScreen =
   | 'Delivery message'
   | 'Delivery summary'
   | 'Favorites'
+  | 'Multiple select favorites'
   | 'Utilities'
   | 'CancelTask'
   | 'CancelTaskConfirmation'
@@ -28,18 +30,31 @@ interface RobotUiState {
   theme: string;
   language: 'en' | 'es' | 'ja';
   authorized: boolean | null;
+  displayState: DisplayState;
 }
 
 export const initialState: RobotUiState = {
   displayScreen: DisplayScreenOptions.Home,
   displayMessage: '',
+  displayState: {
+    hostname: '',
+    nickname: '',
+    connected: false,
+    battery: {
+      voltage: 0,
+      percent: 0,
+      level: '',
+      chargingDock: false,
+      chargingPlug: false,
+    },
+  },
   isConfirmationNeeded: false,
   isScreenTouched: false,
   inputName: '',
   theme: '',
   language: 'en',
   passCode: '',
-  authorized: null,
+  authorized: false,
 };
 
 const uiSlice = createSlice({
@@ -73,6 +88,9 @@ const uiSlice = createSlice({
     setAuthorized: (state, { payload }) => {
       state.authorized = payload;
     },
+    setDisplayState: (state, { payload }) => {
+      state.displayState = payload;
+    },
   },
 });
 
@@ -86,6 +104,7 @@ export const {
   setLanguage,
   setPasscode,
   setAuthorized,
+  setDisplayState,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

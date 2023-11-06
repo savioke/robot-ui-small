@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
@@ -10,7 +9,7 @@ import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
-import { styles } from './Favorites.styles';
+import { styles } from './MultipleFavoriteSelect.styles';
 
 /** redux */
 
@@ -73,9 +72,8 @@ const stringAvatar = ({ name, index }: { name: string; index: number }) => {
   };
 };
 
-export default function Favorites() {
+export default function MultipleFavoriteSelect() {
   const intl = useIntl();
-  const dispatch = useDispatch();
   const socket = useSocketIo();
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<DeliverValues[]>([]);
@@ -120,7 +118,6 @@ export default function Favorites() {
               index,
             })}
           >
-            {/* TODO: Initiate Favorite Delivery */}
             <Button>
               <Avatar
                 variant='square'

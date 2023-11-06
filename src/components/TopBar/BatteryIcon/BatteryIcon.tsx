@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useIntl } from 'react-intl';
+import { useSelector } from 'typeDux';
 
 /** Mui Components */
 
@@ -9,15 +10,15 @@ import { useIntl } from 'react-intl';
 /** styles */
 
 /** redux */
+import { getBatteryState } from 'state/ui/ui.selectors';
 
 /** helpers */
 
 export default function BatteryIcon() {
   const intl = useIntl();
-  const batteryPlaceholder = 1;
-  // TODO: Display battery by percentage reported
+  const battery = useSelector(getBatteryState);
 
-  if (batteryPlaceholder <= 0.25) {
+  if (battery.percent <= 25) {
     return (
       <Image
         priority
@@ -27,7 +28,7 @@ export default function BatteryIcon() {
         alt={intl.formatMessage({ id: 'battery' })}
       />
     );
-  } else if (batteryPlaceholder <= 0.5) {
+  } else if (battery.percent <= 50) {
     return (
       <Image
         priority
@@ -37,7 +38,7 @@ export default function BatteryIcon() {
         alt={intl.formatMessage({ id: 'battery' })}
       />
     );
-  } else if (batteryPlaceholder <= 0.75) {
+  } else if (battery.percent <= 75) {
     return (
       <Image
         priority

@@ -11,6 +11,7 @@ export const DisplayScreenOptions = {
   DeliverySummary: 'Delivery summary' as const,
   RoomNumber: 'Room number' as const,
   Favorites: 'Favorites' as const,
+  MultipleSelectFavorites: 'Multiple select favorites' as const,
   Utilities: 'Utilities' as const,
   Actions: 'Actions' as const,
   CancelTask: 'CancelTask' as const,

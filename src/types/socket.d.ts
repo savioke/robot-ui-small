@@ -33,6 +33,8 @@ export interface ServerToClientEvents {
     confirm_text: string;
     confirm_button_text: string;
   }) => void;
+  login_pass: () => void;
+  login_fail: () => void;
   // TODO: Finalize interface for sending Mingle/Deliver formValues
 }
 
@@ -46,6 +48,8 @@ export interface ClientToServerEvents {
   ui_request: (formValues: any) => void;
   ui_event: ({ name, context }: { name: string; context: {} }) => void;
   choice_made: ({ string }: { name: string }) => void;
+  login_pin: (string) => void;
+  logout: () => void;
 
   // TODO: Mocking R2C2 Socket Server
   display_message: (message: string) => void;

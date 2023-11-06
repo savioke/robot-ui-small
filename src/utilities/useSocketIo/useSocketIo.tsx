@@ -1,6 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import { setDisplayMessage, setIsConfirmationNeeded, setDisplayScreen } from 'state/ui/ui.slice';
+import {
+  setDisplayMessage,
+  setIsConfirmationNeeded,
+  setDisplayScreen,
+  setAuthorized,
+} from 'state/ui/ui.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
@@ -59,6 +64,16 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
             dispatch(setDisplayMessage(confirm_text));
             return dispatch(setIsConfirmationNeeded(true));
+          });
+
+          socket?.on('login_pass', () => {
+            console.info('Successful authentication');
+            return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+          });
+
+          socket?.on('login_fail', () => {
+            console.info('Unauthorized');
+            return dispatch(setAuthorized(false));
           });
         }
       };

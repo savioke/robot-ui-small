@@ -31,3 +31,7 @@ export const getIsScreenTouched = (state: RootState) => {
 export const getPasscode = (state: RootState) => {
   return state.ui.passCode;
 };
+
+export const getAuthorized = (state: RootState) => {
+  return state.ui.authorized;
+};

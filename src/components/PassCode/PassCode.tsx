@@ -14,13 +14,14 @@ import { styles } from './PassCode.styles';
 
 /** redux */
 import { setPasscode } from 'state/ui/ui.slice';
-import { getPasscode } from 'state/ui/ui.selectors';
+import { getPasscode, getAuthorized } from 'state/ui/ui.selectors';
 
 /** helpers */
 
 export default function PassCode() {
   const dispatch = useDispatch();
   const passCode = useSelector(getPasscode);
+  const authorized = useSelector(getAuthorized);
 
   const handleSetPassCode = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (passCode.length === 16) {
@@ -48,6 +49,15 @@ export default function PassCode() {
           <Box sx={styles.textFieldContainer}>
             <TextField
               fullWidth
+              error={authorized === false}
+              FormHelperTextProps={{
+                sx: {
+                  fontSize: '24px',
+                },
+              }}
+              helperText={
+                authorized === false ? 'Unauthorized' : <Box sx={styles.emptyHelperText}></Box>
+              }
               variant='standard'
               type='password'
               value={passCode}
@@ -63,8 +73,8 @@ export default function PassCode() {
       </Box>
       <Keypad
         isContinueDisabled={!passCode.length}
-        setValues={handleBackspace}
         handleSetValues={handleSetPassCode}
+        setValues={handleBackspace}
       />
     </Box>
   );

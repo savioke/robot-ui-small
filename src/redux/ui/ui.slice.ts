@@ -27,6 +27,7 @@ interface RobotUiState {
   inputName: 'dropoff_location' | 'dropoff_message' | string;
   theme: string;
   language: 'en' | 'es' | 'ja';
+  authorized: boolean | null;
 }
 
 export const initialState: RobotUiState = {
@@ -38,6 +39,7 @@ export const initialState: RobotUiState = {
   theme: '',
   language: 'en',
   passCode: '',
+  authorized: null,
 };
 
 const uiSlice = createSlice({
@@ -68,6 +70,9 @@ const uiSlice = createSlice({
     setPasscode: (state, { payload }) => {
       state.passCode = payload;
     },
+    setAuthorized: (state, { payload }) => {
+      state.authorized = payload;
+    },
   },
 });
 
@@ -80,6 +85,7 @@ export const {
   setTheme,
   setLanguage,
   setPasscode,
+  setAuthorized,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

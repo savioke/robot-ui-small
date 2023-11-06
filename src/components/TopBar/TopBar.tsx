@@ -14,17 +14,32 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './TopBar.styles';
 
 /** redux */
-import { setDisplayScreen, setIsScreenTouched, setPasscode } from 'state/ui/ui.slice';
+import {
+  setDisplayScreen,
+  setIsScreenTouched,
+  setPasscode,
+  setAuthorized,
+} from 'state/ui/ui.slice';
 import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 
 /** helpers */
+import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function TopBar() {
   const dispatch = useDispatch();
+  const socket = useSocketIo();
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
   const [isNetworkConnected, setIsNetworkConnected] = useState(true);
+
+  React.useEffect(() => {
+    console.log(displayScreen, DisplayScreenOptions.Home);
+    if (displayScreen === DisplayScreenOptions.Home) {
+      dispatch(setAuthorized(null));
+      socket?.emit('logout');
+    }
+  }, [dispatch, displayScreen, socket]);
 
   useIdleTimer({
     onIdle: () => {

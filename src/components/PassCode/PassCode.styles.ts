@@ -31,4 +31,8 @@ export const styles = {
     flex: 1,
     marginLeft: 3,
   },
+  emptyHelperText: {
+    height: '24px',
+    marginTop: 2,
+  },
 };

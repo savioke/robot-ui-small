@@ -13,10 +13,11 @@ import { styles } from './Keypad.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
-import { getDisplayScreen } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getPasscode } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
+import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 interface KeypadProps {
   isContinueDisabled: boolean;
@@ -28,7 +29,9 @@ interface KeypadProps {
 export default function Keypad({ isContinueDisabled, setValues, handleSetValues }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const socket = useSocketIo();
   const displayScreen = useSelector(getDisplayScreen);
+  const passCode = useSelector(getPasscode);
 
   return (
     <Box sx={styles.keypadContainer}>
@@ -235,13 +238,11 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
               sx={styles.confirmButton}
               variant='contained'
               onClick={() => {
-                // TODO: Hook in error message for invalid code... This might be verified from R2C2.
-                // TODO: Passcode validation from R2C2
                 if (displayScreen === DisplayScreenOptions.RoomNumber) {
                   return dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                 }
 
-                return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+                return socket?.emit('login_pin', passCode);
               }}
             >
               {intl.formatMessage({ id: 'ok' })}

@@ -46,11 +46,11 @@ export const DisplayMessageOptions = (
 
 export const AvatarBackgroundColors = [
   '#004B66',
-  '#0AA15B',
+  '#B476DC',
+  '#D34E87',
   '#7B5097',
   '#E7AB44',
-  '#D34E87',
-  '#B476DC',
+  '#0AA15B',
   '#9F6A0D',
   '#186212',
   '#4B0AA1',

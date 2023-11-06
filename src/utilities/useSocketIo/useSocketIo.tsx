@@ -73,6 +73,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
           socket?.on('queue_tasks_success', () => {
             console.info('Task created successfully');
+            // TODO: Will display transit_message from a task event
             return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           });
 

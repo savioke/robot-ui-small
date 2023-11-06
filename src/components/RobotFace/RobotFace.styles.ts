@@ -16,7 +16,7 @@ export const styles = {
     marginBottom: 7,
   },
   paper: {
-    minHeight: '390px',
+    minHeight: '400px',
     height: '100%',
     display: 'flex',
     borderRadius: '20px',

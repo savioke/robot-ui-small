@@ -13,6 +13,7 @@ export const styles = {
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    marginBottom: 2,
   },
   paperContainer: {
     display: 'flex',
@@ -37,5 +38,11 @@ export const styles = {
   title: {
     marginLeft: 7,
     marginBottom: 3,
+  },
+  button: {
+    // height: '65px',
+    width: '350px',
+    fontSize: '24px',
+    backgroundColor: '#0AA15B',
   },
 };

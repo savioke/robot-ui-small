@@ -20,7 +20,7 @@ import {
   setPasscode,
   setAuthorized,
 } from 'state/ui/ui.slice';
-import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getIsScreenTouched, getDisplayState } from 'state/ui/ui.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
@@ -31,6 +31,7 @@ export default function TopBar() {
   const socket = useSocketIo();
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
+  const displayState = useSelector(getDisplayState);
   const [isNetworkConnected, setIsNetworkConnected] = useState(true);
 
   React.useEffect(() => {
@@ -74,7 +75,7 @@ export default function TopBar() {
         <Box sx={styles.metricContainer}>
           <Box sx={styles.rightContainer}>
             {/* TODO: Condtiionally display this from socket connection sent from robot */}
-            {isNetworkConnected ? <Wifi fontSize='large' /> : <WifiOff fontSize='large' />}
+            {displayState.connected ? <Wifi fontSize='large' /> : <WifiOff fontSize='large' />}
             <Text sx={{ color: '#FFFFFF', fontSize: '20px' }}>m2012</Text>
           </Box>
           <Divider

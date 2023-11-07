@@ -21,12 +21,12 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        socket = io('http://localhost:5000');
+        socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        // setInterval(() => {
-        //   socket.emit('pong');
-        // }, 5000);
+        setInterval(() => {
+          socket.emit('pong');
+        }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');

@@ -42,7 +42,7 @@ export interface ServerToClientEvents {
   // Tasks
   queue_tasks_error: (string) => void;
   queue_tasks_success: () => void;
-  deliver_status: ({ status, task }: { status: DeliverStatus; task_config: TaskConfig }) => void;
+  deliver_status: ({ status, task }: { status: DeliverStatus; task: Task }) => void;
   // TODO: Audit and adjust task_state as needed
   task_state: ({ task, state }: { task: Task; state: DeliverStatus }) => void;
 

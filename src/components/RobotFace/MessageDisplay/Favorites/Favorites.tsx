@@ -3,7 +3,7 @@ import { useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Avatar, Box, Button, Checkbox } from '@mui/material';
+import { Avatar, Box, Button, Checkbox, ToggleButtonGroup, ToggleButton } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
@@ -79,6 +79,13 @@ export default function Favorites() {
   const socket = useSocketIo();
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<DeliverValues[]>([]);
+  const [formats, setFormats] = React.useState<number[]>([]);
+
+  const handleFormat = (event: React.MouseEvent<HTMLElement>, newFormats: number[]) => {
+    setFormats(newFormats);
+  };
+
+  console.log(tasks);
 
   const handleToggle =
     ({ index, task }: { index: number; task: DeliverValues }) =>
@@ -133,12 +140,66 @@ export default function Favorites() {
               </Text>
               <Checkbox
                 checked={checked.indexOf(index) !== -1}
-                sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                sx={{ padding: 0 }}
+                // size='small'
+                // sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
               />
             </Button>
           </Box>
         ))}
       </Box>
+      {/* <ToggleButtonGroup
+        color='success'
+        value={formats}
+        onChange={handleFormat}
+        aria-label='text formatting'
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          border: 'none',
+          marginBottom: 2,
+        }}
+      >
+        {taskFavorites.map((favorite, index) => (
+          <Box
+            key={index}
+            sx={styles.paperContainer}
+            onClick={handleToggle({
+              task: {
+                type: 'DELIVER',
+                version: '2.0',
+                config: {
+                  dropoff_location: favorite.config.dropoff_location,
+                  dropoff_message: favorite.config.dropoff_message,
+                },
+              },
+              index,
+            })}
+          >
+            <ToggleButton
+              value={index}
+              sx={{ display: 'flex', flexDirection: 'column', gap: 1, border: 'none' }}
+              onClick={() => {
+                const newTasks = [...tasks];
+                newTasks.push(favorite);
+
+                setTasks(newTasks);
+              }}
+            >
+              <Avatar
+                variant='square'
+                {...stringAvatar({ name: favorite.name, index })}
+              />
+              <Text
+                variant='h5'
+                sx={[styles.boldFont, { textTransform: 'capitalize' }]}
+              >
+                {favorite.name}
+              </Text>
+            </ToggleButton>
+          </Box>
+        ))}
+      </ToggleButtonGroup> */}
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <Button
           sx={styles.button}

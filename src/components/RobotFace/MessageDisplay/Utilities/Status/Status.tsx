@@ -28,7 +28,7 @@ export default function Status() {
           <Text sx={styles.text}>Nickname: {displayState.nickname}</Text>
           <Divider sx={{ marginY: 1 }} />
           <Text sx={styles.text}>Network Connectivity: {String(displayState.connected)}</Text>
-          <Divider sx={{ marginY: 1 }} />{' '}
+          <Divider sx={{ marginY: 1 }} />
           <Text sx={styles.text}>Battery: {displayState.battery.percent}%</Text>
           <Text sx={styles.text}>Battery Voltage: {displayState.battery.voltage}</Text>
         </Box>

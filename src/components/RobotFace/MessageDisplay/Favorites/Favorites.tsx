@@ -1,9 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Avatar, Box, Button, Checkbox, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Avatar, Box, Button, Checkbox } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
@@ -22,34 +21,34 @@ import { DeliverValues } from 'types/r2c2';
 const taskFavorites = [
   {
     id: 1,
-    name: 'Pharmacy B',
+    name: 'Kitchen',
     siteId: '1234',
     type: 'DELIVER',
     version: '2.0',
     config: {
-      dropoff_location: '123',
+      dropoff_location: 'Kitchen',
       dropoff_message: 'Here you go!',
     },
   },
   {
     id: 2,
-    name: 'Lab B',
+    name: 'Chair',
     siteId: '1234',
     type: 'DELIVER',
     version: '2.0',
     config: {
-      dropoff_location: '999',
+      dropoff_location: 'Chair',
       dropoff_message: 'Enjoy!',
     },
   },
   {
     id: 3,
-    name: 'Lab A',
+    name: 'Couch',
     siteId: '1234',
     type: 'DELIVER',
     version: '2.0',
     config: {
-      dropoff_location: '555',
+      dropoff_location: 'Couch',
       dropoff_message: 'Wooo',
     },
   },
@@ -75,18 +74,11 @@ const stringAvatar = ({ name, index }: { name: string; index: number }) => {
 
 export default function Favorites() {
   const intl = useIntl();
-  const dispatch = useDispatch();
   const socket = useSocketIo();
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<DeliverValues[]>([]);
-  const [formats, setFormats] = React.useState<number[]>([]);
 
-  const handleFormat = (event: React.MouseEvent<HTMLElement>, newFormats: number[]) => {
-    setFormats(newFormats);
-  };
-
-  console.log(tasks);
-
+  // TODO: This function can be cleaned up.
   const handleToggle =
     ({ index, task }: { index: number; task: DeliverValues }) =>
     () => {
@@ -127,7 +119,7 @@ export default function Favorites() {
               index,
             })}
           >
-            <Button sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            <Button sx={styles.favoriteButton}>
               <Avatar
                 variant='square'
                 {...stringAvatar({ name: favorite.name, index })}
@@ -140,69 +132,15 @@ export default function Favorites() {
               </Text>
               <Checkbox
                 checked={checked.indexOf(index) !== -1}
-                sx={{ padding: 0 }}
-                // size='small'
-                // sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                sx={styles.checkbox}
               />
             </Button>
           </Box>
         ))}
       </Box>
-      {/* <ToggleButtonGroup
-        color='success'
-        value={formats}
-        onChange={handleFormat}
-        aria-label='text formatting'
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
-          border: 'none',
-          marginBottom: 2,
-        }}
-      >
-        {taskFavorites.map((favorite, index) => (
-          <Box
-            key={index}
-            sx={styles.paperContainer}
-            onClick={handleToggle({
-              task: {
-                type: 'DELIVER',
-                version: '2.0',
-                config: {
-                  dropoff_location: favorite.config.dropoff_location,
-                  dropoff_message: favorite.config.dropoff_message,
-                },
-              },
-              index,
-            })}
-          >
-            <ToggleButton
-              value={index}
-              sx={{ display: 'flex', flexDirection: 'column', gap: 1, border: 'none' }}
-              onClick={() => {
-                const newTasks = [...tasks];
-                newTasks.push(favorite);
-
-                setTasks(newTasks);
-              }}
-            >
-              <Avatar
-                variant='square'
-                {...stringAvatar({ name: favorite.name, index })}
-              />
-              <Text
-                variant='h5'
-                sx={[styles.boldFont, { textTransform: 'capitalize' }]}
-              >
-                {favorite.name}
-              </Text>
-            </ToggleButton>
-          </Box>
-        ))}
-      </ToggleButtonGroup> */}
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box sx={styles.buttonContainer}>
         <Button
-          sx={styles.button}
+          sx={styles.goButton}
           variant='contained'
           onClick={(event) => {
             event.preventDefault();

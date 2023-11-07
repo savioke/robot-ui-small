@@ -39,10 +39,21 @@ export const styles = {
     marginLeft: 7,
     marginBottom: 3,
   },
-  button: {
-    // height: '65px',
+  favoriteButton: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 1,
+  },
+  goButton: {
     width: '350px',
     fontSize: '24px',
     backgroundColor: '#0AA15B',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  checkbox: {
+    padding: 0,
   },
 };

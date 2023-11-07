@@ -120,23 +120,22 @@ export default function Favorites() {
               index,
             })}
           >
-            {/* TODO: Initiate Favorite Delivery */}
-            <Button>
+            <Button sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               <Avatar
                 variant='square'
                 {...stringAvatar({ name: favorite.name, index })}
               />
+              <Text
+                variant='h5'
+                sx={[styles.boldFont, { textTransform: 'capitalize' }]}
+              >
+                {favorite.name}
+              </Text>
+              <Checkbox
+                checked={checked.indexOf(index) !== -1}
+                sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+              />
             </Button>
-            <Checkbox
-              checked={checked.indexOf(index) !== -1}
-              sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
-            />
-            <Text
-              variant='h5'
-              sx={styles.boldFont}
-            >
-              {favorite.name}
-            </Text>
           </Box>
         ))}
       </Box>

@@ -59,8 +59,6 @@ export default function MessageDisplay() {
     }
   }, [displayMessage]);
 
-  console.log(deliverStatus);
-
   if (displayScreen === DisplayScreenOptions.Dashboard) {
     return <Dashboard />;
   } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {

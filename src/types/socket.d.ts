@@ -4,7 +4,7 @@ import type { NextApiResponse } from 'next';
 import type { Socket as NetSocket } from 'net';
 import type { Server as IOServer } from 'socket.io';
 import { NavigationGoal, NavigationGoals } from 'relay-types';
-import { DeliverValues, DisplayState } from './r2c2';
+import { DeliverStatus, DeliverValues, DisplayState, Task } from './r2c2';
 
 interface SocketServer extends HTTPServer {
   io?: IOServer | undefined;
@@ -42,6 +42,7 @@ export interface ServerToClientEvents {
   // Tasks
   queue_tasks_error: (string) => void;
   queue_tasks_success: () => void;
+  task_state: ({ task, state }: { task: Task; state: DeliverStatus }) => void;
 
   // Display State
   display_state: (state: DisplayState) => void;

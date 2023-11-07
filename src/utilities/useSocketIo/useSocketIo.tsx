@@ -6,6 +6,7 @@ import {
   setDisplayScreen,
   setAuthorized,
   setDisplayState,
+  setTransitMessage,
 } from 'state/ui/ui.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
@@ -21,12 +22,13 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        socket = io('http://localhost:3000');
+        console.log('FIX');
+        socket = io('http://localhost:5000');
         setReturnSocket(socket);
 
-        setInterval(() => {
-          socket.emit('pong');
-        }, 5000);
+        // setInterval(() => {
+        //   socket.emit('pong');
+        // }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
@@ -84,6 +86,12 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket?.on('display_state', (state) => {
+            return dispatch(setDisplayState(state));
+          });
+
+          socket?.on('task_state', ({ task, state }) => {
+            // TODO: Finalize task state
+            // dispatch(setTransitMessage(''));
             return dispatch(setDisplayState(state));
           });
         }

@@ -1,3 +1,25 @@
+export type TaskType =
+  | 'RUN_SCRIPT'
+  | 'DELIVER'
+  | 'MINGLE'
+  | 'SUMMON'
+  | 'GO_TO'
+  | 'SEND_TO'
+  | 'SEND_TO_DOCK'
+  | 'REGISTER_RFID'
+  | '';
+
+export type DeliverStatus =
+  | 'NONE'
+  | 'GO_TO_PICKUP'
+  | 'NOTIFY_PICKUP'
+  | 'LOAD_PACKAGE'
+  | 'GO_TO_DROPOFF'
+  | 'NOTIFY_DROPOFF'
+  | 'TAKE_PACKAGE'
+  | 'SUCCESS'
+  | 'FAILURE';
+
 export interface NavigationGoals {
   goals: NavigationGoal[];
 }
@@ -28,5 +50,27 @@ export interface DisplayState {
     level: string;
     chargingDock: boolean;
     chargingPlug: boolean;
+  };
+}
+
+export interface Task {
+  id: string;
+  siteId: string;
+  robotId: string;
+  initiator: string;
+  type: TaskType;
+  version: string;
+  cancelledBy: string;
+  state: string;
+  status: DeliverStatus;
+  queuedAt: number;
+  updatedAt: number;
+  startedAt: number;
+  robotName: string;
+  robotNickname: string;
+  robotHostname: string;
+  inorbitToken: string;
+  config: {
+    [key: string]: any;
   };
 }

@@ -25,6 +25,7 @@ interface RobotUiState {
   displayScreen: DisplayScreen;
   passCode: string;
   displayMessage: string;
+  transitMessage: string;
   isConfirmationNeeded: boolean;
   isScreenTouched: boolean;
   inputName: 'dropoff_location' | 'dropoff_message' | string;
@@ -37,6 +38,7 @@ interface RobotUiState {
 export const initialState: RobotUiState = {
   displayScreen: DisplayScreenOptions.Home,
   displayMessage: '',
+  transitMessage: '',
   displayState: {
     hostname: '',
     nickname: '',
@@ -83,6 +85,9 @@ const uiSlice = createSlice({
     setDisplayMessage: (state, { payload }) => {
       state.displayMessage = payload;
     },
+    setTransitMessage: (state, { payload }) => {
+      state.transitMessage = payload;
+    },
     setPasscode: (state, { payload }) => {
       state.passCode = payload;
     },
@@ -106,6 +111,7 @@ export const {
   setPasscode,
   setAuthorized,
   setDisplayState,
+  setTransitMessage,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

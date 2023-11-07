@@ -43,3 +43,7 @@ export const getDisplayState = (state: RootState) => {
 export const getBatteryState = (state: RootState) => {
   return state.ui.displayState.battery;
 };
+
+export const getTransitMessage = (state: RootState) => {
+  return state.ui.transitMessage;
+};

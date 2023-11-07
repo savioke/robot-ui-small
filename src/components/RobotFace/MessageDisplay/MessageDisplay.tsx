@@ -36,7 +36,7 @@ import {
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DisplayScreenOptions } from 'appConstants';
-import { setDisplayMessage, setIsConfirmationNeeded, setTransitMessage } from 'state/ui/ui.slice';
+import { setIsConfirmationNeeded, setTransitMessage } from 'state/ui/ui.slice';
 
 export default function MessageDisplay() {
   const intl = useIntl();

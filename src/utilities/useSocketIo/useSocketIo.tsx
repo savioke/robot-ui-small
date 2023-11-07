@@ -100,15 +100,15 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             return dispatch(setDisplayState(state));
           });
 
-          socket?.on('deliver_status', ({ status, task }) => {
+          socket?.on('deliver_status', ({ status, taskConfig }) => {
             dispatch(setTransitMessage(''));
             dispatch(setNotificationMessage(''));
             dispatch(setConfirmationMessage(''));
-            dispatch(setTaskConfig(task.config));
+            dispatch(setTaskConfig(taskConfig));
 
             if (status === 'GO_TO_PICKUP') {
               dispatch(setDeliverStatus('GO_TO_PICKUP'));
-              return dispatch(setTransitMessage(`Heading to ${task.config.pickup_location}`));
+              return dispatch(setTransitMessage(`Heading to ${taskConfig.pickup_location}`));
             } else if (status === 'NOTIFY_PICKUP') {
               dispatch(setDeliverStatus('NOTIFY_PICKUP'));
               // TODO: Adjust notify message
@@ -119,7 +119,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setIsConfirmationNeeded(true));
             } else if (status === 'GO_TO_DROPOFF') {
               dispatch(setDeliverStatus('GO_TO_DROPOFF'));
-              return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
+              return dispatch(setTransitMessage(`Delivering to ${taskConfig.dropoff_location}`));
             } else if (status === 'NOTIFY_DROPOFF') {
               dispatch(setDeliverStatus('NOTIFY_DROPOFF'));
               // TODO: Adjust notify message

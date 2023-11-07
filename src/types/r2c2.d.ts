@@ -21,6 +21,13 @@ export type DeliverStatus =
   | 'FAILURE'
   | 'DONE';
 
+export interface TaskConfig {
+  pickup_location: string;
+  pickup_message: string;
+  dropoff_location: string;
+  dropoff_message: string;
+}
+
 export interface NavigationGoals {
   goals: NavigationGoal[];
 }
@@ -71,10 +78,5 @@ export interface Task {
   robotNickname: string;
   robotHostname: string;
   inorbitToken: string;
-  config: {
-    pickup_location: string;
-    pickup_message: string;
-    dropoff_location: string;
-    dropoff_message: string;
-  };
+  config: TaskConfig;
 }

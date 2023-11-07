@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, List, ListItem } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
@@ -24,13 +24,13 @@ export default function Status() {
       <Box sx={styles.leftSideContent}>
         <ArrowBackTopBar />
         <Box sx={styles.contentContainer}>
-          <Text sx={styles.text}>Robot Hostname: {displayState.hostname}</Text>
-          <Text sx={styles.text}>Robot Nickname: {displayState.nickname}</Text>
-          <Text sx={styles.text}>Connected: {String(displayState.connected)}</Text>
-          <Text sx={styles.text}>Battery: </Text>
-          <List>
-            <ListItem>{displayState.battery.percent}</ListItem>
-          </List>
+          <Text sx={styles.text}>Hostname: {displayState.hostname}</Text>
+          <Text sx={styles.text}>Nickname: {displayState.nickname}</Text>
+          <Divider sx={{ marginY: 1 }} />
+          <Text sx={styles.text}>Network Connectivity: {String(displayState.connected)}</Text>
+          <Divider sx={{ marginY: 1 }} />{' '}
+          <Text sx={styles.text}>Battery: {displayState.battery.percent}%</Text>
+          <Text sx={styles.text}>Battery Voltage: {displayState.battery.voltage}</Text>
           {/* <Text sx={styles.text}>Robot: {displayState.hostname}</Text> */}
         </Box>
       </Box>

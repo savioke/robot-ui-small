@@ -7,6 +7,7 @@ import {
   setAuthorized,
   setDisplayState,
   setTransitMessage,
+  setDeliverStatus,
 } from 'state/ui/ui.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
@@ -22,13 +23,13 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        console.log('FIX');
-        socket = io('http://localhost:5000');
+        // console.log('FIX');
+        socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        // setInterval(() => {
-        //   socket.emit('pong');
-        // }, 5000);
+        setInterval(() => {
+          socket.emit('pong');
+        }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
@@ -93,6 +94,18 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             // TODO: Finalize task state
             // dispatch(setTransitMessage(''));
             return dispatch(setDisplayState(state));
+          });
+
+          socket?.on('deliver_status', ({ status }) => {
+            if (status === 'LOAD_PACKAGE') {
+              dispatch(setDeliverStatus('LOAD_PACKAGE'));
+              dispatch(setDisplayMessage('Please load your package'));
+            } else {
+              dispatch(setDeliverStatus('TAKE_PACKAGE'));
+              dispatch(setDisplayMessage('Please take your package'));
+            }
+
+            return dispatch(setIsConfirmationNeeded(true));
           });
         }
       };

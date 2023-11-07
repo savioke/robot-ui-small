@@ -42,6 +42,8 @@ export interface ServerToClientEvents {
   // Tasks
   queue_tasks_error: (string) => void;
   queue_tasks_success: () => void;
+  deliver_status: ({ status }: { status: DeliverStatus }) => void;
+  // TODO: Audit and adjust task_state as needed
   task_state: ({ task, state }: { task: Task; state: DeliverStatus }) => void;
 
   // Display State
@@ -58,9 +60,15 @@ export interface ClientToServerEvents {
   ui_request: (formValues: any) => void;
   ui_event: ({ name, context }: { name: string; context: {} }) => void;
   choice_made: ({ string }: { name: string }) => void;
+
+  // Authorization
   login_pin: (string) => void;
   logout: () => void;
+
+  // Tasks
   queue_tasks: (tasks: DeliverValues[]) => void;
+  load_package_result: ({ result }: { result: boolean }) => void;
+  take_package_result: ({ result }: { result: boolean }) => void;
 
   // TODO: Mocking R2C2 Socket Server
   display_message: (message: string) => void;

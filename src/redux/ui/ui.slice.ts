@@ -1,6 +1,6 @@
 import { createSlice } from 'typeDux';
 import { DisplayScreenOptions } from '../../constants';
-import { DisplayState } from 'types/r2c2';
+import { DeliverStatus, DisplayState } from 'types/r2c2';
 
 type DisplayScreen =
   | 'Actions'
@@ -23,6 +23,7 @@ type DisplayScreen =
 
 interface RobotUiState {
   displayScreen: DisplayScreen;
+  deliverStatus: DeliverStatus | '';
   passCode: string;
   displayMessage: string;
   transitMessage: string;
@@ -37,6 +38,7 @@ interface RobotUiState {
 
 export const initialState: RobotUiState = {
   displayScreen: DisplayScreenOptions.Home,
+  deliverStatus: '',
   displayMessage: '',
   transitMessage: '',
   displayState: {
@@ -97,6 +99,9 @@ const uiSlice = createSlice({
     setDisplayState: (state, { payload }) => {
       state.displayState = payload;
     },
+    setDeliverStatus: (state, { payload }) => {
+      state.deliverStatus = payload;
+    },
   },
 });
 
@@ -112,6 +117,7 @@ export const {
   setAuthorized,
   setDisplayState,
   setTransitMessage,
+  setDeliverStatus,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

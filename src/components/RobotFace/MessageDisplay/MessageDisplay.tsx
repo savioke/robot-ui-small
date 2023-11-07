@@ -25,6 +25,7 @@ import {
   getDisplayMessage,
   getDisplayScreen,
   getIsConfirmationNeeded,
+  getDeliverStatus,
 } from 'state/ui/ui.selectors';
 
 /** helpers */
@@ -38,6 +39,7 @@ export default function MessageDisplay() {
   const displayMessage = useSelector(getDisplayMessage);
   const displayScreen = useSelector(getDisplayScreen);
   const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
+  const deliverStatus = useSelector(getDeliverStatus);
 
   // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
   // and another initiatives need to task precedence
@@ -57,6 +59,8 @@ export default function MessageDisplay() {
     }
   }, [displayMessage]);
 
+  console.log(deliverStatus);
+
   if (displayScreen === DisplayScreenOptions.Dashboard) {
     return <Dashboard />;
   } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
@@ -73,12 +77,6 @@ export default function MessageDisplay() {
     return <CancelTask />;
   } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
     return <CancelTaskConfirmation />;
-  } else if (displayMessage) {
-    return (
-      <Box sx={styles.displayMessageContainer}>
-        <Text variant='h2'>{displayMessage}</Text>
-      </Box>
-    );
   } else if (isConfirmationNeeded) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', flex: 1 }}>
@@ -94,12 +92,22 @@ export default function MessageDisplay() {
             size='large'
             variant='contained'
             onClick={() => {
-              socket?.emit('ui_event', { name: 'user_confirmed', context: {} });
+              if (deliverStatus === 'LOAD_PACKAGE') {
+                return socket?.emit('load_package_result', { result: true });
+              }
+
+              return socket?.emit('take_package_result', { result: true });
             }}
           >
-            {intl.formatMessage({ id: 'done' })}
+            {intl.formatMessage({ id: 'ok' })}
           </Button>
         </Box>
+      </Box>
+    );
+  } else if (displayMessage) {
+    return (
+      <Box sx={styles.displayMessageContainer}>
+        <Text variant='h2'>{displayMessage}</Text>
       </Box>
     );
   }

@@ -31,7 +31,6 @@ export default function Status() {
           <Divider sx={{ marginY: 1 }} />{' '}
           <Text sx={styles.text}>Battery: {displayState.battery.percent}%</Text>
           <Text sx={styles.text}>Battery Voltage: {displayState.battery.voltage}</Text>
-          {/* <Text sx={styles.text}>Robot: {displayState.hostname}</Text> */}
         </Box>
       </Box>
     </Box>

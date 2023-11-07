@@ -27,6 +27,8 @@ interface RobotUiState {
   passCode: string;
   displayMessage: string;
   transitMessage: string;
+  notificationMessage: '';
+  confirmationMessage: '';
   isConfirmationNeeded: boolean;
   isScreenTouched: boolean;
   inputName: 'dropoff_location' | 'dropoff_message' | string;
@@ -34,6 +36,12 @@ interface RobotUiState {
   language: 'en' | 'es' | 'ja';
   authorized: boolean | null;
   displayState: DisplayState;
+  taskConfig: {
+    pickup_location: string;
+    pickup_message: string;
+    dropoff_location: string;
+    dropoff_message: string;
+  };
 }
 
 export const initialState: RobotUiState = {
@@ -41,6 +49,8 @@ export const initialState: RobotUiState = {
   deliverStatus: '',
   displayMessage: '',
   transitMessage: '',
+  notificationMessage: '',
+  confirmationMessage: '',
   displayState: {
     hostname: '',
     nickname: '',
@@ -60,6 +70,12 @@ export const initialState: RobotUiState = {
   language: 'en',
   passCode: '',
   authorized: false,
+  taskConfig: {
+    pickup_location: '',
+    pickup_message: '',
+    dropoff_location: '',
+    dropoff_message: '',
+  },
 };
 
 const uiSlice = createSlice({
@@ -90,6 +106,12 @@ const uiSlice = createSlice({
     setTransitMessage: (state, { payload }) => {
       state.transitMessage = payload;
     },
+    setNotificationMessage: (state, { payload }) => {
+      state.notificationMessage = payload;
+    },
+    setConfirmationMessage: (state, { payload }) => {
+      state.confirmationMessage = payload;
+    },
     setPasscode: (state, { payload }) => {
       state.passCode = payload;
     },
@@ -101,6 +123,9 @@ const uiSlice = createSlice({
     },
     setDeliverStatus: (state, { payload }) => {
       state.deliverStatus = payload;
+    },
+    setTaskConfig: (state, { payload }) => {
+      state.taskConfig = payload;
     },
   },
 });
@@ -117,7 +142,10 @@ export const {
   setAuthorized,
   setDisplayState,
   setTransitMessage,
+  setNotificationMessage,
+  setConfirmationMessage,
   setDeliverStatus,
+  setTaskConfig,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

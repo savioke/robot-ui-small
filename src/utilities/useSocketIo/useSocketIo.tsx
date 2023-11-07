@@ -8,6 +8,9 @@ import {
   setDisplayState,
   setTransitMessage,
   setDeliverStatus,
+  setConfirmationMessage,
+  setNotificationMessage,
+  setTaskConfig,
 } from 'state/ui/ui.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
@@ -87,6 +90,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket?.on('display_state', (state) => {
+            dispatch(setDisplayMessage(`Hello, I'm ${state.nickname}`));
             return dispatch(setDisplayState(state));
           });
 
@@ -96,16 +100,38 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             return dispatch(setDisplayState(state));
           });
 
-          socket?.on('deliver_status', ({ status }) => {
-            if (status === 'LOAD_PACKAGE') {
+          socket?.on('deliver_status', ({ status, task }) => {
+            dispatch(setTransitMessage(''));
+            dispatch(setNotificationMessage(''));
+            dispatch(setConfirmationMessage(''));
+            dispatch(setTaskConfig(task.config));
+
+            if (status === 'GO_TO_PICKUP') {
+              dispatch(setDeliverStatus('GO_TO_PICKUP'));
+              return dispatch(setTransitMessage(`Heading to ${task.config.pickup_location}`));
+            } else if (status === 'NOTIFY_PICKUP') {
+              dispatch(setDeliverStatus('NOTIFY_PICKUP'));
+              // TODO: Adjust notify message
+              return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
+            } else if (status === 'LOAD_PACKAGE') {
               dispatch(setDeliverStatus('LOAD_PACKAGE'));
-              dispatch(setDisplayMessage('Please load your package'));
-            } else {
+              dispatch(setConfirmationMessage('Please load your package'));
+              return dispatch(setIsConfirmationNeeded(true));
+            } else if (status === 'GO_TO_DROPOFF') {
+              dispatch(setDeliverStatus('GO_TO_DROPOFF'));
+              return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
+            } else if (status === 'NOTIFY_DROPOFF') {
+              dispatch(setDeliverStatus('NOTIFY_DROPOFF'));
+              // TODO: Adjust notify message
+              return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
+            } else if (status === 'TAKE_PACKAGE') {
               dispatch(setDeliverStatus('TAKE_PACKAGE'));
-              dispatch(setDisplayMessage('Please take your package'));
+              dispatch(setConfirmationMessage('Please take your package'));
+              return dispatch(setIsConfirmationNeeded(true));
             }
 
-            return dispatch(setIsConfirmationNeeded(true));
+            dispatch(setDeliverStatus('DONE'));
+            return dispatch(setTransitMessage('Thank you, have a nice day!'));
           });
         }
       };

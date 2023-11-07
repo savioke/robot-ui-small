@@ -18,7 +18,8 @@ export type DeliverStatus =
   | 'NOTIFY_DROPOFF'
   | 'TAKE_PACKAGE'
   | 'SUCCESS'
-  | 'FAILURE';
+  | 'FAILURE'
+  | 'DONE';
 
 export interface NavigationGoals {
   goals: NavigationGoal[];
@@ -71,6 +72,9 @@ export interface Task {
   robotHostname: string;
   inorbitToken: string;
   config: {
-    [key: string]: any;
+    pickup_location: string;
+    pickup_message: string;
+    dropoff_location: string;
+    dropoff_message: string;
   };
 }

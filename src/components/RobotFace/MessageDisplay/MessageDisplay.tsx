@@ -26,20 +26,33 @@ import {
   getDisplayScreen,
   getIsConfirmationNeeded,
   getDeliverStatus,
+  getDisplayState,
+  getTransitMessage,
+  getConfirmationMessage,
+  getNotificationMessage,
+  getTaskConfig,
 } from 'state/ui/ui.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DisplayScreenOptions } from 'appConstants';
+import { setDisplayMessage, setIsConfirmationNeeded, setTransitMessage } from 'state/ui/ui.slice';
 
 export default function MessageDisplay() {
   const intl = useIntl();
   const dispatch = useDispatch();
   const socket = useSocketIo(dispatch, intl);
   const displayMessage = useSelector(getDisplayMessage);
+  const transitMessage = useSelector(getTransitMessage);
+  const confirmationMessage = useSelector(getConfirmationMessage);
+  const notificationMessage = useSelector(getNotificationMessage);
   const displayScreen = useSelector(getDisplayScreen);
   const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
   const deliverStatus = useSelector(getDeliverStatus);
+  const displayState = useSelector(getDisplayState);
+  const taskConfig = useSelector(getTaskConfig);
+
+  console.log({ transitMessage, notificationMessage, displayMessage });
 
   // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
   // and another initiatives need to task precedence
@@ -76,30 +89,51 @@ export default function MessageDisplay() {
   } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
     return <CancelTaskConfirmation />;
   } else if (isConfirmationNeeded) {
+    // TODO: Fix this button and message to prevent content shifting. Might be able to reduce if IF and combine with displayMessag below
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', flex: 1 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flex: 1,
+        }}
+      >
         <Box sx={styles.displayConfirmContainer}>
-          <Text
-            variant='h2'
-            sx={{ marginBottom: 5 }}
-          >
-            {displayMessage}
-          </Text>
-          <Button
-            sx={{ height: '65px', width: '373px' }}
-            size='large'
-            variant='contained'
-            onClick={() => {
-              if (deliverStatus === 'LOAD_PACKAGE') {
-                return socket?.emit('load_package_result', { result: true });
-              }
-
-              return socket?.emit('take_package_result', { result: true });
-            }}
-          >
-            {intl.formatMessage({ id: 'ok' })}
-          </Button>
+          <Box>
+            <Text variant='h2'>{confirmationMessage}</Text>
+          </Box>
         </Box>
+        <Button
+          sx={{ height: '65px', width: '373px', backgroundColor: '#0AA15B' }}
+          size='large'
+          variant='contained'
+          onClick={() => {
+            dispatch(setIsConfirmationNeeded(false));
+            if (deliverStatus === 'LOAD_PACKAGE') {
+              socket?.emit('load_package_result', { result: true });
+              return dispatch(setTransitMessage(`Delivering to ${taskConfig.dropoff_location}`));
+            }
+
+            socket?.emit('take_package_result', { result: true });
+            return dispatch(setTransitMessage('Thank you, have a nice day!'));
+          }}
+        >
+          {intl.formatMessage({ id: 'ok' })}
+        </Button>
+      </Box>
+    );
+  } else if (notificationMessage) {
+    return (
+      <Box sx={styles.displayMessageContainer}>
+        <Text variant='h2'>{notificationMessage}</Text>
+      </Box>
+    );
+  } else if (transitMessage) {
+    return (
+      <Box sx={styles.displayMessageContainer}>
+        <Text variant='h2'>{transitMessage}</Text>
       </Box>
     );
   } else if (displayMessage) {

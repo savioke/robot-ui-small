@@ -48,6 +48,18 @@ export const getTransitMessage = (state: RootState) => {
   return state.ui.transitMessage;
 };
 
+export const getNotificationMessage = (state: RootState) => {
+  return state.ui.notificationMessage;
+};
+
+export const getConfirmationMessage = (state: RootState) => {
+  return state.ui.confirmationMessage;
+};
+
 export const getDeliverStatus = (state: RootState) => {
   return state.ui.deliverStatus;
+};
+
+export const getTaskConfig = (state: RootState) => {
+  return state.ui.taskConfig;
 };

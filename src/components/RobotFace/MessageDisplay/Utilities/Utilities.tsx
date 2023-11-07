@@ -50,10 +50,7 @@ export default function Utilities() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button
-          // TODO: Enable Status
-          // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard))}
-          >
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Status))}>
             <Image
               priority
               src='images/Status.svg'

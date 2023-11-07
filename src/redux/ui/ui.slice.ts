@@ -18,7 +18,8 @@ type DisplayScreen =
   | 'Utilities'
   | 'CancelTask'
   | 'CancelTaskConfirmation'
-  | 'Search';
+  | 'Search'
+  | 'Status';
 
 interface RobotUiState {
   displayScreen: DisplayScreen;

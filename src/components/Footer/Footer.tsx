@@ -29,7 +29,8 @@ export default function Footer() {
     displayScreen === DisplayScreenOptions.RoomNumber ||
     displayScreen === DisplayScreenOptions.DeliveryMessage ||
     displayScreen === DisplayScreenOptions.DeliverySummary ||
-    displayScreen === DisplayScreenOptions.Search
+    displayScreen === DisplayScreenOptions.Search ||
+    displayScreen === DisplayScreenOptions.Status
   ) {
     return (
       <Image

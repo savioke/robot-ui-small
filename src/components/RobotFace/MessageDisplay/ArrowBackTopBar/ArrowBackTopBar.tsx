@@ -44,8 +44,6 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
         <Breadcrumbs
           separator='-'
           aria-label='breadcrumb'
@@ -62,7 +60,6 @@ export default function ArrowBackTopBar() {
             id='roomNumber'
           />
         </Breadcrumbs>
-        {/* </Box> */}
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Search) {
@@ -83,8 +80,6 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
         <Breadcrumbs
           separator='-'
           aria-label='breadcrumb'
@@ -101,7 +96,6 @@ export default function ArrowBackTopBar() {
             id='search'
           />
         </Breadcrumbs>
-        {/* </Box> */}
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.DeliveryMessage) {
@@ -251,8 +245,6 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
         <Text
           variant='h6'
           component='h1'
@@ -279,7 +271,6 @@ export default function ArrowBackTopBar() {
           component='h1'
           id='summary'
         />
-        {/* </Box> */}
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Utilities) {
@@ -297,8 +288,6 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
         <Breadcrumbs
           separator='-'
           aria-label='breadcrumb'
@@ -309,7 +298,6 @@ export default function ArrowBackTopBar() {
             id='utilities'
           />
         </Breadcrumbs>
-        {/* </Box> */}
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Favorites) {
@@ -327,14 +315,11 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
         <Text
           variant='h6'
           component='h1'
           id='favorites'
         />
-        {/* </Box> */}
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Actions) {
@@ -352,8 +337,6 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
         <Breadcrumbs
           separator='-'
           aria-label='breadcrumb'
@@ -370,7 +353,39 @@ export default function ArrowBackTopBar() {
             id='actions'
           />
         </Breadcrumbs>
-        {/* </Box> */}
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.Status) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'backArrow' })}
+          />
+        </Button>
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='status'
+          />
+        </Breadcrumbs>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.DeliveryDashboard) {
@@ -388,14 +403,11 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
-        {/* TODO: This bring text down a bit. Robot screen doesn't have it centered like the PC browser does. */}
-        {/* <Box sx={styles.textContainer}> */}
         <Text
           variant='h6'
           component='h1'
           id='delivery'
         />
-        {/* </Box> */}
       </Box>
     );
   } else if (

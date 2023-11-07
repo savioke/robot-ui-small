@@ -52,8 +52,6 @@ export default function MessageDisplay() {
   const displayState = useSelector(getDisplayState);
   const taskConfig = useSelector(getTaskConfig);
 
-  console.log({ transitMessage, notificationMessage, displayMessage });
-
   // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
   // and another initiatives need to task precedence
 

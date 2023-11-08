@@ -20,25 +20,27 @@ export default function Status() {
   const displayState = useSelector(getDisplayState);
 
   return (
-    <Box sx={styles.innerPaper}>
+    <>
       <Box sx={styles.leftSideContent}>
         <ArrowBackTopBar />
-        <Text
-          variant='h3'
-          component='h1'
-          id='myStatusAndInformation'
-          sx={styles.title}
-        />
         <Box sx={styles.contentContainer}>
-          <Text sx={styles.text}>Hostname: {displayState.hostname}</Text>
-          <Text sx={styles.text}>Nickname: {displayState.nickname}</Text>
-          <Divider sx={{ marginY: 1 }} />
-          <Text sx={styles.text}>Network Connectivity: {String(!!displayState.connected)}</Text>
-          <Divider sx={{ marginY: 1 }} />
-          <Text sx={styles.text}>Battery: {displayState.battery.percent}%</Text>
-          <Text sx={styles.text}>Battery Voltage: {displayState.battery.voltage}</Text>
+          <Text
+            variant='h3'
+            component='h1'
+            id='myStatusAndInformation'
+            sx={styles.title}
+          />
+          <Box sx={styles.textContainer}>
+            <Text variant='h5'>Hostname: {displayState.hostname}</Text>
+            <Text variant='h5'>Nickname: {displayState.nickname}</Text>
+            <Divider sx={styles.divider} />
+            <Text variant='h5'>Network Connectivity: {String(!!displayState.connected)}</Text>
+            <Divider sx={styles.divider} />
+            <Text variant='h5'>Battery: {displayState.battery.percent}%</Text>
+            <Text variant='h5'>Battery Voltage: {displayState.battery.voltage}</Text>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </>
   );
 }

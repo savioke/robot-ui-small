@@ -31,15 +31,106 @@ export default function Status() {
             sx={styles.title}
           />
           <Box sx={styles.textContainer}>
-            <Text variant='h5'>Hostname: {displayState.hostname}</Text>
-            <Text variant='h5'>Nickname: {displayState.nickname}</Text>
+            <Text
+              variant='h5'
+              id='hostname:'
+              values={{
+                hostname: (
+                  <Text
+                    component='span'
+                    variant='h5'
+                  >
+                    {displayState.hostname}
+                  </Text>
+                ),
+              }}
+            />
+            <Text
+              variant='h5'
+              id='nickname:'
+              values={{
+                nickname: (
+                  <Text
+                    component='span'
+                    variant='h5'
+                  >
+                    {displayState.nickname}
+                  </Text>
+                ),
+              }}
+            />
             <Divider sx={styles.divider} />
-            <Text variant='h5'>Network Connectivity: {String(!!displayState.connected)}</Text>
+            <Text
+              variant='h5'
+              id='networkConnectivity:'
+              values={{
+                networkConnectivity: (
+                  <Text
+                    component='span'
+                    variant='h5'
+                  >
+                    {String(!!displayState.connected)}
+                  </Text>
+                ),
+              }}
+            />
             <Divider sx={styles.divider} />
-            <Text variant='h5'>Battery: {displayState.battery.percent}%</Text>
-            <Text variant='h5'>Battery Voltage: {displayState.battery.voltage}</Text>
-            <Text variant='h5'>Charging Dock: {String(!!displayState.battery.chargingDock)}</Text>
-            <Text variant='h5'>Charging Plug: {String(!!displayState.battery.chargingPlug)}</Text>
+            <Text
+              variant='h5'
+              id='battery:'
+              values={{
+                battery: (
+                  <Text
+                    component='span'
+                    variant='h5'
+                  >
+                    {displayState.battery.percent}
+                  </Text>
+                ),
+              }}
+            />
+            <Text
+              variant='h5'
+              id='batteryVoltage:'
+              values={{
+                batteryVoltage: (
+                  <Text
+                    component='span'
+                    variant='h5'
+                  >
+                    {displayState.battery.voltage}
+                  </Text>
+                ),
+              }}
+            />
+            <Text
+              variant='h5'
+              id='chargingDock:'
+              values={{
+                chargingDock: (
+                  <Text
+                    component='span'
+                    variant='h5'
+                  >
+                    {String(!!displayState.battery.chargingDock)}
+                  </Text>
+                ),
+              }}
+            />
+            <Text
+              variant='h5'
+              id='chargingPlug:'
+              values={{
+                chargingPlug: (
+                  <Text
+                    component='span'
+                    variant='h5'
+                  >
+                    {String(!!displayState.battery.chargingPlug)}
+                  </Text>
+                ),
+              }}
+            />
           </Box>
         </Box>
       </Box>

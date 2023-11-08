@@ -129,5 +129,12 @@
   "needAdditionalSupport?": "Need additional support?",
   "myStatusAndInformation": "My status and information",
   "email": "Email",
-  "phone": "Phone"
+  "phone": "Phone",
+  "hostname:": "Hostname: {hostname}",
+  "nickname:": "Nickname: {nickname}",
+  "networkConnectivity:": "Network Connectivity: {networkConnectivity}",
+  "battery:": "Battery: {battery}%",
+  "batteryVoltage:": "Battery Voltage: {batteryVoltage}",
+  "chargingDock:": "Charging Dock: {chargingDock}",
+  "chargingPlug:": "Charging Plug: {chargingPlug}"
 }

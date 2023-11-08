@@ -80,3 +80,10 @@ export interface Task {
   inorbitToken: string;
   config: TaskConfig;
 }
+
+export type LoginMethod = 'pin' | 'badge';
+
+export interface AuthUser {
+  id: string;
+  org: string;
+}

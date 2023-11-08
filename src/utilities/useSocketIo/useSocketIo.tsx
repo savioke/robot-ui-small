@@ -9,7 +9,7 @@ import {
   setNotificationMessage,
   setPasscode,
 } from 'state/ui/ui.slice';
-import { setTaskConfig, setDisplayState, setDeliverStatus } from 'state/r2c2/r2c2.slice';
+import { setTaskConfig, setDisplayState, setDeliverStatus, setUser } from 'state/r2c2/r2c2.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
@@ -24,8 +24,8 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        // console.log('FIX');
-        socket = io('http://localhost:3000');
+        console.log('FIX');
+        socket = io('http://localhost:5000');
         setReturnSocket(socket);
 
         setInterval(() => {
@@ -52,20 +52,25 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             dispatch(setDeliverLocations(goals));
           });
 
-          socket?.on('login_pass', () => {
-            console.info('Successful authentication');
+          socket?.on('login_pass', ({ user }) => {
+            console.info(`Successful authentication for ${user.id}`);
+            dispatch(setUser(user));
             dispatch(setPasscode(''));
             return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+          });
+
+          socket?.on('login_fail', ({ method }) => {
+            if (method === 'badge') {
+              console.info('Unauthorized pin');
+              dispatch(setDisplayMessage('Unauthorized badge'));
+            }
+            console.info('Unauthorized badge');
+            return dispatch(setAuthorized(false));
           });
 
           socket?.on('queue_tasks_success', () => {
             console.info('Task created successfully');
             return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
-          });
-
-          socket?.on('login_fail', () => {
-            console.info('Unauthorized');
-            return dispatch(setAuthorized(false));
           });
 
           socket?.on('display_state', (state) => {

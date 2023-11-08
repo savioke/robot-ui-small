@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'typeDux';
 import { useIdleTimer } from 'react-idle-timer';
 
@@ -33,7 +33,6 @@ export default function TopBar() {
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
   const displayState = useSelector(getDisplayState);
-  const [isNetworkConnected, setIsNetworkConnected] = useState(true);
 
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home) {
@@ -51,16 +50,12 @@ export default function TopBar() {
     timeout: 10000,
   });
 
-  if (!isScreenTouched) {
-    return <Box sx={styles.container} />;
-  }
-
   return (
     <Fade in={isScreenTouched}>
       <Box sx={styles.container}>
-        {displayScreen !== DisplayScreenOptions.Home ? (
+        {displayScreen !== DisplayScreenOptions.Home && (
           <Fab
-            sx={{ position: 'relative', top: '23px', left: '2px' }}
+            sx={styles.fab}
             size='small'
             onClick={() => {
               dispatch(setPasscode(''));
@@ -69,15 +64,11 @@ export default function TopBar() {
           >
             <Clear fontSize='large' />
           </Fab>
-        ) : (
-          // TODO: Used to keep styling consistent on home page for sticking icons to the right.
-          <Box></Box>
         )}
         <Box sx={styles.metricContainer}>
           <Box sx={styles.rightContainer}>
-            {/* TODO: Condtiionally display this from socket connection sent from robot */}
             {displayState.connected ? <Wifi fontSize='large' /> : <WifiOff fontSize='large' />}
-            <Text sx={{ color: '#FFFFFF', fontSize: '20px' }}>m2012</Text>
+            <Text sx={styles.robotNickname}>{displayState.nickname}</Text>
           </Box>
           <Divider
             flexItem

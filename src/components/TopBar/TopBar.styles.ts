@@ -3,7 +3,7 @@ export const styles = {
     minHeight: 48,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     marginY: 0.5,
     paddingLeft: 2,
   },
@@ -23,5 +23,14 @@ export const styles = {
   divider: {
     backgroundColor: 'white',
     marginRight: 2,
+  },
+  robotNickname: {
+    color: '#FFFFFF',
+    fontSize: '20px',
+  },
+  fab: {
+    position: 'absolute',
+    top: '23px',
+    left: '25px',
   },
 };

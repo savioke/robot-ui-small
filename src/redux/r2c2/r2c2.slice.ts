@@ -1,10 +1,11 @@
 import { createSlice } from 'typeDux';
-import { TaskConfig, DisplayState, DeliverStatus } from 'types/r2c2';
+import { TaskConfig, DisplayState, DeliverStatus, AuthUser } from 'types/r2c2';
 
 interface R2C2State {
   deliverStatus: DeliverStatus | '';
   displayState: DisplayState;
   taskConfig: TaskConfig;
+  user: AuthUser;
 }
 
 export const initialState: R2C2State = {
@@ -27,6 +28,10 @@ export const initialState: R2C2State = {
       chargingPlug: false,
     },
   },
+  user: {
+    id: '',
+    org: '',
+  },
 };
 
 const r2c2Slice = createSlice({
@@ -42,9 +47,12 @@ const r2c2Slice = createSlice({
     setTaskConfig: (state, { payload }) => {
       state.taskConfig = payload;
     },
+    setUser: (state, { payload }) => {
+      state.user = payload;
+    },
   },
 });
 
-export const { setTaskConfig, setDisplayState, setDeliverStatus } = r2c2Slice.actions;
+export const { setTaskConfig, setDisplayState, setDeliverStatus, setUser } = r2c2Slice.actions;
 
 export default r2c2Slice.reducer;

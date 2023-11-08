@@ -15,3 +15,7 @@ export const getBatteryState = (state: RootState) => {
 export const getDeliverStatus = (state: RootState) => {
   return state.r2c2.deliverStatus;
 };
+
+export const getUser = (state: RootState) => {
+  return state.r2c2.user;
+};

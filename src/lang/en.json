@@ -125,5 +125,6 @@
   "deliveringTo:": "Delivering to:",
   "backToDashboard": "Back to dashboard",
   "pleaseLoadYourPackage": "Please load your package",
-  "pleaseTakeYourPackage": "Please take your package"
+  "pleaseTakeYourPackage": "Please take your package",
+  "needAdditionalSupport?": "Need additional support?"
 }

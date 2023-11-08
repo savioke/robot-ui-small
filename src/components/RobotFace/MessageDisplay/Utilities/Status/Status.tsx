@@ -12,7 +12,7 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './Status.styles';
 
 /** redux */
-import { getDisplayState } from 'state/ui/ui.selectors';
+import { getDisplayState } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 

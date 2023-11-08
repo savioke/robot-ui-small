@@ -1,29 +1,9 @@
 import { createSlice } from 'typeDux';
 import { DisplayScreenOptions } from '../../constants';
-import { DeliverStatus, DisplayState } from 'types/r2c2';
-
-type DisplayScreen =
-  | 'Actions'
-  | 'Deliver Form'
-  | 'Dashboard'
-  | 'Home'
-  | 'Passcode'
-  | 'Settings'
-  | 'Delivery dashboard'
-  | 'Room number'
-  | 'Delivery message'
-  | 'Delivery summary'
-  | 'Favorites'
-  | 'Multiple select favorites'
-  | 'Utilities'
-  | 'CancelTask'
-  | 'CancelTaskConfirmation'
-  | 'Search'
-  | 'Status';
+import { DisplayScreen } from './ui.types';
 
 interface RobotUiState {
   displayScreen: DisplayScreen;
-  deliverStatus: DeliverStatus | '';
   passCode: string;
   displayMessage: string;
   transitMessage: string;
@@ -33,28 +13,14 @@ interface RobotUiState {
   theme: string;
   language: 'en' | 'es' | 'ja';
   authorized: boolean | null;
-  displayState: DisplayState;
 }
 
 export const initialState: RobotUiState = {
   displayScreen: DisplayScreenOptions.Home,
-  deliverStatus: '',
   displayMessage: '',
   transitMessage: '',
   notificationMessage: '',
   confirmationMessage: '',
-  displayState: {
-    hostname: '',
-    nickname: '',
-    connected: false,
-    battery: {
-      voltage: 0,
-      percent: 0,
-      level: '',
-      chargingDock: false,
-      chargingPlug: false,
-    },
-  },
   isScreenTouched: false,
   theme: '',
   language: 'en',
@@ -96,12 +62,6 @@ const uiSlice = createSlice({
     setAuthorized: (state, { payload }) => {
       state.authorized = payload;
     },
-    setDisplayState: (state, { payload }) => {
-      state.displayState = payload;
-    },
-    setDeliverStatus: (state, { payload }) => {
-      state.deliverStatus = payload;
-    },
   },
 });
 
@@ -113,11 +73,9 @@ export const {
   setLanguage,
   setPasscode,
   setAuthorized,
-  setDisplayState,
   setTransitMessage,
   setNotificationMessage,
   setConfirmationMessage,
-  setDeliverStatus,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

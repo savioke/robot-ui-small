@@ -20,7 +20,8 @@ import {
   setPasscode,
   setAuthorized,
 } from 'state/ui/ui.slice';
-import { getDisplayScreen, getIsScreenTouched, getDisplayState } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
+import { getDisplayState } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';

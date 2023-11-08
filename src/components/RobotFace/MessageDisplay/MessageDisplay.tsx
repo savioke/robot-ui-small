@@ -24,12 +24,11 @@ import { styles } from './MessageDisplay.styles';
 import {
   getDisplayMessage,
   getDisplayScreen,
-  getDeliverStatus,
   getTransitMessage,
   getConfirmationMessage,
   getNotificationMessage,
 } from 'state/ui/ui.selectors';
-import { getTaskConfig } from 'state/task/task.selectors';
+import { getTaskConfig, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';

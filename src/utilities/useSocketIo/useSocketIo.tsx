@@ -4,14 +4,12 @@ import {
   setDisplayMessage,
   setDisplayScreen,
   setAuthorized,
-  setDisplayState,
   setTransitMessage,
-  setDeliverStatus,
   setConfirmationMessage,
   setNotificationMessage,
   setPasscode,
 } from 'state/ui/ui.slice';
-import { setTaskConfig } from 'state/task/task.slice';
+import { setTaskConfig, setDisplayState, setDeliverStatus } from 'state/r2c2/r2c2.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';

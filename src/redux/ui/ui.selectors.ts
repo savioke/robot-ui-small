@@ -28,14 +28,6 @@ export const getAuthorized = (state: RootState) => {
   return state.ui.authorized;
 };
 
-export const getDisplayState = (state: RootState) => {
-  return state.ui.displayState;
-};
-
-export const getBatteryState = (state: RootState) => {
-  return state.ui.displayState.battery;
-};
-
 export const getTransitMessage = (state: RootState) => {
   return state.ui.transitMessage;
 };
@@ -46,8 +38,4 @@ export const getNotificationMessage = (state: RootState) => {
 
 export const getConfirmationMessage = (state: RootState) => {
   return state.ui.confirmationMessage;
-};
-
-export const getDeliverStatus = (state: RootState) => {
-  return state.ui.deliverStatus;
 };

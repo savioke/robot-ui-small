@@ -11,6 +11,7 @@ import {
   setConfirmationMessage,
   setNotificationMessage,
   setTaskConfig,
+  setPasscode,
 } from 'state/ui/ui.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
@@ -75,6 +76,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
           socket?.on('login_pass', () => {
             console.info('Successful authentication');
+            dispatch(setPasscode(''));
             return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
           });
 

@@ -12,7 +12,7 @@ import { Backspace } from '@mui/icons-material';
 import { styles } from './Keypad.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen, setPasscode } from 'state/ui/ui.slice';
 import { getDisplayScreen, getPasscode } from 'state/ui/ui.selectors';
 
 /** helpers */

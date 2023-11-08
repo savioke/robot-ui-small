@@ -126,5 +126,8 @@
   "backToDashboard": "Back to dashboard",
   "pleaseLoadYourPackage": "Please load your package",
   "pleaseTakeYourPackage": "Please take your package",
-  "needAdditionalSupport?": "Need additional support?"
+  "needAdditionalSupport?": "Need additional support?",
+  "myStatusAndInformation": "My status and information",
+  "email": "Email",
+  "phone": "Phone"
 }

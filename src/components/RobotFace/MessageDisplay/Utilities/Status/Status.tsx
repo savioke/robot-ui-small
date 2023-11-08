@@ -23,6 +23,12 @@ export default function Status() {
     <Box sx={styles.innerPaper}>
       <Box sx={styles.leftSideContent}>
         <ArrowBackTopBar />
+        <Text
+          variant='h3'
+          component='h1'
+          id='myStatusAndInformation'
+          sx={styles.title}
+        />
         <Box sx={styles.contentContainer}>
           <Text sx={styles.text}>Hostname: {displayState.hostname}</Text>
           <Text sx={styles.text}>Nickname: {displayState.nickname}</Text>

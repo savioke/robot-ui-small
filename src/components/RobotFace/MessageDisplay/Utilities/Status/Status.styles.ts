@@ -38,4 +38,8 @@ export const styles = {
   text: {
     fontSize: '30px',
   },
+  title: {
+    marginLeft: 7,
+    marginBottom: 3,
+  },
 };

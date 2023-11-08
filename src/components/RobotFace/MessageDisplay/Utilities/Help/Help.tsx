@@ -16,24 +16,34 @@ import { styles } from './Help.styles';
 
 export default function Help() {
   return (
-    <Box>
+    <>
       <ArrowBackTopBar />
-      <Text
-        variant='h3'
-        component='h1'
-        id='needAdditionalSupport?'
-        sx={styles.title}
-      />
-      <Box sx={styles.container}>
-        <Box>
-          <Text component='b'>Email</Text>
-          <Text>support@relayrobotics.com</Text>
-        </Box>
-        <Box>
-          <Text component='b'>Phone</Text>
-          <Text>1-408-809-5600, Dial 1</Text>
+      <Box sx={styles.contentContainer}>
+        <Text
+          variant='h3'
+          component='h1'
+          id='needAdditionalSupport?'
+          sx={styles.title}
+        />
+        <Box sx={styles.textContainer}>
+          <Box>
+            <Text
+              component='b'
+              variant='h5'
+              id='email'
+            />
+            <Text variant='h5'>support@relayrobotics.com</Text>
+          </Box>
+          <Box>
+            <Text
+              component='b'
+              variant='h5'
+              id='phone'
+            />
+            <Text variant='h5'>1-408-809-5600, Dial 1</Text>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </>
   );
 }

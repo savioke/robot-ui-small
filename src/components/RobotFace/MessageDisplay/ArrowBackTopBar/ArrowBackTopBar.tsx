@@ -355,6 +355,39 @@ export default function ArrowBackTopBar() {
         </Breadcrumbs>
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.Help) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'backArrow' })}
+          />
+        </Button>
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='help'
+          />
+        </Breadcrumbs>
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.Status) {
     return (
       <Box sx={styles.arrowBackContainer}>

@@ -34,6 +34,7 @@ import { getTaskConfig, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DisplayScreenOptions } from 'appConstants';
 import { setConfirmationMessage, setTransitMessage } from 'state/ui/ui.slice';
+import Help from './Utilities/Help/Help';
 
 export default function MessageDisplay() {
   const intl = useIntl();
@@ -77,6 +78,8 @@ export default function MessageDisplay() {
     return <Utilities />;
   } else if (displayScreen === DisplayScreenOptions.Actions) {
     return <Actions />;
+  } else if (displayScreen === DisplayScreenOptions.Help) {
+    return <Help />;
   } else if (displayScreen === DisplayScreenOptions.CancelTask) {
     return <CancelTask />;
   } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {

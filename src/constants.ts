@@ -18,6 +18,7 @@ export const DisplayScreenOptions = {
   CancelTaskConfirmation: 'CancelTaskConfirmation' as const,
   Search: 'Search' as const,
   Status: 'Status' as const,
+  Help: 'Help' as const,
 };
 
 export const Themes = {

@@ -4,14 +4,21 @@ import React from 'react';
 import { Box } from '@mui/material';
 
 /** Components */
+import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
+import { styles } from './Help.styles';
 
 /** redux */
 
 /** helpers */
 
 export default function Help() {
-  return <Text>Place holder support page</Text>;
+  return (
+    <Box>
+      <ArrowBackTopBar />
+      <Text>Place holder support page</Text>
+    </Box>
+  );
 }

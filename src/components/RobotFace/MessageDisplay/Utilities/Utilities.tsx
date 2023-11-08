@@ -66,10 +66,7 @@ export default function Utilities() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button
-          // TODO: Enable Help page
-          // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
-          >
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Help))}>
             <Image
               priority
               src='images/Help.svg'

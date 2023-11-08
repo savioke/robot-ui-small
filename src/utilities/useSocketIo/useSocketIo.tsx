@@ -82,6 +82,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket?.on('deliver_status', ({ status, task }) => {
+            // Reset state on every deliver_status tick
             dispatch(setTransitMessage(''));
             dispatch(setNotificationMessage(''));
             dispatch(setConfirmationMessage(''));
@@ -92,7 +93,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setTransitMessage(`Heading to ${task.config.pickup_location}`));
             } else if (status === 'NOTIFY_PICKUP') {
               dispatch(setDeliverStatus('NOTIFY_PICKUP'));
-              // TODO: Adjust notify message
+              // TODO: Adjust notify message to logic from R2C2
               return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
             } else if (status === 'LOAD_PACKAGE') {
               dispatch(setDeliverStatus('LOAD_PACKAGE'));
@@ -102,7 +103,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
             } else if (status === 'NOTIFY_DROPOFF') {
               dispatch(setDeliverStatus('NOTIFY_DROPOFF'));
-              // TODO: Adjust notify message
+              // TODO: Adjust notify message to logic from R2C2
               return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
             } else if (status === 'TAKE_PACKAGE') {
               dispatch(setDeliverStatus('TAKE_PACKAGE'));

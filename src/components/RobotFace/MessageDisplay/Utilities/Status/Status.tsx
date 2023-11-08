@@ -38,6 +38,8 @@ export default function Status() {
             <Divider sx={styles.divider} />
             <Text variant='h5'>Battery: {displayState.battery.percent}%</Text>
             <Text variant='h5'>Battery Voltage: {displayState.battery.voltage}</Text>
+            <Text variant='h5'>Charging Dock: {String(!!displayState.battery.chargingDock)}</Text>
+            <Text variant='h5'>Charging Plug: {String(!!displayState.battery.chargingPlug)}</Text>
           </Box>
         </Box>
       </Box>

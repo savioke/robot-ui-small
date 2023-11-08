@@ -24,19 +24,17 @@ import { styles } from './MessageDisplay.styles';
 import {
   getDisplayMessage,
   getDisplayScreen,
-  getIsConfirmationNeeded,
   getDeliverStatus,
-  getDisplayState,
   getTransitMessage,
   getConfirmationMessage,
   getNotificationMessage,
-  getTaskConfig,
 } from 'state/ui/ui.selectors';
+import { getTaskConfig } from 'state/task/task.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DisplayScreenOptions } from 'appConstants';
-import { setIsConfirmationNeeded, setTransitMessage } from 'state/ui/ui.slice';
+import { setConfirmationMessage, setTransitMessage } from 'state/ui/ui.slice';
 
 export default function MessageDisplay() {
   const intl = useIntl();
@@ -47,9 +45,7 @@ export default function MessageDisplay() {
   const confirmationMessage = useSelector(getConfirmationMessage);
   const notificationMessage = useSelector(getNotificationMessage);
   const displayScreen = useSelector(getDisplayScreen);
-  const isConfirmationNeeded = useSelector(getIsConfirmationNeeded);
   const deliverStatus = useSelector(getDeliverStatus);
-  const displayState = useSelector(getDisplayState);
   const taskConfig = useSelector(getTaskConfig);
 
   // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
@@ -86,7 +82,7 @@ export default function MessageDisplay() {
     return <CancelTask />;
   } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
     return <CancelTaskConfirmation />;
-  } else if (isConfirmationNeeded) {
+  } else if (confirmationMessage) {
     // TODO: Fix this button and message to prevent content shifting. Might be able to reduce if IF and combine with displayMessag below
     return (
       <Box
@@ -108,10 +104,10 @@ export default function MessageDisplay() {
           size='large'
           variant='contained'
           onClick={() => {
-            dispatch(setIsConfirmationNeeded(false));
+            dispatch(setConfirmationMessage(''));
             if (deliverStatus === 'LOAD_PACKAGE') {
               socket?.emit('load_package_result', { result: true });
-              return dispatch(setTransitMessage(`Delivering to ${taskConfig.dropoff_location}`));
+              return dispatch(setTransitMessage(`Delivering to ${taskConfig?.dropoff_location}`));
             }
 
             socket?.emit('take_package_result', { result: true });

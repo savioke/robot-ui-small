@@ -2,7 +2,6 @@
 import React from 'react';
 import {
   setDisplayMessage,
-  setIsConfirmationNeeded,
   setDisplayScreen,
   setAuthorized,
   setDisplayState,
@@ -10,9 +9,9 @@ import {
   setDeliverStatus,
   setConfirmationMessage,
   setNotificationMessage,
-  setTaskConfig,
   setPasscode,
 } from 'state/ui/ui.slice';
+import { setTaskConfig } from 'state/task/task.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
@@ -51,27 +50,8 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         });
 
         if (dispatch && intl) {
-          socket.on('display_message', ({ message }) => {
-            dispatch(setIsConfirmationNeeded(false));
-            if (DisplayMessageOptions(intl)[message]) {
-              return dispatch(setDisplayMessage(DisplayMessageOptions(intl)[message]));
-            }
-
-            return dispatch(setDisplayMessage(message));
-          });
-
           socket.on('navigation_goals', ({ goals }) => {
             dispatch(setDeliverLocations(goals));
-          });
-
-          socket.on('display_confirm', ({ confirm_text }) => {
-            if (DisplayMessageOptions(intl)[confirm_text]) {
-              dispatch(setDisplayMessage(DisplayMessageOptions(intl)[confirm_text]));
-              return dispatch(setIsConfirmationNeeded(true));
-            }
-
-            dispatch(setDisplayMessage(confirm_text));
-            return dispatch(setIsConfirmationNeeded(true));
           });
 
           socket?.on('login_pass', () => {
@@ -82,7 +62,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
           socket?.on('queue_tasks_success', () => {
             console.info('Task created successfully');
-            // TODO: Will display transit_message from a task event
             return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           });
 
@@ -97,7 +76,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket?.on('task_state', ({ task, state }) => {
-            // TODO: Finalize task state
+            // TODO: Finalize task state - This may not be needed
             // dispatch(setTransitMessage(''));
             return dispatch(setDisplayState(state));
           });
@@ -117,8 +96,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
             } else if (status === 'LOAD_PACKAGE') {
               dispatch(setDeliverStatus('LOAD_PACKAGE'));
-              dispatch(setConfirmationMessage('Please load your package'));
-              return dispatch(setIsConfirmationNeeded(true));
+              return dispatch(setConfirmationMessage('Please load your package'));
             } else if (status === 'GO_TO_DROPOFF') {
               dispatch(setDeliverStatus('GO_TO_DROPOFF'));
               return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
@@ -128,8 +106,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
             } else if (status === 'TAKE_PACKAGE') {
               dispatch(setDeliverStatus('TAKE_PACKAGE'));
-              dispatch(setConfirmationMessage('Please take your package'));
-              return dispatch(setIsConfirmationNeeded(true));
+              return dispatch(setConfirmationMessage('Please take your package'));
             }
 
             dispatch(setDeliverStatus('DONE'));

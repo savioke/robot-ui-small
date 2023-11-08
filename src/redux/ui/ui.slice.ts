@@ -29,19 +29,11 @@ interface RobotUiState {
   transitMessage: string;
   notificationMessage: '';
   confirmationMessage: '';
-  isConfirmationNeeded: boolean;
   isScreenTouched: boolean;
-  inputName: 'dropoff_location' | 'dropoff_message' | string;
   theme: string;
   language: 'en' | 'es' | 'ja';
   authorized: boolean | null;
   displayState: DisplayState;
-  taskConfig: {
-    pickup_location: string;
-    pickup_message: string;
-    dropoff_location: string;
-    dropoff_message: string;
-  };
 }
 
 export const initialState: RobotUiState = {
@@ -63,33 +55,19 @@ export const initialState: RobotUiState = {
       chargingPlug: false,
     },
   },
-  isConfirmationNeeded: false,
   isScreenTouched: false,
-  inputName: '',
   theme: '',
   language: 'en',
   passCode: '',
   authorized: false,
-  taskConfig: {
-    pickup_location: '',
-    pickup_message: '',
-    dropoff_location: '',
-    dropoff_message: '',
-  },
 };
 
 const uiSlice = createSlice({
   name: 'uiSlice',
   initialState,
   reducers: {
-    setInputName: (state, { payload }) => {
-      state.inputName = payload;
-    },
     setTheme: (state, { payload }) => {
       state.theme = payload;
-    },
-    setIsConfirmationNeeded: (state, { payload }) => {
-      state.isConfirmationNeeded = payload;
     },
     setIsScreenTouched: (state, { payload }) => {
       state.isScreenTouched = payload;
@@ -124,15 +102,10 @@ const uiSlice = createSlice({
     setDeliverStatus: (state, { payload }) => {
       state.deliverStatus = payload;
     },
-    setTaskConfig: (state, { payload }) => {
-      state.taskConfig = payload;
-    },
   },
 });
 
 export const {
-  setIsConfirmationNeeded,
-  setInputName,
   setDisplayScreen,
   setDisplayMessage,
   setIsScreenTouched,
@@ -145,7 +118,6 @@ export const {
   setNotificationMessage,
   setConfirmationMessage,
   setDeliverStatus,
-  setTaskConfig,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

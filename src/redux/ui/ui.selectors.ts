@@ -8,20 +8,12 @@ export const getDisplayMessage = (state: RootState) => {
   return state.ui.displayMessage;
 };
 
-export const getInputName = (state: RootState) => {
-  return state.ui.inputName;
-};
-
 export const getTheme = (state: RootState) => {
   return state.ui.theme;
 };
 
 export const getLanguage = (state: RootState) => {
   return state.ui.language;
-};
-
-export const getIsConfirmationNeeded = (state: RootState) => {
-  return state.ui.isConfirmationNeeded;
 };
 
 export const getIsScreenTouched = (state: RootState) => {
@@ -58,8 +50,4 @@ export const getConfirmationMessage = (state: RootState) => {
 
 export const getDeliverStatus = (state: RootState) => {
   return state.ui.deliverStatus;
-};
-
-export const getTaskConfig = (state: RootState) => {
-  return state.ui.taskConfig;
 };

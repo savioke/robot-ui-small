@@ -22,18 +22,10 @@ export interface NextApiResponseWithSocket extends NextApiResponse {
 export interface ServerToClientEvents {
   ping: () => void;
   connect: () => void;
-  display_message: ({ message }: { message: string }) => void;
   disconnect: () => void;
   userServerConnection: () => void;
   userServerDisconnection: (socketId: string) => void;
   navigation_goals: ({ goals }: NavigationGoals) => void;
-  display_confirm: ({
-    confirm_text,
-    confirm_button_text,
-  }: {
-    confirm_text: string;
-    confirm_button_text: string;
-  }) => void;
 
   // Authorization
   login_pass: () => void;

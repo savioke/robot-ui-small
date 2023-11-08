@@ -70,6 +70,10 @@ export interface ClientToServerEvents {
   load_package_result: ({ result }: { result: boolean }) => void;
   take_package_result: ({ result }: { result: boolean }) => void;
 
+  // Actions
+  open_lid: () => void;
+  close_lid: () => void;
+
   // TODO: Mocking R2C2 Socket Server
   display_message: (message: string) => void;
 }

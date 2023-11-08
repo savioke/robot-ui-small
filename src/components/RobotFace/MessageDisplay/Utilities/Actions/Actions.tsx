@@ -36,7 +36,7 @@ export default function Actions() {
         <Box sx={styles.paperContainer}>
           <Button
             onClick={() => {
-              socket?.emit('choice_made', { name: 'Open Lid' });
+              socket?.emit('open_lid');
             }}
           >
             <Image
@@ -56,7 +56,7 @@ export default function Actions() {
         <Box sx={styles.paperContainer}>
           <Button
             onClick={() => {
-              socket?.emit('choice_made', { name: 'Close Lid' });
+              socket?.emit('close_lid');
             }}
           >
             <Image

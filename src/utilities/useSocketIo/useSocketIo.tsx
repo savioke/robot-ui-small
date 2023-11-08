@@ -97,7 +97,9 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
             } else if (status === 'LOAD_PACKAGE') {
               dispatch(setDeliverStatus('LOAD_PACKAGE'));
-              return dispatch(setConfirmationMessage('Please load your package'));
+              return dispatch(
+                setConfirmationMessage(DisplayMessageOptions(intl)['Please load your package']),
+              );
             } else if (status === 'GO_TO_DROPOFF') {
               dispatch(setDeliverStatus('GO_TO_DROPOFF'));
               return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
@@ -107,11 +109,15 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
             } else if (status === 'TAKE_PACKAGE') {
               dispatch(setDeliverStatus('TAKE_PACKAGE'));
-              return dispatch(setConfirmationMessage('Please take your package'));
+              return dispatch(
+                setConfirmationMessage(DisplayMessageOptions(intl)['Please take your package']),
+              );
             }
 
             dispatch(setDeliverStatus('DONE'));
-            return dispatch(setTransitMessage('Thank you, have a nice day!'));
+            return dispatch(
+              setTransitMessage(DisplayMessageOptions(intl)['Thank you, have a nice day!']),
+            );
           });
         }
       };

@@ -123,5 +123,7 @@
   "backArrow": "Back arrow",
   "whatAreYouLookingFor?": "What are you looking for?",
   "deliveringTo:": "Delivering to:",
-  "backToDashboard": "Back to dashboard"
+  "backToDashboard": "Back to dashboard",
+  "pleaseLoadYourPackage": "Please load your package",
+  "pleaseTakeYourPackage": "Please take your package"
 }

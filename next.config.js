@@ -16,24 +16,28 @@ function getContentSecurityPolicy() {
 
 const securityHeaders = [
   {
-    key: "X-DNS-Prefetch-Control",
-    value: "on",
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on',
   },
   {
-    key: "X-Frame-Options",
-    value: "SAMEORIGIN",
+    key: 'X-Frame-Options',
+    value: 'SAMEORIGIN',
   },
   {
-    key: "Strict-Transport-Security",
-    value: "max-age=15552000; includeSubDomains; preload",
+    key: 'Strict-Transport-Security',
+    value: 'max-age=15552000; includeSubDomains; preload',
   },
   {
-    key: "Referrer-Policy",
-    value: "origin-when-cross-origin",
+    key: 'Referrer-Policy',
+    value: 'origin-when-cross-origin',
   },
   {
-    key: "Content-Security-Policy",
+    key: 'Content-Security-Policy',
     value: getContentSecurityPolicy(),
+  },
+  {
+    key: 'Access-Control-Allow-Origin',
+    value: '*',
   },
 ];
 
@@ -43,14 +47,14 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ["en", "ja", "es"],
-    defaultLocale: "en",
+    locales: ['en', 'ja', 'es'],
+    defaultLocale: 'en',
   },
   headers() {
     return [
       {
         headers: securityHeaders,
-        source: "/:path*",
+        source: '/:path*',
       },
     ];
   },

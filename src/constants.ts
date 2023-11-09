@@ -18,6 +18,7 @@ export const DisplayScreenOptions = {
   CancelTaskConfirmation: 'CancelTaskConfirmation' as const,
   Search: 'Search' as const,
   Status: 'Status' as const,
+  Help: 'Help' as const,
 };
 
 export const Themes = {
@@ -34,6 +35,7 @@ export const Language = {
   Japanese: 'ja',
 };
 
+// TODO: Finalize default messaging
 export const DisplayMessageOptions = (
   intl: IntlShape,
 ): {
@@ -41,7 +43,8 @@ export const DisplayMessageOptions = (
 } => ({
   'Your order has arrived!': intl.formatMessage({ id: 'yourOrderHasArrived!' }),
   'Thank you, have a nice day!': intl.formatMessage({ id: 'thankYouHaveANiceDay' }),
-  'Please load the item': intl.formatMessage({ id: 'pleaseLoadTheItem' }),
+  'Please load your package': intl.formatMessage({ id: 'pleaseLoadYourPackage' }),
+  'Please take your package': intl.formatMessage({ id: 'pleaseTakeYourPackage' }),
   'Heading back to my dock': intl.formatMessage({ id: 'headingBackToMyDock' }),
   'Closing the lid': intl.formatMessage({ id: 'closingTheLid' }),
 });

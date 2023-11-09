@@ -2,17 +2,14 @@
 import React from 'react';
 import {
   setDisplayMessage,
-  setIsConfirmationNeeded,
   setDisplayScreen,
   setAuthorized,
-  setDisplayState,
   setTransitMessage,
-  setDeliverStatus,
   setConfirmationMessage,
   setNotificationMessage,
-  setTaskConfig,
   setPasscode,
 } from 'state/ui/ui.slice';
+import { setTaskConfig, setDisplayState, setDeliverStatus, setUser } from 'state/r2c2/r2c2.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
@@ -51,44 +48,29 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         });
 
         if (dispatch && intl) {
-          socket.on('display_message', ({ message }) => {
-            dispatch(setIsConfirmationNeeded(false));
-            if (DisplayMessageOptions(intl)[message]) {
-              return dispatch(setDisplayMessage(DisplayMessageOptions(intl)[message]));
-            }
-
-            return dispatch(setDisplayMessage(message));
-          });
-
           socket.on('navigation_goals', ({ goals }) => {
             dispatch(setDeliverLocations(goals));
           });
 
-          socket.on('display_confirm', ({ confirm_text }) => {
-            if (DisplayMessageOptions(intl)[confirm_text]) {
-              dispatch(setDisplayMessage(DisplayMessageOptions(intl)[confirm_text]));
-              return dispatch(setIsConfirmationNeeded(true));
-            }
-
-            dispatch(setDisplayMessage(confirm_text));
-            return dispatch(setIsConfirmationNeeded(true));
-          });
-
-          socket?.on('login_pass', () => {
-            console.info('Successful authentication');
+          socket?.on('login_pass', ({ user }) => {
+            console.info(`Successful authentication for ${user.id}`);
+            dispatch(setUser(user));
             dispatch(setPasscode(''));
             return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
           });
 
-          socket?.on('queue_tasks_success', () => {
-            console.info('Task created successfully');
-            // TODO: Will display transit_message from a task event
-            return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+          socket?.on('login_fail', ({ method }) => {
+            if (method === 'badge') {
+              console.info('Unauthorized pin');
+              dispatch(setDisplayMessage('Unauthorized badge'));
+            }
+            console.info('Unauthorized badge');
+            return dispatch(setAuthorized(false));
           });
 
-          socket?.on('login_fail', () => {
-            console.info('Unauthorized');
-            return dispatch(setAuthorized(false));
+          socket?.on('queue_tasks_success', () => {
+            console.info('Task created successfully');
+            return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           });
 
           socket?.on('display_state', (state) => {
@@ -97,12 +79,13 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket?.on('task_state', ({ task, state }) => {
-            // TODO: Finalize task state
+            // TODO: Finalize task state - This may not be needed
             // dispatch(setTransitMessage(''));
             return dispatch(setDisplayState(state));
           });
 
           socket?.on('deliver_status', ({ status, task }) => {
+            // Reset state on every deliver_status tick
             dispatch(setTransitMessage(''));
             dispatch(setNotificationMessage(''));
             dispatch(setConfirmationMessage(''));
@@ -113,27 +96,31 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               return dispatch(setTransitMessage(`Heading to ${task.config.pickup_location}`));
             } else if (status === 'NOTIFY_PICKUP') {
               dispatch(setDeliverStatus('NOTIFY_PICKUP'));
-              // TODO: Adjust notify message
+              // TODO: Adjust notify message to logic from R2C2
               return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
             } else if (status === 'LOAD_PACKAGE') {
               dispatch(setDeliverStatus('LOAD_PACKAGE'));
-              dispatch(setConfirmationMessage('Please load your package'));
-              return dispatch(setIsConfirmationNeeded(true));
+              return dispatch(
+                setConfirmationMessage(DisplayMessageOptions(intl)['Please load your package']),
+              );
             } else if (status === 'GO_TO_DROPOFF') {
               dispatch(setDeliverStatus('GO_TO_DROPOFF'));
               return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
             } else if (status === 'NOTIFY_DROPOFF') {
               dispatch(setDeliverStatus('NOTIFY_DROPOFF'));
-              // TODO: Adjust notify message
+              // TODO: Adjust notify message to logic from R2C2
               return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
             } else if (status === 'TAKE_PACKAGE') {
               dispatch(setDeliverStatus('TAKE_PACKAGE'));
-              dispatch(setConfirmationMessage('Please take your package'));
-              return dispatch(setIsConfirmationNeeded(true));
+              return dispatch(
+                setConfirmationMessage(DisplayMessageOptions(intl)['Please take your package']),
+              );
             }
 
             dispatch(setDeliverStatus('DONE'));
-            return dispatch(setTransitMessage('Thank you, have a nice day!'));
+            return dispatch(
+              setTransitMessage(DisplayMessageOptions(intl)['Thank you, have a nice day!']),
+            );
           });
         }
       };

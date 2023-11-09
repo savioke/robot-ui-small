@@ -10,7 +10,7 @@ import { useSelector } from 'typeDux';
 /** styles */
 
 /** redux */
-import { getBatteryState } from 'state/ui/ui.selectors';
+import { getBatteryState } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 

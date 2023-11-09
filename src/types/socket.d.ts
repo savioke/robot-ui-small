@@ -4,7 +4,7 @@ import type { NextApiResponse } from 'next';
 import type { Socket as NetSocket } from 'net';
 import type { Server as IOServer } from 'socket.io';
 import { NavigationGoal, NavigationGoals } from 'relay-types';
-import { DeliverStatus, DeliverValues, DisplayState, Task } from './r2c2';
+import { DeliverStatus, DeliverValues, DisplayState, Task, LoginMethod, AuthUser } from './r2c2';
 
 interface SocketServer extends HTTPServer {
   io?: IOServer | undefined;
@@ -22,22 +22,14 @@ export interface NextApiResponseWithSocket extends NextApiResponse {
 export interface ServerToClientEvents {
   ping: () => void;
   connect: () => void;
-  display_message: ({ message }: { message: string }) => void;
   disconnect: () => void;
   userServerConnection: () => void;
   userServerDisconnection: (socketId: string) => void;
   navigation_goals: ({ goals }: NavigationGoals) => void;
-  display_confirm: ({
-    confirm_text,
-    confirm_button_text,
-  }: {
-    confirm_text: string;
-    confirm_button_text: string;
-  }) => void;
 
   // Authorization
-  login_pass: () => void;
-  login_fail: () => void;
+  login_pass: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
+  login_fail: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
 
   // Tasks
   queue_tasks_error: (string) => void;

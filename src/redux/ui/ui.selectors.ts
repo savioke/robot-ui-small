@@ -8,20 +8,12 @@ export const getDisplayMessage = (state: RootState) => {
   return state.ui.displayMessage;
 };
 
-export const getInputName = (state: RootState) => {
-  return state.ui.inputName;
-};
-
 export const getTheme = (state: RootState) => {
   return state.ui.theme;
 };
 
 export const getLanguage = (state: RootState) => {
   return state.ui.language;
-};
-
-export const getIsConfirmationNeeded = (state: RootState) => {
-  return state.ui.isConfirmationNeeded;
 };
 
 export const getIsScreenTouched = (state: RootState) => {
@@ -36,14 +28,6 @@ export const getAuthorized = (state: RootState) => {
   return state.ui.authorized;
 };
 
-export const getDisplayState = (state: RootState) => {
-  return state.ui.displayState;
-};
-
-export const getBatteryState = (state: RootState) => {
-  return state.ui.displayState.battery;
-};
-
 export const getTransitMessage = (state: RootState) => {
   return state.ui.transitMessage;
 };
@@ -54,12 +38,4 @@ export const getNotificationMessage = (state: RootState) => {
 
 export const getConfirmationMessage = (state: RootState) => {
   return state.ui.confirmationMessage;
-};
-
-export const getDeliverStatus = (state: RootState) => {
-  return state.ui.deliverStatus;
-};
-
-export const getTaskConfig = (state: RootState) => {
-  return state.ui.taskConfig;
 };

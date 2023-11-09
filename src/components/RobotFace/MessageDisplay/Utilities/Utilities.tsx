@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
+import { useSelector } from 'typeDux';
 import Image from 'next/image';
 
 /** Mui Components */
@@ -15,6 +16,7 @@ import { styles } from './Utilities.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
+import { getIsRelayRoboticsEmployee } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -22,6 +24,7 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function Utilities() {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const isRelayRoboticsEmployee = useSelector(getIsRelayRoboticsEmployee);
 
   return (
     <Box sx={styles.rootContainer}>
@@ -66,10 +69,7 @@ export default function Utilities() {
           />
         </Box>
         <Box sx={styles.paperContainer}>
-          <Button
-          // TODO: Enable Help page
-          // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
-          >
+          <Button onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Help))}>
             <Image
               priority
               src='images/Help.svg'
@@ -84,25 +84,27 @@ export default function Utilities() {
             sx={styles.boldFont}
           />
         </Box>
-        <Box sx={styles.paperContainer}>
-          <Button
-          // TODO: Enable Admin Access (Diagnostics page)
-          // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
-          >
-            <Image
-              priority
-              src='images/Admin Access.svg'
-              height={140}
-              width={140}
-              alt={intl.formatMessage({ id: 'adminAccess' })}
+        {isRelayRoboticsEmployee && (
+          <Box sx={styles.paperContainer}>
+            <Button
+            // TODO: Enable Admin Access (Diagnostics page)
+            // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
+            >
+              <Image
+                priority
+                src='images/Admin Access.svg'
+                height={140}
+                width={140}
+                alt={intl.formatMessage({ id: 'adminAccess' })}
+              />
+            </Button>
+            <Text
+              variant='h5'
+              id='adminAccess'
+              sx={styles.boldFont}
             />
-          </Button>
-          <Text
-            variant='h5'
-            id='adminAccess'
-            sx={styles.boldFont}
-          />
-        </Box>
+          </Box>
+        )}
       </Box>
     </Box>
   );

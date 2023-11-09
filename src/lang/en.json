@@ -123,5 +123,18 @@
   "backArrow": "Back arrow",
   "whatAreYouLookingFor?": "What are you looking for?",
   "deliveringTo:": "Delivering to:",
-  "backToDashboard": "Back to dashboard"
+  "backToDashboard": "Back to dashboard",
+  "pleaseLoadYourPackage": "Please load your package",
+  "pleaseTakeYourPackage": "Please take your package",
+  "needAdditionalSupport?": "Need additional support?",
+  "myStatusAndInformation": "My status and information",
+  "email": "Email",
+  "phone": "Phone",
+  "hostname:": "Hostname: {hostname}",
+  "nickname:": "Nickname: {nickname}",
+  "networkConnectivity:": "Network Connectivity: {networkConnectivity}",
+  "battery:": "Battery: {battery}%",
+  "batteryVoltage:": "Battery Voltage: {batteryVoltage}",
+  "chargingDock:": "Charging Dock: {chargingDock}",
+  "chargingPlug:": "Charging Plug: {chargingPlug}"
 }

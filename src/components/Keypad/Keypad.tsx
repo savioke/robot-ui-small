@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Grid, IconButton, Button } from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 import { Backspace } from '@mui/icons-material';
 
 /** Components */
@@ -210,15 +210,16 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <IconButton
-              sx={[styles.numberButtons, styles.iconButtonHover]}
+            <Button
+              variant='contained'
+              sx={styles.numberButtons}
               onClick={() => setValues((previousValues) => previousValues.slice(0, -1))}
             >
               <Backspace
                 fontSize='large'
                 sx={styles.backSpaceIcon}
               />
-            </IconButton>
+            </Button>
           </Grid>
         </Grid>
         <Grid

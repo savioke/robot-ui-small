@@ -20,25 +20,20 @@ export const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    '&:active': {
-      backgroundColor: '#BBBBBB',
-    },
-    '&:focus': {
-      backgroundColor: '#BBBBBB',
+    '&:hover': {
+      backgroundColor: '#414141',
     },
   },
   backSpaceIcon: {
     color: 'white',
   },
-  iconButtonHover: {
-    '&:hover': {
-      backgroundColor: '#0AA15B',
-    },
-  },
   confirmButton: {
     height: '65px',
     fontSize: '24px',
     backgroundColor: '#0AA15B',
+    '&:hover': {
+      backgroundColor: '#0AA15B',
+    },
   },
   confirmButtonGridItem: {
     display: 'flex',

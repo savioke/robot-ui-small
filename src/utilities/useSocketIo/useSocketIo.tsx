@@ -9,7 +9,13 @@ import {
   setNotificationMessage,
   setPasscode,
 } from 'state/ui/ui.slice';
-import { setTaskConfig, setDisplayState, setDeliverStatus, setUser } from 'state/r2c2/r2c2.slice';
+import {
+  setTaskConfig,
+  setDisplayState,
+  setDeliverStatus,
+  setUser,
+  setFavorites,
+} from 'state/r2c2/r2c2.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
@@ -52,11 +58,17 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             dispatch(setDeliverLocations(goals));
           });
 
-          socket?.on('login_pass', ({ user }) => {
-            console.info(`Successful authentication for ${user.id}`);
+          socket?.on('login_pass', ({ user, config }) => {
             dispatch(setUser(user));
             dispatch(setPasscode(''));
-            return dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+            // TODO: Will we always return all login groups - or can we just return the one that first qualifies.. For now zero-indexing.
+            dispatch(setFavorites(config[0].favorites));
+
+            if (config[0].screen === '/favorites') {
+              dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));
+            } else {
+              dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+            }
           });
 
           socket?.on('login_fail', ({ method }) => {

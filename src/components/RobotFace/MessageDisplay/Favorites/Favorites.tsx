@@ -12,53 +12,21 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './Favorites.styles';
 
 /** redux */
+import { getFavorites } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { AvatarBackgroundColors } from 'appConstants';
 import { DeliverValues } from 'types/r2c2';
-
-const taskFavorites = [
-  {
-    id: 1,
-    name: 'Kitchen',
-    siteId: '1234',
-    type: 'DELIVER',
-    version: '2.0',
-    config: {
-      dropoff_location: 'Kitchen',
-      dropoff_message: 'Here you go!',
-    },
-  },
-  {
-    id: 2,
-    name: 'Chair',
-    siteId: '1234',
-    type: 'DELIVER',
-    version: '2.0',
-    config: {
-      dropoff_location: 'Chair',
-      dropoff_message: 'Enjoy!',
-    },
-  },
-  {
-    id: 3,
-    name: 'Couch',
-    siteId: '1234',
-    type: 'DELIVER',
-    version: '2.0',
-    config: {
-      dropoff_location: 'Couch',
-      dropoff_message: 'Wooo',
-    },
-  },
-];
+import { useSelector } from 'typeDux';
 
 const stringAvatar = ({ name, index }: { name: string; index: number }) => {
-  const initials = name
-    .split(' ')
-    .map((word) => word[0])
-    .join('');
+  const initials = name.includes(' ')
+    ? name
+        .split(' ')
+        .map((word) => word[0])
+        .join('')
+    : name.split('')[0];
 
   return {
     sx: {
@@ -77,6 +45,7 @@ export default function Favorites() {
   const socket = useSocketIo();
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<DeliverValues[]>([]);
+  const favorites = useSelector(getFavorites);
 
   // TODO: This function can be cleaned up.
   const handleToggle =
@@ -98,12 +67,11 @@ export default function Favorites() {
       setTasks(newTasks);
     };
 
-  // TODO: Will pull in Favorite names
   return (
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />
       <Box sx={styles.dashboardContainer}>
-        {taskFavorites.map((favorite, index) => (
+        {favorites.map((favorite, index) => (
           <Box
             key={index}
             sx={styles.paperContainer}
@@ -112,8 +80,9 @@ export default function Favorites() {
                 type: 'DELIVER',
                 version: '2.0',
                 config: {
-                  dropoff_location: favorite.config.dropoff_location,
-                  dropoff_message: favorite.config.dropoff_message,
+                  dropoff_location: favorite,
+                  // TODO: This should be returned from the favorites array after parsing..
+                  dropoff_message: 'Please take your package',
                 },
               },
               index,
@@ -122,13 +91,13 @@ export default function Favorites() {
             <Button sx={styles.favoriteButton}>
               <Avatar
                 variant='square'
-                {...stringAvatar({ name: favorite.name, index })}
+                {...stringAvatar({ name: favorite, index })}
               />
               <Text
                 variant='h5'
                 sx={[styles.boldFont, { textTransform: 'capitalize' }]}
               >
-                {favorite.name}
+                {favorite}
               </Text>
               <Checkbox
                 checked={checked.indexOf(index) !== -1}

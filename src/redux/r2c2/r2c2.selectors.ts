@@ -25,3 +25,7 @@ export const getIsRelayRoboticsEmployee = (state: RootState) => {
     state.r2c2.user.org === 'org_lrZufETqIbfEmbPy' || state.r2c2.user.org === 'org_PeQjFz4IO7Ph3jJp'
   );
 };
+
+export const getFavorites = (state: RootState) => {
+  return state.r2c2.favorites;
+};

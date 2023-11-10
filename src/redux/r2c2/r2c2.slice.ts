@@ -6,6 +6,7 @@ interface R2C2State {
   displayState: DisplayState;
   taskConfig: TaskConfig;
   user: AuthUser;
+  favorites: string[];
 }
 
 export const initialState: R2C2State = {
@@ -32,6 +33,7 @@ export const initialState: R2C2State = {
     id: '',
     org: '',
   },
+  favorites: [],
 };
 
 const r2c2Slice = createSlice({
@@ -50,9 +52,13 @@ const r2c2Slice = createSlice({
     setUser: (state, { payload }) => {
       state.user = payload;
     },
+    setFavorites: (state, { payload }) => {
+      state.favorites = payload;
+    },
   },
 });
 
-export const { setTaskConfig, setDisplayState, setDeliverStatus, setUser } = r2c2Slice.actions;
+export const { setTaskConfig, setDisplayState, setDeliverStatus, setUser, setFavorites } =
+  r2c2Slice.actions;
 
 export default r2c2Slice.reducer;

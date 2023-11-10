@@ -87,3 +87,19 @@ export interface AuthUser {
   id: string;
   org: string;
 }
+
+export interface SiteConfig {
+  auth: {
+    org?: string[];
+    user?: string[];
+    method?: string[];
+    group?: string[];
+  };
+  favorites: {
+    dropoff_location: string;
+    dropoff_message: string;
+  }[];
+  name: string;
+  screen: '/favorites' | '/dashboard';
+  utilities: string[];
+}

@@ -4,7 +4,15 @@ import type { NextApiResponse } from 'next';
 import type { Socket as NetSocket } from 'net';
 import type { Server as IOServer } from 'socket.io';
 import { NavigationGoal, NavigationGoals } from 'relay-types';
-import { DeliverStatus, DeliverValues, DisplayState, Task, LoginMethod, AuthUser } from './r2c2';
+import {
+  DeliverStatus,
+  DeliverValues,
+  DisplayState,
+  Task,
+  LoginMethod,
+  AuthUser,
+  SiteConfig,
+} from './r2c2';
 
 interface SocketServer extends HTTPServer {
   io?: IOServer | undefined;
@@ -28,7 +36,15 @@ export interface ServerToClientEvents {
   navigation_goals: ({ goals }: NavigationGoals) => void;
 
   // Authorization
-  login_pass: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
+  login_pass: ({
+    method,
+    user,
+    config,
+  }: {
+    method: LoginMethod;
+    user: AuthUser;
+    config: SiteConfig[];
+  }) => void;
   login_fail: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
 
   // Tasks

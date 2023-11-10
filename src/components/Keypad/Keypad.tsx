@@ -242,7 +242,7 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
                 if (displayScreen === DisplayScreenOptions.RoomNumber) {
                   return dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                 } else if (passCode === '1234' || passCode === '2908') {
-                  dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryDashboard));
+                  dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
                 }
 
                 return socket?.emit('login_pin', passCode);

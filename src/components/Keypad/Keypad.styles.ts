@@ -21,7 +21,7 @@ export const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     '&:hover': {
-      backgroundColor: '#BBBBBB',
+      backgroundColor: '#414141',
     },
   },
   backSpaceIcon: {

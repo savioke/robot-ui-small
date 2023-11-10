@@ -43,6 +43,9 @@ export const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: 1,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
   goButton: {
     width: '350px',

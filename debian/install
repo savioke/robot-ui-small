@@ -8,3 +8,4 @@ node_modules/ /opt/robot-ui/
 public/ /opt/robot-ui/
 src/ /opt/robot-ui/
 .next/ /opt/robot-ui/
+tmp/cache/* /var/cache/robot-ui/

@@ -1,7 +1,10 @@
 #!/bin/bash
 
-set -x
-
 # Needed to enable yarn?
 # Just doing this always, as it seems to be idempotent.
 corepack enable
+
+# Needed for nextjs cache, linked from opt/robot-ui/.next
+chown -R savibot:savibot /var/cache/robot-ui
+
+#DEBHELPER#

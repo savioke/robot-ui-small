@@ -68,7 +68,7 @@ export default function TopBar() {
         <Box sx={styles.metricContainer}>
           <Box sx={styles.rightContainer}>
             {displayState.connected ? <Wifi fontSize='large' /> : <WifiOff fontSize='large' />}
-            <Text sx={styles.robotNickname}>{displayState.nickname}</Text>
+            <Text sx={styles.robotNickname}>{displayState.hostname}</Text>
           </Box>
           <Divider
             flexItem

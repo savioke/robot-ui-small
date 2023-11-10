@@ -71,7 +71,7 @@ export default function Favorites() {
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />
       <Box sx={styles.dashboardContainer}>
-        {favorites.map((favorite, index) => (
+        {['Front Desk', 'Tent', 'Pickup'].map((favorite, index) => (
           <Box
             key={index}
             sx={styles.paperContainer}

@@ -582,7 +582,14 @@ export default function LetterDisplay({
           >
             <Button
               variant='contained'
-              sx={styles.capitalizeButton}
+              sx={[
+                styles.capitalizeButton,
+                {
+                  '&:hover': {
+                    backgroundColor: '#BBBBBB',
+                  },
+                },
+              ]}
               onClick={() => setIsCapitalLetters((previousValue) => !previousValue)}
             >
               {isCapitalLetters ? (
@@ -598,7 +605,14 @@ export default function LetterDisplay({
           >
             <Button
               variant='contained'
-              sx={styles.spaceButton}
+              sx={[
+                styles.spaceButton,
+                {
+                  '&:hover': {
+                    backgroundColor: '#BBBBBB',
+                  },
+                },
+              ]}
               onClick={setValues}
               value=' '
             >
@@ -614,7 +628,7 @@ export default function LetterDisplay({
                 styles.numberButtons,
                 {
                   '&:hover': {
-                    backgroundColor: '#1272b2',
+                    backgroundColor: '#BBBBBB',
                   },
                 },
               ]}

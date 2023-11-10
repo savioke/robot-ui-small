@@ -102,7 +102,12 @@ export default function MessageDisplay() {
           </Box>
         </Box>
         <Button
-          sx={{ height: '65px', width: '373px', backgroundColor: '#0AA15B' }}
+          sx={{
+            height: '65px',
+            width: '373px',
+            backgroundColor: '#0AA15B',
+            '&:hover': { backgroundColor: '#0AA15B' },
+          }}
           size='large'
           variant='contained'
           onClick={() => {

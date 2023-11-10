@@ -25,10 +25,7 @@ export const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    '&:active': {
-      backgroundColor: '#414141',
-    },
-    '&:focus': {
+    '&:hover': {
       backgroundColor: '#BBBBBB',
     },
   },
@@ -37,6 +34,9 @@ export const styles = {
     height: '65px',
     fontSize: '24px',
     backgroundColor: '#0AA15B',
+    '&:hover': {
+      backgroundColor: '#0AA15B',
+    },
   },
   spaceButton: {
     width: '100%',

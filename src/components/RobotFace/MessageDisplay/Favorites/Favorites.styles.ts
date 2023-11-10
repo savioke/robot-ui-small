@@ -48,6 +48,9 @@ export const styles = {
     width: '350px',
     fontSize: '24px',
     backgroundColor: '#0AA15B',
+    '&:hover': {
+      backgroundColor: '#0AA15B',
+    },
   },
   buttonContainer: {
     display: 'flex',

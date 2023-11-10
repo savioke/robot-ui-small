@@ -23,6 +23,11 @@ dch -v "${VERSION}" --distribution 'unstable' --preserve --upstream "Auto-built 
 # Install deps, build stuff
 yarn install
 yarn build
+# FIXME: nextjs is unreasonable, so we have to do hacky things to get cache in a 
+# place that is writable and reasonable.
+mkdir -p tmp
+# This depends on debian/install knowing about this change, and debian/robot-ui.links.
+mv .next/cache tmp
 
 echo " * Packaging stage -------------------------------------------------"
 dpkg-buildpackage -rfakeroot -uc -us
@@ -41,4 +46,6 @@ else
   rm -rf debian/.debhelper
   rm -rf debian/${NAME}/
   rm -f debian/files
+  rm -rf tmp
+  rm -rf .next
 fi

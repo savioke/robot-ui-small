@@ -29,6 +29,7 @@ export default function RobotFace() {
         </Paper>
       </Box>
       <Box sx={styles.eyesContainer}>
+        {/* TODO: Update eye files to match the correct eye. */}
         <Image
           priority
           src='images/eye_right_v3.svg'

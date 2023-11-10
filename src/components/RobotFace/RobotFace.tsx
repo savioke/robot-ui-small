@@ -31,14 +31,14 @@ export default function RobotFace() {
       <Box sx={styles.eyesContainer}>
         <Image
           priority
-          src='images/eye_left.svg'
+          src='images/eye_left_v3.svg'
           height={158}
           width={112}
           alt={intl.formatMessage({ id: 'leftEye' })}
         />
         <Image
           priority
-          src='/images/eye_right.svg'
+          src='/images/eye_right_v3.svg'
           height={158}
           width={112}
           alt={intl.formatMessage({ id: 'rightEye' })}

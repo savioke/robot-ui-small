@@ -43,7 +43,7 @@ export interface ServerToClientEvents {
   }: {
     method: LoginMethod;
     user: AuthUser;
-    config: SiteConfig[];
+    config: SiteConfig;
   }) => void;
   login_fail: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
 

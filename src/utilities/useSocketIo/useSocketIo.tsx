@@ -61,17 +61,15 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           socket?.on('login_pass', ({ user, config }) => {
             dispatch(setUser(user));
             dispatch(setPasscode(''));
-            if (config.length) {
-              dispatch(setFavorites(config[0]?.favorites));
-              if (config[0]?.screen === '/favorites') {
-                dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));
-              } else {
-                dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-              }
-            }
-            // TODO: Will we always return all login groups - or can we just return the one that first qualifies.. For now zero-indexing.
+            dispatch(setFavorites(config.favorites));
 
-            dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+            if (config.screen === '/favorites') {
+              dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));
+            } else {
+              dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+            }
+
+            // TODO: Will we always return all login groups - or can we just return the one that first qualifies.. For now zero-indexing.
           });
 
           socket?.on('login_fail', ({ method }) => {

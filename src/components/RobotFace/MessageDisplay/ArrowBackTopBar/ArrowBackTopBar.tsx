@@ -445,8 +445,7 @@ export default function ArrowBackTopBar() {
     );
   } else if (
     displayScreen === DisplayScreenOptions.PassCode ||
-    displayScreen === DisplayScreenOptions.CancelTask ||
-    displayScreen === DisplayScreenOptions.CancelTaskConfirmation
+    displayScreen === DisplayScreenOptions.CancelTask
   ) {
     return (
       <Box sx={styles.arrowBackContainer}>

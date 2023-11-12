@@ -14,11 +14,12 @@ import { english, spanish, japanese } from 'lang';
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
+import ScreenContainer from 'components/ScreenContainer/ScreenContainer';
 import Footer from 'components/Footer/Footer';
 import TopBar from 'components/TopBar/TopBar';
 
 /** actions */
-import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';
+import { setTheme } from 'state/ui/ui.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
@@ -73,18 +74,7 @@ export default function App({ Component, ...rest }: AppProps) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           {/* <ErrorBoundary> */}
-          <Box
-            sx={{
-              display: 'flex',
-              minHeight: '100vh',
-              flexDirection: 'column',
-              backgroundImage: `${stateTheme}`,
-              backgroundSize: 'cover',
-              paddingRight: 2,
-              paddingLeft: 1,
-            }}
-            onClick={() => store.dispatch(setIsScreenTouched(true))}
-          >
+          <ScreenContainer stateTheme={stateTheme}>
             <TopBar />
             <Box
               component='main'
@@ -96,7 +86,7 @@ export default function App({ Component, ...rest }: AppProps) {
               <Component {...props.pageProps} />
             </Box>
             <Footer />
-          </Box>
+          </ScreenContainer>
           {/* </ErrorBoundary> */}
         </ThemeProvider>
       </Provider>

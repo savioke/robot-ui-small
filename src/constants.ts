@@ -60,3 +60,16 @@ export const AvatarBackgroundColors = [
   '#186212',
   '#4B0AA1',
 ];
+
+export const DeliverStatus = {
+  NONE: 0,
+  GO_TO_PICKUP: 1,
+  NOTIFY_PICKUP: 2,
+  AUTHORIZE_PICKUP: 3,
+  LOAD_PACKAGE: 4,
+  GO_TO_DROPOFF: 5,
+  NOTIFY_DROPOFF: 6,
+  AUTHORIZE_DROPOFF: 7,
+  TAKE_PACKAGE: 8,
+  DONE: 9,
+};

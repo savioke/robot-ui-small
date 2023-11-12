@@ -12,7 +12,6 @@ import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
 import Favorites from './Favorites/Favorites';
 import Utilities from './Utilities/Utilities';
-import CancelTask from './CancelTask/CancelTask';
 import CancelTaskConfirmation from './CancelTaskConfirmation/CancelTaskConfirmation';
 import MultipleFavoriteSelect from './MultipleFavoriteSelect/MultipleFavoriteSelect';
 import Text from 'sharedComponents/Text/Text';
@@ -32,7 +31,7 @@ import { getTaskConfig, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
-import { DisplayScreenOptions } from 'appConstants';
+import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
 import { setConfirmationMessage, setTransitMessage } from 'state/ui/ui.slice';
 import Help from './Utilities/Help/Help';
 
@@ -80,9 +79,7 @@ export default function MessageDisplay() {
     return <Actions />;
   } else if (displayScreen === DisplayScreenOptions.Help) {
     return <Help />;
-  } else if (displayScreen === DisplayScreenOptions.CancelTask) {
-    return <CancelTask />;
-  } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
+  } else if (true) {
     return <CancelTaskConfirmation />;
   } else if (confirmationMessage) {
     // TODO: Fix this button and message to prevent content shifting. Might be able to reduce if IF and combine with displayMessag below
@@ -112,7 +109,7 @@ export default function MessageDisplay() {
           variant='contained'
           onClick={() => {
             dispatch(setConfirmationMessage(''));
-            if (deliverStatus === 'LOAD_PACKAGE') {
+            if (deliverStatus === DeliverStatus.LOAD_PACKAGE) {
               socket?.emit('load_package_result', { result: true });
               return dispatch(setTransitMessage(`Delivering to ${taskConfig?.dropoff_location}`));
             }

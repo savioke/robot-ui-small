@@ -1,8 +1,8 @@
 import { createSlice } from 'typeDux';
-import { TaskConfig, DisplayState, DeliverStatus, AuthUser } from 'types/r2c2';
+import { TaskConfig, DisplayState, AuthUser } from 'types/r2c2';
 
 interface R2C2State {
-  deliverStatus: DeliverStatus | '';
+  deliverStatus: number;
   displayState: DisplayState;
   taskConfig: TaskConfig;
   user: AuthUser;
@@ -10,7 +10,7 @@ interface R2C2State {
 }
 
 export const initialState: R2C2State = {
-  deliverStatus: '',
+  deliverStatus: 0,
   taskConfig: {
     pickup_location: '',
     pickup_message: '',

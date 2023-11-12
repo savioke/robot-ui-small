@@ -19,7 +19,7 @@ import {
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
-import { DisplayMessageOptions, DisplayScreenOptions } from 'appConstants';
+import { DisplayMessageOptions, DisplayScreenOptions, DeliverStatus } from 'appConstants';
 import { IntlShape } from 'react-intl';
 
 export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
@@ -105,32 +105,32 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             dispatch(setTaskConfig(task.config));
 
             if (status === 'GO_TO_PICKUP') {
-              dispatch(setDeliverStatus('GO_TO_PICKUP'));
+              dispatch(setDeliverStatus(DeliverStatus['GO_TO_PICKUP']));
               return dispatch(setTransitMessage(`Heading to ${task.config.pickup_location}`));
             } else if (status === 'NOTIFY_PICKUP') {
-              dispatch(setDeliverStatus('NOTIFY_PICKUP'));
+              dispatch(setDeliverStatus(DeliverStatus['NOTIFY_PICKUP']));
               // TODO: Adjust notify message to logic from R2C2
               return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
             } else if (status === 'LOAD_PACKAGE') {
-              dispatch(setDeliverStatus('LOAD_PACKAGE'));
+              dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
               return dispatch(
                 setConfirmationMessage(DisplayMessageOptions(intl)['Please load your package']),
               );
             } else if (status === 'GO_TO_DROPOFF') {
-              dispatch(setDeliverStatus('GO_TO_DROPOFF'));
+              dispatch(setDeliverStatus(DeliverStatus['GO_TO_DROPOFF']));
               return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
             } else if (status === 'NOTIFY_DROPOFF') {
-              dispatch(setDeliverStatus('NOTIFY_DROPOFF'));
+              dispatch(setDeliverStatus(DeliverStatus['NOTIFY_DROPOFF']));
               // TODO: Adjust notify message to logic from R2C2
               return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
             } else if (status === 'TAKE_PACKAGE') {
-              dispatch(setDeliverStatus('TAKE_PACKAGE'));
+              dispatch(setDeliverStatus(DeliverStatus['TAKE_PACKAGE']));
               return dispatch(
                 setConfirmationMessage(DisplayMessageOptions(intl)['Please take your package']),
               );
             }
 
-            dispatch(setDeliverStatus('DONE'));
+            dispatch(setDeliverStatus(DeliverStatus['DONE']));
             return dispatch(
               setTransitMessage(DisplayMessageOptions(intl)['Thank you, have a nice day!']),
             );

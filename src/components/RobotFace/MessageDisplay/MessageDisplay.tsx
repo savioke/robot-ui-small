@@ -79,7 +79,7 @@ export default function MessageDisplay() {
     return <Actions />;
   } else if (displayScreen === DisplayScreenOptions.Help) {
     return <Help />;
-  } else if (true) {
+  } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
     return <CancelTaskConfirmation />;
   } else if (confirmationMessage) {
     // TODO: Fix this button and message to prevent content shifting. Might be able to reduce if IF and combine with displayMessag below

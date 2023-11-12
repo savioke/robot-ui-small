@@ -23,6 +23,8 @@ export type DeliverStatus =
   | 'FAILURE'
   | 'DONE';
 
+export type UtilityActions = 'open lid' | 'close Lid' | 'go to' | 'dock' | 'all';
+
 export interface TaskConfig {
   pickup_location: string;
   pickup_message: string;
@@ -90,6 +92,11 @@ export interface AuthUser {
   org: string;
 }
 
+export interface Favorite {
+  dropoff_location: string;
+  dropoff_message: string;
+}
+
 export interface SiteConfig {
   auth: {
     org?: string[];
@@ -97,11 +104,8 @@ export interface SiteConfig {
     method?: string[];
     group?: string[];
   };
-  favorites: {
-    dropoff_location: string;
-    dropoff_message: string;
-  }[];
+  favorites: Favorite[];
   name: string;
   screen: '/favorites' | '/dashboard';
-  utilities: string[];
+  utilities: UtilityActions[];
 }

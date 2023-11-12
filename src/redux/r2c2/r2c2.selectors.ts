@@ -29,3 +29,7 @@ export const getIsRelayRoboticsEmployee = (state: RootState) => {
 export const getFavorites = (state: RootState) => {
   return state.r2c2.favorites;
 };
+
+export const getUtilities = (state: RootState) => {
+  return state.r2c2.utilities;
+};

@@ -20,13 +20,13 @@ import { AvatarBackgroundColors } from 'appConstants';
 import { DeliverValues } from 'types/r2c2';
 import { useSelector } from 'typeDux';
 
-const stringAvatar = ({ name, index }: { name: string; index: number }) => {
-  const initials = name.includes(' ')
-    ? name
+const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; index: number }) => {
+  const initials = dropoff_location.includes(' ')
+    ? dropoff_location
         .split(' ')
         .map((word) => word[0])
         .join('')
-    : name.split('')[0];
+    : dropoff_location.split('')[0];
 
   return {
     sx: {
@@ -71,7 +71,7 @@ export default function Favorites() {
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />
       <Box sx={styles.dashboardContainer}>
-        {['Front Desk', 'Tent', 'Pickup'].map((favorite, index) => (
+        {favorites.map(({ dropoff_location, dropoff_message }, index) => (
           <Box
             key={index}
             sx={styles.paperContainer}
@@ -80,9 +80,8 @@ export default function Favorites() {
                 type: 'DELIVER',
                 version: '2.0',
                 config: {
-                  dropoff_location: favorite,
-                  // TODO: This should be returned from the favorites array after parsing..
-                  dropoff_message: 'Please take your package',
+                  dropoff_location,
+                  dropoff_message,
                 },
               },
               index,
@@ -91,13 +90,13 @@ export default function Favorites() {
             <Button sx={styles.favoriteButton}>
               <Avatar
                 variant='square'
-                {...stringAvatar({ name: favorite, index })}
+                {...stringAvatar({ dropoff_location, index })}
               />
               <Text
                 variant='h5'
                 sx={[styles.boldFont, { textTransform: 'capitalize' }]}
               >
-                {favorite}
+                {dropoff_location}
               </Text>
               <Checkbox
                 checked={checked.indexOf(index) !== -1}

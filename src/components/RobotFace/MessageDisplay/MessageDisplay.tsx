@@ -1,13 +1,13 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'typeDux';
-import { useIntl } from 'react-intl';
+import { useSelector } from 'typeDux';
 import JSConfetti from 'js-confetti';
 
 /** Mui Components */
-import { Button, Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 /** Components */
 import Actions from './Utilities/Actions/Actions';
+import ConfirmationMessage from './ConfirmationMessage/ConfirmationMessage';
 import DeliveryDashboard from './DeliveryDashboard/DeliveryDashboard';
 import Dashboard from './Dashboard/Dashboard';
 import Favorites from './Favorites/Favorites';
@@ -27,28 +27,17 @@ import {
   getConfirmationMessage,
   getNotificationMessage,
 } from 'state/ui/ui.selectors';
-import { getTaskConfig, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
-import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
-import { setConfirmationMessage, setTransitMessage } from 'state/ui/ui.slice';
+import { DisplayScreenOptions } from 'appConstants';
 import Help from './Utilities/Help/Help';
 
 export default function MessageDisplay() {
-  const intl = useIntl();
-  const dispatch = useDispatch();
-  const socket = useSocketIo(dispatch, intl);
   const displayMessage = useSelector(getDisplayMessage);
   const transitMessage = useSelector(getTransitMessage);
   const confirmationMessage = useSelector(getConfirmationMessage);
   const notificationMessage = useSelector(getNotificationMessage);
   const displayScreen = useSelector(getDisplayScreen);
-  const deliverStatus = useSelector(getDeliverStatus);
-  const taskConfig = useSelector(getTaskConfig);
-
-  // TODO: Need a hierachy of what screens we want to show. Shows display message and display confirmation but cancelling the task
-  // and another initiatives need to task precedence
 
   React.useEffect(() => {
     if (displayMessage.toLowerCase().includes('birthday')) {
@@ -82,46 +71,7 @@ export default function MessageDisplay() {
   } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
     return <CancelTaskConfirmation />;
   } else if (confirmationMessage) {
-    // TODO: Fix this button and message to prevent content shifting. Might be able to reduce if IF and combine with displayMessag below
-    return (
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flex: 1,
-        }}
-      >
-        <Box sx={styles.displayConfirmContainer}>
-          <Box>
-            <Text variant='h2'>{confirmationMessage}</Text>
-          </Box>
-        </Box>
-        <Button
-          sx={{
-            height: '65px',
-            width: '373px',
-            backgroundColor: '#0AA15B',
-            '&:hover': { backgroundColor: '#0AA15B' },
-          }}
-          size='large'
-          variant='contained'
-          onClick={() => {
-            dispatch(setConfirmationMessage(''));
-            if (deliverStatus === DeliverStatus.LOAD_PACKAGE) {
-              socket?.emit('load_package_result', { result: true });
-              return dispatch(setTransitMessage(`Delivering to ${taskConfig?.dropoff_location}`));
-            }
-
-            socket?.emit('take_package_result', { result: true });
-            return dispatch(setTransitMessage('Thank you, have a nice day!'));
-          }}
-        >
-          {intl.formatMessage({ id: 'ok' })}
-        </Button>
-      </Box>
-    );
+    return <ConfirmationMessage />;
   } else if (notificationMessage) {
     return (
       <Box sx={styles.displayMessageContainer}>

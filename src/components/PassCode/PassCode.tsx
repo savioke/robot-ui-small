@@ -30,7 +30,7 @@ export default function PassCode() {
   }, [dispatch, passCode]);
 
   const handleSetPassCode = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (passCode.length === 16) {
+    if (passCode.length === 12) {
       return passCode;
     }
 

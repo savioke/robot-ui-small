@@ -101,7 +101,6 @@ export default function GoToSearch() {
       {/* @ts-ignore */}
       <Keyboard
         setValues={handleInput}
-        inutRef={inputRef}
         handleBackspace={handleBackspace}
       />
     </Box>

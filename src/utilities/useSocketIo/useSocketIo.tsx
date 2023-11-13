@@ -144,8 +144,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             if (status === 'ARRIVED') {
               dispatch(setTransitMessage(''));
               dispatch(setDisplayMessage('What can I help with?'));
-            } else if (status === 'GO_TO') {
-              dispatch(setTransitMessage(task.config.transit_message));
             }
           });
         }

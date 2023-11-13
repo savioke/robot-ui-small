@@ -25,7 +25,6 @@ import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 interface LetterDisplayProps {
   isContinueDisabled?: boolean;
   setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
-  inputRef: React.RefObject<HTMLInputElement>;
   // eslint-disable-next-line no-unused-vars
   setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleBackspace: () => void;

@@ -12,17 +12,20 @@ import { Backspace, ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { styles } from '../Keyboard.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen, setTransitMessage } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 import { setDeliverFormValues } from 'state/deliver/deliver.slice';
+import { getGoToFormValues } from 'state/goTo/goTo.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
+import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 interface LetterDisplayProps {
   isContinueDisabled?: boolean;
   setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
+  inputRef: React.RefObject<HTMLInputElement>;
   // eslint-disable-next-line no-unused-vars
   setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleBackspace: () => void;
@@ -36,9 +39,15 @@ export default function LetterDisplay({
 }: LetterDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const socket = useSocketIo();
   const [isCapitalLetters, setIsCapitalLetters] = useState(true);
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);
+  const goToFormValues = useSelector(getGoToFormValues);
+  const isGoToConfirmDisabled =
+    displayScreen === DisplayScreenOptions.GoToSearch && !goToFormValues.config.destination;
+
+  // TODO: Need to fine tune confirm button disabled
 
   React.useEffect(() => {
     if (deliverFormValues.config.dropoff_message.length === 1) {
@@ -664,7 +673,7 @@ export default function LetterDisplay({
             xs={9}
           >
             <Button
-              disabled={isContinueDisabled}
+              disabled={isContinueDisabled || isGoToConfirmDisabled}
               variant='contained'
               sx={styles.confirmButton}
               onClick={() => {
@@ -672,6 +681,17 @@ export default function LetterDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliverySummary));
                 } else if (displayScreen === DisplayScreenOptions.Search) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+                } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
+                  socket?.emit('queue_tasks', {
+                    type: 'GO_TO',
+                    version: '2.0',
+                    config: {
+                      destination: goToFormValues.config.destination,
+                      transit_message: goToFormValues.config.transit_message,
+                    },
+                  });
+                  dispatch(setTransitMessage(goToFormValues.config.transit_message));
+                  dispatch(setDisplayScreen(DisplayScreenOptions.Home));
                 }
 
                 if (!deliverFormValues.config.dropoff_message) {

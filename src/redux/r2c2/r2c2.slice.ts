@@ -8,6 +8,7 @@ interface R2C2State {
   user: AuthUser;
   favorites: Favorite[];
   utilities: UtilityActions[];
+  goals: string[];
 }
 
 export const initialState: R2C2State = {
@@ -36,6 +37,7 @@ export const initialState: R2C2State = {
   },
   favorites: [],
   utilities: [],
+  goals: [],
 };
 
 const r2c2Slice = createSlice({
@@ -60,6 +62,9 @@ const r2c2Slice = createSlice({
     setUtilities: (state, { payload }) => {
       state.utilities = payload;
     },
+    setGoals: (state, { payload }) => {
+      state.goals = payload;
+    },
   },
 });
 
@@ -70,6 +75,7 @@ export const {
   setUser,
   setFavorites,
   setUtilities,
+  setGoals,
 } = r2c2Slice.actions;
 
 export default r2c2Slice.reducer;

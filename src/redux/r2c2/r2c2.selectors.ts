@@ -33,3 +33,7 @@ export const getFavorites = (state: RootState) => {
 export const getUtilities = (state: RootState) => {
   return state.r2c2.utilities;
 };
+
+export const getGoals = (state: RootState) => {
+  return state.r2c2.goals;
+};

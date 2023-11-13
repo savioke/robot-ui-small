@@ -44,10 +44,12 @@ export interface ServerToClientEvents {
     method,
     user,
     config,
+    goals,
   }: {
     method: LoginMethod;
     user: AuthUser;
     config: SiteConfig;
+    goals: string[];
   }) => void;
   login_fail: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
 
@@ -55,9 +57,7 @@ export interface ServerToClientEvents {
   queue_tasks_error: (string) => void;
   queue_tasks_success: () => void;
   deliver_status: ({ status, task }: { status: DeliverStatus; task: Task }) => void;
-  // TODO: Audit and adjust task_state as needed
-  task_state: ({ task, state }: { task: Task; state: DeliverStatus }) => void;
-  go_to_location_status: ({ status }: { status: GoToLocationStatus }) => void;
+  go_to_location_status: ({ status, task }: { status: GoToLocationStatus; task: Task }) => void;
 
   // Display State
   display_state: (state: DisplayState) => void;

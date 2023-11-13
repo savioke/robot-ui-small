@@ -23,6 +23,7 @@ import { DisplayScreenOptions } from 'appConstants';
 interface NumberDisplayProps {
   isContinueDisabled?: boolean;
   setIsNumberDisplay: React.Dispatch<React.SetStateAction<boolean>>;
+  inputRef: React.RefObject<HTMLInputElement>;
   // eslint-disable-next-line no-unused-vars
   setValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleBackspace: () => void;
@@ -33,6 +34,7 @@ export default function NumberDisplay({
   setIsNumberDisplay,
   setValues,
   handleBackspace,
+  inputRef,
 }: NumberDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();

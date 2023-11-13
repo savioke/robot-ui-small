@@ -16,6 +16,7 @@ import {
   setUser,
   setFavorites,
   setUtilities,
+  setGoals,
 } from 'state/r2c2/r2c2.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
@@ -34,9 +35,9 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        setInterval(() => {
-          socket.emit('pong');
-        }, 5000);
+        // setInterval(() => {
+        //   socket.emit('pong');
+        // }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
@@ -58,11 +59,12 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             dispatch(setDeliverLocations(goals));
           });
 
-          socket?.on('login_pass', ({ user, config }) => {
+          socket?.on('login_pass', ({ user, config, goals }) => {
             dispatch(setUser(user));
             dispatch(setPasscode(''));
             dispatch(setFavorites(config.favorites));
             dispatch(setUtilities(config.utilities));
+            dispatch(setGoals(goals));
 
             if (config.screen === '/favorites') {
               dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));
@@ -89,12 +91,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
           socket?.on('display_state', (state) => {
             dispatch(setDisplayMessage(`Hello, I'm ${state.nickname}`));
-            return dispatch(setDisplayState(state));
-          });
-
-          socket?.on('task_state', ({ task, state }) => {
-            // TODO: Finalize task state - This may not be needed
-            // dispatch(setTransitMessage(''));
             return dispatch(setDisplayState(state));
           });
 
@@ -137,10 +133,14 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             );
           });
 
-          // socket?.on('go_to_location_status', (state) => {
-          //   dispatch(setDisplayMessage(`Hello, I'm ${state.nickname}`));
-          //   return dispatch(setDisplayState(state));
-          // });
+          socket?.on('go_to_location_status', ({ status, task }) => {
+            if (status === 'ARRIVED') {
+              dispatch(setTransitMessage(''));
+              dispatch(setDisplayMessage('What can I help with?'));
+            } else if (status === 'GO_TO') {
+              dispatch(setTransitMessage(task.config.transit_message));
+            }
+          });
         }
       };
 

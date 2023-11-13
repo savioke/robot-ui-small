@@ -19,6 +19,7 @@ import { setDisplayScreen } from 'state/ui/ui.slice';
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function CancelTaskMessage() {
+  const dispatch = useDispatch();
   const deliverStatus = useSelector(getDeliverStatus);
   const socket = useSocketIo();
 
@@ -41,7 +42,7 @@ export default function CancelTaskMessage() {
         </Box>
         <Box sx={styles.buttonContainer}>
           <Button
-            variant='outlined'
+            variant='contained'
             sx={styles.button}
             // TODO: Finalize behavior for sending robot back to pickuplocation
             // onClick={() => {}}
@@ -57,6 +58,16 @@ export default function CancelTaskMessage() {
             }}
           >
             Retrieve package
+          </Button>
+          <Button
+            variant='contained'
+            sx={[styles.button, styles.greenBackground]}
+            // TODO: Finalize behavior for continueing delivery
+            onClick={() => {
+              dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+            }}
+          >
+            Continue Delivery
           </Button>
         </Box>
       </Box>

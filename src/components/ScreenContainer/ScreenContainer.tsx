@@ -36,10 +36,13 @@ export default function ScreenContainer({ stateTheme, children }: ScreenContaine
     <Box
       sx={styles.container(stateTheme)}
       onClick={() => {
-        // TODO: Need to fix this logic
-        // if (deliverStatus > DeliverStatus.NONE) {
-        //   dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
-        // }
+        // TODO: Need to solidify this logic
+        if (
+          deliverStatus === DeliverStatus.GO_TO_PICKUP ||
+          deliverStatus === DeliverStatus.GO_TO_DROPOFF
+        ) {
+          dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
+        }
 
         dispatch(setIsScreenTouched(true));
       }}

@@ -18,9 +18,10 @@ import { setConfirmationMessage } from 'state/ui/ui.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
-import { AvatarBackgroundColors, DisplayMessageOptions } from 'appConstants';
+import { AvatarBackgroundColors, DeliverStatus, DisplayMessageOptions } from 'appConstants';
 import { DeliverValues } from 'types/r2c2';
 import { useSelector } from 'typeDux';
+import { setDeliverStatus } from 'state/r2c2/r2c2.slice';
 
 const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; index: number }) => {
   const initials = dropoff_location.includes(' ')
@@ -83,7 +84,7 @@ export default function Favorites() {
                 type: 'DELIVER',
                 version: '2.0',
                 config: {
-                  dropoff_location: 'Front Desk',
+                  dropoff_location,
                   dropoff_message,
                 },
               },
@@ -128,6 +129,7 @@ export default function Favorites() {
             ];
 
             socket?.emit('queue_tasks', updatedTasks);
+            dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
             return dispatch(
               setConfirmationMessage(DisplayMessageOptions(intl)['Please load your package']),
             );

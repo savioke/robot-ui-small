@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
+import { useDispatch } from 'typeDux';
 
 /** Mui Components */
 import { Avatar, Box, Button, Checkbox } from '@mui/material';
@@ -13,10 +14,11 @@ import { styles } from './Favorites.styles';
 
 /** redux */
 import { getFavorites } from 'state/r2c2/r2c2.selectors';
+import { setConfirmationMessage } from 'state/ui/ui.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
-import { AvatarBackgroundColors } from 'appConstants';
+import { AvatarBackgroundColors, DisplayMessageOptions } from 'appConstants';
 import { DeliverValues } from 'types/r2c2';
 import { useSelector } from 'typeDux';
 
@@ -42,6 +44,7 @@ const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; i
 
 export default function Favorites() {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const socket = useSocketIo();
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<DeliverValues[]>([]);
@@ -80,7 +83,7 @@ export default function Favorites() {
                 type: 'DELIVER',
                 version: '2.0',
                 config: {
-                  dropoff_location,
+                  dropoff_location: 'Front Desk',
                   dropoff_message,
                 },
               },
@@ -112,7 +115,22 @@ export default function Favorites() {
           variant='contained'
           onClick={(event) => {
             event.preventDefault();
-            socket?.emit('queue_tasks', tasks);
+            // Adds load_package to first task to bulk load all items for multi-stop capabilities.
+            const updatedTasks = [
+              {
+                ...tasks[0],
+                config: {
+                  ...tasks[0].config,
+                  load_package: true,
+                },
+              },
+              ...tasks.slice(1),
+            ];
+
+            socket?.emit('queue_tasks', updatedTasks);
+            return dispatch(
+              setConfirmationMessage(DisplayMessageOptions(intl)['Please load your package']),
+            );
           }}
         >
           {intl.formatMessage({ id: 'go' })}

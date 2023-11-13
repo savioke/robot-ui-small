@@ -84,27 +84,6 @@ export default function Utilities() {
             sx={styles.boldFont}
           />
         </Box>
-        {isRelayRoboticsEmployee && (
-          <Box sx={styles.paperContainer}>
-            <Button
-            // TODO: Enable Admin Access (Diagnostics page)
-            // onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Utilities))}
-            >
-              <Image
-                priority
-                src='images/Admin Access.svg'
-                height={140}
-                width={140}
-                alt={intl.formatMessage({ id: 'adminAccess' })}
-              />
-            </Button>
-            <Text
-              variant='h5'
-              id='adminAccess'
-              sx={styles.boldFont}
-            />
-          </Box>
-        )}
       </Box>
     </Box>
   );

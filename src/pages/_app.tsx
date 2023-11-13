@@ -15,12 +15,13 @@ import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
 import CommonHead from 'components/CommonHead/CommonHead';
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 import ScreenContainer from 'components/ScreenContainer/ScreenContainer';
 import Footer from 'components/Footer/Footer';
 import TopBar from 'components/TopBar/TopBar';
 
 /** actions */
-import { setIsScreenTouched, setTheme } from 'state/ui/ui.slice';
+import { setTheme } from 'state/ui/ui.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
@@ -75,21 +76,21 @@ export default function App({ Component, ...rest }: AppProps) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <CommonHead />
-          {/* <ErrorBoundary> */}
-          <ScreenContainer stateTheme={stateTheme}>
-            <TopBar />
-            <Box
-              component='main'
-              sx={{
-                display: 'flex',
-                flexGrow: 1,
-              }}
-            >
-              <Component {...props.pageProps} />
-            </Box>
-            <Footer />
-          </ScreenContainer>
-          {/* </ErrorBoundary> */}
+          <ErrorBoundary>
+            <ScreenContainer stateTheme={stateTheme}>
+              <TopBar />
+              <Box
+                component='main'
+                sx={{
+                  display: 'flex',
+                  flexGrow: 1,
+                }}
+              >
+                <Component {...props.pageProps} />
+              </Box>
+              <Footer />
+            </ScreenContainer>
+          </ErrorBoundary>
         </ThemeProvider>
       </Provider>
     </IntlProvider>

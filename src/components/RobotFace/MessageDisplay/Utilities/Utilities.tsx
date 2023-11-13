@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
-import { useSelector } from 'typeDux';
 import Image from 'next/image';
 
 /** Mui Components */
@@ -16,7 +15,6 @@ import { styles } from './Utilities.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
-import { getIsRelayRoboticsEmployee } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -24,7 +22,6 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function Utilities() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const isRelayRoboticsEmployee = useSelector(getIsRelayRoboticsEmployee);
 
   return (
     <Box sx={styles.rootContainer}>

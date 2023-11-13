@@ -17,6 +17,7 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 import { setDeliverFormValues } from 'state/deliver/deliver.slice';
 import { getGoToFormValues } from 'state/goTo/goTo.selectors';
+import { getMappingFormValues } from 'state/mapping/mapping.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -43,6 +44,7 @@ export default function LetterDisplay({
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);
   const goToFormValues = useSelector(getGoToFormValues);
+  const mappingFormValues = useSelector(getMappingFormValues);
   const isGoToConfirmDisabled =
     displayScreen === DisplayScreenOptions.GoToSearch && !goToFormValues.config.destination;
 
@@ -681,16 +683,12 @@ export default function LetterDisplay({
                 } else if (displayScreen === DisplayScreenOptions.Search) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                 } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
-                  socket?.emit('queue_tasks', {
-                    type: 'GO_TO',
-                    version: '2.0',
-                    config: {
-                      destination: goToFormValues.config.destination,
-                      transit_message: goToFormValues.config.transit_message,
-                    },
-                  });
+                  socket?.emit('queue_tasks', goToFormValues);
                   dispatch(setTransitMessage(goToFormValues.config.transit_message));
-                  dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+                  return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+                } else if (displayScreen === DisplayScreenOptions.OverrideMap) {
+                  socket?.emit('queue_tasks', mappingFormValues);
+                  dispatch(setDisplayScreen(DisplayScreenOptions.Mapping));
                 }
 
                 if (!deliverFormValues.config.dropoff_message) {

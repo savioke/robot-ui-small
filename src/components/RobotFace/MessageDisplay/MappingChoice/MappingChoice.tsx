@@ -14,12 +14,12 @@ import { styles } from './MappingChoice.styles';
 /** redux */
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
+import { setDisplayScreen } from 'state/ui/ui.slice';
+import { DisplayScreenOptions } from 'appConstants';
 
 export default function MappingChoice() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
 
   return (
     <Box sx={styles.container}>
@@ -34,24 +34,20 @@ export default function MappingChoice() {
           size='large'
           variant='contained'
           onClick={() => {
-            // socket?.emit('take_package_result', { result: true });
-            // return dispatch(setTransitMessage('Thank you, have a nice day!'));
+            dispatch(setDisplayScreen(DisplayScreenOptions.OverrideMap));
           }}
         >
-          Override Map
-          {/* {intl.formatMessage({ id: 'stopMapping' })} */}
+          {intl.formatMessage({ id: 'overrideMap' })}
         </Button>
         <Button
           sx={styles.button}
           size='large'
           variant='contained'
           onClick={() => {
-            // socket?.emit('take_package_result', { result: true });
-            // return dispatch(setTransitMessage('Thank you, have a nice day!'));
+            dispatch(setDisplayScreen(DisplayScreenOptions.CreateMap));
           }}
         >
-          Create map
-          {/* {intl.formatMessage({ id: 'stopMapping' })} */}
+          {intl.formatMessage({ id: 'createMap' })}
         </Button>
       </Box>
     </Box>

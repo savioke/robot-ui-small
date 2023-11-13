@@ -140,5 +140,7 @@
   "relayRobotics": "Relay Robotics",
   "startMapping": "Start mapping",
   "stopMapping": "Stop mapping",
-  "location": "Location"
+  "location": "Location",
+  "overrideMap": "Override map",
+  "createMap": "Create map"
 }

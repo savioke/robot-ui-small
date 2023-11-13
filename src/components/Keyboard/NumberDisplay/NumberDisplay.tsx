@@ -12,13 +12,16 @@ import { Backspace } from '@mui/icons-material';
 import { styles } from '../Keyboard.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen, setTransitMessage } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 import { setDeliverFormValues } from 'state/deliver/deliver.slice';
+import { getGoToFormValues } from 'state/goTo/goTo.selectors';
+import { getMappingFormValues } from 'state/mapping/mapping.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
+import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 interface NumberDisplayProps {
   isContinueDisabled?: boolean;
@@ -36,8 +39,13 @@ export default function NumberDisplay({
 }: NumberDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const socket = useSocketIo();
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);
+  const goToFormValues = useSelector(getGoToFormValues);
+  const mappingFormValues = useSelector(getMappingFormValues);
+  const isGoToConfirmDisabled =
+    displayScreen === DisplayScreenOptions.GoToSearch && !goToFormValues.config.destination;
 
   return (
     <Box sx={styles.keyboardContainer}>
@@ -535,7 +543,7 @@ export default function NumberDisplay({
             xs={10}
           >
             <Button
-              disabled={isContinueDisabled}
+              disabled={isContinueDisabled || isGoToConfirmDisabled}
               variant='contained'
               sx={styles.confirmButton}
               onClick={() => {
@@ -543,6 +551,13 @@ export default function NumberDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliverySummary));
                 } else if (displayScreen === DisplayScreenOptions.Search) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+                } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
+                  socket?.emit('queue_tasks', goToFormValues);
+                  dispatch(setTransitMessage(goToFormValues.config.transit_message));
+                  return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+                } else if (displayScreen === DisplayScreenOptions.OverrideMap) {
+                  socket?.emit('queue_tasks', mappingFormValues);
+                  dispatch(setDisplayScreen(DisplayScreenOptions.Mapping));
                 }
 
                 if (!deliverFormValues.config.dropoff_message) {

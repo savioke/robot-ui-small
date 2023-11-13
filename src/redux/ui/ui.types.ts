@@ -19,4 +19,6 @@ export type DisplayScreen =
   | 'Help'
   | 'Mapping'
   | 'Mapping Choice'
+  | 'Override Map'
+  | 'Create Map'
   | 'GoToSearch';

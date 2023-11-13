@@ -73,3 +73,9 @@ export const DeliverStatus = {
   TAKE_PACKAGE: 8,
   DONE: 9,
 };
+
+export const GoToLocationStatus = {
+  NONE: 0,
+  GO_TO: 1,
+  ARRIVED: 2,
+};

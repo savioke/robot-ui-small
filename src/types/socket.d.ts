@@ -12,6 +12,10 @@ import {
   LoginMethod,
   AuthUser,
   SiteConfig,
+  TaskFormValues,
+  TaskConfigDeliver,
+  TaskFormValuesWithoutConfig,
+  TaskConfigGoTo,
 } from './r2c2';
 
 interface SocketServer extends HTTPServer {
@@ -74,13 +78,20 @@ export interface ClientToServerEvents {
   logout: () => void;
 
   // Tasks
-  queue_tasks: (tasks: DeliverValues[]) => void;
+  queue_tasks: (
+    tasks:
+      | TaskFormValues<TaskConfigDeliver>[]
+      | TaskFormValues<TaskConfigDeliver>
+      | TaskFormValues<TaskConfigGoTo>
+      | TaskFormValuesWithoutConfig,
+  ) => void;
   load_package_result: ({ result }: { result: boolean }) => void;
   take_package_result: ({ result }: { result: boolean }) => void;
 
   // Actions
   open_lid: () => void;
   close_lid: () => void;
+  start_mapping: () => void;
 
   // TODO: Mocking R2C2 Socket Server
   display_message: (message: string) => void;

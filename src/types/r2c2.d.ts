@@ -23,7 +23,9 @@ export type DeliverStatus =
   | 'FAILURE'
   | 'DONE';
 
-export type UtilityActions = 'open lid' | 'close lid' | 'go to' | 'dock' | 'all';
+export type GoToLocationStatus = 'NONE' | 'GO_TO' | 'ARRIVED';
+
+export type UtilityActions = 'open lid' | 'close lid' | 'go to' | 'dock' | 'map' | 'all';
 
 export interface TaskConfig {
   pickup_location: string;
@@ -43,13 +45,25 @@ export interface NavigationGoal {
   tags: string[];
 }
 
-export interface DeliverValues {
-  type: 'DELIVER';
+export interface TaskFormValues<T> {
+  type: TaskType;
   version: '2.0';
-  config: {
-    dropoff_location: string;
-    dropoff_message: string;
-  };
+  config: T;
+}
+
+export interface TaskConfigDeliver {
+  dropoff_location: string;
+  dropoff_message: string;
+}
+
+export interface TaskConfigGoTo {
+  destination: string;
+  transit_message: string;
+}
+
+export interface TaskFormValuesWithoutConfig {
+  type: TaskType;
+  version: string;
 }
 
 export interface DisplayState {

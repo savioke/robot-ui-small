@@ -80,8 +80,18 @@ export default function Actions() {
                   />
                 </Box>
                 <Box sx={styles.paperContainer}>
-                  {/* TODO: Add in socket events */}
-                  <Button>
+                  <Button
+                    onClick={() => {
+                      socket?.emit('queue_tasks', {
+                        type: 'GO_TO',
+                        version: '2.0',
+                        config: {
+                          destination: '',
+                          transit_message: '',
+                        },
+                      });
+                    }}
+                  >
                     <Image
                       priority
                       src='images/go-to-location.svg'
@@ -99,10 +109,10 @@ export default function Actions() {
                 <Box sx={styles.paperContainer}>
                   <Button
                     onClick={() => {
-                      // socket?.emit('SEND_TO_DOCK')
-                      // socket?.emit('queue_tasks', {
-                      //               version: '2.0'
-                      //             });
+                      socket?.emit('queue_tasks', {
+                        type: 'SEND_TO_DOCK',
+                        version: '2.0',
+                      });
                     }}
                   >
                     <Image
@@ -116,6 +126,26 @@ export default function Actions() {
                   <Text
                     variant='h5'
                     id='returnToDock'
+                    sx={styles.boldFont}
+                  />
+                </Box>
+                <Box sx={styles.paperContainer}>
+                  <Button
+                    onClick={() => {
+                      socket?.emit('start_mapping');
+                    }}
+                  >
+                    <Image
+                      priority
+                      src='images/start-mapping.svg'
+                      height={140}
+                      width={140}
+                      alt={intl.formatMessage({ id: 'startMapping' })}
+                    />
+                  </Button>
+                  <Text
+                    variant='h5'
+                    id='startMapping'
                     sx={styles.boldFont}
                   />
                 </Box>
@@ -170,8 +200,18 @@ export default function Actions() {
           } else if (utility.toLowerCase() === 'go to') {
             return (
               <Box sx={styles.paperContainer}>
-                {/* TODO: Add in socket events */}
-                <Button>
+                <Button
+                  onClick={() => {
+                    socket?.emit('queue_tasks', {
+                      type: 'GO_TO',
+                      version: '2.0',
+                      config: {
+                        destination: '',
+                        transit_message: '',
+                      },
+                    });
+                  }}
+                >
                   <Image
                     priority
                     src='images/go-to-location.svg'
@@ -192,10 +232,10 @@ export default function Actions() {
               <Box sx={styles.paperContainer}>
                 <Button
                   onClick={() => {
-                    // socket?.emit('SEND_TO_DOCK')
-                    // socket?.emit('queue_tasks', {
-                    //               version: '2.0'
-                    //             });
+                    socket?.emit('queue_tasks', {
+                      type: 'SEND_TO_DOCK',
+                      version: '2.0',
+                    });
                   }}
                 >
                   <Image
@@ -209,6 +249,32 @@ export default function Actions() {
                 <Text
                   variant='h5'
                   id='returnToDock'
+                  sx={styles.boldFont}
+                />
+              </Box>
+            );
+          } else if (utility.toLowerCase() === 'map') {
+            return (
+              <Box sx={styles.paperContainer}>
+                <Button
+                  onClick={() => {
+                    socket?.emit('queue_tasks', {
+                      type: 'SEND_TO_DOCK',
+                      version: '2.0',
+                    });
+                  }}
+                >
+                  <Image
+                    priority
+                    src='images/start-mapping.svg'
+                    height={140}
+                    width={140}
+                    alt={intl.formatMessage({ id: 'startMapping' })}
+                  />
+                </Button>
+                <Text
+                  variant='h5'
+                  id='startMapping'
                   sx={styles.boldFont}
                 />
               </Box>

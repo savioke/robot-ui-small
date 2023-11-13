@@ -31,7 +31,9 @@ export default function Footer() {
     displayScreen === DisplayScreenOptions.DeliverySummary ||
     displayScreen === DisplayScreenOptions.Search ||
     displayScreen === DisplayScreenOptions.GoToSearch ||
-    displayScreen === DisplayScreenOptions.Status
+    displayScreen === DisplayScreenOptions.Status ||
+    displayScreen === DisplayScreenOptions.CreateMap ||
+    displayScreen === DisplayScreenOptions.OverrideMap
   ) {
     return (
       <Image

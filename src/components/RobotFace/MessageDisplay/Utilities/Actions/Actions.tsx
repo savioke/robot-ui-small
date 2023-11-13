@@ -125,7 +125,11 @@ export default function Actions() {
                   />
                 </Box>
                 <Box sx={styles.paperContainer}>
-                  <Button onClick={() => {}}>
+                  <Button
+                    onClick={() => {
+                      dispatch(setDisplayScreen(DisplayScreenOptions.MappingChoice));
+                    }}
+                  >
                     <Image
                       priority
                       src='images/start-mapping.svg'
@@ -242,10 +246,7 @@ export default function Actions() {
               <Box sx={styles.paperContainer}>
                 <Button
                   onClick={() => {
-                    socket?.emit('queue_tasks', {
-                      type: 'SEND_TO_DOCK',
-                      version: '2.0',
-                    });
+                    dispatch(setDisplayScreen(DisplayScreenOptions.MappingChoice));
                   }}
                 >
                   <Image

@@ -555,7 +555,10 @@ export default function NumberDisplay({
                   socket?.emit('queue_tasks', goToFormValues);
                   dispatch(setTransitMessage(goToFormValues.config.transit_message));
                   return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
-                } else if (displayScreen === DisplayScreenOptions.OverrideMap) {
+                } else if (
+                  displayScreen === DisplayScreenOptions.OverrideMap ||
+                  displayScreen === DisplayScreenOptions.CreateMap
+                ) {
                   socket?.emit('queue_tasks', mappingFormValues);
                   dispatch(setDisplayScreen(DisplayScreenOptions.Mapping));
                 }

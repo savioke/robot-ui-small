@@ -19,6 +19,7 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
+import { resetMappingFormValues } from 'state/mapping/mapping.slice';
 
 export default function ArrowBackTopBar() {
   const intl = useIntl();
@@ -501,6 +502,123 @@ export default function ArrowBackTopBar() {
             alt={intl.formatMessage({ id: 'backArrow' })}
           />
         </Button>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.MappingChoice) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => dispatch(setDisplayScreen(DisplayScreenOptions.Actions))}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'backArrow' })}
+          />
+        </Button>
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='startMapping'
+          />
+        </Breadcrumbs>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.OverrideMap) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => {
+            dispatch(resetMappingFormValues());
+            dispatch(setDisplayScreen(DisplayScreenOptions.MappingChoice));
+          }}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'backArrow' })}
+          />
+        </Button>
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='startMapping'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='overrideMap'
+          />
+        </Breadcrumbs>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.CreateMap) {
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => {
+            dispatch(resetMappingFormValues());
+            dispatch(setDisplayScreen(DisplayScreenOptions.MappingChoice));
+          }}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'backArrow' })}
+          />
+        </Button>
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='utilities'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='startMapping'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='createMap'
+          />
+        </Breadcrumbs>
       </Box>
     );
   }

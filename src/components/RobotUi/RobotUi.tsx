@@ -13,6 +13,8 @@ import DeliverySummary from 'components/RobotFace/MessageDisplay/DeliveryDashboa
 import Search from 'components/RobotFace/MessageDisplay/DeliveryDashboard/Search/Search';
 import Status from 'components/RobotFace/MessageDisplay/Utilities/Status/Status';
 import GoToSearch from 'components/RobotFace/MessageDisplay/GoToSearch/GoToSearch';
+import CreateMap from 'components/RobotFace/MessageDisplay/CreateMap/CreateMap';
+import OverrideMap from 'components/RobotFace/MessageDisplay/OverrideMap/OverrideMap';
 
 /** styles */
 import { styles } from './RobotUi.styles';
@@ -113,6 +115,32 @@ export default function RobotUi() {
             sx={styles.paper}
           >
             <Status />
+          </Paper>
+        </Box>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.OverrideMap) {
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <OverrideMap />
+          </Paper>
+        </Box>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.CreateMap) {
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <CreateMap />
           </Paper>
         </Box>
       </Box>

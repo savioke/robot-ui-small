@@ -6,6 +6,7 @@ import { useIntl } from 'react-intl';
 import { Box, Button } from '@mui/material';
 
 /** Components */
+import ArrowBackTopBar from '../ArrowBackTopBar/ArrowBackTopBar';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
@@ -22,13 +23,16 @@ export default function MappingChoice() {
   const dispatch = useDispatch();
 
   return (
-    <Box sx={styles.container}>
-      <Box sx={styles.displayConfirmContainer}>
-        <Box>
-          <Text variant='h4'>Would you like to override a map, or create a new one?</Text>
-        </Box>
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, width: '100%' }}>
+    <Box sx={styles.rootContainer}>
+      <ArrowBackTopBar />
+      <Text
+        variant='h3'
+        component='h1'
+        sx={styles.title}
+      >
+        Override a map, or create a new one?
+      </Text>
+      <Box sx={styles.buttonContainer}>
         <Button
           sx={styles.button}
           size='large'

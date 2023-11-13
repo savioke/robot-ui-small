@@ -28,6 +28,7 @@ import { resetGoToFormValues } from 'state/goTo/goTo.slice';
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DisplayScreenOptions } from 'appConstants';
+import { resetMappingFormValues } from 'state/mapping/mapping.slice';
 
 export default function TopBar() {
   const dispatch = useDispatch();
@@ -40,7 +41,8 @@ export default function TopBar() {
     if (displayScreen === DisplayScreenOptions.Home) {
       dispatch(setAuthorized(null));
       dispatch(resetDeliverFormValues());
-      dispatch(resetGoToFormValues);
+      dispatch(resetGoToFormValues());
+      dispatch(resetMappingFormValues());
       socket?.emit('logout');
     }
   }, [dispatch, displayScreen, socket]);

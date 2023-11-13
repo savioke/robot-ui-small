@@ -11,17 +11,16 @@ import Keyboard from 'components/Keyboard/Keyboard';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
-import { styles } from './MapSearch.styles';
+import { styles } from './OverrideMap.styles';
 
 /** redux */
-import { setGoToFormValues } from 'state/goTo/goTo.slice';
 import { setMappingFormValues } from 'state/mapping/mapping.slice';
 import { getMaps } from 'state/r2c2/r2c2.selectors';
 import { getMappingFormValues } from 'state/mapping/mapping.selectors';
 
 /** helpers */
 
-export default function MapSearch() {
+export default function OverrideMap() {
   const intl = useIntl();
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
@@ -76,9 +75,9 @@ export default function MapSearch() {
             }}
             onChange={(event, value, reason) => {
               if (reason === 'selectOption' && value) {
-                dispatch(setGoToFormValues({ destination: value }));
+                dispatch(setMappingFormValues({ name: value }));
               } else if (reason === 'clear') {
-                dispatch(setGoToFormValues({ destination: '' }));
+                dispatch(setMappingFormValues({ name: '' }));
               }
             }}
             renderInput={(params) => (

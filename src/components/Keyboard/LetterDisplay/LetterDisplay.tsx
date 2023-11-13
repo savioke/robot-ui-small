@@ -51,10 +51,18 @@ export default function LetterDisplay({
   // TODO: Need to fine tune confirm button disabled
 
   React.useEffect(() => {
-    if (deliverFormValues.config.dropoff_message.length === 1) {
+    if (
+      deliverFormValues.config.dropoff_message.length === 1 ||
+      goToFormValues.config.destination.length === 1 ||
+      mappingFormValues.config.name.length === 1
+    ) {
       setIsCapitalLetters(false);
     }
-  }, [deliverFormValues.config.dropoff_message.length]);
+  }, [
+    deliverFormValues.config.dropoff_message.length,
+    goToFormValues.config.destination.length,
+    mappingFormValues.config.name,
+  ]);
 
   const handleCapitalLetters = ({
     letter,
@@ -686,7 +694,10 @@ export default function LetterDisplay({
                   socket?.emit('queue_tasks', goToFormValues);
                   dispatch(setTransitMessage(goToFormValues.config.transit_message));
                   return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
-                } else if (displayScreen === DisplayScreenOptions.OverrideMap) {
+                } else if (
+                  displayScreen === DisplayScreenOptions.OverrideMap ||
+                  displayScreen === DisplayScreenOptions.CreateMap
+                ) {
                   socket?.emit('queue_tasks', mappingFormValues);
                   dispatch(setDisplayScreen(DisplayScreenOptions.Mapping));
                 }

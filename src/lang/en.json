@@ -142,5 +142,6 @@
   "stopMapping": "Stop mapping",
   "location": "Location",
   "overrideMap": "Override map",
-  "createMap": "Create map"
+  "createMap": "Create map",
+  "mapName": "Map name"
 }

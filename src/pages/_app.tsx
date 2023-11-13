@@ -14,6 +14,7 @@ import { english, spanish, japanese } from 'lang';
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
+import CommonHead from 'components/CommonHead/CommonHead';
 import ScreenContainer from 'components/ScreenContainer/ScreenContainer';
 import Footer from 'components/Footer/Footer';
 import TopBar from 'components/TopBar/TopBar';
@@ -73,6 +74,7 @@ export default function App({ Component, ...rest }: AppProps) {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          <CommonHead />
           {/* <ErrorBoundary> */}
           <ScreenContainer stateTheme={stateTheme}>
             <TopBar />

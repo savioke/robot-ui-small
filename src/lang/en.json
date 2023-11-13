@@ -136,5 +136,6 @@
   "battery:": "Battery: {battery}%",
   "batteryVoltage:": "Battery Voltage: {batteryVoltage}",
   "chargingDock:": "Charging Dock: {chargingDock}",
-  "chargingPlug:": "Charging Plug: {chargingPlug}"
+  "chargingPlug:": "Charging Plug: {chargingPlug}",
+  "relayRobotics": "Relay Robotics"
 }

@@ -138,5 +138,6 @@
   "chargingDock:": "Charging Dock: {chargingDock}",
   "chargingPlug:": "Charging Plug: {chargingPlug}",
   "relayRobotics": "Relay Robotics",
-  "startMapping": "Start mapping"
+  "startMapping": "Start mapping",
+  "stopMapping": "Stop mapping"
 }

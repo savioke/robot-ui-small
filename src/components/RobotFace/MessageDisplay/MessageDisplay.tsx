@@ -31,6 +31,7 @@ import {
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 import Help from './Utilities/Help/Help';
+import Mapping from './Mapping/Mapping';
 
 export default function MessageDisplay() {
   const displayMessage = useSelector(getDisplayMessage);
@@ -70,6 +71,8 @@ export default function MessageDisplay() {
     return <Help />;
   } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
     return <CancelTaskConfirmation />;
+  } else if (displayScreen === DisplayScreenOptions.Mapping) {
+    return <Mapping />;
   } else if (confirmationMessage) {
     return <ConfirmationMessage />;
   } else if (notificationMessage) {

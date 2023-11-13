@@ -92,7 +92,6 @@ export default function RobotUi() {
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
-    console.log('IN');
     return (
       <Box sx={styles.container}>
         <Box sx={styles.messageContainer}>

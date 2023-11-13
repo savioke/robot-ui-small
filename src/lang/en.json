@@ -139,5 +139,6 @@
   "chargingPlug:": "Charging Plug: {chargingPlug}",
   "relayRobotics": "Relay Robotics",
   "startMapping": "Start mapping",
-  "stopMapping": "Stop mapping"
+  "stopMapping": "Stop mapping",
+  "location": "Location"
 }

@@ -31,7 +31,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
   React.useEffect(() => {
     if (!socket) {
       const initializeSocketConnection = () => {
-        // console.log('FIX');
         socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
@@ -137,6 +136,11 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               setTransitMessage(DisplayMessageOptions(intl)['Thank you, have a nice day!']),
             );
           });
+
+          // socket?.on('go_to_location_status', (state) => {
+          //   dispatch(setDisplayMessage(`Hello, I'm ${state.nickname}`));
+          //   return dispatch(setDisplayState(state));
+          // });
         }
       };
 

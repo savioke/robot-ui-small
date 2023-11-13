@@ -18,6 +18,8 @@ import { getUtilities } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
+import { setDisplayScreen } from 'state/ui/ui.slice';
+import { DisplayScreenOptions } from 'appConstants';
 
 export default function Actions() {
   const intl = useIntl();
@@ -82,14 +84,7 @@ export default function Actions() {
                 <Box sx={styles.paperContainer}>
                   <Button
                     onClick={() => {
-                      socket?.emit('queue_tasks', {
-                        type: 'GO_TO',
-                        version: '2.0',
-                        config: {
-                          destination: '',
-                          transit_message: '',
-                        },
-                      });
+                      dispatch(setDisplayScreen(DisplayScreenOptions.GoToSearch));
                     }}
                   >
                     <Image
@@ -202,14 +197,7 @@ export default function Actions() {
               <Box sx={styles.paperContainer}>
                 <Button
                   onClick={() => {
-                    socket?.emit('queue_tasks', {
-                      type: 'GO_TO',
-                      version: '2.0',
-                      config: {
-                        destination: '',
-                        transit_message: '',
-                      },
-                    });
+                    dispatch(setDisplayScreen(DisplayScreenOptions.GoToSearch));
                   }}
                 >
                   <Image

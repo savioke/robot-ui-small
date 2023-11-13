@@ -30,6 +30,7 @@ export default function Footer() {
     displayScreen === DisplayScreenOptions.DeliveryMessage ||
     displayScreen === DisplayScreenOptions.DeliverySummary ||
     displayScreen === DisplayScreenOptions.Search ||
+    displayScreen === DisplayScreenOptions.GoToSearch ||
     displayScreen === DisplayScreenOptions.Status
   ) {
     return (

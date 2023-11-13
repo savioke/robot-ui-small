@@ -12,6 +12,7 @@ import DeliveryMessage from 'components/RobotFace/MessageDisplay/DeliveryDashboa
 import DeliverySummary from 'components/RobotFace/MessageDisplay/DeliveryDashboard/DeliverySummary/DeliverySummary';
 import Search from 'components/RobotFace/MessageDisplay/DeliveryDashboard/Search/Search';
 import Status from 'components/RobotFace/MessageDisplay/Utilities/Status/Status';
+import GoToSearch from 'components/RobotFace/MessageDisplay/GoToSearch/GoToSearch';
 
 /** styles */
 import { styles } from './RobotUi.styles';
@@ -86,6 +87,20 @@ export default function RobotUi() {
             sx={styles.paper}
           >
             <Search />
+          </Paper>
+        </Box>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
+    console.log('IN');
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <GoToSearch />
           </Paper>
         </Box>
       </Box>

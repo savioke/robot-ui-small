@@ -19,6 +19,7 @@ export const DisplayScreenOptions = {
   Status: 'Status' as const,
   Help: 'Help' as const,
   Mapping: 'Mapping' as const,
+  GoToSearch: 'GoToSearch' as const,
 };
 
 export const Themes = {

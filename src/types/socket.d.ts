@@ -15,6 +15,7 @@ import {
   TaskConfigDeliver,
   TaskFormValuesWithoutConfig,
   TaskConfigGoTo,
+  GoToLocationStatus,
 } from './r2c2';
 
 interface SocketServer extends HTTPServer {
@@ -56,6 +57,7 @@ export interface ServerToClientEvents {
   deliver_status: ({ status, task }: { status: DeliverStatus; task: Task }) => void;
   // TODO: Audit and adjust task_state as needed
   task_state: ({ task, state }: { task: Task; state: DeliverStatus }) => void;
+  go_to_location_status: ({ status }: { status: GoToLocationStatus }) => void;
 
   // Display State
   display_state: (state: DisplayState) => void;

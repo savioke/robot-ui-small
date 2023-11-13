@@ -17,4 +17,5 @@ export type DisplayScreen =
   | 'Search'
   | 'Status'
   | 'Help'
-  | 'Mapping';
+  | 'Mapping'
+  | 'GoToSearch';

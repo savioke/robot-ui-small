@@ -98,6 +98,43 @@ export default function ArrowBackTopBar() {
         </Breadcrumbs>
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
+    // TODO: Condense this logic in a single "Search" component
+    return (
+      <Box sx={styles.arrowBackContainer}>
+        <Button
+          sx={styles.button}
+          onClick={() => {
+            router.push(router.pathname);
+            dispatch(setDisplayScreen(DisplayScreenOptions.Actions));
+          }}
+        >
+          <Image
+            priority
+            src='/images/back_arrow.svg'
+            height={70}
+            width={70}
+            alt={intl.formatMessage({ id: 'backArrow' })}
+          />
+        </Button>
+        <Breadcrumbs
+          separator='-'
+          aria-label='breadcrumb'
+        >
+          <Text
+            variant='h6'
+            component='h1'
+            id='actions'
+            sx={styles.breadCrumbTrailText}
+          />
+          <Text
+            variant='h6'
+            component='h1'
+            id='search'
+          />
+        </Breadcrumbs>
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.DeliveryMessage) {
     if (router.asPath === '/#search') {
       return (

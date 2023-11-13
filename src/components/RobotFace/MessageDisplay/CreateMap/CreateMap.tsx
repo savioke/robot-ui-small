@@ -41,7 +41,7 @@ export default function CreateMap() {
   };
 
   React.useEffect(() => {
-    dispatch(setMappingFormValues({ override_existing: true }));
+    dispatch(setMappingFormValues({ override_existing: false }));
   }, [dispatch]);
 
   return (

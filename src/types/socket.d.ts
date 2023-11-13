@@ -6,7 +6,6 @@ import type { Server as IOServer } from 'socket.io';
 import { NavigationGoal, NavigationGoals } from 'relay-types';
 import {
   DeliverStatus,
-  DeliverValues,
   DisplayState,
   Task,
   LoginMethod,

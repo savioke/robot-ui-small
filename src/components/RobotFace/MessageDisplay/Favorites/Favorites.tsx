@@ -19,7 +19,7 @@ import { setConfirmationMessage } from 'state/ui/ui.slice';
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { AvatarBackgroundColors, DeliverStatus, DisplayMessageOptions } from 'appConstants';
-import { DeliverValues } from 'types/r2c2';
+import { TaskConfigDeliver, TaskFormValues } from 'types/r2c2';
 import { useSelector } from 'typeDux';
 import { setDeliverStatus } from 'state/r2c2/r2c2.slice';
 
@@ -48,12 +48,12 @@ export default function Favorites() {
   const dispatch = useDispatch();
   const socket = useSocketIo();
   const [checked, setChecked] = React.useState<number[]>([]);
-  const [tasks, setTasks] = React.useState<DeliverValues[]>([]);
+  const [tasks, setTasks] = React.useState<TaskFormValues<TaskConfigDeliver>[]>([]);
   const favorites = useSelector(getFavorites);
 
   // TODO: This function can be cleaned up.
   const handleToggle =
-    ({ index, task }: { index: number; task: DeliverValues }) =>
+    ({ index, task }: { index: number; task: TaskFormValues<TaskConfigDeliver> }) =>
     () => {
       const currentIndex = checked.indexOf(index);
       const newChecked = [...checked];

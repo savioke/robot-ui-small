@@ -30,8 +30,6 @@ export default function DeliveryDashboard() {
     dispatch(resetDeliverFormValues());
   }, [dispatch]);
 
-  // TODO: Based on site configuration - we send user to Favorites or MultipleSelectFavorites below. E.G HCA will always be multiple select... Or this will be standard?
-
   return (
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />

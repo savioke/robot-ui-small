@@ -1,9 +1,9 @@
 import { createSlice } from 'typeDux';
-import { NavigationGoal, DeliverValues } from 'types/r2c2';
+import { NavigationGoal, TaskConfigDeliver, TaskFormValues } from 'types/r2c2';
 
 interface DeliverState {
   deliverLocations: NavigationGoal[];
-  formValues: DeliverValues;
+  formValues: TaskFormValues<TaskConfigDeliver>;
 }
 
 export const initialState: DeliverState = {

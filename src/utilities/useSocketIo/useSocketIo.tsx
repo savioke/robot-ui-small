@@ -17,6 +17,7 @@ import {
   setFavorites,
   setUtilities,
   setGoals,
+  setMaps,
 } from 'state/r2c2/r2c2.slice';
 import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
@@ -59,12 +60,18 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             dispatch(setDeliverLocations(goals));
           });
 
-          socket?.on('login_pass', ({ user, config, goals }) => {
+          socket?.on('login_pass', ({ user, config, goals, maps }) => {
             dispatch(setUser(user));
             dispatch(setPasscode(''));
             dispatch(setFavorites(config.favorites));
-            dispatch(setUtilities(config.utilities));
             dispatch(setGoals(goals));
+            dispatch(setMaps(maps));
+
+            if (config.utilities.length) {
+              dispatch(setUtilities(config.utilities));
+            } else {
+              dispatch(setUtilities(['open lid', 'close lid', 'go to', 'dock']));
+            }
 
             if (config.screen === '/favorites') {
               dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));

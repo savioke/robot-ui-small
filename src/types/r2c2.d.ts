@@ -7,6 +7,7 @@ export type TaskType =
   | 'SEND_TO'
   | 'SEND_TO_DOCK'
   | 'REGISTER_RFID'
+  | 'RUN_MAPPING'
   | '';
 
 export type DeliverStatus =
@@ -59,6 +60,11 @@ export interface TaskConfigDeliver {
 export interface TaskConfigGoTo {
   destination: string;
   transit_message: string;
+}
+
+export interface TaskConfigMapping {
+  name: string;
+  override_existing: boolean;
 }
 
 export interface TaskFormValuesWithoutConfig {

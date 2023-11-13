@@ -16,6 +16,7 @@ import {
   TaskFormValuesWithoutConfig,
   TaskConfigGoTo,
   GoToLocationStatus,
+  TaskConfigMapping,
 } from './r2c2';
 
 interface SocketServer extends HTTPServer {
@@ -45,11 +46,13 @@ export interface ServerToClientEvents {
     user,
     config,
     goals,
+    maps,
   }: {
     method: LoginMethod;
     user: AuthUser;
     config: SiteConfig;
     goals: string[];
+    maps: string[];
   }) => void;
   login_fail: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
 
@@ -84,6 +87,7 @@ export interface ClientToServerEvents {
       | TaskFormValues<TaskConfigDeliver>[]
       | TaskFormValues<TaskConfigDeliver>
       | TaskFormValues<TaskConfigGoTo>
+      | TaskFormValues<TaskConfigMapping>
       | TaskFormValuesWithoutConfig,
   ) => void;
   load_package_result: ({ result }: { result: boolean }) => void;
@@ -92,7 +96,6 @@ export interface ClientToServerEvents {
   // Actions
   open_lid: () => void;
   close_lid: () => void;
-  start_mapping: () => void;
 
   // TODO: Mocking R2C2 Socket Server
   display_message: (message: string) => void;

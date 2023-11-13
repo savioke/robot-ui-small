@@ -37,7 +37,7 @@ export default function Actions() {
         sx={styles.title}
       />
       <Box sx={styles.dashboardContainer}>
-        {utilities.map((utility) => {
+        {utilities?.map((utility) => {
           if (utility.toLowerCase() === 'all') {
             return (
               <>
@@ -125,11 +125,7 @@ export default function Actions() {
                   />
                 </Box>
                 <Box sx={styles.paperContainer}>
-                  <Button
-                    onClick={() => {
-                      socket?.emit('start_mapping');
-                    }}
-                  >
+                  <Button onClick={() => {}}>
                     <Image
                       priority
                       src='images/start-mapping.svg'

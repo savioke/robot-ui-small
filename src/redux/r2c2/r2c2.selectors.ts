@@ -37,3 +37,7 @@ export const getUtilities = (state: RootState) => {
 export const getGoals = (state: RootState) => {
   return state.r2c2.goals;
 };
+
+export const getMaps = (state: RootState) => {
+  return state.r2c2.maps;
+};

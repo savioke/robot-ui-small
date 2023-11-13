@@ -13,6 +13,9 @@ import Dashboard from './Dashboard/Dashboard';
 import Favorites from './Favorites/Favorites';
 import Utilities from './Utilities/Utilities';
 import CancelTaskConfirmation from './CancelTaskConfirmation/CancelTaskConfirmation';
+import Help from './Utilities/Help/Help';
+import Mapping from './Mapping/Mapping';
+import MappingChoice from './MappingChoice/MappingChoice';
 import Text from 'sharedComponents/Text/Text';
 
 /** styles */
@@ -29,8 +32,6 @@ import {
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
-import Help from './Utilities/Help/Help';
-import Mapping from './Mapping/Mapping';
 
 export default function MessageDisplay() {
   const displayMessage = useSelector(getDisplayMessage);
@@ -70,6 +71,8 @@ export default function MessageDisplay() {
     return <CancelTaskConfirmation />;
   } else if (displayScreen === DisplayScreenOptions.Mapping) {
     return <Mapping />;
+  } else if (displayScreen === DisplayScreenOptions.MappingChoice) {
+    return <MappingChoice />;
   } else if (confirmationMessage) {
     return <ConfirmationMessage />;
   } else if (notificationMessage) {

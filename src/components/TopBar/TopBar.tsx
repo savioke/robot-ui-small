@@ -22,6 +22,8 @@ import {
 } from 'state/ui/ui.slice';
 import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 import { getDisplayState } from 'state/r2c2/r2c2.selectors';
+import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
+import { resetGoToFormValues } from 'state/goTo/goTo.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
@@ -37,6 +39,8 @@ export default function TopBar() {
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home) {
       dispatch(setAuthorized(null));
+      dispatch(resetDeliverFormValues());
+      dispatch(resetGoToFormValues);
       socket?.emit('logout');
     }
   }, [dispatch, displayScreen, socket]);

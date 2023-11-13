@@ -23,7 +23,7 @@ export type DeliverStatus =
   | 'FAILURE'
   | 'DONE';
 
-export type UtilityActions = 'open lid' | 'close Lid' | 'go to' | 'dock' | 'all';
+export type UtilityActions = 'open lid' | 'close lid' | 'go to' | 'dock' | 'all';
 
 export interface TaskConfig {
   pickup_location: string;

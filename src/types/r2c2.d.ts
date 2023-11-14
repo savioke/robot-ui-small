@@ -128,4 +128,6 @@ export interface SiteConfig {
   name: string;
   screen: '/favorites' | '/dashboard';
   utilities: UtilityActions[];
+  dashboard: string[];
+  delivery: string[];
 }

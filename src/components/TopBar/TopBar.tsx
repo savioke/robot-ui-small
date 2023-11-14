@@ -43,6 +43,7 @@ export default function TopBar() {
       dispatch(resetDeliverFormValues());
       dispatch(resetGoToFormValues());
       dispatch(resetMappingFormValues());
+      dispatch(setPasscode(''));
       socket?.emit('logout');
     }
   }, [dispatch, displayScreen, socket]);

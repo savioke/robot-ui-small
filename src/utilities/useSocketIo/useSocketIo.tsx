@@ -18,6 +18,7 @@ import {
   setUtilities,
   setGoals,
   setMaps,
+  setDashboardOptions,
 } from 'state/r2c2/r2c2.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
@@ -35,9 +36,9 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        // setInterval(() => {
-        //   socket.emit('pong');
-        // }, 5000);
+        setInterval(() => {
+          socket.emit('pong');
+        }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
@@ -60,6 +61,18 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             dispatch(setPasscode(''));
             dispatch(setGoals(goals));
             dispatch(setMaps(maps));
+
+            if (config.dashboard.length) {
+              dispatch(setDashboardOptions(config.dashboard));
+            } else {
+              dispatch(setDashboardOptions(['delivery', 'utilities']));
+            }
+
+            if (config.delivery.length) {
+              dispatch(setDashboardOptions(config.delivery));
+            } else {
+              dispatch(setDashboardOptions(['search']));
+            }
 
             if (config.favorites.length) {
               dispatch(setFavorites(config.favorites));

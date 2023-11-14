@@ -98,7 +98,6 @@ export default function GoToSearch() {
           />
         </Box>
       </Box>
-      {/* @ts-ignore */}
       <Keyboard
         setValues={handleInput}
         handleBackspace={handleBackspace}

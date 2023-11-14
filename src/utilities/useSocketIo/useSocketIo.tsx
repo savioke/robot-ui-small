@@ -63,42 +63,56 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         });
 
         if (dispatch && intl) {
-          socket?.on('login_pass', ({ user, config, goals, maps }) => {
-            dispatch(setUser(user));
-            dispatch(setPasscode(''));
-            dispatch(setGoals(goals));
-            dispatch(setMaps(maps));
+          socket?.on(
+            'login_pass',
+            ({
+              user,
+              config = {
+                dashboard: [],
+                delivery: [],
+                favorites: [],
+                utilities: [],
+                screen: '/dashboard',
+              },
+              goals = [],
+              maps = [],
+            }) => {
+              dispatch(setUser(user));
+              dispatch(setPasscode(''));
+              dispatch(setGoals(goals));
+              dispatch(setMaps(maps));
 
-            if (config.dashboard.length) {
-              dispatch(setDashboardOptions(config.dashboard));
-            } else {
-              dispatch(setDashboardOptions(['delivery', 'utilities']));
-            }
+              if (config.dashboard.length) {
+                dispatch(setDashboardOptions(config.dashboard));
+              } else {
+                dispatch(setDashboardOptions(['delivery', 'utilities']));
+              }
 
-            if (config.delivery.length) {
-              dispatch(setDeliveryOptions(config.delivery));
-            } else {
-              dispatch(setDeliveryOptions(['search']));
-            }
+              if (config.delivery.length) {
+                dispatch(setDeliveryOptions(config.delivery));
+              } else {
+                dispatch(setDeliveryOptions(['search']));
+              }
 
-            if (config.favorites.length) {
-              dispatch(setFavorites(config.favorites));
-            }
+              if (config.favorites.length) {
+                dispatch(setFavorites(config.favorites));
+              }
 
-            if (config.utilities.length) {
-              dispatch(setUtilities(config.utilities));
-            } else {
-              dispatch(setUtilities(['open lid', 'close lid', 'go to', 'dock']));
-            }
+              if (config.utilities.length) {
+                dispatch(setUtilities(config.utilities));
+              } else {
+                dispatch(setUtilities(['open lid', 'close lid', 'go to', 'dock']));
+              }
 
-            if (config.screen === '/favorites') {
-              dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));
-            } else {
-              dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
-            }
+              if (config.screen === '/favorites') {
+                dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));
+              } else {
+                dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));
+              }
 
-            // TODO: Will we always return all login groups - or can we just return the one that first qualifies.. For now zero-indexing.
-          });
+              // TODO: Will we always return all login groups - or can we just return the one that first qualifies.. For now zero-indexing.
+            },
+          );
 
           socket?.on('login_fail', ({ method }) => {
             if (method === 'badge') {

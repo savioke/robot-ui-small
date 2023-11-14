@@ -43,9 +43,9 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        setInterval(() => {
-          socket.emit('pong');
-        }, 5000);
+        // setInterval(() => {
+        //   socket.emit('pong');
+        // }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
@@ -186,6 +186,7 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             } else if (status === 'DOCKED') {
               dispatch(setTransitMessage(''));
               dispatch(setConfirmationMessage(''));
+              dispatch(setDeliverStatus(DeliverStatus.NONE));
               dispatch(setIdleStatus(IdleStatus.DOCKED));
             }
           });

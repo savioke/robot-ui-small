@@ -73,11 +73,26 @@ export default function Favorites() {
       setTasks(newTasks);
     };
 
+  const testing = [
+    {
+      dropoff_location: 'Front Desk',
+      dropoff_message: 'Your package has arrived',
+    },
+    {
+      dropoff_location: 'Near Dock',
+      dropoff_message: 'Your package has arrived',
+    },
+    {
+      dropoff_location: 'Mailcenter',
+      dropoff_message: 'Your package has arrived',
+    },
+  ];
+
   return (
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />
       <Box sx={styles.dashboardContainer}>
-        {favorites.map(({ dropoff_location, dropoff_message }, index) => (
+        {testing.map(({ dropoff_location, dropoff_message }, index) => (
           <Box
             key={index}
             sx={styles.paperContainer}

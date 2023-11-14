@@ -19,6 +19,7 @@ import {
   setGoals,
   setMaps,
   setDashboardOptions,
+  setDeliveryOptions,
 } from 'state/r2c2/r2c2.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
@@ -69,9 +70,9 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             }
 
             if (config.delivery.length) {
-              dispatch(setDashboardOptions(config.delivery));
+              dispatch(setDeliveryOptions(config.delivery));
             } else {
-              dispatch(setDashboardOptions(['search']));
+              dispatch(setDeliveryOptions(['search']));
             }
 
             if (config.favorites.length) {

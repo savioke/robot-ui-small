@@ -37,7 +37,7 @@ export const getMaps = (state: RootState) => {
 };
 
 export const getDashboardOptions = (state: RootState) => {
-  return state.r2c2.maps;
+  return state.r2c2.dashboardOptions;
 };
 
 export const getDeliveryOptions = (state: RootState) => {

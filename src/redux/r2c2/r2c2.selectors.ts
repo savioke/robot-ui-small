@@ -43,3 +43,7 @@ export const getDashboardOptions = (state: RootState) => {
 export const getDeliveryOptions = (state: RootState) => {
   return state.r2c2.deliveryOptions;
 };
+
+export const getIdleStatus = (state: RootState) => {
+  return state.r2c2.idleStatus;
+};

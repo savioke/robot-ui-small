@@ -26,6 +26,8 @@ export type DeliverStatus =
 
 export type GoToLocationStatus = 'NONE' | 'GO_TO' | 'ARRIVED';
 
+export type IdleStatus = 'NONE' | 'GO_TO_DOCK' | 'DOCKED';
+
 export type UtilityActions = 'open lid' | 'close lid' | 'go to' | 'dock' | 'map' | 'all';
 
 export interface TaskConfig {

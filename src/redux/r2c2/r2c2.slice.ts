@@ -12,10 +12,12 @@ interface R2C2State {
   maps: string[];
   dashboardOptions: string[];
   deliveryOptions: string[];
+  idleStatus: number;
 }
 
 export const initialState: R2C2State = {
   deliverStatus: 0,
+  idleStatus: 0,
   taskConfig: {
     pickup_location: '',
     pickup_message: '',
@@ -80,6 +82,9 @@ const r2c2Slice = createSlice({
     setDeliveryOptions: (state, { payload }) => {
       state.deliveryOptions = payload;
     },
+    setIdleStatus: (state, { payload }) => {
+      state.idleStatus = payload;
+    },
   },
 });
 
@@ -94,6 +99,7 @@ export const {
   setMaps,
   setDashboardOptions,
   setDeliveryOptions,
+  setIdleStatus,
 } = r2c2Slice.actions;
 
 export default r2c2Slice.reducer;

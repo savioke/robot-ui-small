@@ -85,6 +85,9 @@ const r2c2Slice = createSlice({
     setIdleStatus: (state, { payload }) => {
       state.idleStatus = payload;
     },
+    resetTaskConfig: (state) => {
+      state.taskConfig = initialState.taskConfig;
+    },
   },
 });
 
@@ -100,6 +103,7 @@ export const {
   setDashboardOptions,
   setDeliveryOptions,
   setIdleStatus,
+  resetTaskConfig,
 } = r2c2Slice.actions;
 
 export default r2c2Slice.reducer;

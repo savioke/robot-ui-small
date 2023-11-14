@@ -41,7 +41,7 @@ export default function MessageDisplay() {
   const displayScreen = useSelector(getDisplayScreen);
 
   React.useEffect(() => {
-    if (displayMessage.toLowerCase().includes('birthday')) {
+    if (displayMessage.toLowerCase()?.includes('birthday')) {
       const jsConfetti = new JSConfetti();
       const addConfetti = () => {
         jsConfetti.addConfetti();

@@ -24,23 +24,25 @@ import { useSelector } from 'typeDux';
 import { setDeliverStatus } from 'state/r2c2/r2c2.slice';
 
 const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; index: number }) => {
-  const initials = dropoff_location.includes(' ')
-    ? dropoff_location
-        .split(' ')
-        .map((word) => word[0])
-        .join('')
-    : dropoff_location.split('')[0];
+  if (dropoff_location) {
+    const initials = dropoff_location.includes(' ')
+      ? dropoff_location
+          .split(' ')
+          .map((word) => word[0])
+          .join('')
+      : dropoff_location.split('')[0];
 
-  return {
-    sx: {
-      bgcolor: AvatarBackgroundColors[index],
-      minWidth: '132px',
-      minHeight: '132px',
-      borderRadius: '30px',
-      fontSize: '70px',
-    },
-    children: initials,
-  };
+    return {
+      sx: {
+        bgcolor: AvatarBackgroundColors[index],
+        minWidth: '132px',
+        minHeight: '132px',
+        borderRadius: '30px',
+        fontSize: '70px',
+      },
+      children: initials,
+    };
+  }
 };
 
 export default function Favorites() {

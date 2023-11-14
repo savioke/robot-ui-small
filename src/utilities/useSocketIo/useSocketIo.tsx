@@ -19,7 +19,6 @@ import {
   setGoals,
   setMaps,
 } from 'state/r2c2/r2c2.slice';
-import { setDeliverLocations } from 'state/deliver/deliver.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
 import { DisplayMessageOptions, DisplayScreenOptions, DeliverStatus } from 'appConstants';
@@ -56,10 +55,6 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         });
 
         if (dispatch && intl) {
-          socket.on('navigation_goals', ({ goals }) => {
-            dispatch(setDeliverLocations(goals));
-          });
-
           socket?.on('login_pass', ({ user, config, goals, maps }) => {
             dispatch(setUser(user));
             dispatch(setPasscode(''));

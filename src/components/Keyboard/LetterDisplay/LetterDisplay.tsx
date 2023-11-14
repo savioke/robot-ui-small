@@ -702,7 +702,10 @@ export default function LetterDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.Mapping));
                 }
 
-                if (!deliverFormValues.config.dropoff_message) {
+                if (
+                  displayScreen === DisplayScreenOptions.DeliveryMessage &&
+                  !deliverFormValues.config.dropoff_message
+                ) {
                   dispatch(
                     setDeliverFormValues({
                       dropoff_message: intl.formatMessage({ id: 'yourOrderHasArrived!' }),

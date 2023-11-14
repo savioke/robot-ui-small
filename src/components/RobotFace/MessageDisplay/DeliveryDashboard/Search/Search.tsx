@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useSelector } from 'typeDux';
+import { useSelector, useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Autocomplete, Box, Checkbox, TextField, styled, lighten, darken } from '@mui/material';
-import { CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
+import { Autocomplete, Box, TextField } from '@mui/material';
 
 /** Components */
 import ArrowBackTopBar from '../../ArrowBackTopBar/ArrowBackTopBar';
@@ -15,40 +14,35 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './Search.styles';
 
 /** redux */
-import { getDeliverLocations, getDeliverFormValues } from 'state/deliver/deliver.selectors';
+import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
+import { setDeliverFormValues } from 'state/deliver/deliver.slice';
+import { getGoals } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
 
-const GroupHeader = styled('div')(({ theme }) => ({
-  // Makes header have priority over checkboxes
-  zIndex: 2000,
-  position: 'sticky',
-  top: '-8px',
-  padding: '4px 10px',
-  color: theme.palette.primary.main,
-  backgroundColor:
-    theme.palette.mode === 'light'
-      ? lighten(theme.palette.primary.light, 0.85)
-      : darken(theme.palette.primary.main, 0.8),
-}));
-
-const GroupItems = styled('ul')({
-  padding: 0,
-});
-
 export default function Search() {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-  const [roomMessage, setRoomMessage] = useState('');
   const deliverFormValues = useSelector(getDeliverFormValues);
-  const deliverLocations = useSelector(getDeliverLocations);
   let inputRef = React.useRef<HTMLInputElement>(null);
+  const goals = useSelector(getGoals);
 
-  // const handleFocus = (
-  //   event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>,
-  // ) => {
-  //   dispatch(setInputName(event.target.name));
-  // };
+  const handleInput = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    dispatch(
+      setDeliverFormValues({
+        dropoff_location: deliverFormValues.config.dropoff_location + event.currentTarget.value,
+      }),
+    );
+  };
+
+  const handleBackspace = () => {
+    dispatch(
+      setDeliverFormValues({
+        dropoff_location: deliverFormValues.config.dropoff_location.slice(0, -1),
+      }),
+    );
+  };
 
   return (
     <Box sx={styles.innerPaper}>
@@ -61,13 +55,9 @@ export default function Search() {
             id='whatAreYouLookingFor?'
           />
           <Autocomplete
-            multiple
-            disableCloseOnSelect
             open={isPopupOpen}
             inputValue={deliverFormValues.config.dropoff_location}
-            options={deliverLocations}
-            groupBy={(option) => `${intl.formatMessage({ id: 'floor' })} ${option.floor_name}`}
-            getOptionLabel={(option) => option.name}
+            options={goals}
             onOpen={() => {
               setIsPopupOpen(true);
             }}
@@ -75,38 +65,22 @@ export default function Search() {
               setIsPopupOpen(false);
             }}
             onInputChange={() => {
-              if (deliverFormValues.config.dropoff_location.length === 1) {
+              if (deliverFormValues.config.dropoff_location) {
                 setIsPopupOpen(true);
               }
             }}
             onChange={(event, value, reason) => {
-              // if (reason === 'selectOption') {
-              //   dispatch(setDeliverFormValues({ dropoff_location: value.name }));
-              //   dispatch(
-              //     setDeliverFormValues({
-              //       transit_message: `${intl.formatMessage({ id: 'deliveringTo' })} ${value.name}`,
-              //     }),
-              //   );
-              // }
+              if (reason === 'selectOption' && value) {
+                dispatch(setDeliverFormValues({ dropoff_location: value }));
+              } else if (reason === 'clear') {
+                dispatch(setDeliverFormValues({ dropoff_location: '' }));
+              }
             }}
-            renderOption={(props, option, { selected }) => (
-              <li {...props}>
-                <Checkbox
-                  icon={<CheckBoxOutlineBlank />}
-                  checkedIcon={<CheckBox />}
-                  style={{ marginRight: 8 }}
-                  checked={selected}
-                />
-                {option.name}
-              </li>
-            )}
             renderInput={(params) => (
               <TextField
-                autoFocus
                 required
                 ref={inputRef}
                 name='dropoff_location'
-                // onFocus={handleFocus}
                 label={intl.formatMessage({ id: 'dropoffLocation(s)' })}
                 {...params}
                 inputRef={(input) => {
@@ -114,17 +88,13 @@ export default function Search() {
                 }}
               />
             )}
-            renderGroup={(params) => (
-              <li key={params.key}>
-                <GroupHeader>{params.group}</GroupHeader>
-                <GroupItems>{params.children}</GroupItems>
-              </li>
-            )}
           />
         </Box>
       </Box>
-      {/* @ts-ignore */}
-      <Keyboard setValues={setRoomMessage} />
+      <Keyboard
+        setValues={handleInput}
+        handleBackspace={handleBackspace}
+      />
     </Box>
   );
 }

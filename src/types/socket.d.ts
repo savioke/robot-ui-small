@@ -17,6 +17,7 @@ import {
   TaskConfigGoTo,
   GoToLocationStatus,
   TaskConfigMapping,
+  IdleStatus,
 } from './r2c2';
 
 interface SocketServer extends HTTPServer {
@@ -61,6 +62,9 @@ export interface ServerToClientEvents {
   queue_tasks_success: () => void;
   deliver_status: ({ status, task }: { status: DeliverStatus; task: Task }) => void;
   go_to_location_status: ({ status, task }: { status: GoToLocationStatus; task: Task }) => void;
+
+  // Idle
+  idle_status: ({ status }: { status: IdleStatus }) => void;
 
   // Display State
   display_state: (state: DisplayState) => void;

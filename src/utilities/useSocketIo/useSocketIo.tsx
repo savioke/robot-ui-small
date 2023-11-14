@@ -20,10 +20,16 @@ import {
   setMaps,
   setDashboardOptions,
   setDeliveryOptions,
+  setIdleStatus,
 } from 'state/r2c2/r2c2.slice';
 import { io, type Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
-import { DisplayMessageOptions, DisplayScreenOptions, DeliverStatus } from 'appConstants';
+import {
+  DisplayMessageOptions,
+  DisplayScreenOptions,
+  DeliverStatus,
+  IdleStatus,
+} from 'appConstants';
 import { IntlShape } from 'react-intl';
 
 export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
@@ -156,6 +162,17 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             if (status === 'ARRIVED') {
               dispatch(setTransitMessage(''));
               dispatch(setDisplayMessage('What can I help with?'));
+            }
+          });
+
+          socket?.on('idle_status', ({ status }) => {
+            if (status === 'GO_TO_DOCK') {
+              dispatch(setTransitMessage('Headed to dock'));
+              dispatch(setIdleStatus(IdleStatus.GO_TO_DOCK));
+            } else if (status === 'DOCKED') {
+              dispatch(setTransitMessage(''));
+              dispatch(setConfirmationMessage(''));
+              dispatch(setIdleStatus(IdleStatus.DOCKED));
             }
           });
         }

@@ -83,3 +83,9 @@ export const GoToLocationStatus = {
   GO_TO: 1,
   ARRIVED: 2,
 };
+
+export const IdleStatus = {
+  NONE: 0,
+  GO_TO_DOCK: 1,
+  DOCKED: 2,
+};

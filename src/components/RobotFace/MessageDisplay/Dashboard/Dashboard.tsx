@@ -24,8 +24,6 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const dashboardOptions = useSelector(getDashboardOptions);
 
-  console.log(dashboardOptions);
-
   return (
     <Box sx={styles.rootContainer}>
       <Text

@@ -63,9 +63,12 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           socket?.on('login_pass', ({ user, config, goals, maps }) => {
             dispatch(setUser(user));
             dispatch(setPasscode(''));
-            dispatch(setFavorites(config.favorites));
             dispatch(setGoals(goals));
             dispatch(setMaps(maps));
+
+            if (config.favorites.length) {
+              dispatch(setFavorites(config.favorites));
+            }
 
             if (config.utilities.length) {
               dispatch(setUtilities(config.utilities));

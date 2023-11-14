@@ -33,8 +33,7 @@ export default function Mapping() {
         size='large'
         variant='contained'
         onClick={() => {
-          socket?.emit('take_package_result', { result: true });
-          // return dispatch(setTransitMessage('Thank you, have a nice day!'));
+          socket?.emit('mapping_done');
         }}
       >
         {intl.formatMessage({ id: 'stopMapping' })}

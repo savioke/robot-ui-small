@@ -92,6 +92,7 @@ export interface ClientToServerEvents {
   ) => void;
   load_package_result: ({ result }: { result: boolean }) => void;
   take_package_result: ({ result }: { result: boolean }) => void;
+  mapping_done: () => void;
 
   // Actions
   open_lid: () => void;

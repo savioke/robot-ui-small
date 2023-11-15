@@ -18,7 +18,7 @@ import { setConfirmationMessage } from 'state/ui/ui.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
-import { AvatarBackgroundColors, DeliverStatus, DisplayMessageOptions } from 'appConstants';
+import { AvatarBackgroundColors, DeliverStatus } from 'appConstants';
 import { TaskConfigDeliver, TaskFormValues } from 'types/r2c2';
 import { useSelector } from 'typeDux';
 import { setDeliverStatus } from 'state/r2c2/r2c2.slice';
@@ -75,7 +75,7 @@ export default function Favorites() {
 
   return (
     <Box sx={styles.rootContainer}>
-      <ArrowBackTopBar />
+      <ArrowBackTopBar favorites={tasks} />
       <Box sx={styles.dashboardContainer}>
         {favorites.map(({ dropoff_location, dropoff_message, pickup_message }, index) => (
           <Box

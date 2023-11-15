@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 /** Mui Components */
 import { Box, Button, Breadcrumbs } from '@mui/material';
+import { NavigateNext } from '@mui/icons-material';
 
 /** Components */
 import Text from 'sharedComponents/Text/Text';
@@ -20,8 +21,13 @@ import { getDisplayScreen } from 'state/ui/ui.selectors';
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
 import { resetMappingFormValues } from 'state/mapping/mapping.slice';
+import { TaskFormValues, TaskConfigDeliver } from 'types/r2c2';
 
-export default function ArrowBackTopBar() {
+export default function ArrowBackTopBar({
+  favorites,
+}: {
+  favorites?: TaskFormValues<TaskConfigDeliver>[];
+}) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -358,6 +364,13 @@ export default function ArrowBackTopBar() {
           component='h1'
           id='favorites'
         />
+        <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-end', marginRight: '59px' }}>
+          <Breadcrumbs separator={<NavigateNext />}>
+            {favorites?.map((favorite) => (
+              <Text variant='h6'>{favorite.config.dropoff_location}</Text>
+            ))}
+          </Breadcrumbs>
+        </Box>
       </Box>
     );
   } else if (displayScreen === DisplayScreenOptions.Actions) {

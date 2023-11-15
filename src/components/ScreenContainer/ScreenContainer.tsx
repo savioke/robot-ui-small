@@ -39,8 +39,8 @@ export default function ScreenContainer({ stateTheme, children }: ScreenContaine
       sx={styles.container(stateTheme)}
       onClick={() => {
         if (
-          deliverStatus > DeliverStatus.LOAD_PACKAGE &&
-          deliverStatus < DeliverStatus.TAKE_PACKAGE &&
+          (deliverStatus === DeliverStatus.GO_TO_PICKUP ||
+            deliverStatus === DeliverStatus.GO_TO_DROPOFF) &&
           displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
           socket?.emit('deliver_interrupt');

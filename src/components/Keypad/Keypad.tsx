@@ -226,7 +226,6 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
           >
             <Button
               fullWidth
-              disabled={isContinueDisabled}
               sx={styles.confirmButton}
               variant='contained'
               onClick={() => {

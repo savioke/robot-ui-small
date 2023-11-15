@@ -21,13 +21,13 @@ import {
   setAuthorized,
 } from 'state/ui/ui.slice';
 import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
-import { getDisplayState } from 'state/r2c2/r2c2.selectors';
+import { getDisplayState, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 import { resetGoToFormValues } from 'state/goTo/goTo.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
-import { DisplayScreenOptions } from 'appConstants';
+import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
 import { resetMappingFormValues } from 'state/mapping/mapping.slice';
 
 export default function TopBar() {
@@ -36,6 +36,7 @@ export default function TopBar() {
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
   const displayState = useSelector(getDisplayState);
+  const deliverStatus = useSelector(getDeliverStatus);
 
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home) {
@@ -55,6 +56,15 @@ export default function TopBar() {
       }
     },
     timeout: 10000,
+  });
+
+  useIdleTimer({
+    onIdle: () => {
+      if (displayScreen !== DisplayScreenOptions.Home && deliverStatus === DeliverStatus.NONE) {
+        dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+      }
+    },
+    timeout: 60000,
   });
 
   return (

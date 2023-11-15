@@ -12,7 +12,7 @@ import { Backspace, ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { styles } from '../Keyboard.styles';
 
 /** redux */
-import { setDisplayScreen, setTransitMessage } from 'state/ui/ui.slice';
+import { setConfirmationMessage, setDisplayScreen, setTransitMessage } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 import { setDeliverFormValues } from 'state/deliver/deliver.slice';
@@ -699,7 +699,7 @@ export default function LetterDisplay({
                   displayScreen === DisplayScreenOptions.CreateMap
                 ) {
                   socket?.emit('queue_tasks', mappingFormValues);
-                  dispatch(setDisplayScreen(DisplayScreenOptions.Mapping));
+                  return dispatch(setConfirmationMessage('Mapping in progress'));
                 }
 
                 if (

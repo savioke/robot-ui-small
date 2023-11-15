@@ -7,8 +7,8 @@ interface RobotUiState {
   passCode: string;
   displayMessage: string;
   transitMessage: string;
-  notificationMessage: '';
-  confirmationMessage: '';
+  notificationMessage: string;
+  confirmationMessage: string;
   isScreenTouched: boolean;
   theme: string;
   language: 'en' | 'es' | 'ja';

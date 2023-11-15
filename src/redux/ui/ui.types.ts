@@ -17,7 +17,6 @@ export type DisplayScreen =
   | 'Search'
   | 'Status'
   | 'Help'
-  | 'Mapping'
   | 'Mapping Choice'
   | 'Override Map'
   | 'Create Map'

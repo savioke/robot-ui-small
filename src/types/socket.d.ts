@@ -98,6 +98,10 @@ export interface ClientToServerEvents {
   take_package_result: ({ result }: { result: boolean }) => void;
   mapping_done: () => void;
 
+  deliver_interrupt: () => void;
+  //   "deliver_interrupt" -> pauses navigation, waits for interrupt result
+  // "deliver_interrupt_result" result=["take_package", "resume"]
+
   // Actions
   open_lid: () => void;
   close_lid: () => void;

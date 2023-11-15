@@ -69,8 +69,6 @@ export default function MessageDisplay() {
     return <Help />;
   } else if (displayScreen === DisplayScreenOptions.CancelTaskConfirmation) {
     return <CancelTaskConfirmation />;
-  } else if (displayScreen === DisplayScreenOptions.Mapping) {
-    return <Mapping />;
   } else if (displayScreen === DisplayScreenOptions.MappingChoice) {
     return <MappingChoice />;
   } else if (confirmationMessage) {

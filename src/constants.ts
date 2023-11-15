@@ -18,7 +18,6 @@ export const DisplayScreenOptions = {
   Search: 'Search' as const,
   Status: 'Status' as const,
   Help: 'Help' as const,
-  Mapping: 'Mapping' as const,
   MappingChoice: 'Mapping Choice' as const,
   OverrideMap: 'Override Map' as const,
   CreateMap: 'Create Map' as const,

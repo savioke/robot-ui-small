@@ -12,6 +12,7 @@ export const initialState: DeliverState = {
     config: {
       dropoff_location: '',
       dropoff_message: '',
+      pickup_message: '',
     },
   },
 };

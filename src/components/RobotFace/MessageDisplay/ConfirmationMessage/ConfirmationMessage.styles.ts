@@ -9,6 +9,7 @@ export const styles = {
   button: {
     height: '65px',
     width: '373px',
+    fontSize: '24px',
     backgroundColor: '#0AA15B',
     '&:hover': {
       backgroundColor: '#0AA15B',

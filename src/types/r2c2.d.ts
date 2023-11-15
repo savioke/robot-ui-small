@@ -59,6 +59,7 @@ export interface TaskFormValues<T> {
 export interface TaskConfigDeliver {
   dropoff_location: string;
   dropoff_message: string;
+  pickup_message;
 }
 
 export interface TaskConfigGoTo {
@@ -120,6 +121,7 @@ export interface AuthUser {
 export interface Favorite {
   dropoff_location: string;
   dropoff_message: string;
+  pickup_message: string;
 }
 
 export interface SiteConfig {

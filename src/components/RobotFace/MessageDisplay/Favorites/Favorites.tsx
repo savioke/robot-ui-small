@@ -73,26 +73,11 @@ export default function Favorites() {
       setTasks(newTasks);
     };
 
-  // const testing = [
-  //   {
-  //     dropoff_location: 'Front Desk',
-  //     dropoff_message: 'Your package has arrived',
-  //   },
-  //   {
-  //     dropoff_location: 'Near Dock',
-  //     dropoff_message: 'Your package has arrived',
-  //   },
-  //   {
-  //     dropoff_location: 'Mailcenter',
-  //     dropoff_message: 'Your package has arrived',
-  //   },
-  // ];
-
   return (
     <Box sx={styles.rootContainer}>
       <ArrowBackTopBar />
       <Box sx={styles.dashboardContainer}>
-        {favorites.map(({ dropoff_location, dropoff_message }, index) => (
+        {favorites.map(({ dropoff_location, dropoff_message, pickup_message }, index) => (
           <Box
             key={index}
             sx={styles.paperContainer}
@@ -103,6 +88,7 @@ export default function Favorites() {
                 config: {
                   dropoff_location,
                   dropoff_message,
+                  pickup_message,
                 },
               },
               index,
@@ -147,9 +133,7 @@ export default function Favorites() {
 
             socket?.emit('queue_tasks', updatedTasks);
             dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
-            return dispatch(
-              setConfirmationMessage(DisplayMessageOptions(intl)['Please load your package']),
-            );
+            return dispatch(setConfirmationMessage(tasks[0].config.pickup_message));
           }}
         >
           {intl.formatMessage({ id: 'go' })}

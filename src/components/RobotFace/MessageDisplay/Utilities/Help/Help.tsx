@@ -29,18 +29,18 @@ export default function Help() {
           <Box>
             <Text
               component='b'
-              variant='h5'
+              variant='h4'
               id='email'
             />
-            <Text variant='h5'>support@relayrobotics.com</Text>
+            <Text variant='h4'>support@relayrobotics.com</Text>
           </Box>
           <Box>
             <Text
               component='b'
-              variant='h5'
+              variant='h4'
               id='phone'
             />
-            <Text variant='h5'>1-408-809-5600, Dial 1</Text>
+            <Text variant='h4'>1-408-809-5600, Dial 1</Text>
           </Box>
         </Box>
       </Box>

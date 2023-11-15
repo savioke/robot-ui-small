@@ -143,5 +143,8 @@
   "location": "Location",
   "overrideMap": "Override map",
   "createMap": "Create map",
-  "mapName": "Map name"
+  "mapName": "Map name",
+  "oopsSomethingWentWrong": "Oops! Something went wrong",
+  "pleaseTryRefreshingThePage": "Please try refreshing the page.",
+  "ifTheProblemPersists": "If the problem persists, please contact us."
 }

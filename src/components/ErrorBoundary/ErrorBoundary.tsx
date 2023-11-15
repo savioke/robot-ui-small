@@ -2,7 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from 'react';
 import Image from 'next/image';
 
 /** Mui Components */
-import { Link, Box, Paper, Button } from '@mui/material';
+import { Box, Paper, Button } from '@mui/material';
 
 /** Components */
 import Text from 'sharedComponents/Text/Text';
@@ -24,7 +24,7 @@ interface State {
 
 export class ErrorBoundary extends Component<Props, State> {
   public state: State = {
-    hasError: false,
+    hasError: true,
   };
 
   public static getDerivedStateFromError(): State {
@@ -45,15 +45,23 @@ export class ErrorBoundary extends Component<Props, State> {
               elevation={5}
               sx={styles.paper}
             >
-              <Box sx={{ marginBottom: 2 }}>
+              <Box sx={styles.upperContentContainer}>
                 <Text
                   component='h1'
                   variant='h2'
-                >
-                  Oops! Something went wrong
-                </Text>
-                <Text variant='h5'>
-                  Please try refreshing the page{' '}
+                  id='oopsSomethingWentWrong'
+                />
+                <Box sx={styles.textContainer}>
+                  <Box>
+                    <Text
+                      variant='h4'
+                      id='pleaseTryRefreshingThePage'
+                    />
+                    <Text
+                      variant='h4'
+                      id='ifTheProblemPersists'
+                    />
+                  </Box>
                   <Button
                     variant='contained'
                     sx={styles.button}
@@ -61,31 +69,23 @@ export class ErrorBoundary extends Component<Props, State> {
                   >
                     Refresh
                   </Button>
-                </Text>
+                </Box>
               </Box>
-              <Text
-                variant='h5'
-                sx={{ marginBottom: 2 }}
-              >
-                If the problem persists, please contact us.
-              </Text>
               <Box>
-                <Box>
-                  <Text
-                    component='b'
-                    variant='h5'
-                    id='email'
-                  />
-                  <Text variant='h5'>support@relayrobotics.com</Text>
-                </Box>
-                <Box>
-                  <Text
-                    component='b'
-                    variant='h5'
-                    id='phone'
-                  />
-                  <Text variant='h5'>1-408-809-5600, Dial 1</Text>
-                </Box>
+                <Text
+                  component='b'
+                  variant='h4'
+                  id='email'
+                />
+                <Text variant='h4'>support@relayrobotics.com</Text>
+              </Box>
+              <Box>
+                <Text
+                  component='b'
+                  variant='h4'
+                  id='phone'
+                />
+                <Text variant='h4'>1-408-809-5600, Dial 1</Text>
               </Box>
             </Paper>
           </Box>

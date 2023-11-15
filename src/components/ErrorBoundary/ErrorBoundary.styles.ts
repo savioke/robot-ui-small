@@ -22,6 +22,8 @@ export const styles = {
     minHeight: '400px',
     height: '100%',
     display: 'flex',
+    justifyContent: 'space-between',
+    flex: 1,
     borderRadius: '20px',
     borderBottom: '5px solid white',
     flexDirection: 'column',
@@ -41,7 +43,17 @@ export const styles = {
     },
   },
   button: {
-    // height: '65px',
-    width: '373px',
+    height: '65px',
+    minWidth: '275px',
+    fontSize: '24px',
+  },
+  textContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  upperContentContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 2,
   },
 };

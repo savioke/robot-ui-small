@@ -3,10 +3,12 @@ import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Grid, Button } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { Backspace } from '@mui/icons-material';
 
 /** Components */
+import Button from 'sharedComponents/Button/Button';
+import KeypadButton from 'sharedComponents/KeypadButton/KeypadButton';
 
 /** styles */
 import { styles } from './Keypad.styles';
@@ -51,40 +53,37 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={1}
             >
               {intl.formatMessage({ id: '1' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={2}
             >
               {intl.formatMessage({ id: '2' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={3}
             >
               {intl.formatMessage({ id: '3' })}
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid
@@ -98,40 +97,37 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={4}
             >
               {intl.formatMessage({ id: '4' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={5}
             >
               {intl.formatMessage({ id: '5' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={6}
             >
               {intl.formatMessage({ id: '6' })}
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid
@@ -145,40 +141,37 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={7}
             >
               {intl.formatMessage({ id: '7' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={8}
             >
               {intl.formatMessage({ id: '8' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={9}
             >
               {intl.formatMessage({ id: '9' })}
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid
@@ -197,29 +190,27 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={0}
             >
               {intl.formatMessage({ id: '0' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={() => setValues((previousValues) => previousValues.slice(0, -1))}
             >
               <Backspace
                 fontSize='large'
                 sx={styles.backSpaceIcon}
               />
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid

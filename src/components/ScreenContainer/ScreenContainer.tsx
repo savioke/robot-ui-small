@@ -11,7 +11,7 @@ import { Box } from '@mui/material';
 import { styles } from './ScreenContainer.styles';
 
 /** redux */
-import { setDisplayScreen, setIsScreenTouched } from 'state/ui/ui.slice';
+import { setDisplayScreen, setIsScreenTouched, setTransitMessage } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 
@@ -44,6 +44,7 @@ export default function ScreenContainer({ stateTheme, children }: ScreenContaine
           displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
           socket?.emit('deliver_interrupt');
+          dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
         }
 

@@ -18,6 +18,16 @@ export default function BatteryIcon() {
   const intl = useIntl();
   const battery = useSelector(getBatteryState);
 
+  // if (battery.chargingDock && battery <= 25) {
+  //   return ()
+  // } else if (battery.chargingDock && battery <= 50) {
+  //   return ()
+  // } else if (battery.chargingDock && battery <= 75) {
+  //   return ()
+  // } else if (battery.chargingDock && battery <= 100) {
+  //   return ()
+  // }
+
   if (battery.percent <= 25) {
     return (
       <Image

@@ -117,10 +117,10 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
 
           socket?.on('login_fail', ({ method }) => {
             if (method === 'badge') {
-              console.info('Unauthorized pin');
+              console.info('Unauthorized badge');
               dispatch(setDisplayMessage('Unauthorized badge'));
             }
-            console.info('Unauthorized badge');
+            console.info('Unauthorized pin');
             return dispatch(setAuthorized(false));
           });
 

@@ -66,7 +66,7 @@ export default function CancelTaskMessage() {
         <Text
           variant='h3'
           component='h1'
-          id='areYouSureYouWantToCancelTask"'
+          id='areYouSureYouWantToCancelTask'
         />
       </Box>
       <Box sx={styles.buttonContainer}>
@@ -75,7 +75,7 @@ export default function CancelTaskMessage() {
           color='error'
           onClick={() => {
             socket?.emit('deliver_interrupt_result', { result: 'cancel_task' });
-            return setDisplayScreen(DisplayScreenOptions.Home);
+            return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           }}
         >
           {intl.formatMessage({ id: 'cancelTask' })}

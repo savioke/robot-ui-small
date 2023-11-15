@@ -12,6 +12,7 @@ import { styles } from './ScreenContainer.styles';
 
 /** redux */
 import { setDisplayScreen, setIsScreenTouched } from 'state/ui/ui.slice';
+import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
@@ -27,6 +28,7 @@ export default function ScreenContainer({ stateTheme, children }: ScreenContaine
   const intl = useIntl();
   const dispatch = useDispatch();
   const deliverStatus = useSelector(getDeliverStatus);
+  const displayScreen = useSelector(getDisplayScreen);
   /** IMPORTANT - DO NOT REMOVE */
   /** This socket hook needs to pass in both parameters for app to function on sockets */
   const socket = useSocketIo(dispatch, intl);
@@ -36,10 +38,10 @@ export default function ScreenContainer({ stateTheme, children }: ScreenContaine
     <Box
       sx={styles.container(stateTheme)}
       onClick={() => {
-        // TODO: Need to solidify this logic
         if (
-          deliverStatus === DeliverStatus.GO_TO_PICKUP ||
-          deliverStatus === DeliverStatus.GO_TO_DROPOFF
+          deliverStatus > DeliverStatus.LOAD_PACKAGE &&
+          deliverStatus < DeliverStatus.TAKE_PACKAGE &&
+          displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
           socket?.emit('deliver_interrupt');
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));

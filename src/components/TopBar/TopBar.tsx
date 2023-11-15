@@ -58,14 +58,15 @@ export default function TopBar() {
     timeout: 10000,
   });
 
-  // useIdleTimer({
-  //   onIdle: () => {
-  //     if (displayScreen !== DisplayScreenOptions.Home && deliverStatus === DeliverStatus.NONE) {
-  //       dispatch(setDisplayScreen(DisplayScreenOptions.Home));
-  //     }
-  //   },
-  //   timeout: 60000,
-  // });
+  // TODO: Fix timer to fire after the first time (currently starts on mount)
+  useIdleTimer({
+    onIdle: () => {
+      if (displayScreen !== DisplayScreenOptions.Home && deliverStatus === DeliverStatus.NONE) {
+        dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+      }
+    },
+    timeout: 60000,
+  });
 
   return (
     <Fade in={isScreenTouched}>

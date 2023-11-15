@@ -25,6 +25,7 @@ export const initialState: R2C2State = {
     dropoff_message: '',
   },
   displayState: {
+    refresh: false,
     hostname: '',
     nickname: '',
     connected: false,

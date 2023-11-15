@@ -3,10 +3,12 @@ import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Grid, Button } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { Backspace, ArrowUpward, ArrowDownward } from '@mui/icons-material';
 
 /** Components */
+import Button from 'sharedComponents/Button/Button';
+import KeyboardButton from 'sharedComponents/KeyboardButton/KeyboardButton';
 
 /** styles */
 import { styles } from '../Keyboard.styles';
@@ -95,7 +97,7 @@ export default function LetterDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -105,13 +107,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'a', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'a' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -121,13 +123,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'b', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'b' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -137,13 +139,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'c', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'c' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -153,13 +155,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'd', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'd' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -169,13 +171,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'e', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'e' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -185,7 +187,7 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'f', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'f' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -198,7 +200,7 @@ export default function LetterDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -208,13 +210,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'g', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'g' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -224,13 +226,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'h', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'h' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -240,13 +242,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'i', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'i' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -256,13 +258,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'j', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'j' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -272,13 +274,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'k', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'k' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -288,7 +290,7 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'l', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'l' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -301,7 +303,7 @@ export default function LetterDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -311,13 +313,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'm', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'm' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -327,13 +329,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'n', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'n' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -343,13 +345,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'o', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'o' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -359,13 +361,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'p', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'p' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -375,13 +377,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'q', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'q' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -391,7 +393,7 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'r', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'r' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -404,7 +406,7 @@ export default function LetterDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -414,13 +416,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 's', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 's' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -430,13 +432,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 't', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 't' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -446,13 +448,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'u', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'u' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -462,13 +464,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'v', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'v' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -478,13 +480,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'w', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'w' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -494,7 +496,7 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'x', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'x' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -507,7 +509,7 @@ export default function LetterDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -517,13 +519,13 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'y', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'y' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.numberButtons,
@@ -533,59 +535,59 @@ export default function LetterDisplay({
               value={handleCapitalLetters({ letter: 'z', isCapitalLetters })}
             >
               {intl.formatMessage({ id: 'z' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='.'
             >
               {intl.formatMessage({ id: '.' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value=','
             >
               {intl.formatMessage({ id: ',' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='!'
             >
               {intl.formatMessage({ id: '!' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='?'
             >
               {intl.formatMessage({ id: '?' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -598,7 +600,7 @@ export default function LetterDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.capitalizeButton,
@@ -615,13 +617,13 @@ export default function LetterDisplay({
               ) : (
                 <ArrowUpward fontSize='large' />
               )}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={8}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={[
                 styles.spaceButton,
@@ -635,13 +637,13 @@ export default function LetterDisplay({
               value=' '
             >
               {intl.formatMessage({ id: 'space' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               sx={[
                 styles.numberButtons,
                 {
@@ -656,7 +658,7 @@ export default function LetterDisplay({
                 fontSize='large'
                 sx={styles.backspaceIcon}
               />
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid

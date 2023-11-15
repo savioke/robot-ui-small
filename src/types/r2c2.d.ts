@@ -77,6 +77,7 @@ export interface TaskFormValuesWithoutConfig {
 }
 
 export interface DisplayState {
+  refresh: boolean;
   hostname: string;
   nickname: string;
   connected: boolean;

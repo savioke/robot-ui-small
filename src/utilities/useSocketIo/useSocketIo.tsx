@@ -44,9 +44,9 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
         socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        // setInterval(() => {
-        //   socket.emit('pong');
-        // }, 5000);
+        setInterval(() => {
+          socket.emit('pong');
+        }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
@@ -130,6 +130,9 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
           });
 
           socket?.on('display_state', (state) => {
+            if (state.refresh) {
+              window.location.reload();
+            }
             dispatch(setDisplayMessage(`Hello, I'm ${state.nickname}`));
             return dispatch(setDisplayState(state));
           });

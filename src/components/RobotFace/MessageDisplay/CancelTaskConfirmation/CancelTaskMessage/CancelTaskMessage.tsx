@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'typeDux';
+import { useSelector, useDispatch } from 'typeDux';
 import { useIntl } from 'react-intl';
 
 /** Mui Components */
@@ -22,6 +22,7 @@ import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function CancelTaskMessage() {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const socket = useSocketIo();
   const deliverStatus = useSelector(getDeliverStatus);
 
@@ -40,6 +41,7 @@ export default function CancelTaskMessage() {
             variant='contained'
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'take_package' });
+              return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             }}
           >
             {intl.formatMessage({ id: 'retrievePackage' })}
@@ -48,6 +50,7 @@ export default function CancelTaskMessage() {
             variant='contained'
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'resume' });
+              return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             }}
           >
             {intl.formatMessage({ id: 'continueDelivery' })}
@@ -81,6 +84,7 @@ export default function CancelTaskMessage() {
           variant='contained'
           onClick={() => {
             socket?.emit('deliver_interrupt_result', { result: 'resume' });
+            return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           }}
         >
           {intl.formatMessage({ id: 'continueDelivery' })}

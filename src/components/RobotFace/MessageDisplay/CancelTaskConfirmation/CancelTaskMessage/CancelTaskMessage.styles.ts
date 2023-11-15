@@ -5,16 +5,6 @@ export const styles = {
     flexDirection: 'column',
     flex: 1,
   },
-  button: {
-    height: '65px',
-    fontSize: '24px',
-  },
-  greenBackground: {
-    backgroundColor: '#0AA15B',
-    '&:hover': {
-      backgroundColor: '#0AA15B',
-    },
-  },
   textContainer: {
     marginBottom: 2,
   },

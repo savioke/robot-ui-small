@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'typeDux';
+import { useIntl } from 'react-intl';
 
 /** Mui Components */
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 
 /** Components */
 import Text from 'sharedComponents/Text/Text';
+import Button from 'sharedComponents/Button/Button';
 
 /** styles */
 import { styles } from './CancelTaskMessage.styles';
@@ -19,8 +21,9 @@ import { setDisplayScreen } from 'state/ui/ui.slice';
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function CancelTaskMessage() {
-  const deliverStatus = useSelector(getDeliverStatus);
+  const intl = useIntl();
   const socket = useSocketIo();
+  const deliverStatus = useSelector(getDeliverStatus);
 
   if (deliverStatus >= DeliverStatus.GO_TO_DROPOFF && deliverStatus <= DeliverStatus.TAKE_PACKAGE) {
     return (
@@ -29,28 +32,25 @@ export default function CancelTaskMessage() {
           <Text
             variant='h3'
             component='h1'
-          >
-            There is currently a package in the robot.
-          </Text>
+            id='thereIsAPackageInRobot'
+          />
         </Box>
         <Box sx={styles.buttonContainer}>
           <Button
             variant='contained'
-            sx={styles.button}
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'take_package' });
             }}
           >
-            Retrieve package
+            {intl.formatMessage({ id: 'retrievePackage' })}
           </Button>
           <Button
             variant='contained'
-            sx={[styles.button, styles.greenBackground]}
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'resume' });
             }}
           >
-            Continue Delivery
+            {intl.formatMessage({ id: 'continueDelivery' })}
           </Button>
         </Box>
       </Box>
@@ -63,28 +63,27 @@ export default function CancelTaskMessage() {
         <Text
           variant='h3'
           component='h1'
-        >
-          Are you sure you want to cancel the task?
-        </Text>
+          id='areYouSureYouWantToCancelTask"'
+        />
       </Box>
       <Box sx={styles.buttonContainer}>
         <Button
           variant='contained'
           color='error'
-          sx={styles.button}
-          // TODO: Socket emit to cancel the current task
-          onClick={() => setDisplayScreen(DisplayScreenOptions.Home)}
+          onClick={() => {
+            socket?.emit('deliver_interrupt_result', { result: 'cancel_task' });
+            return setDisplayScreen(DisplayScreenOptions.Home);
+          }}
         >
-          Cancel Task
+          {intl.formatMessage({ id: 'cancelTask' })}
         </Button>
         <Button
           variant='contained'
-          sx={[styles.button, styles.greenBackground]}
           onClick={() => {
             socket?.emit('deliver_interrupt_result', { result: 'resume' });
           }}
         >
-          Continue delivery
+          {intl.formatMessage({ id: 'continueDelivery' })}
         </Button>
       </Box>
     </Box>

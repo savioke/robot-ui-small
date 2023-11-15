@@ -14,7 +14,6 @@ import Favorites from './Favorites/Favorites';
 import Utilities from './Utilities/Utilities';
 import CancelTaskConfirmation from './CancelTaskConfirmation/CancelTaskConfirmation';
 import Help from './Utilities/Help/Help';
-import Mapping from './Mapping/Mapping';
 import MappingChoice from './MappingChoice/MappingChoice';
 import Text from 'sharedComponents/Text/Text';
 

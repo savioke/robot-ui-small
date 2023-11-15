@@ -18,6 +18,7 @@ import {
   GoToLocationStatus,
   TaskConfigMapping,
   IdleStatus,
+  DeliverInteruptResult,
 } from './r2c2';
 
 interface SocketServer extends HTTPServer {
@@ -99,8 +100,7 @@ export interface ClientToServerEvents {
   mapping_done: () => void;
 
   deliver_interrupt: () => void;
-  //   "deliver_interrupt" -> pauses navigation, waits for interrupt result
-  // "deliver_interrupt_result" result=["take_package", "resume"]
+  deliver_interrupt_result: ({ result }: { result: DeliverInteruptResult }) => void;
 
   // Actions
   open_lid: () => void;

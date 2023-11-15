@@ -30,6 +30,8 @@ export type IdleStatus = 'NONE' | 'GO_TO_DOCK' | 'DOCKED';
 
 export type UtilityActions = 'open lid' | 'close lid' | 'go to' | 'dock' | 'map' | 'all';
 
+export type DeliverInteruptResult = 'cancel_task' | 'take_package' | 'resume';
+
 export interface TaskConfig {
   pickup_location: string;
   pickup_message: string;

@@ -29,7 +29,7 @@ export default function ScreenContainer({ stateTheme, children }: ScreenContaine
   const deliverStatus = useSelector(getDeliverStatus);
   /** IMPORTANT - DO NOT REMOVE */
   /** This socket hook needs to pass in both parameters for app to function on sockets */
-  useSocketIo(dispatch, intl);
+  const socket = useSocketIo(dispatch, intl);
 
   // TODO: Need to clean this logic up for handling attempting to cancel tasks while deliver in progress.
   return (
@@ -41,6 +41,7 @@ export default function ScreenContainer({ stateTheme, children }: ScreenContaine
           deliverStatus === DeliverStatus.GO_TO_PICKUP ||
           deliverStatus === DeliverStatus.GO_TO_DROPOFF
         ) {
+          socket?.emit('deliver_interrupt');
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
         }
 

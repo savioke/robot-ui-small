@@ -1,6 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'typeDux';
+import useSound from 'use-sound';
 
 /** Mui Components */
 import { Box } from '@mui/material';
@@ -12,7 +13,7 @@ import { styles } from './ScreenContainer.styles';
 
 /** redux */
 import { setDisplayScreen, setIsScreenTouched, setTransitMessage } from 'state/ui/ui.slice';
-import { getDisplayScreen } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getPlayShimmySound } from 'state/ui/ui.selectors';
 import { getDeliverStatus, getIdleStatus } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
@@ -38,6 +39,14 @@ export default function ScreenContainer({
   /** IMPORTANT - DO NOT REMOVE */
   /** This socket hook needs to pass in both parameters for app to function on sockets */
   const socket = useSocketIo(dispatch, intl, setPrimaryColor);
+  const playShimmySound = useSelector(getPlayShimmySound);
+  const [play] = useSound('/sounds/nav-start.mp3');
+
+  React.useEffect(() => {
+    if (playShimmySound) {
+      play();
+    }
+  }, [play, playShimmySound]);
 
   // TODO: Need to clean this logic up for handling attempting to cancel tasks while deliver in progress.
   return (

@@ -87,7 +87,6 @@ export default function useSocketIo(
               dispatch(setPasscode(''));
               dispatch(setGoals(goals));
               dispatch(setMaps(maps));
-              dispatch(setPlayShimmySound(false));
 
               if (config.dashboard.length) {
                 dispatch(setDashboardOptions(config.dashboard));
@@ -135,8 +134,8 @@ export default function useSocketIo(
             return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           });
 
-          socket?.on('play_sound', (sound) => {
-            if (sound === 'shimmy') {
+          socket?.on('play_sound', ({ name }) => {
+            if (name === 'shimmy') {
               dispatch(setPlayShimmySound(true));
             }
             console.info('Playing shimmy sound');

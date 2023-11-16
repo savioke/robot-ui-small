@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'typeDux';
 import { useIdleTimer } from 'react-idle-timer';
-import useSound from 'use-sound';
 
 /** Mui Components */
 import { Box, Divider, Fab, Fade } from '@mui/material';
@@ -21,7 +20,7 @@ import {
   setPasscode,
   setAuthorized,
 } from 'state/ui/ui.slice';
-import { getDisplayScreen, getIsScreenTouched, getPlayShimmySound } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 import { getDisplayState, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 import { resetGoToFormValues } from 'state/goTo/goTo.slice';
@@ -38,14 +37,6 @@ export default function TopBar() {
   const isScreenTouched = useSelector(getIsScreenTouched);
   const displayState = useSelector(getDisplayState);
   const deliverStatus = useSelector(getDeliverStatus);
-  const playShimmySound = useSelector(getPlayShimmySound);
-  const [play] = useSound('/sounds/shimmy.wav');
-
-  React.useEffect(() => {
-    if (playShimmySound) {
-      play();
-    }
-  }, [play, playShimmySound]);
 
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home) {

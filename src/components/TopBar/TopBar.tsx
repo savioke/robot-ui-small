@@ -74,7 +74,8 @@ export default function TopBar() {
         dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       }
     },
-    timeout: 60000,
+    // timeout: 60000,
+    timeout: 30000,
   });
 
   return (

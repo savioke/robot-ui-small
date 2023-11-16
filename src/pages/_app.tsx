@@ -47,10 +47,12 @@ export default function App({ Component, ...rest }: AppProps) {
     const theme = localStorage.getItem('theme');
 
     if (theme) {
-      store.dispatch(setTheme(theme));
-    } else {
-      store.dispatch(setTheme(`url(/images/robot-ui-background.jpg)`));
+      store.dispatch(setTheme(`linear-gradient(#ffffff, #00558c, #03173e)`));
     }
+
+    // else {
+    //   store.dispatch(setTheme(`url(/images/robot-ui-background.jpg)`));
+    // }
   }, [store]);
 
   const messages = React.useMemo(() => {

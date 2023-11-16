@@ -16,10 +16,6 @@ export const styles = {
   confirmButton: {
     height: '65px',
     fontSize: '24px',
-    backgroundColor: '#0AA15B',
-    '&:hover': {
-      backgroundColor: '#0AA15B',
-    },
   },
   confirmButtonGridItem: {
     display: 'flex',

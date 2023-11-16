@@ -1,51 +1,51 @@
 import { createTheme } from '@mui/material/styles';
 import createCache from '@emotion/cache';
 
-export const theme = createTheme({
-  palette: {
-    primary: {
-      // main: '#1272b2',
-      main: '#E05929',
-    },
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          height: '100%',
-        },
-        html: {
-          height: '100%',
-        },
-        '#__next': {
-          height: '100%',
-        },
-        b: {
-          fontWeight: 'bold !important',
-        },
-        strong: {
-          fontWeight: 'bold !important',
-        },
+export const theme = (primaryColor: string) =>
+  createTheme({
+    palette: {
+      primary: {
+        main: primaryColor || '#1272b2',
       },
     },
-    MuiTableHead: {
-      styleOverrides: {
-        root: {
-          '& .MuiTableCell-root': {
-            fontWeight: '500 !important',
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            height: '100%',
+          },
+          html: {
+            height: '100%',
+          },
+          '#__next': {
+            height: '100%',
+          },
+          b: {
+            fontWeight: 'bold !important',
+          },
+          strong: {
+            fontWeight: 'bold !important',
+          },
+        },
+      },
+      MuiTableHead: {
+        styleOverrides: {
+          root: {
+            '& .MuiTableCell-root': {
+              fontWeight: '500 !important',
+            },
+          },
+        },
+      },
+      MuiTypography: {
+        styleOverrides: {
+          root: {
+            color: '#707070',
           },
         },
       },
     },
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          color: '#707070',
-        },
-      },
-    },
-  },
-});
+  });
 
 export const createEmotionCache = () => {
   const isBrowser = typeof document !== 'undefined';

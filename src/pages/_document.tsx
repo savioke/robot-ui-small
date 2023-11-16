@@ -22,7 +22,7 @@ export default function RelayRobotDocument({ emotionStyleTags }: RelayDocumentPr
       <Head>
         <meta
           name='theme-color'
-          content={theme.palette.primary.main}
+          content={theme('#1272b2').palette.primary.main}
         />
         <link
           rel='stylesheet'

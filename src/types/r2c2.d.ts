@@ -82,6 +82,9 @@ export interface DisplayState {
   hostname: string;
   nickname: string;
   connected: boolean;
+  config: {
+    primary_color: string;
+  };
   battery: {
     voltage: number;
     percent: number;

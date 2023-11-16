@@ -31,6 +31,7 @@ export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
   const stateTheme = store.getState().ui.theme;
   useSocketIo();
+  const [primaryColor, setPrimaryColor] = React.useState('');
 
   React.useEffect(() => {
     const languagePreference = localStorage.getItem('languagePreference');
@@ -75,11 +76,14 @@ export default function App({ Component, ...rest }: AppProps) {
       defaultLocale={router.defaultLocale}
     >
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme(primaryColor)}>
           <CssBaseline />
           <CommonHead />
           <ErrorBoundary>
-            <ScreenContainer stateTheme={stateTheme}>
+            <ScreenContainer
+              stateTheme={stateTheme}
+              setPrimaryColor={setPrimaryColor}
+            >
               <TopBar />
               <Box
                 component='main'

@@ -33,7 +33,11 @@ import {
 } from 'appConstants';
 import { IntlShape } from 'react-intl';
 
-export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
+export default function useSocketIo(
+  dispatch?: any,
+  intl?: IntlShape,
+  setPrimaryColor?: React.Dispatch<React.SetStateAction<string>>,
+) {
   const [returnSocket, setReturnSocket] =
     React.useState<Socket<ServerToClientEvents, ClientToServerEvents>>();
   let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
@@ -133,6 +137,11 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
             if (state.refresh) {
               window.location.reload();
             }
+
+            if (state.config.primary_color && setPrimaryColor) {
+              setPrimaryColor(state.config.primary_color);
+            }
+
             dispatch(setDisplayMessage(`Hello, I'm ${state.nickname}`));
             return dispatch(setDisplayState(state));
           });

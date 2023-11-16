@@ -13,6 +13,7 @@ interface RobotUiState {
   theme: string;
   language: 'en' | 'es' | 'ja';
   authorized: boolean | null;
+  playShimmySound: boolean;
 }
 
 export const initialState: RobotUiState = {
@@ -26,6 +27,7 @@ export const initialState: RobotUiState = {
   language: 'en',
   passCode: '',
   authorized: false,
+  playShimmySound: false,
 };
 
 const uiSlice = createSlice({
@@ -62,6 +64,9 @@ const uiSlice = createSlice({
     setAuthorized: (state, { payload }) => {
       state.authorized = payload;
     },
+    setPlayShimmySound: (state, { payload }) => {
+      state.playShimmySound = payload;
+    },
   },
 });
 
@@ -76,6 +81,7 @@ export const {
   setTransitMessage,
   setNotificationMessage,
   setConfirmationMessage,
+  setPlayShimmySound,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

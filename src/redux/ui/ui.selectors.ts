@@ -39,3 +39,7 @@ export const getNotificationMessage = (state: RootState) => {
 export const getConfirmationMessage = (state: RootState) => {
   return state.ui.confirmationMessage;
 };
+
+export const getPlayShimmySound = (state: RootState) => {
+  return state.ui.playShimmySound;
+};

@@ -2,6 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'typeDux';
+import useSound from 'use-sound';
 
 /** Mui Components */
 import { Box, Button } from '@mui/material';
@@ -26,6 +27,8 @@ export default function Actions() {
   const dispatch = useDispatch();
   const socket = useSocketIo(dispatch, intl);
   const utilities = useSelector(getUtilities);
+  const [playNavStart] = useSound('/sounds/nav-start.mp3');
+  const [playShimmy] = useSound('/sounds/shimmy.wav');
 
   return (
     <Box sx={styles.rootContainer}>
@@ -44,6 +47,7 @@ export default function Actions() {
                 <Box sx={styles.paperContainer}>
                   <Button
                     onClick={() => {
+                      playShimmy();
                       socket?.emit('open_lid');
                     }}
                   >
@@ -64,6 +68,7 @@ export default function Actions() {
                 <Box sx={styles.paperContainer}>
                   <Button
                     onClick={() => {
+                      playShimmy();
                       socket?.emit('close_lid');
                     }}
                   >
@@ -104,6 +109,7 @@ export default function Actions() {
                 <Box sx={styles.paperContainer}>
                   <Button
                     onClick={() => {
+                      playNavStart();
                       socket?.emit('queue_tasks', {
                         type: 'SEND_TO_DOCK',
                         version: '2.0',
@@ -127,6 +133,7 @@ export default function Actions() {
                 <Box sx={styles.paperContainer}>
                   <Button
                     onClick={() => {
+                      playNavStart();
                       dispatch(setDisplayScreen(DisplayScreenOptions.MappingChoice));
                     }}
                   >
@@ -151,6 +158,7 @@ export default function Actions() {
               <Box sx={styles.paperContainer}>
                 <Button
                   onClick={() => {
+                    playShimmy();
                     socket?.emit('open_lid');
                   }}
                 >
@@ -174,6 +182,7 @@ export default function Actions() {
               <Box sx={styles.paperContainer}>
                 <Button
                   onClick={() => {
+                    playShimmy();
                     socket?.emit('close_lid');
                   }}
                 >
@@ -220,6 +229,7 @@ export default function Actions() {
               <Box sx={styles.paperContainer}>
                 <Button
                   onClick={() => {
+                    playNavStart();
                     socket?.emit('queue_tasks', {
                       type: 'SEND_TO_DOCK',
                       version: '2.0',
@@ -246,6 +256,7 @@ export default function Actions() {
               <Box sx={styles.paperContainer}>
                 <Button
                   onClick={() => {
+                    playNavStart();
                     dispatch(setDisplayScreen(DisplayScreenOptions.MappingChoice));
                   }}
                 >

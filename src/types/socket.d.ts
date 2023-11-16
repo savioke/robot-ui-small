@@ -63,6 +63,7 @@ export interface ServerToClientEvents {
   queue_tasks_success: () => void;
   deliver_status: ({ status, task }: { status: DeliverStatus; task: Task }) => void;
   go_to_location_status: ({ status, task }: { status: GoToLocationStatus; task: Task }) => void;
+  play_sound: (sound: 'shimmy' | 'nav_start') => void;
 
   // Idle
   idle_status: ({ status }: { status: IdleStatus }) => void;

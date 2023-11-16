@@ -8,6 +8,7 @@ import {
   setConfirmationMessage,
   setNotificationMessage,
   setPasscode,
+  setPlayShimmySound,
 } from 'state/ui/ui.slice';
 import {
   setTaskConfig,
@@ -48,9 +49,9 @@ export default function useSocketIo(
         socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        setInterval(() => {
-          socket.emit('pong');
-        }, 5000);
+        // setInterval(() => {
+        //   socket.emit('pong');
+        // }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
@@ -133,6 +134,13 @@ export default function useSocketIo(
             return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           });
 
+          socket?.on('play_sound', (sound) => {
+            if (sound === 'shimmy') {
+              dispatch(setPlayShimmySound(true));
+            }
+            console.info('Playing shimmy sound');
+          });
+
           socket?.on('display_state', (state) => {
             if (state.refresh) {
               window.location.reload();
@@ -150,7 +158,7 @@ export default function useSocketIo(
             // Reset state on every deliver_status tick
             dispatch(setTransitMessage(''));
             dispatch(setNotificationMessage(''));
-            dispatch(setConfirmationMessage(''));
+            // dispatch(setConfirmationMessage(''));
             dispatch(setTaskConfig(task.config));
 
             if (status === 'GO_TO_PICKUP') {
@@ -162,7 +170,9 @@ export default function useSocketIo(
               return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
             } else if (status === 'LOAD_PACKAGE') {
               dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
-              return dispatch(setConfirmationMessage(task.config.pickup_message));
+              return dispatch(
+                setConfirmationMessage(task.config.pickup_message || 'Please grab your package'),
+              );
             } else if (status === 'GO_TO_DROPOFF') {
               dispatch(setDeliverStatus(DeliverStatus['GO_TO_DROPOFF']));
               return dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));

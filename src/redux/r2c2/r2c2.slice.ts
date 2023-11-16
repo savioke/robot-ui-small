@@ -29,6 +29,9 @@ export const initialState: R2C2State = {
     hostname: '',
     nickname: '',
     connected: false,
+    config: {
+      primary_color: '',
+    },
     battery: {
       voltage: 0,
       percent: 0,

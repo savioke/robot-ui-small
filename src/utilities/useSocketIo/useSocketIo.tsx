@@ -87,6 +87,7 @@ export default function useSocketIo(
               dispatch(setPasscode(''));
               dispatch(setGoals(goals));
               dispatch(setMaps(maps));
+              dispatch(setPlayShimmySound(false));
 
               if (config.dashboard.length) {
                 dispatch(setDashboardOptions(config.dashboard));

@@ -22,7 +22,7 @@ import { DisplayScreenOptions } from 'appConstants';
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 interface KeypadProps {
-  isContinueDisabled: boolean;
+  isContinueDisabled?: boolean;
   setValues: React.Dispatch<React.SetStateAction<string>>;
   // eslint-disable-next-line no-unused-vars
   handleSetValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -226,6 +226,7 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
           >
             <Button
               fullWidth
+              disabled={isContinueDisabled}
               sx={styles.confirmButton}
               variant='contained'
               onClick={() => {

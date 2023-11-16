@@ -78,7 +78,6 @@ export default function PassCode() {
         </Box>
       </Box>
       <Keypad
-        isContinueDisabled={!passCode.length}
         handleSetValues={handleSetPassCode}
         setValues={handleBackspace}
       />

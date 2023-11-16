@@ -191,7 +191,7 @@ export default function useSocketIo(
             );
           });
 
-          socket?.on('go_to_location_status', ({ status, task }) => {
+          socket?.on('go_to_location_status', ({ status }) => {
             if (status === 'ARRIVED') {
               dispatch(setTransitMessage(''));
               dispatch(setDisplayMessage('What can I help with?'));

@@ -49,18 +49,13 @@ export default function useSocketIo(
         socket = io('http://localhost:3000');
         setReturnSocket(socket);
 
-        // setInterval(() => {
-        //   socket.emit('pong');
-        // }, 5000);
+        setInterval(() => {
+          socket.emit('heartbeat');
+        }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
-          socket.emit('pong');
-        });
-
-        socket.on('ping', () => {
-          console.info('Ping: Connected to server');
-          socket.emit('pong');
+          socket.emit('heartbeat');
         });
 
         // TODO: Disable after testing

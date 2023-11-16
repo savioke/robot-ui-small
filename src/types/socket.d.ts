@@ -35,7 +35,6 @@ export interface NextApiResponseWithSocket extends NextApiResponse {
 
 // Event Listeners
 export interface ServerToClientEvents {
-  ping: () => void;
   connect: () => void;
   disconnect: () => void;
   userServerConnection: () => void;
@@ -74,7 +73,7 @@ export interface ServerToClientEvents {
 
 // Event Emitters
 export interface ClientToServerEvents {
-  pong: () => void;
+  heartbeat: () => void;
   connect: () => void;
   on_disconnect: () => void;
   userServerConnection: () => void;

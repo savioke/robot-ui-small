@@ -184,11 +184,13 @@ export default function useSocketIo(dispatch?: any, intl?: IntlShape) {
               dispatch(setTransitMessage('Headed to dock'));
               dispatch(setIdleStatus(IdleStatus.GO_TO_DOCK));
             } else if (status === 'DOCKED') {
+              dispatch(setDeliverStatus(DeliverStatus.NONE));
+              dispatch(setIdleStatus(IdleStatus.DOCKED));
+            } else if (status === 'IDLE') {
               dispatch(setTransitMessage(''));
               dispatch(setConfirmationMessage(''));
               dispatch(resetTaskConfig());
-              dispatch(setDeliverStatus(DeliverStatus.NONE));
-              dispatch(setIdleStatus(IdleStatus.DOCKED));
+              dispatch(setIdleStatus(IdleStatus.IDLE));
             }
           });
         }

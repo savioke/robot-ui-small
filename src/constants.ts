@@ -87,4 +87,5 @@ export const IdleStatus = {
   NONE: 0,
   GO_TO_DOCK: 1,
   DOCKED: 2,
+  IDLE: 3,
 };

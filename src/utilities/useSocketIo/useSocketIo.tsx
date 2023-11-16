@@ -199,6 +199,7 @@ export default function useSocketIo(
               dispatch(setTransitMessage(''));
               dispatch(setConfirmationMessage(''));
               dispatch(resetTaskConfig());
+              dispatch(setDeliverStatus(DeliverStatus.NONE));
               dispatch(setIdleStatus(IdleStatus.IDLE));
             }
           });

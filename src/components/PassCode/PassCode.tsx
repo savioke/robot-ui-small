@@ -47,10 +47,10 @@ export default function PassCode() {
         <ArrowBackTopBar />
         <Box sx={styles.contentContainer}>
           <Text
-            variant='h5'
+            variant='h2'
             component='h1'
             id='couldYouEnterThePasscode?'
-            sx={styles.title}
+            sx={{ fontWeight: 400 }}
           />
           <Box sx={styles.textFieldContainer}>
             <TextField

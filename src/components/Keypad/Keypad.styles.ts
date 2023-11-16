@@ -14,7 +14,7 @@ export const styles = {
     color: 'white',
   },
   confirmButton: {
-    height: '65px',
+    height: '100%',
     fontSize: '24px',
   },
   confirmButtonGridItem: {

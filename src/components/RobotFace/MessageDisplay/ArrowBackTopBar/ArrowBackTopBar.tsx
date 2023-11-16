@@ -56,15 +56,15 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='delivery'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='roomNumber'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -92,15 +92,15 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='delivery'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='search'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -129,15 +129,15 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='actions'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='search'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -165,21 +165,20 @@ export default function ArrowBackTopBar({
             aria-label='breadcrumb'
           >
             <Text
-              variant='h6'
+              variant='h5'
               component='h1'
               id='delivery'
-              sx={styles.breadCrumbTrailText}
             />
             <Text
-              variant='h6'
+              variant='h5'
               component='h1'
               id='search'
-              sx={styles.breadCrumbTrailText}
             />
             <Text
-              variant='h6'
+              variant='h5'
               component='h1'
               id='message'
+              sx={styles.breadCrumbText}
             />
           </Breadcrumbs>
         </Box>
@@ -205,22 +204,21 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='delivery'
-            sx={styles.breadCrumbTrailText}
           />
 
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='roomNumber'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='message'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -248,27 +246,25 @@ export default function ArrowBackTopBar({
             aria-label='breadcrumb'
           >
             <Text
-              variant='h6'
+              variant='h5'
               component='h1'
               id='delivery'
-              sx={styles.breadCrumbTrailText}
             />
             <Text
-              variant='h6'
+              variant='h5'
               component='h1'
               id='search'
-              sx={styles.breadCrumbTrailText}
             />
             <Text
-              variant='h6'
+              variant='h5'
               component='h1'
               id='message'
-              sx={styles.breadCrumbTrailText}
             />
             <Text
-              variant='h6'
+              variant='h5'
               component='h1'
               id='summary'
+              sx={styles.breadCrumbText}
             />
           </Breadcrumbs>
         </Box>
@@ -290,30 +286,28 @@ export default function ArrowBackTopBar({
           />
         </Button>
         <Text
-          variant='h6'
+          variant='h5'
           component='h1'
           id='delivery'
-          sx={styles.breadCrumbTrailText}
         />
         -
         <Text
-          variant='h6'
+          variant='h5'
           component='h1'
           id='roomNumber'
-          sx={styles.breadCrumbTrailText}
         />
         -
         <Text
-          variant='h6'
+          variant='h5'
           component='h1'
           id='message'
-          sx={styles.breadCrumbTrailText}
         />
         -
         <Text
-          variant='h6'
+          variant='h5'
           component='h1'
           id='summary'
+          sx={styles.breadCrumbText}
         />
       </Box>
     );
@@ -337,7 +331,7 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='utilities'
           />
@@ -360,14 +354,15 @@ export default function ArrowBackTopBar({
           />
         </Button>
         <Text
-          variant='h6'
+          variant='h5'
           component='h1'
           id='favorites'
+          sx={{ fontWeight: 500 }}
         />
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-end', marginRight: '59px' }}>
           <Breadcrumbs separator={<NavigateNext />}>
             {favorites?.map((favorite) => (
-              <Text variant='h6'>{favorite.config.dropoff_location}</Text>
+              <Text variant='h5'>{favorite.config.dropoff_location}</Text>
             ))}
           </Breadcrumbs>
         </Box>
@@ -393,15 +388,15 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='utilities'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='actions'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -426,15 +421,15 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='utilities'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='help'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -459,15 +454,15 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='utilities'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='status'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -488,7 +483,7 @@ export default function ArrowBackTopBar({
           />
         </Button>
         <Text
-          variant='h6'
+          variant='h5'
           component='h1'
           id='delivery'
         />
@@ -537,15 +532,15 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='utilities'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='startMapping'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -573,21 +568,20 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='utilities'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='startMapping'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='overrideMap'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>
@@ -615,21 +609,20 @@ export default function ArrowBackTopBar({
           aria-label='breadcrumb'
         >
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='utilities'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='startMapping'
-            sx={styles.breadCrumbTrailText}
           />
           <Text
-            variant='h6'
+            variant='h5'
             component='h1'
             id='createMap'
+            sx={styles.breadCrumbText}
           />
         </Breadcrumbs>
       </Box>

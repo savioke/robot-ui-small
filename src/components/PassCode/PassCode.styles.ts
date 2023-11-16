@@ -23,7 +23,7 @@ export const styles = {
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: '55px',
+    fontWeight: 400,
   },
   contentContainer: {
     display: 'flex',

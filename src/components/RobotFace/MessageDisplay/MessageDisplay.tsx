@@ -75,26 +75,26 @@ export default function MessageDisplay() {
   } else if (notificationMessage) {
     return (
       <Box sx={styles.displayMessageContainer}>
-        <Text variant='h2'>{notificationMessage}</Text>
+        <Text variant='h1'>{notificationMessage}</Text>
       </Box>
     );
   } else if (transitMessage) {
     return (
       <Box sx={styles.displayMessageContainer}>
-        <Text variant='h2'>{transitMessage}</Text>
+        <Text variant='h1'>{transitMessage}</Text>
       </Box>
     );
   } else if (displayMessage) {
     return (
       <Box sx={styles.displayMessageContainer}>
-        <Text variant='h2'>{displayMessage}</Text>
+        <Text variant='h1'>{displayMessage}</Text>
       </Box>
     );
   }
 
   return (
     <Box sx={styles.displayMessageContainer}>
-      <Text variant='h2'>Connecting...</Text>
+      <Text variant='h1'>Connecting...</Text>
     </Box>
   );
 }

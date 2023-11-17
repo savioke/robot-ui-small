@@ -73,7 +73,7 @@ export interface ServerToClientEvents {
 
 // Event Emitters
 export interface ClientToServerEvents {
-  heartbeat: () => void;
+  pong: () => void;
   connect: () => void;
   on_disconnect: () => void;
   userServerConnection: () => void;

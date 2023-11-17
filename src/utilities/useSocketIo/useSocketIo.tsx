@@ -50,12 +50,12 @@ export default function useSocketIo(
         setReturnSocket(socket);
 
         setInterval(() => {
-          socket.emit('heartbeat');
+          socket.emit('pong');
         }, 5000);
 
         socket.on('connect', () => {
           console.info('Socket.IO client has connected successfully.');
-          socket.emit('heartbeat');
+          socket.emit('pong');
         });
 
         // TODO: Disable after testing

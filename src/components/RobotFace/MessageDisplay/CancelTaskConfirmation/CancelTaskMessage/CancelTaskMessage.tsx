@@ -23,7 +23,7 @@ import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 export default function CancelTaskMessage() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
+  const socket = useSocketIo({ dispatch, intl });
   const deliverStatus = useSelector(getDeliverStatus);
 
   if (deliverStatus >= DeliverStatus.GO_TO_DROPOFF && deliverStatus <= DeliverStatus.TAKE_PACKAGE) {

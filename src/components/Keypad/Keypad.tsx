@@ -31,7 +31,7 @@ interface KeypadProps {
 export default function Keypad({ isContinueDisabled, setValues, handleSetValues }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
+  const socket = useSocketIo({ dispatch, intl });
   const displayScreen = useSelector(getDisplayScreen);
   const passCode = useSelector(getPasscode);
 

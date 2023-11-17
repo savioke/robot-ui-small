@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'typeDux';
 import { useIdleTimer } from 'react-idle-timer';
+import { type Socket } from 'socket.io-client';
+import { ClientToServerEvents, ServerToClientEvents } from 'types/socket';
 
 /** Mui Components */
 import { Box, Divider, Fab, Fade } from '@mui/material';
@@ -26,13 +28,15 @@ import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 import { resetGoToFormValues } from 'state/goTo/goTo.slice';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
 import { resetMappingFormValues } from 'state/mapping/mapping.slice';
 
-export default function TopBar() {
+export default function TopBar({
+  socket,
+}: {
+  socket: Socket<ServerToClientEvents, ClientToServerEvents> | null | undefined;
+}) {
   const dispatch = useDispatch();
-  const socket = useSocketIo();
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
   const displayState = useSelector(getDisplayState);

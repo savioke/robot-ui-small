@@ -18,19 +18,16 @@ import CommonHead from 'components/CommonHead/CommonHead';
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 import ScreenContainer from 'components/ScreenContainer/ScreenContainer';
 import Footer from 'components/Footer/Footer';
-import TopBar from 'components/TopBar/TopBar';
 
 /** actions */
 import { setTheme } from 'state/ui/ui.slice';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function App({ Component, ...rest }: AppProps) {
   const router = useRouter();
   const { store, props } = wrapper.useWrappedStore(rest);
   const stateTheme = store.getState().ui.theme;
-  useSocketIo();
   const [primaryColor, setPrimaryColor] = React.useState('');
 
   React.useEffect(() => {
@@ -84,7 +81,6 @@ export default function App({ Component, ...rest }: AppProps) {
               stateTheme={stateTheme}
               setPrimaryColor={setPrimaryColor}
             >
-              <TopBar />
               <Box
                 component='main'
                 sx={{

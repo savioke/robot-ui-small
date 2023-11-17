@@ -23,7 +23,7 @@ import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
 export default function ConfirmationMessage() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
+  const socket = useSocketIo({ dispatch, intl });
   const deliverStatus = useSelector(getDeliverStatus);
   const confirmationMessage = useSelector(getConfirmationMessage);
   const taskConfig = useSelector(getTaskConfig);

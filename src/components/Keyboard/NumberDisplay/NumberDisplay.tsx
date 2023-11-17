@@ -41,7 +41,7 @@ export default function NumberDisplay({
 }: NumberDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
+  const socket = useSocketIo({ dispatch, intl });
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);
   const goToFormValues = useSelector(getGoToFormValues);

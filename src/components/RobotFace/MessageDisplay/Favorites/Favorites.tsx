@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch } from 'typeDux';
+import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Avatar, Box, Button, Checkbox } from '@mui/material';
@@ -20,7 +20,6 @@ import { setConfirmationMessage } from 'state/ui/ui.slice';
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { AvatarBackgroundColors, DeliverStatus } from 'appConstants';
 import { TaskConfigDeliver, TaskFormValues } from 'types/r2c2';
-import { useSelector } from 'typeDux';
 import { setDeliverStatus } from 'state/r2c2/r2c2.slice';
 
 const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; index: number }) => {
@@ -66,7 +65,7 @@ const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; i
 export default function Favorites() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
+  const socket = useSocketIo({ dispatch, intl });
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<TaskFormValues<TaskConfigDeliver>[]>([]);
   const favorites = useSelector(getFavorites);

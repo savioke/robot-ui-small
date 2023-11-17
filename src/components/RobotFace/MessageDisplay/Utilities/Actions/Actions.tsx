@@ -25,7 +25,7 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function Actions() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo(dispatch, intl);
+  const socket = useSocketIo({ dispatch, intl });
   const utilities = useSelector(getUtilities);
   const [playNavStart] = useSound('/sounds/nav-start.mp3');
   const [playShimmy] = useSound('/sounds/shimmy.wav');

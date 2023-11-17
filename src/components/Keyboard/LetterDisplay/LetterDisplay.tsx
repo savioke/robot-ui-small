@@ -41,7 +41,7 @@ export default function LetterDisplay({
 }: LetterDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
+  const socket = useSocketIo({ dispatch, intl });
   const [isCapitalLetters, setIsCapitalLetters] = useState(true);
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);

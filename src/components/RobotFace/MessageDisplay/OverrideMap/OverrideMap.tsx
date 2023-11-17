@@ -95,7 +95,6 @@ export default function OverrideMap() {
           />
         </Box>
       </Box>
-      {/* @ts-ignore */}
       <Keyboard
         setValues={handleInput}
         handleBackspace={handleBackspace}

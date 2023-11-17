@@ -23,8 +23,8 @@ import { DisplayScreenOptions } from 'appConstants';
 
 export default function DeliverySummary() {
   const intl = useIntl();
-  const socket = useSocketIo();
   const dispatch = useDispatch();
+  const socket = useSocketIo({ dispatch, intl });
   const deliverFormValues = useSelector(getDeliverFormValues);
   const [errorMessage, setErrorMessage] = React.useState('');
 

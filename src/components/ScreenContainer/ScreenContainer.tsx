@@ -7,12 +7,18 @@ import useSound from 'use-sound';
 import { Box } from '@mui/material';
 
 /** Components */
+import TopBar from 'components/TopBar/TopBar';
 
 /** styles */
 import { styles } from './ScreenContainer.styles';
 
 /** redux */
-import { setDisplayScreen, setIsScreenTouched, setTransitMessage } from 'state/ui/ui.slice';
+import {
+  setDisplayScreen,
+  setIsScreenTouched,
+  setPlayShimmySound,
+  setTransitMessage,
+} from 'state/ui/ui.slice';
 import { getDisplayScreen, getPlayShimmySound } from 'state/ui/ui.selectors';
 import { getDeliverStatus, getIdleStatus } from 'state/r2c2/r2c2.selectors';
 
@@ -36,9 +42,10 @@ export default function ScreenContainer({
   const deliverStatus = useSelector(getDeliverStatus);
   const idleStatus = useSelector(getIdleStatus);
   const displayScreen = useSelector(getDisplayScreen);
+  // const [activeSocket, setActiveSocket] = React.useState(false);
   /** IMPORTANT - DO NOT REMOVE */
   /** This socket hook needs to pass in both parameters for app to function on sockets */
-  const socket = useSocketIo(dispatch, intl, setPrimaryColor);
+  const socket = useSocketIo({ dispatch, intl, setPrimaryColor });
   const playShimmySound = useSelector(getPlayShimmySound);
   const [play] = useSound('/sounds/nav-start.mp3');
 
@@ -46,9 +53,12 @@ export default function ScreenContainer({
     if (playShimmySound) {
       play();
     }
-  }, [play, playShimmySound]);
 
-  // TODO: Need to clean this logic up for handling attempting to cancel tasks while deliver in progress.
+    return () => {
+      dispatch(setPlayShimmySound(false));
+    };
+  }, [dispatch, play, playShimmySound]);
+
   return (
     <Box
       sx={styles.container(stateTheme)}
@@ -67,6 +77,7 @@ export default function ScreenContainer({
         dispatch(setIsScreenTouched(true));
       }}
     >
+      <TopBar socket={socket} />
       {children}
     </Box>
   );

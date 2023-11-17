@@ -14,6 +14,7 @@ interface RobotUiState {
   language: 'en' | 'es' | 'ja';
   authorized: boolean | null;
   playShimmySound: boolean;
+  activeSocket: boolean;
 }
 
 export const initialState: RobotUiState = {
@@ -28,6 +29,7 @@ export const initialState: RobotUiState = {
   passCode: '',
   authorized: false,
   playShimmySound: false,
+  activeSocket: false,
 };
 
 const uiSlice = createSlice({
@@ -67,6 +69,9 @@ const uiSlice = createSlice({
     setPlayShimmySound: (state, { payload }) => {
       state.playShimmySound = payload;
     },
+    setActiveSocket: (state, { payload }) => {
+      state.activeSocket = payload;
+    },
   },
 });
 
@@ -82,6 +87,7 @@ export const {
   setNotificationMessage,
   setConfirmationMessage,
   setPlayShimmySound,
+  setActiveSocket,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

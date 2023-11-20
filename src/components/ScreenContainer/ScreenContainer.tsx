@@ -53,7 +53,7 @@ export default function ScreenContainer({
     deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
     idleStatus === IdleStatus.GO_TO_DOCK;
   const isPackageConfirmationShowing =
-    deliverStatus === DeliverStatus.LOAD_PACKAGE || DeliverStatus.TAKE_PACKAGE;
+    deliverStatus === DeliverStatus.LOAD_PACKAGE || deliverStatus === DeliverStatus.TAKE_PACKAGE;
 
   React.useEffect(() => {
     if (playShimmySound) {
@@ -74,8 +74,6 @@ export default function ScreenContainer({
           !isPackageConfirmationShowing &&
           displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
-          // TODO: Remove after testing
-          console.info({ isRobotNavigating, isPackageConfirmationShowing, displayScreen });
           socket?.emit('deliver_interrupt');
           dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));

@@ -44,24 +44,6 @@ const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; i
   }
 };
 
-// const favorites = [
-//   {
-//     pickup_message: 'Please load your sample(s)',
-//     dropoff_message: 'Please collect your sample(s)',
-//     dropoff_location: 'desk 1',
-//   },
-//   {
-//     pickup_message: 'Please load your sample(s)',
-//     dropoff_message: 'Please collect your sample(s)',
-//     dropoff_location: 'desk 2',
-//   },
-//   {
-//     pickup_message: 'Please load your sample(s)',
-//     dropoff_message: 'Please collect your sample(s)',
-//     dropoff_location: 'desk 3',
-//   },
-// ];
-
 export default function Favorites() {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -70,6 +52,23 @@ export default function Favorites() {
   const [tasks, setTasks] = React.useState<TaskFormValues<TaskConfigDeliver>[]>([]);
   // console.log('UNDO');
   const favorites = useSelector(getFavorites);
+  // const favorites = [
+  //   {
+  //     pickup_message: 'Please load your sample(s)',
+  //     dropoff_message: 'Please collect your sample(s)',
+  //     dropoff_location: 'desk 1',
+  //   },
+  //   {
+  //     pickup_message: 'Please load your sample(s)',
+  //     dropoff_message: 'Please collect your sample(s)',
+  //     dropoff_location: 'desk 2',
+  //   },
+  //   {
+  //     pickup_message: 'Please load your sample(s)',
+  //     dropoff_message: 'Please collect your sample(s)',
+  //     dropoff_location: 'desk 3',
+  //   },
+  // ];
 
   // TODO: This function can be cleaned up.
   const handleToggle =

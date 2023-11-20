@@ -50,6 +50,7 @@ export default function CancelTaskMessage() {
             variant='contained'
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'resume' });
+              dispatch(setTransitMessage('Resuming delivery...'));
               return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             }}
           >

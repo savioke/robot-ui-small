@@ -148,7 +148,7 @@ export default function useSocketIo({
 
     socket?.on('authorize_pass', () => {
       console.info('Authorization passed');
-      dispatch(setNotificationMessage(''));
+      dispatch(setNotificationMessage('Authorizing...'));
       dispatch(setAuthorized(true));
       return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
     });

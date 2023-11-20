@@ -96,6 +96,7 @@ export default function useSocketIo({
         dispatch(setPasscode(''));
         dispatch(setGoals(goals));
         dispatch(setMaps(maps));
+        dispatch(setAuthorized(true));
 
         if (config.dashboard.length) {
           dispatch(setDashboardOptions(config.dashboard));
@@ -143,6 +144,13 @@ export default function useSocketIo({
       }
       console.info('Unauthorized pin');
       return dispatch(setAuthorized(false));
+    });
+
+    socket?.on('authorize_pass', () => {
+      console.info('Authorization passed');
+      dispatch(setNotificationMessage(''));
+      dispatch(setAuthorized(true));
+      return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
     });
 
     socket?.on('queue_tasks_success', () => {

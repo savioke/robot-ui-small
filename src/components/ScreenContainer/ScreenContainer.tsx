@@ -66,7 +66,9 @@ export default function ScreenContainer({
         if (
           (deliverStatus === DeliverStatus.GO_TO_PICKUP ||
             deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
-            idleStatus === IdleStatus.GO_TO_DOCK) &&
+            idleStatus === IdleStatus.GO_TO_DOCK ||
+            deliverStatus !== DeliverStatus.LOAD_PACKAGE ||
+            deliverStatus !== DeliverStatus.TAKE_PACKAGE) &&
           displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
           socket?.emit('deliver_interrupt');

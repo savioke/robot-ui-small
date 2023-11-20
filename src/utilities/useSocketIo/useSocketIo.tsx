@@ -165,7 +165,7 @@ export default function useSocketIo({
       // Reset state on every deliver_status tick
       dispatch(setTransitMessage(''));
       dispatch(setNotificationMessage(''));
-      // dispatch(setConfirmationMessage(''));
+      dispatch(setConfirmationMessage(''));
       dispatch(setTaskConfig(task.config));
 
       if (status === 'GO_TO_PICKUP') {

@@ -54,6 +54,9 @@ export default function ScreenContainer({
     idleStatus === IdleStatus.GO_TO_DOCK;
   const isPackageConfirmationShowing =
     deliverStatus === DeliverStatus.LOAD_PACKAGE || deliverStatus === DeliverStatus.TAKE_PACKAGE;
+  const isAuthorizationShowing =
+    deliverStatus === DeliverStatus.AUTHORIZE_PICKUP ||
+    deliverStatus === DeliverStatus.AUTHORIZE_DROPOFF;
 
   React.useEffect(() => {
     if (playShimmySound) {
@@ -72,6 +75,7 @@ export default function ScreenContainer({
         if (
           isRobotNavigating &&
           !isPackageConfirmationShowing &&
+          !isAuthorizationShowing &&
           displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
           socket?.emit('deliver_interrupt');

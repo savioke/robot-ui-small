@@ -50,7 +50,6 @@ export default function Favorites() {
   const socket = useSocketIo({ dispatch, intl });
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<TaskFormValues<TaskConfigDeliver>[]>([]);
-  // console.log('UNDO');
   const favorites = useSelector(getFavorites);
   // const favorites = [
   //   {

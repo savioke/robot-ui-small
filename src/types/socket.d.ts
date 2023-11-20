@@ -19,6 +19,7 @@ import {
   TaskConfigMapping,
   IdleStatus,
   DeliverInteruptResult,
+  Auth,
 } from './r2c2';
 
 interface SocketServer extends HTTPServer {
@@ -60,7 +61,15 @@ export interface ServerToClientEvents {
   // Tasks
   queue_tasks_error: (string) => void;
   queue_tasks_success: () => void;
-  deliver_status: ({ status, task }: { status: DeliverStatus; task: Task }) => void;
+  deliver_status: ({
+    status,
+    task,
+    auth,
+  }: {
+    status: DeliverStatus;
+    task: Task;
+    auth: Auth;
+  }) => void;
   go_to_location_status: ({ status, task }: { status: GoToLocationStatus; task: Task }) => void;
   play_sound: ({ name }: { name: 'shimmy' | 'nav-start' }) => void;
 

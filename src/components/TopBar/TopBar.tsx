@@ -22,7 +22,12 @@ import {
   setPasscode,
   setAuthorized,
 } from 'state/ui/ui.slice';
-import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
+import {
+  getDisplayScreen,
+  getIsScreenTouched,
+  getTransitMessage,
+  getConfirmationMessage,
+} from 'state/ui/ui.selectors';
 import { getDisplayState, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 import { resetGoToFormValues } from 'state/goTo/goTo.slice';
@@ -41,6 +46,8 @@ export default function TopBar({
   const isScreenTouched = useSelector(getIsScreenTouched);
   const displayState = useSelector(getDisplayState);
   const deliverStatus = useSelector(getDeliverStatus);
+  const transitMessage = useSelector(getTransitMessage);
+  const confirmationMessage = useSelector(getConfirmationMessage);
 
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home) {
@@ -62,21 +69,19 @@ export default function TopBar({
     timeout: 10000,
   });
 
-  // TODO: Fix timer to fire after the first time (currently starts on mount)
   useIdleTimer({
     onIdle: () => {
       if (displayScreen !== DisplayScreenOptions.Home && deliverStatus === DeliverStatus.NONE) {
         dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       }
     },
-    // timeout: 60000,
-    timeout: 30000,
+    timeout: 60000,
   });
 
   return (
     <Fade in={isScreenTouched}>
       <Box sx={styles.container}>
-        {displayScreen !== DisplayScreenOptions.Home && (
+        {displayScreen !== DisplayScreenOptions.Home && !transitMessage && !confirmationMessage && (
           <Fab
             sx={styles.fab}
             size='small'

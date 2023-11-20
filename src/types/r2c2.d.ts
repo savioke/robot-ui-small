@@ -141,3 +141,7 @@ export interface SiteConfig {
   dashboard: string[];
   delivery: string[];
 }
+
+export interface Auth {
+  method: readonly ['badge', 'pin'];
+}

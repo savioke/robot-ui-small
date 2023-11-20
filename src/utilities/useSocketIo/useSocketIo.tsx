@@ -161,7 +161,7 @@ export default function useSocketIo({
       return dispatch(setDisplayState(state));
     });
 
-    socket?.on('deliver_status', ({ status, task }) => {
+    socket?.on('deliver_status', ({ status, task, auth }) => {
       // Reset state on every deliver_status tick
       dispatch(setTransitMessage(''));
       dispatch(setNotificationMessage(''));
@@ -175,6 +175,14 @@ export default function useSocketIo({
         dispatch(setDeliverStatus(DeliverStatus['NOTIFY_PICKUP']));
         // TODO: Adjust notify message to logic from R2C2
         return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
+      } else if (status === 'AUTHORIZE_PICKUP') {
+        if (auth.method.includes('badge' && 'pin')) {
+          // Display page for Entering pin or swiping badge
+        } else if (auth.method.includes('badge')) {
+          // Display "Please swipe your badge"
+        }
+
+        // Display "Please enter your PIN"
       } else if (status === 'LOAD_PACKAGE') {
         dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
         return dispatch(
@@ -187,6 +195,7 @@ export default function useSocketIo({
         dispatch(setDeliverStatus(DeliverStatus['NOTIFY_DROPOFF']));
         // TODO: Adjust notify message to logic from R2C2
         return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
+      } else if (status === 'AUTHORIZE_DROPOFF') {
       } else if (status === 'TAKE_PACKAGE') {
         dispatch(setDeliverStatus(DeliverStatus['TAKE_PACKAGE']));
         return dispatch(setConfirmationMessage(task.config.dropoff_message));

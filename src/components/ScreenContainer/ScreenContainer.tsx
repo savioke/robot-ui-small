@@ -74,6 +74,8 @@ export default function ScreenContainer({
           !isPackageConfirmationShowing &&
           displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
+          // TODO: Remove after testing
+          console.info({ isRobotNavigating, isPackageConfirmationShowing, displayScreen });
           socket?.emit('deliver_interrupt');
           dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));

@@ -199,7 +199,7 @@ export default function useSocketIo({
           return dispatch(setNotificationMessage('Please swipe your badge'));
         }
 
-        dispatch(setNotificationMessage('Please enter your PIN'));
+        dispatch(setNotificationMessage('Please enter your passcode'));
         return dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
       } else if (status === 'LOAD_PACKAGE') {
         dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));

@@ -44,23 +44,23 @@ const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; i
   }
 };
 
-// const favorites = [
-//   {
-//     pickup_message: 'Please load your sample(s)',
-//     dropoff_message: 'Please collect your sample(s)',
-//     dropoff_location: 'desk 1',
-//   },
-//   {
-//     pickup_message: 'Please load your sample(s)',
-//     dropoff_message: 'Please collect your sample(s)',
-//     dropoff_location: 'desk 2',
-//   },
-//   {
-//     pickup_message: 'Please load your sample(s)',
-//     dropoff_message: 'Please collect your sample(s)',
-//     dropoff_location: 'desk 3',
-//   },
-// ];
+const favorites = [
+  {
+    pickup_message: 'Please load your sample(s)',
+    dropoff_message: 'Please collect your sample(s)',
+    dropoff_location: 'desk 1',
+  },
+  {
+    pickup_message: 'Please load your sample(s)',
+    dropoff_message: 'Please collect your sample(s)',
+    dropoff_location: 'desk 2',
+  },
+  {
+    pickup_message: 'Please load your sample(s)',
+    dropoff_message: 'Please collect your sample(s)',
+    dropoff_location: 'desk 3',
+  },
+];
 
 export default function Favorites() {
   const intl = useIntl();
@@ -68,7 +68,7 @@ export default function Favorites() {
   const socket = useSocketIo({ dispatch, intl });
   const [checked, setChecked] = React.useState<number[]>([]);
   const [tasks, setTasks] = React.useState<TaskFormValues<TaskConfigDeliver>[]>([]);
-  const favorites = useSelector(getFavorites);
+  // const favorites = useSelector(getFavorites);
 
   // TODO: This function can be cleaned up.
   const handleToggle =

@@ -153,7 +153,7 @@ export default function useSocketIo({
         window.location.reload();
       }
 
-      if (state.config.primary_color && setPrimaryColor) {
+      if (state?.config?.primary_color && setPrimaryColor) {
         setPrimaryColor(state.config.primary_color);
       }
 

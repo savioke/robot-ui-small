@@ -57,6 +57,8 @@ export interface ServerToClientEvents {
     maps: string[];
   }) => void;
   login_fail: ({ method, user }: { method: LoginMethod; user: AuthUser }) => void;
+  authorize_pass: () => void;
+  authorize_fail: ({ method }: { method: LoginMethod }) => void;
 
   // Tasks
   queue_tasks_error: (string) => void;
@@ -94,6 +96,7 @@ export interface ClientToServerEvents {
   // Authorization
   login_pin: (string) => void;
   logout: () => void;
+  authorize: (string) => void;
 
   // Tasks
   queue_tasks: (

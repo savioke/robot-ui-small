@@ -136,6 +136,15 @@ export default function useSocketIo({
       return dispatch(setAuthorized(false));
     });
 
+    socket?.on('authorize_fail', ({ method }) => {
+      if (method === 'badge') {
+        console.info('Unauthorized badge');
+        dispatch(setDisplayMessage('Unauthorized badge'));
+      }
+      console.info('Unauthorized pin');
+      return dispatch(setAuthorized(false));
+    });
+
     socket?.on('queue_tasks_success', () => {
       console.info('Task created successfully');
       return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
@@ -162,7 +171,6 @@ export default function useSocketIo({
     });
 
     socket?.on('deliver_status', ({ status, task, auth }) => {
-      // Reset state on every deliver_status tick
       dispatch(setTransitMessage(''));
       dispatch(setNotificationMessage(''));
       dispatch(setConfirmationMessage(''));
@@ -177,12 +185,14 @@ export default function useSocketIo({
         return dispatch(setNotificationMessage(`Notify pickup placeholder text`));
       } else if (status === 'AUTHORIZE_PICKUP') {
         if (auth.method.includes('badge' && 'pin')) {
-          // Display page for Entering pin or swiping badge
+          dispatch(setNotificationMessage('Please swipe badge or enter passcode'));
+          return dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
         } else if (auth.method.includes('badge')) {
-          // Display "Please swipe your badge"
+          return dispatch(setNotificationMessage('Please swipe your badge'));
         }
 
-        // Display "Please enter your PIN"
+        dispatch(setNotificationMessage('Please enter your PIN'));
+        return dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
       } else if (status === 'LOAD_PACKAGE') {
         dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
         return dispatch(
@@ -196,6 +206,15 @@ export default function useSocketIo({
         // TODO: Adjust notify message to logic from R2C2
         return dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
       } else if (status === 'AUTHORIZE_DROPOFF') {
+        if (auth.method.includes('badge' && 'pin')) {
+          dispatch(setNotificationMessage('Please swipe badge or enter your passcode'));
+          return dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
+        } else if (auth.method.includes('badge')) {
+          return dispatch(setNotificationMessage('Please swipe your badge'));
+        }
+
+        dispatch(setNotificationMessage('Please enter your PIN'));
+        return dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
       } else if (status === 'TAKE_PACKAGE') {
         dispatch(setDeliverStatus(DeliverStatus['TAKE_PACKAGE']));
         return dispatch(setConfirmationMessage(task.config.dropoff_message));
@@ -215,6 +234,11 @@ export default function useSocketIo({
     });
 
     socket?.on('idle_status', ({ status }) => {
+      dispatch(setTransitMessage(''));
+      dispatch(setNotificationMessage(''));
+      dispatch(setConfirmationMessage(''));
+      dispatch(setDeliverStatus(DeliverStatus['DONE']));
+
       if (status === 'GO_TO_DOCK') {
         dispatch(setTransitMessage('Headed to dock'));
         dispatch(setIdleStatus(IdleStatus.GO_TO_DOCK));

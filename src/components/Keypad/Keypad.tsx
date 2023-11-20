@@ -15,7 +15,7 @@ import { styles } from './Keypad.styles';
 
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
-import { getDisplayScreen, getPasscode } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getPasscode, getNotificationMessage } from 'state/ui/ui.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -34,6 +34,7 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
   const socket = useSocketIo({ dispatch, intl });
   const displayScreen = useSelector(getDisplayScreen);
   const passCode = useSelector(getPasscode);
+  const notificationMessage = useSelector(getNotificationMessage);
 
   return (
     <Box sx={styles.keypadContainer}>
@@ -232,6 +233,9 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
               onClick={() => {
                 if (displayScreen === DisplayScreenOptions.RoomNumber) {
                   return dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+                  // TODO: If notification message means its Authorize Pickup or Dropoff - need to clean this logic up.
+                } else if (notificationMessage) {
+                  return socket?.emit('authorize', passCode);
                 }
 
                 return socket?.emit('login_pin', passCode);

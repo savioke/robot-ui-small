@@ -14,7 +14,7 @@ import { styles } from './PassCode.styles';
 
 /** redux */
 import { setAuthorized, setPasscode } from 'state/ui/ui.slice';
-import { getPasscode, getAuthorized } from 'state/ui/ui.selectors';
+import { getPasscode, getAuthorized, getNotificationMessage } from 'state/ui/ui.selectors';
 
 /** helpers */
 
@@ -22,6 +22,7 @@ export default function PassCode() {
   const dispatch = useDispatch();
   const passCode = useSelector(getPasscode);
   const authorized = useSelector(getAuthorized);
+  const notificationMessage = useSelector(getNotificationMessage);
 
   React.useEffect(() => {
     if (!passCode) {
@@ -46,12 +47,22 @@ export default function PassCode() {
       <Box sx={styles.leftSideContent}>
         <ArrowBackTopBar />
         <Box sx={styles.contentContainer}>
-          <Text
-            variant='h2'
-            component='h1'
-            id='couldYouEnterThePasscode?'
-            sx={{ fontWeight: 400 }}
-          />
+          {notificationMessage ? (
+            <Text
+              variant='h2'
+              component='h1'
+              sx={{ fontWeight: 400 }}
+            >
+              {notificationMessage}
+            </Text>
+          ) : (
+            <Text
+              variant='h2'
+              component='h1'
+              id='couldYouEnterThePasscode?'
+              sx={{ fontWeight: 400 }}
+            />
+          )}
           <Box sx={styles.textFieldContainer}>
             <TextField
               fullWidth

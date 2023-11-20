@@ -33,7 +33,7 @@ export default function ConfirmationMessage() {
       <Box sx={styles.container}>
         <Box sx={styles.displayConfirmContainer}>
           <Box>
-            <Text variant='h2'>{confirmationMessage}</Text>
+            <Text variant='h1'>{confirmationMessage}</Text>
           </Box>
         </Box>
         <Button
@@ -56,7 +56,7 @@ export default function ConfirmationMessage() {
     <Box sx={styles.container}>
       <Box sx={styles.displayConfirmContainer}>
         <Box>
-          <Text variant='h2'>{confirmationMessage}</Text>
+          <Text variant='h1'>{confirmationMessage}</Text>
         </Box>
       </Box>
       <Button

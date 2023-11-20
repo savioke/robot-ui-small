@@ -98,29 +98,29 @@ export default function useSocketIo({
         dispatch(setMaps(maps));
         dispatch(setAuthorized(true));
 
-        if (config.dashboard.length) {
+        if (config?.dashboard?.length) {
           dispatch(setDashboardOptions(config.dashboard));
         } else {
           dispatch(setDashboardOptions(['delivery', 'utilities']));
         }
 
-        if (config.delivery.length) {
+        if (config?.delivery?.length) {
           dispatch(setDeliveryOptions(config.delivery));
         } else {
           dispatch(setDeliveryOptions(['search']));
         }
 
-        if (config.favorites.length) {
+        if (config?.favorites?.length) {
           dispatch(setFavorites(config.favorites));
         }
 
-        if (config.utilities.length) {
+        if (config?.utilities?.length) {
           dispatch(setUtilities(config.utilities));
         } else {
           dispatch(setUtilities(['open lid', 'close lid', 'go to', 'dock']));
         }
 
-        if (config.screen === '/favorites') {
+        if (config?.screen === '/favorites') {
           dispatch(setDisplayScreen(DisplayScreenOptions.Favorites));
         } else {
           dispatch(setDisplayScreen(DisplayScreenOptions.Dashboard));

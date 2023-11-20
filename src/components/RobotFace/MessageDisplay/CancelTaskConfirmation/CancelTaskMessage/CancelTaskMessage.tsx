@@ -15,7 +15,7 @@ import { styles } from './CancelTaskMessage.styles';
 /** redux */
 import { getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen, setTransitMessage } from 'state/ui/ui.slice';
 
 /** helpers */
 import useSocketIo from 'utilities/useSocketIo/useSocketIo';
@@ -84,6 +84,7 @@ export default function CancelTaskMessage() {
           variant='contained'
           onClick={() => {
             socket?.emit('deliver_interrupt_result', { result: 'resume' });
+            dispatch(setTransitMessage('Resuming delivery...'));
             return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
           }}
         >

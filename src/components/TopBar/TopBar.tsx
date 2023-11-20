@@ -22,12 +22,7 @@ import {
   setPasscode,
   setAuthorized,
 } from 'state/ui/ui.slice';
-import {
-  getDisplayScreen,
-  getIsScreenTouched,
-  getTransitMessage,
-  getConfirmationMessage,
-} from 'state/ui/ui.selectors';
+import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
 import { getDisplayState, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 import { resetGoToFormValues } from 'state/goTo/goTo.slice';
@@ -46,8 +41,6 @@ export default function TopBar({
   const isScreenTouched = useSelector(getIsScreenTouched);
   const displayState = useSelector(getDisplayState);
   const deliverStatus = useSelector(getDeliverStatus);
-  const transitMessage = useSelector(getTransitMessage);
-  const confirmationMessage = useSelector(getConfirmationMessage);
 
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home) {
@@ -81,7 +74,7 @@ export default function TopBar({
   return (
     <Fade in={isScreenTouched}>
       <Box sx={styles.container}>
-        {displayScreen !== DisplayScreenOptions.Home && !transitMessage && !confirmationMessage && (
+        {displayScreen !== DisplayScreenOptions.Home && deliverStatus === DeliverStatus.NONE && (
           <Fab
             sx={styles.fab}
             size='small'

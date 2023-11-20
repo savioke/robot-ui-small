@@ -39,7 +39,7 @@ export default function ScreenContainer({
 }: ScreenContainerProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const deliverStatus = useSelector(getDeliverStatus);
+  let deliverStatus = useSelector(getDeliverStatus);
   const idleStatus = useSelector(getIdleStatus);
   const displayScreen = useSelector(getDisplayScreen);
   // const [activeSocket, setActiveSocket] = React.useState(false);
@@ -48,6 +48,12 @@ export default function ScreenContainer({
   const socket = useSocketIo({ dispatch, intl, setPrimaryColor });
   const playShimmySound = useSelector(getPlayShimmySound);
   const [play] = useSound('/sounds/nav-start.mp3');
+  const isRobotNavigating =
+    deliverStatus === DeliverStatus.GO_TO_PICKUP ||
+    deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
+    idleStatus === IdleStatus.GO_TO_DOCK;
+  const isPackageConfirmationShowing =
+    deliverStatus === DeliverStatus.LOAD_PACKAGE || DeliverStatus.LOAD_PACKAGE;
 
   React.useEffect(() => {
     if (playShimmySound) {
@@ -64,11 +70,8 @@ export default function ScreenContainer({
       sx={styles.container(stateTheme)}
       onClick={() => {
         if (
-          (deliverStatus === DeliverStatus.GO_TO_PICKUP ||
-            deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
-            (idleStatus === IdleStatus.GO_TO_DOCK &&
-              (deliverStatus !== DeliverStatus.LOAD_PACKAGE ||
-                deliverStatus !== DeliverStatus.TAKE_PACKAGE))) &&
+          isRobotNavigating &&
+          !isPackageConfirmationShowing &&
           displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
         ) {
           socket?.emit('deliver_interrupt');

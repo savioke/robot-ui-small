@@ -53,7 +53,7 @@ export default function ScreenContainer({
     deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
     idleStatus === IdleStatus.GO_TO_DOCK;
   const isPackageConfirmationShowing =
-    deliverStatus === DeliverStatus.LOAD_PACKAGE || DeliverStatus.LOAD_PACKAGE;
+    deliverStatus === DeliverStatus.LOAD_PACKAGE || DeliverStatus.TAKE_PACKAGE;
 
   React.useEffect(() => {
     if (playShimmySound) {

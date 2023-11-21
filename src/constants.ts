@@ -22,6 +22,7 @@ export const DisplayScreenOptions = {
   OverrideMap: 'Override Map' as const,
   CreateMap: 'Create Map' as const,
   GoToSearch: 'GoToSearch' as const,
+  AuthorizePin: 'Authorize PIN' as const,
 };
 
 export const Themes = {

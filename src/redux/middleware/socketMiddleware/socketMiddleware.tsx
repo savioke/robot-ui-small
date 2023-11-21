@@ -68,11 +68,17 @@ const socketMiddleware: Middleware = (store) => {
           goals = [],
           maps = [],
         }) => {
+          console.log('IN');
           store.dispatch(setUser(user));
           store.dispatch(setPasscode(''));
           store.dispatch(setGoals(goals));
           store.dispatch(setMaps(maps));
-          store.dispatch(setAuthorized(true));
+          store.dispatch(
+            setAuthorized({
+              method: 'pin',
+              state: true,
+            }),
+          );
 
           if (config?.dashboard?.length) {
             store.dispatch(setDashboardOptions(config.dashboard));
@@ -110,7 +116,12 @@ const socketMiddleware: Middleware = (store) => {
           store.dispatch(setDisplayMessage('Unauthorized badge'));
         }
         console.info('Unauthorized pin');
-        return store.dispatch(setAuthorized(false));
+        return store.dispatch(
+          setAuthorized({
+            method: 'pin',
+            state: false,
+          }),
+        );
       });
 
       socket?.on('authorize_fail', ({ method }) => {
@@ -119,13 +130,23 @@ const socketMiddleware: Middleware = (store) => {
           store.dispatch(setDisplayMessage('Unauthorized badge'));
         }
         console.info('Unauthorized pin');
-        return store.dispatch(setAuthorized(false));
+        return store.dispatch(
+          setAuthorized({
+            method: 'pin',
+            state: false,
+          }),
+        );
       });
 
       socket?.on('authorize_pass', () => {
         console.info('Authorization passed');
         store.dispatch(setNotificationMessage('Authorizing...'));
-        store.dispatch(setAuthorized(true));
+        store.dispatch(
+          setAuthorized({
+            method: '',
+            state: true,
+          }),
+        );
         return store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       });
 
@@ -167,13 +188,13 @@ const socketMiddleware: Middleware = (store) => {
           store.dispatch(setDeliverStatus(DeliverStatus['AUTHORIZE_PICKUP']));
           if (auth.method.includes('badge' && 'pin')) {
             store.dispatch(setNotificationMessage('Please swipe badge or enter passcode'));
-            return store.dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
+            return store.dispatch(setDisplayScreen(DisplayScreenOptions.AuthorizePin));
           } else if (auth.method.includes('badge')) {
             return store.dispatch(setNotificationMessage('Please swipe your badge'));
           }
 
           store.dispatch(setNotificationMessage('Please enter your passcode'));
-          return store.dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
+          return store.dispatch(setDisplayScreen(DisplayScreenOptions.AuthorizePin));
         } else if (status === 'LOAD_PACKAGE') {
           store.dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
           return store.dispatch(
@@ -190,13 +211,13 @@ const socketMiddleware: Middleware = (store) => {
           store.dispatch(setDeliverStatus(DeliverStatus['AUTHORIZE_PICKUP']));
           if (auth.method.includes('badge' && 'pin')) {
             store.dispatch(setNotificationMessage('Please swipe badge or enter your passcode'));
-            return store.dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
+            return store.dispatch(setDisplayScreen(DisplayScreenOptions.AuthorizePin));
           } else if (auth.method.includes('badge')) {
             return store.dispatch(setNotificationMessage('Please swipe your badge'));
           }
 
           store.dispatch(setNotificationMessage('Please enter your PIN'));
-          return store.dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
+          return store.dispatch(setDisplayScreen(DisplayScreenOptions.AuthorizePin));
         } else if (status === 'TAKE_PACKAGE') {
           store.dispatch(setDeliverStatus(DeliverStatus['TAKE_PACKAGE']));
           return store.dispatch(setConfirmationMessage(task.config.dropoff_message));

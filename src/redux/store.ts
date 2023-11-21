@@ -7,7 +7,7 @@ export const makeStore = () =>
   configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat([socketMiddleware]);
+      return getDefaultMiddleware({ serializableCheck: false }).concat([socketMiddleware]);
     },
   });
 

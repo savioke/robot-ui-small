@@ -40,7 +40,12 @@ export default function TopBar() {
 
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home && socket) {
-      dispatch(setAuthorized(null));
+      dispatch(
+        setAuthorized({
+          method: '',
+          state: null,
+        }),
+      );
       dispatch(resetDeliverFormValues());
       dispatch(resetGoToFormValues());
       dispatch(resetMappingFormValues());

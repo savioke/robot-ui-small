@@ -12,7 +12,10 @@ interface RobotUiState {
   isScreenTouched: boolean;
   theme: string;
   language: 'en' | 'es' | 'ja';
-  authorized: boolean | null;
+  authorized: {
+    method: 'badge' | 'pin' | '';
+    state: boolean | null;
+  };
   playShimmySound: boolean;
   activeSocket: boolean;
 }
@@ -27,7 +30,10 @@ export const initialState: RobotUiState = {
   theme: '',
   language: 'en',
   passCode: '',
-  authorized: false,
+  authorized: {
+    method: '',
+    state: null,
+  },
   playShimmySound: false,
   activeSocket: false,
 };

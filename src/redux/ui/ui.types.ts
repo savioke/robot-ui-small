@@ -20,4 +20,5 @@ export type DisplayScreen =
   | 'Mapping Choice'
   | 'Override Map'
   | 'Create Map'
-  | 'GoToSearch';
+  | 'GoToSearch'
+  | 'Authorize PIN';

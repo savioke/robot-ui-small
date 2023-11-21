@@ -28,7 +28,10 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function RobotUi() {
   const displayScreen = useSelector(getDisplayScreen);
 
-  if (displayScreen === DisplayScreenOptions.PassCode) {
+  if (
+    displayScreen === DisplayScreenOptions.PassCode ||
+    displayScreen === DisplayScreenOptions.AuthorizePin
+  ) {
     return (
       <Box sx={styles.container}>
         <Box sx={styles.messageContainer}>

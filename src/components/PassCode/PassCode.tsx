@@ -26,7 +26,12 @@ export default function PassCode() {
 
   React.useEffect(() => {
     if (!passCode) {
-      dispatch(setAuthorized(null));
+      dispatch(
+        setAuthorized({
+          method: '',
+          state: null,
+        }),
+      );
     }
   }, [dispatch, passCode]);
 
@@ -44,6 +49,16 @@ export default function PassCode() {
 
   const handleClear = () => {
     dispatch(setPasscode(''));
+  };
+
+  const getHelperText = (authorized: { method: 'badge' | 'pin' | ''; state: boolean | null }) => {
+    if (authorized.method === 'badge' && authorized.state === false) {
+      return 'Unauthorized badge';
+    } else if (authorized.method === 'pin' && authorized.state === false) {
+      return 'Unauthorized PIN';
+    }
+
+    return <Box sx={styles.emptyHelperText}></Box>;
   };
 
   return (
@@ -70,15 +85,13 @@ export default function PassCode() {
           <Box sx={styles.textFieldContainer}>
             <TextField
               fullWidth
-              error={authorized === false}
+              error={authorized.state === false}
               FormHelperTextProps={{
                 sx: {
                   fontSize: '24px',
                 },
               }}
-              helperText={
-                authorized === false ? 'Unauthorized' : <Box sx={styles.emptyHelperText}></Box>
-              }
+              helperText={getHelperText(authorized)}
               variant='standard'
               type='password'
               value={passCode}

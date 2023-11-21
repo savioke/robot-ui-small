@@ -40,6 +40,14 @@ export default function RoomNumber() {
     );
   };
 
+  const handleClear = () => {
+    dispatch(
+      setDeliverFormValues({
+        dropoff_location: '',
+      }),
+    );
+  };
+
   return (
     <Box sx={styles.innerPaper}>
       <Box sx={styles.leftSideContent}>
@@ -64,6 +72,7 @@ export default function RoomNumber() {
         isContinueDisabled={!deliverFormValues.config.dropoff_location.length}
         setValues={handleBackspace}
         handleSetValues={handleSetRoomNumber}
+        handleClear={handleClear}
       />
     </Box>
   );

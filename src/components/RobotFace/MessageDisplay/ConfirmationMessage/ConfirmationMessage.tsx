@@ -14,7 +14,7 @@ import { styles } from './ConfirmationMessage.styles';
 /** redux */
 import { getConfirmationMessage } from 'state/ui/ui.selectors';
 import { setTransitMessage, setConfirmationMessage, setDisplayScreen } from 'state/ui/ui.slice';
-import { getDeliverStatus, getTaskConfig } from 'state/r2c2/r2c2.selectors';
+import { getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
@@ -26,7 +26,6 @@ export default function ConfirmationMessage() {
   const socket = useSelector(getSocket);
   const deliverStatus = useSelector(getDeliverStatus);
   const confirmationMessage = useSelector(getConfirmationMessage);
-  const taskConfig = useSelector(getTaskConfig);
 
   if (confirmationMessage === 'Mapping in progress') {
     return (

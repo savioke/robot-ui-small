@@ -19,7 +19,7 @@ import {
   setTransitMessage,
 } from 'state/ui/ui.slice';
 import { getDisplayScreen, getPlayShimmySound } from 'state/ui/ui.selectors';
-import { getDeliverStatus, getIdleStatus } from 'state/r2c2/r2c2.selectors';
+import { getDeliverStatus, getDisplayState, getIdleStatus } from 'state/r2c2/r2c2.selectors';
 import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
@@ -41,6 +41,7 @@ export default function ScreenContainer({
   let deliverStatus = useSelector(getDeliverStatus);
   const idleStatus = useSelector(getIdleStatus);
   const displayScreen = useSelector(getDisplayScreen);
+  const displayState = useSelector(getDisplayState);
   const socket = useSelector(getSocket);
   const playShimmySound = useSelector(getPlayShimmySound);
   const [play] = useSound('/sounds/nav-start.mp3');
@@ -48,6 +49,12 @@ export default function ScreenContainer({
     deliverStatus === DeliverStatus.GO_TO_PICKUP ||
     deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
     idleStatus === IdleStatus.GO_TO_DOCK;
+
+  React.useEffect(() => {
+    if (displayState?.config?.primary_color) {
+      setPrimaryColor(displayState?.config?.primary_color);
+    }
+  }, [displayState?.config?.primary_color, setPrimaryColor]);
 
   React.useEffect(() => {
     dispatch(startConnecting());

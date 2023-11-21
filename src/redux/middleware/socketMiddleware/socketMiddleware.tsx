@@ -49,10 +49,6 @@ const socketMiddleware: Middleware = (store) => {
         socket.emit('pong');
       });
 
-      // socket.on('connect', () => {
-      //   store.dispatch(setActiveSocket(true));
-      // });
-
       // TODO: Disable after testing
       socket.onAny((eventName, ...args) => {
         console.info(eventName, args);
@@ -150,10 +146,6 @@ const socketMiddleware: Middleware = (store) => {
           window.location.reload();
         }
 
-        // if (state?.config?.primary_color && setPrimaryColor) {
-        //   setPrimaryColor(state.config.primary_color);
-        // }
-
         store.dispatch(setDisplayMessage(`Hello, I'm ${state.nickname}`));
         return store.dispatch(setDisplayState(state));
       });
@@ -246,19 +238,5 @@ const socketMiddleware: Middleware = (store) => {
     next(action);
   };
 };
-
-// const socketMiddleware: Middleware = (store) => (next) => (action) => {
-//   if (!startConnecting.match(action)) {
-//     return next(action);
-//   }
-
-//   const socket = io('http://localhost:3000');
-
-//   socket.on('connect', () => {
-//     store.dispatch(connectionEstablished());
-//   });
-
-//   next(action);
-// };
 
 export default socketMiddleware;

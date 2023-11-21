@@ -65,8 +65,7 @@ export default function ConfirmationMessage() {
         onClick={() => {
           dispatch(setConfirmationMessage(''));
           if (deliverStatus === DeliverStatus.LOAD_PACKAGE) {
-            socket?.emit('load_package_result', { result: true });
-            return dispatch(setTransitMessage(`Tasks Queued`));
+            return socket?.emit('load_package_result', { result: true });
           }
 
           socket?.emit('take_package_result', { result: true });

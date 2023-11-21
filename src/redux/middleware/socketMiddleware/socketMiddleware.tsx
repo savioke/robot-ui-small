@@ -200,12 +200,10 @@ const socketMiddleware: Middleware = (store) => {
           store.dispatch(setNotificationMessage('Please enter your passcode'));
           return store.dispatch(setDisplayScreen(DisplayScreenOptions.AuthorizePin));
         } else if (status === 'LOAD_PACKAGE') {
-          if (store.getState().r2c2.deliverStatus !== DeliverStatus['LOAD_PACKAGE']) {
-            store.dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
-            return store.dispatch(
-              setConfirmationMessage(task.config.pickup_message || 'Please grab your package'),
-            );
-          }
+          store.dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
+          return store.dispatch(
+            setConfirmationMessage(task.config.pickup_message || 'Please grab your package'),
+          );
         } else if (status === 'GO_TO_DROPOFF') {
           store.dispatch(setDeliverStatus(DeliverStatus['GO_TO_DROPOFF']));
           return store.dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));

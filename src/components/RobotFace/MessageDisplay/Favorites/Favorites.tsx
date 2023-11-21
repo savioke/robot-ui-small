@@ -148,9 +148,7 @@ export default function Favorites() {
             ];
 
             socket?.emit('queue_tasks', updatedTasks);
-            dispatch(setTransitMessage(''));
-            dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
-            return dispatch(setConfirmationMessage(tasks[0].config.pickup_message));
+            dispatch(setTransitMessage('Queuing Tasks...'));
           }}
         >
           {intl.formatMessage({ id: 'go' })}

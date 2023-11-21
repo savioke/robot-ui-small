@@ -26,7 +26,7 @@ export default function BatteryIcon() {
     return (
       <Image
         priority
-        src='images/battery-charge-1.svg'
+        src='images/battery_charge_1_v2.svg'
         height={48}
         width={48}
         alt={intl.formatMessage({ id: 'battery' })}
@@ -36,7 +36,7 @@ export default function BatteryIcon() {
     return (
       <Image
         priority
-        src='images/battery-charge-2.svg'
+        src='images/battery_charge_2_v2.svg'
         height={48}
         width={48}
         alt={intl.formatMessage({ id: 'battery' })}
@@ -46,7 +46,7 @@ export default function BatteryIcon() {
     return (
       <Image
         priority
-        src='images/battery-charge-3.svg'
+        src='images/battery_charge_3_v2.svg'
         height={48}
         width={48}
         alt={intl.formatMessage({ id: 'battery' })}
@@ -56,7 +56,7 @@ export default function BatteryIcon() {
     return (
       <Image
         priority
-        src='images/battery-charge-4.svg'
+        src='images/battery_charge_4_v2.svg'
         height={48}
         width={48}
         alt={intl.formatMessage({ id: 'battery' })}

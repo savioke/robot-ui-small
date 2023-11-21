@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Box, Grid } from '@mui/material';
-import { Backspace } from '@mui/icons-material';
+import { Backspace, Clear } from '@mui/icons-material';
 
 /** Components */
 import Button from 'sharedComponents/Button/Button';
@@ -24,11 +24,17 @@ import { DisplayScreenOptions } from 'appConstants';
 interface KeypadProps {
   isContinueDisabled?: boolean;
   setValues: React.Dispatch<React.SetStateAction<string>>;
+  handleClear: () => void;
   // eslint-disable-next-line no-unused-vars
   handleSetValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export default function Keypad({ isContinueDisabled, setValues, handleSetValues }: KeypadProps) {
+export default function Keypad({
+  isContinueDisabled,
+  setValues,
+  handleSetValues,
+  handleClear,
+}: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
   const socket = useSelector(getSocket);
@@ -185,8 +191,17 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
           <Grid
             item
             xs={3}
-            sx={styles.iconButtonContainer}
-          ></Grid>
+          >
+            <KeypadButton
+              variant='contained'
+              onClick={handleClear}
+            >
+              <Clear
+                fontSize='large'
+                sx={styles.backSpaceIcon}
+              />
+            </KeypadButton>
+          </Grid>
           <Grid
             item
             xs={3}

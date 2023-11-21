@@ -42,6 +42,10 @@ export default function PassCode() {
     dispatch(setPasscode(passCode.slice(0, -1)));
   };
 
+  const handleClear = () => {
+    dispatch(setPasscode(''));
+  };
+
   return (
     <Box sx={styles.innerPaper}>
       <Box sx={styles.leftSideContent}>
@@ -91,6 +95,7 @@ export default function PassCode() {
       <Keypad
         handleSetValues={handleSetPassCode}
         setValues={handleBackspace}
+        handleClear={handleClear}
       />
     </Box>
   );

@@ -46,9 +46,7 @@ export default function ScreenContainer({
   const playShimmySound = useSelector(getPlayShimmySound);
   const [play] = useSound('/sounds/nav-start.mp3');
   const isRobotNavigating =
-    deliverStatus === DeliverStatus.GO_TO_PICKUP ||
-    deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
-    idleStatus === IdleStatus.GO_TO_DOCK;
+    deliverStatus === DeliverStatus.GO_TO_PICKUP || deliverStatus === DeliverStatus.GO_TO_DROPOFF;
 
   React.useEffect(() => {
     if (displayState?.config?.primary_color) {
@@ -78,6 +76,10 @@ export default function ScreenContainer({
           socket?.emit('deliver_interrupt');
           dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
+        } else if (idleStatus === IdleStatus.GO_TO_DOCK) {
+          socket?.emit('deliver_interrupt');
+          dispatch(setTransitMessage(''));
+          dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
         }
 
         dispatch(setIsScreenTouched(true));

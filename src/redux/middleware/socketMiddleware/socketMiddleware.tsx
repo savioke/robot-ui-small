@@ -31,10 +31,6 @@ const socketMiddleware: Middleware = (store) => {
   let socket: Socket;
 
   return (next) => (action) => {
-    // if (!startConnecting.match(action)) {
-    //   return next(action);
-    // }
-
     if (startConnecting.match(action) && !store.getState().socket.isEstablishingConnection) {
       socket = io('http://localhost:3000');
 
@@ -49,7 +45,6 @@ const socketMiddleware: Middleware = (store) => {
         socket.emit('pong');
       });
 
-      // TODO: Disable after testing
       socket.onAny((eventName, ...args) => {
         console.info(eventName, args);
       });
@@ -176,6 +171,10 @@ const socketMiddleware: Middleware = (store) => {
         store.dispatch(setConfirmationMessage(''));
         store.dispatch(setTaskConfig(task.config));
 
+        if (task.config.dropoff_location) {
+          store.dispatch(setTransitMessage(`Delivering to ${task.config?.dropoff_location}`));
+        }
+
         if (status === 'GO_TO_PICKUP') {
           store.dispatch(setDeliverStatus(DeliverStatus['GO_TO_PICKUP']));
           return store.dispatch(setTransitMessage(`Heading to ${task.config.pickup_location}`));
@@ -195,10 +194,12 @@ const socketMiddleware: Middleware = (store) => {
           store.dispatch(setNotificationMessage('Please enter your passcode'));
           return store.dispatch(setDisplayScreen(DisplayScreenOptions.AuthorizePin));
         } else if (status === 'LOAD_PACKAGE') {
-          store.dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
-          return store.dispatch(
-            setConfirmationMessage(task.config.pickup_message || 'Please grab your package'),
-          );
+          if (store.getState().r2c2.deliverStatus !== DeliverStatus['LOAD_PACKAGE']) {
+            store.dispatch(setDeliverStatus(DeliverStatus['LOAD_PACKAGE']));
+            return store.dispatch(
+              setConfirmationMessage(task.config.pickup_message || 'Please grab your package'),
+            );
+          }
         } else if (status === 'GO_TO_DROPOFF') {
           store.dispatch(setDeliverStatus(DeliverStatus['GO_TO_DROPOFF']));
           return store.dispatch(setTransitMessage(`Delivering to ${task.config.dropoff_location}`));
@@ -207,7 +208,7 @@ const socketMiddleware: Middleware = (store) => {
           // TODO: Adjust notify message to logic from R2C2
           return store.dispatch(setNotificationMessage(`Notify dropoff placeholder text`));
         } else if (status === 'AUTHORIZE_DROPOFF') {
-          store.dispatch(setDeliverStatus(DeliverStatus['AUTHORIZE_PICKUP']));
+          store.dispatch(setDeliverStatus(DeliverStatus['AUTHORIZE_DROPOFF']));
           if (auth.method.includes('badge' && 'pin')) {
             store.dispatch(setNotificationMessage('Please swipe badge or enter your passcode'));
             return store.dispatch(setDisplayScreen(DisplayScreenOptions.AuthorizePin));
@@ -220,10 +221,10 @@ const socketMiddleware: Middleware = (store) => {
         } else if (status === 'TAKE_PACKAGE') {
           store.dispatch(setDeliverStatus(DeliverStatus['TAKE_PACKAGE']));
           return store.dispatch(setConfirmationMessage(task.config.dropoff_message));
+        } else if (status === 'DONE') {
+          store.dispatch(setDeliverStatus(DeliverStatus['DONE']));
+          return store.dispatch(setTransitMessage('Thank you, have a nice day!'));
         }
-
-        store.dispatch(setDeliverStatus(DeliverStatus['DONE']));
-        return store.dispatch(setTransitMessage('Thank you, have a nice day!'));
       });
 
       socket?.on('go_to_location_status', ({ status }) => {

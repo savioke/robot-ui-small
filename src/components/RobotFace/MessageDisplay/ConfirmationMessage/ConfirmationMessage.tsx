@@ -67,7 +67,7 @@ export default function ConfirmationMessage() {
           dispatch(setConfirmationMessage(''));
           if (deliverStatus === DeliverStatus.LOAD_PACKAGE) {
             socket?.emit('load_package_result', { result: true });
-            return dispatch(setTransitMessage(`Delivering to ${taskConfig?.dropoff_location}`));
+            return dispatch(setTransitMessage(`Tasks Queued`));
           }
 
           socket?.emit('take_package_result', { result: true });

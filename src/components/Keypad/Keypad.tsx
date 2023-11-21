@@ -253,7 +253,6 @@ export default function Keypad({
                   return socket?.emit('authorize', passCode);
                 }
 
-                console.log('FIRIGN');
                 return socket?.emit('login_pin', passCode);
               }}
             >

@@ -68,7 +68,6 @@ const socketMiddleware: Middleware = (store) => {
           goals = [],
           maps = [],
         }) => {
-          console.log('IN');
           store.dispatch(setUser(user));
           store.dispatch(setPasscode(''));
           store.dispatch(setGoals(goals));

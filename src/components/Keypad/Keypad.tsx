@@ -16,10 +16,10 @@ import { styles } from './Keypad.styles';
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
 import { getDisplayScreen, getPasscode, getNotificationMessage } from 'state/ui/ui.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 interface KeypadProps {
   isContinueDisabled?: boolean;
@@ -31,7 +31,7 @@ interface KeypadProps {
 export default function Keypad({ isContinueDisabled, setValues, handleSetValues }: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo({ dispatch, intl });
+  const socket = useSelector(getSocket);
   const displayScreen = useSelector(getDisplayScreen);
   const passCode = useSelector(getPasscode);
   const notificationMessage = useSelector(getNotificationMessage);

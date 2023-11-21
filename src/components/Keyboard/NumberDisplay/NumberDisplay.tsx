@@ -20,10 +20,10 @@ import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 import { setDeliverFormValues } from 'state/deliver/deliver.slice';
 import { getGoToFormValues } from 'state/goTo/goTo.selectors';
 import { getMappingFormValues } from 'state/mapping/mapping.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 interface NumberDisplayProps {
   isContinueDisabled?: boolean;
@@ -41,7 +41,7 @@ export default function NumberDisplay({
 }: NumberDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo({ dispatch, intl });
+  const socket = useSelector(getSocket);
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);
   const goToFormValues = useSelector(getGoToFormValues);

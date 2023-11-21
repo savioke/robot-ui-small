@@ -15,16 +15,16 @@ import { styles } from './DeliverySummary.styles';
 
 /** redux */
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { setDisplayScreen } from 'state/ui/ui.slice';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function DeliverySummary() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo({ dispatch, intl });
+  const socket = useSelector(getSocket);
   const deliverFormValues = useSelector(getDeliverFormValues);
   const [errorMessage, setErrorMessage] = React.useState('');
 

@@ -16,16 +16,16 @@ import { styles } from './Actions.styles';
 
 /** redux */
 import { getUtilities } from 'state/r2c2/r2c2.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { setDisplayScreen } from 'state/ui/ui.slice';
 import { DisplayScreenOptions } from 'appConstants';
 
 export default function Actions() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo({ dispatch, intl });
+  const socket = useSelector(getSocket);
   const utilities = useSelector(getUtilities);
   const [playNavStart] = useSound('/sounds/nav-start.mp3');
   const [playShimmy] = useSound('/sounds/shimmy.wav');

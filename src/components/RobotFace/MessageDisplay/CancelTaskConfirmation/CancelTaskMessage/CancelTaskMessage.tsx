@@ -16,14 +16,14 @@ import { styles } from './CancelTaskMessage.styles';
 import { getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
 import { setDisplayScreen, setTransitMessage } from 'state/ui/ui.slice';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function CancelTaskMessage() {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo({ dispatch, intl });
+  const socket = useSelector(getSocket);
   const deliverStatus = useSelector(getDeliverStatus);
 
   if (deliverStatus >= DeliverStatus.GO_TO_DROPOFF && deliverStatus <= DeliverStatus.TAKE_PACKAGE) {

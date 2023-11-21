@@ -1,5 +1,4 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'typeDux';
 import useSound from 'use-sound';
 
@@ -21,10 +20,11 @@ import {
 } from 'state/ui/ui.slice';
 import { getDisplayScreen, getPlayShimmySound } from 'state/ui/ui.selectors';
 import { getDeliverStatus, getIdleStatus } from 'state/r2c2/r2c2.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
 import { DeliverStatus, DisplayScreenOptions, IdleStatus } from 'appConstants';
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
+import { startConnecting } from 'state/socket/socket.slice';
 
 export interface ScreenContainerProps {
   stateTheme: string;
@@ -37,26 +37,21 @@ export default function ScreenContainer({
   children,
   setPrimaryColor,
 }: ScreenContainerProps) {
-  const intl = useIntl();
   const dispatch = useDispatch();
   let deliverStatus = useSelector(getDeliverStatus);
   const idleStatus = useSelector(getIdleStatus);
   const displayScreen = useSelector(getDisplayScreen);
-  // const [activeSocket, setActiveSocket] = React.useState(false);
-  /** IMPORTANT - DO NOT REMOVE */
-  /** This socket hook needs to pass in both parameters for app to function on sockets */
-  const socket = useSocketIo({ dispatch, intl, setPrimaryColor });
+  const socket = useSelector(getSocket);
   const playShimmySound = useSelector(getPlayShimmySound);
   const [play] = useSound('/sounds/nav-start.mp3');
   const isRobotNavigating =
     deliverStatus === DeliverStatus.GO_TO_PICKUP ||
     deliverStatus === DeliverStatus.GO_TO_DROPOFF ||
     idleStatus === IdleStatus.GO_TO_DOCK;
-  const isPackageConfirmationShowing =
-    deliverStatus === DeliverStatus.LOAD_PACKAGE || deliverStatus === DeliverStatus.TAKE_PACKAGE;
-  const isAuthorizationShowing =
-    deliverStatus === DeliverStatus.AUTHORIZE_PICKUP ||
-    deliverStatus === DeliverStatus.AUTHORIZE_DROPOFF;
+
+  React.useEffect(() => {
+    dispatch(startConnecting());
+  }, [dispatch]);
 
   React.useEffect(() => {
     if (playShimmySound) {
@@ -72,12 +67,7 @@ export default function ScreenContainer({
     <Box
       sx={styles.container(stateTheme)}
       onClick={() => {
-        if (
-          isRobotNavigating &&
-          !isPackageConfirmationShowing &&
-          !isAuthorizationShowing &&
-          displayScreen !== DisplayScreenOptions.CancelTaskConfirmation
-        ) {
+        if (isRobotNavigating && displayScreen !== DisplayScreenOptions.CancelTaskConfirmation) {
           socket?.emit('deliver_interrupt');
           dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
@@ -86,7 +76,7 @@ export default function ScreenContainer({
         dispatch(setIsScreenTouched(true));
       }}
     >
-      <TopBar socket={socket} />
+      <TopBar />
       {children}
     </Box>
   );

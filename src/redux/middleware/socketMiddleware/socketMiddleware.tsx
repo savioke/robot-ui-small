@@ -108,6 +108,12 @@ const socketMiddleware: Middleware = (store) => {
         if (method === 'badge') {
           console.info('Unauthorized badge');
           store.dispatch(setDisplayMessage('Unauthorized badge'));
+          return store.dispatch(
+            setAuthorized({
+              method: 'badge',
+              state: false,
+            }),
+          );
         }
         console.info('Unauthorized pin');
         return store.dispatch(

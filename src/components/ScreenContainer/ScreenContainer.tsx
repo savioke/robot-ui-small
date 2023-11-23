@@ -90,7 +90,7 @@ export default function ScreenContainer({
           dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
         } else if (idleStatus === IdleStatus.GO_TO_DOCK) {
-          socket?.emit('deliver_interrupt');
+          socket?.emit('idle_interrupt');
           dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
         }

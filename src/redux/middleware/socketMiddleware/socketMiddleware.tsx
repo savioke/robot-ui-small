@@ -270,12 +270,11 @@ const socketMiddleware: Middleware = (store) => {
         store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       });
 
-      // TODO: What is behavior on this?
-      // socket?.on('authorize_interrupt', () => {
-      //   store.dispatch(setIsScreenTouched(false));
-      //   store.dispatch(setTransitMessage('Authorization timeout'));
-      //   store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
-      // });
+      socket?.on('authorize_timeout', () => {
+        store.dispatch(setIsScreenTouched(false));
+        store.dispatch(setTransitMessage('Authorization timed out'));
+        store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+      });
     }
 
     next(action);

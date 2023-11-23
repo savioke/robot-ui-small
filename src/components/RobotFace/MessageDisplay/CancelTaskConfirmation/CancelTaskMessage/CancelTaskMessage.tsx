@@ -31,13 +31,14 @@ export default function CancelTaskMessage() {
       <Box sx={styles.container}>
         <Box sx={styles.textContainer}>
           <Text
-            variant='h3'
+            variant='h2'
             component='h1'
             id='thereIsAPackageInRobot'
           />
         </Box>
         <Box sx={styles.buttonContainer}>
           <Button
+            sx={{ width: '373px' }}
             variant='contained'
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'take_package' });
@@ -48,6 +49,7 @@ export default function CancelTaskMessage() {
             {intl.formatMessage({ id: 'retrievePackage' })}
           </Button>
           <Button
+            sx={{ width: '373px' }}
             variant='contained'
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'resume' });
@@ -66,7 +68,7 @@ export default function CancelTaskMessage() {
     <Box sx={styles.container}>
       <Box sx={styles.textContainer}>
         <Text
-          variant='h3'
+          // variant='h3'
           component='h1'
           id='areYouSureYouWantToCancelTask'
         />

@@ -1,6 +1,6 @@
 export const styles = {
   button: {
-    height: '65px',
+    height: '96px',
     fontSize: '24px',
   },
 };

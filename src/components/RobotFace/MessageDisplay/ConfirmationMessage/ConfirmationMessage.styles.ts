@@ -7,7 +7,7 @@ export const styles = {
     flex: 1,
   },
   button: {
-    height: '65px',
+    height: '96px',
     width: '373px',
     fontSize: '24px',
   },

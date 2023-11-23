@@ -11,7 +11,7 @@ export const styles = {
   buttonContainer: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     flex: 1,
     gap: 3,
   },

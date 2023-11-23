@@ -10,6 +10,7 @@ import {
   setNotificationMessage,
   setPasscode,
   setPlayShimmySound,
+  setIsScreenTouched,
 } from 'state/ui/ui.slice';
 import {
   setTaskConfig,
@@ -257,6 +258,12 @@ const socketMiddleware: Middleware = (store) => {
           store.dispatch(setDeliverStatus(DeliverStatus.NONE));
           store.dispatch(setIdleStatus(IdleStatus.IDLE));
         }
+      });
+
+      socket?.on('resume', () => {
+        store.dispatch(setIsScreenTouched(false));
+        store.dispatch(setTransitMessage('Resuming...'));
+        store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       });
     }
 

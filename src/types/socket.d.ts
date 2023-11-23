@@ -80,6 +80,8 @@ export interface ServerToClientEvents {
 
   // Display State
   display_state: (state: DisplayState) => void;
+
+  resume: () => void;
 }
 
 // Event Emitters

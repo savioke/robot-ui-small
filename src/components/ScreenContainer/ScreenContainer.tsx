@@ -15,10 +15,11 @@ import { styles } from './ScreenContainer.styles';
 import {
   setDisplayScreen,
   setIsScreenTouched,
+  setPlayNavStartSound,
   setPlayShimmySound,
   setTransitMessage,
 } from 'state/ui/ui.slice';
-import { getDisplayScreen, getPlayShimmySound } from 'state/ui/ui.selectors';
+import { getDisplayScreen, getPlayNavStartSound, getPlayShimmySound } from 'state/ui/ui.selectors';
 import { getDeliverStatus, getDisplayState, getIdleStatus } from 'state/r2c2/r2c2.selectors';
 import { getSocket } from 'state/socket/socket.selectors';
 
@@ -44,7 +45,9 @@ export default function ScreenContainer({
   const displayState = useSelector(getDisplayState);
   const socket = useSelector(getSocket);
   const playShimmySound = useSelector(getPlayShimmySound);
-  const [play] = useSound('/sounds/nav-start.mp3');
+  const playNavStartSound = useSelector(getPlayNavStartSound);
+  const [navStartPlay] = useSound('/sounds/nav-start.mp3');
+  const [shimmyPlay] = useSound('/sounds/shimmy.wav');
   const isRobotNavigating =
     deliverStatus === DeliverStatus.GO_TO_PICKUP || deliverStatus === DeliverStatus.GO_TO_DROPOFF;
 
@@ -60,13 +63,23 @@ export default function ScreenContainer({
 
   React.useEffect(() => {
     if (playShimmySound) {
-      play();
+      shimmyPlay();
     }
 
     return () => {
       dispatch(setPlayShimmySound(false));
     };
-  }, [dispatch, play, playShimmySound]);
+  }, [dispatch, playShimmySound, shimmyPlay]);
+
+  React.useEffect(() => {
+    if (playNavStartSound) {
+      navStartPlay();
+    }
+
+    return () => {
+      dispatch(setPlayNavStartSound(false));
+    };
+  }, [dispatch, navStartPlay, playNavStartSound, playShimmySound, shimmyPlay]);
 
   return (
     <Box

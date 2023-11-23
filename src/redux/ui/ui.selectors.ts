@@ -43,3 +43,7 @@ export const getConfirmationMessage = (state: RootState) => {
 export const getPlayShimmySound = (state: RootState) => {
   return state.ui.playShimmySound;
 };
+
+export const getPlayNavStartSound = (state: RootState) => {
+  return state.ui.playNavStartSound;
+};

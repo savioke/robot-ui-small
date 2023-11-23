@@ -17,6 +17,7 @@ interface RobotUiState {
     state: boolean | null;
   };
   playShimmySound: boolean;
+  playNavStartSound: boolean;
   activeSocket: boolean;
 }
 
@@ -35,6 +36,7 @@ export const initialState: RobotUiState = {
     state: null,
   },
   playShimmySound: false,
+  playNavStartSound: false,
   activeSocket: false,
 };
 
@@ -75,6 +77,9 @@ const uiSlice = createSlice({
     setPlayShimmySound: (state, { payload }) => {
       state.playShimmySound = payload;
     },
+    setPlayNavStartSound: (state, { payload }) => {
+      state.playNavStartSound = payload;
+    },
     setActiveSocket: (state, { payload }) => {
       state.activeSocket = payload;
     },
@@ -93,6 +98,7 @@ export const {
   setNotificationMessage,
   setConfirmationMessage,
   setPlayShimmySound,
+  setPlayNavStartSound,
   setActiveSocket,
 } = uiSlice.actions;
 

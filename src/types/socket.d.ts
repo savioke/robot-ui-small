@@ -82,6 +82,7 @@ export interface ServerToClientEvents {
   display_state: (state: DisplayState) => void;
 
   resume: () => void;
+  authorize_timeout: () => void;
 }
 
 // Event Emitters

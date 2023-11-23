@@ -11,6 +11,7 @@ import {
   setPasscode,
   setPlayShimmySound,
   setIsScreenTouched,
+  setPlayNavStartSound,
 } from 'state/ui/ui.slice';
 import {
   setTaskConfig,
@@ -158,9 +159,12 @@ const socketMiddleware: Middleware = (store) => {
 
       socket?.on('play_sound', ({ name }) => {
         if (name === 'shimmy') {
+          console.info('Playing shimmy sound');
           store.dispatch(setPlayShimmySound(true));
+        } else if (name === 'nav_start') {
+          console.info('Playing nav start sound');
+          store.dispatch(setPlayNavStartSound(true));
         }
-        console.info('Playing shimmy sound');
       });
 
       socket?.on('display_state', (state) => {
@@ -265,6 +269,13 @@ const socketMiddleware: Middleware = (store) => {
         store.dispatch(setTransitMessage('Resuming...'));
         store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       });
+
+      // TODO: What is behavior on this?
+      // socket?.on('authorize_interrupt', () => {
+      //   store.dispatch(setIsScreenTouched(false));
+      //   store.dispatch(setTransitMessage('Authorization timeout'));
+      //   store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+      // });
     }
 
     next(action);

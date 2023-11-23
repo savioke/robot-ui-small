@@ -14,13 +14,12 @@ import { styles } from './Favorites.styles';
 
 /** redux */
 import { getFavorites } from 'state/r2c2/r2c2.selectors';
-import { setConfirmationMessage, setTransitMessage } from 'state/ui/ui.slice';
+import { setTransitMessage } from 'state/ui/ui.slice';
 import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
-import { AvatarBackgroundColors, DeliverStatus } from 'appConstants';
+import { AvatarBackgroundColors } from 'appConstants';
 import { TaskConfigDeliver, TaskFormValues } from 'types/r2c2';
-import { setDeliverStatus } from 'state/r2c2/r2c2.slice';
 
 const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; index: number }) => {
   if (dropoff_location) {

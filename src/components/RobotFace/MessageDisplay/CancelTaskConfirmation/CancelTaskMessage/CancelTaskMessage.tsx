@@ -41,6 +41,7 @@ export default function CancelTaskMessage() {
             variant='contained'
             onClick={() => {
               socket?.emit('deliver_interrupt_result', { result: 'take_package' });
+              dispatch(setTransitMessage('One moment...'));
               return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
             }}
           >

@@ -82,6 +82,7 @@ export default function ScreenContainer({
           dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
         }
 
+        socket?.emit('screen_touched');
         dispatch(setIsScreenTouched(true));
       }}
     >

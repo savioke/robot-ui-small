@@ -19,8 +19,14 @@ import {
   setIsScreenTouched,
   setPasscode,
   setAuthorized,
+  setNotificationMessage,
+  setTransitMessage,
 } from 'state/ui/ui.slice';
-import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
+import {
+  getDisplayScreen,
+  getIsIdleBehaviorInterrupted,
+  getIsScreenTouched,
+} from 'state/ui/ui.selectors';
 import { getDisplayState, getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 import { resetDeliverFormValues } from 'state/deliver/deliver.slice';
 import { resetGoToFormValues } from 'state/goTo/goTo.slice';
@@ -37,6 +43,7 @@ export default function TopBar() {
   const isScreenTouched = useSelector(getIsScreenTouched);
   const displayState = useSelector(getDisplayState);
   const deliverStatus = useSelector(getDeliverStatus);
+  const isIdleBehaviorInterrupted = useSelector(getIsIdleBehaviorInterrupted);
 
   React.useEffect(() => {
     if (displayScreen === DisplayScreenOptions.Home && socket) {
@@ -75,18 +82,25 @@ export default function TopBar() {
   return (
     <Fade in={isScreenTouched}>
       <Box sx={styles.container}>
-        {displayScreen !== DisplayScreenOptions.Home && deliverStatus === DeliverStatus.NONE && (
-          <Fab
-            sx={styles.fab}
-            size='small'
-            onClick={() => {
-              dispatch(setPasscode(''));
-              dispatch(setDisplayScreen(DisplayScreenOptions.Home));
-            }}
-          >
-            <Clear fontSize='large' />
-          </Fab>
-        )}
+        {displayScreen !== DisplayScreenOptions.Home &&
+          (deliverStatus === DeliverStatus.NONE || deliverStatus === DeliverStatus.DONE) && (
+            <Fab
+              sx={styles.fab}
+              size='small'
+              onClick={() => {
+                dispatch(setNotificationMessage(''));
+                dispatch(setPasscode(''));
+                dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+
+                if (isIdleBehaviorInterrupted) {
+                  dispatch(setTransitMessage('Resuming...'));
+                  socket?.emit('idle_resume');
+                }
+              }}
+            >
+              <Clear fontSize='large' />
+            </Fab>
+          )}
         <Box sx={styles.metricContainer}>
           <Box sx={styles.rightContainer}>
             {displayState.connected ? <Wifi fontSize='large' /> : <WifiOff fontSize='large' />}

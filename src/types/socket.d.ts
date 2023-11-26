@@ -118,6 +118,7 @@ export interface ClientToServerEvents {
   deliver_interrupt_result: ({ result }: { result: DeliverInteruptResult }) => void;
   screen_touched: () => void;
   idle_interrupt: () => void;
+  idle_resume: () => void;
 
   // Actions
   open_lid: () => void;

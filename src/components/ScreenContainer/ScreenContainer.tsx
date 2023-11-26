@@ -14,7 +14,9 @@ import { styles } from './ScreenContainer.styles';
 /** redux */
 import {
   setDisplayScreen,
+  setIsIdleBehaviorInterrupted,
   setIsScreenTouched,
+  setNotificationMessage,
   setPlayNavStartSound,
   setPlayShimmySound,
   setTransitMessage,
@@ -89,9 +91,15 @@ export default function ScreenContainer({
           socket?.emit('deliver_interrupt');
           dispatch(setTransitMessage(''));
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
-        } else if (idleStatus === IdleStatus.GO_TO_DOCK) {
+        } else if (
+          idleStatus === IdleStatus.GO_TO_DOCK &&
+          displayScreen !== DisplayScreenOptions.PassCode
+        ) {
           socket?.emit('idle_interrupt');
+          dispatch(setIsIdleBehaviorInterrupted(true));
           dispatch(setTransitMessage(''));
+          // TODO: Make this granular of what auth methods are allowed - pass in display_state?
+          dispatch(setNotificationMessage('Please swipe badge or enter passcode'));
           dispatch(setDisplayScreen(DisplayScreenOptions.PassCode));
         }
 

@@ -15,8 +15,14 @@ import Text from 'sharedComponents/Text/Text';
 import { styles } from './ArrowBackTopBar.styles';
 
 /** redux */
-import { setDisplayScreen, setPasscode } from 'state/ui/ui.slice';
-import { getDisplayScreen } from 'state/ui/ui.selectors';
+import {
+  setDisplayScreen,
+  setNotificationMessage,
+  setPasscode,
+  setTransitMessage,
+} from 'state/ui/ui.slice';
+import { getDisplayScreen, getIsIdleBehaviorInterrupted } from 'state/ui/ui.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -31,7 +37,9 @@ export default function ArrowBackTopBar({
   const intl = useIntl();
   const dispatch = useDispatch();
   const router = useRouter();
+  const socket = useSelector(getSocket);
   const displayScreen = useSelector(getDisplayScreen);
+  const isIdleBehaviorInterrupted = useSelector(getIsIdleBehaviorInterrupted);
 
   if (displayScreen === DisplayScreenOptions.RoomNumber) {
     return (
@@ -498,8 +506,14 @@ export default function ArrowBackTopBar({
         <Button
           sx={styles.button}
           onClick={() => {
+            dispatch(setNotificationMessage(''));
             dispatch(setPasscode(''));
             dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+
+            if (isIdleBehaviorInterrupted) {
+              dispatch(setTransitMessage('Resuming...'));
+              socket?.emit('idle_resume');
+            }
           }}
         >
           <Image

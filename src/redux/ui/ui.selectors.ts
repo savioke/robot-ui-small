@@ -47,3 +47,7 @@ export const getPlayShimmySound = (state: RootState) => {
 export const getPlayNavStartSound = (state: RootState) => {
   return state.ui.playNavStartSound;
 };
+
+export const getIsIdleBehaviorInterrupted = (state: RootState) => {
+  return state.ui.isIdleBehaviorInterrupted;
+};

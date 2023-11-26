@@ -266,12 +266,14 @@ const socketMiddleware: Middleware = (store) => {
 
       socket?.on('resume', () => {
         store.dispatch(setIsScreenTouched(false));
+        store.dispatch(setNotificationMessage(''));
         store.dispatch(setTransitMessage('Resuming...'));
         store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       });
 
       socket?.on('authorize_timeout', () => {
         store.dispatch(setIsScreenTouched(false));
+        store.dispatch(setNotificationMessage(''));
         store.dispatch(setTransitMessage('Authorization timed out'));
         store.dispatch(setDisplayScreen(DisplayScreenOptions.Home));
       });

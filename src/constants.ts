@@ -76,6 +76,11 @@ export const DeliverStatus = {
   AUTHORIZE_DROPOFF: 7,
   TAKE_PACKAGE: 8,
   DONE: 9,
+  GO_TO_RETURN: 10,
+  NOTIFY_RETURN: 11,
+  AUTHORIZE_RETURN: 12,
+  RETURN_PACKAGE: 13,
+  RETURNED: 14,
 };
 
 export const GoToLocationStatus = {

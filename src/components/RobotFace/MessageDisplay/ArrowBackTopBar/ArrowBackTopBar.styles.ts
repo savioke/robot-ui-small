@@ -9,8 +9,8 @@ export const styles = {
   iconButton: {
     color: '#000000',
   },
-  breadCrumbTrailText: {
-    fontWeight: 400,
+  breadCrumbText: {
+    fontWeight: 500,
   },
   button: {
     padding: 0,

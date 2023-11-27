@@ -18,7 +18,51 @@ export default function BatteryIcon() {
   const intl = useIntl();
   const battery = useSelector(getBatteryState);
 
-  if (battery.percent <= 25) {
+  if (battery && !Object.keys(battery).length) {
+    return null;
+  }
+
+  if (battery?.chargingDock && battery?.percent <= 25) {
+    return (
+      <Image
+        priority
+        src='images/battery_charge_1_v2.svg'
+        height={48}
+        width={48}
+        alt={intl.formatMessage({ id: 'battery' })}
+      />
+    );
+  } else if (battery?.chargingDock && battery?.percent <= 50) {
+    return (
+      <Image
+        priority
+        src='images/battery_charge_2_v2.svg'
+        height={48}
+        width={48}
+        alt={intl.formatMessage({ id: 'battery' })}
+      />
+    );
+  } else if (battery?.chargingDock && battery?.percent <= 75) {
+    return (
+      <Image
+        priority
+        src='images/battery_charge_3_v2.svg'
+        height={48}
+        width={48}
+        alt={intl.formatMessage({ id: 'battery' })}
+      />
+    );
+  } else if (battery?.chargingDock && battery?.percent <= 100) {
+    return (
+      <Image
+        priority
+        src='images/battery_charge_4_v2.svg'
+        height={48}
+        width={48}
+        alt={intl.formatMessage({ id: 'battery' })}
+      />
+    );
+  } else if (battery?.percent <= 25) {
     return (
       <Image
         priority
@@ -28,7 +72,7 @@ export default function BatteryIcon() {
         alt={intl.formatMessage({ id: 'battery' })}
       />
     );
-  } else if (battery.percent <= 50) {
+  } else if (battery?.percent <= 50) {
     return (
       <Image
         priority
@@ -38,7 +82,7 @@ export default function BatteryIcon() {
         alt={intl.formatMessage({ id: 'battery' })}
       />
     );
-  } else if (battery.percent <= 75) {
+  } else if (battery?.percent <= 75) {
     return (
       <Image
         priority

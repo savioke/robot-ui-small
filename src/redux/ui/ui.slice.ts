@@ -7,12 +7,18 @@ interface RobotUiState {
   passCode: string;
   displayMessage: string;
   transitMessage: string;
-  notificationMessage: '';
-  confirmationMessage: '';
+  notificationMessage: string;
+  confirmationMessage: string;
   isScreenTouched: boolean;
   theme: string;
   language: 'en' | 'es' | 'ja';
-  authorized: boolean | null;
+  authorized: {
+    method: 'badge' | 'pin' | '';
+    state: boolean | null;
+  };
+  playShimmySound: boolean;
+  playNavStartSound: boolean;
+  isIdleBehaviorInterrupted: boolean;
 }
 
 export const initialState: RobotUiState = {
@@ -25,7 +31,13 @@ export const initialState: RobotUiState = {
   theme: '',
   language: 'en',
   passCode: '',
-  authorized: false,
+  authorized: {
+    method: '',
+    state: null,
+  },
+  playShimmySound: false,
+  playNavStartSound: false,
+  isIdleBehaviorInterrupted: false,
 };
 
 const uiSlice = createSlice({
@@ -62,6 +74,15 @@ const uiSlice = createSlice({
     setAuthorized: (state, { payload }) => {
       state.authorized = payload;
     },
+    setPlayShimmySound: (state, { payload }) => {
+      state.playShimmySound = payload;
+    },
+    setPlayNavStartSound: (state, { payload }) => {
+      state.playNavStartSound = payload;
+    },
+    setIsIdleBehaviorInterrupted: (state, { payload }) => {
+      state.isIdleBehaviorInterrupted = payload;
+    },
   },
 });
 
@@ -76,6 +97,9 @@ export const {
   setTransitMessage,
   setNotificationMessage,
   setConfirmationMessage,
+  setPlayShimmySound,
+  setPlayNavStartSound,
+  setIsIdleBehaviorInterrupted,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

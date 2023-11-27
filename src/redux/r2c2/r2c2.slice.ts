@@ -1,16 +1,23 @@
 import { createSlice } from 'typeDux';
-import { TaskConfig, DisplayState, DeliverStatus, AuthUser } from 'types/r2c2';
+import { TaskConfig, DisplayState, AuthUser, UtilityActions, Favorite } from 'types/r2c2';
 
 interface R2C2State {
-  deliverStatus: DeliverStatus | '';
+  deliverStatus: number;
   displayState: DisplayState;
   taskConfig: TaskConfig;
   user: AuthUser;
-  favorites: string[];
+  favorites: Favorite[];
+  utilities: UtilityActions[];
+  goals: string[];
+  maps: string[];
+  dashboardOptions: string[];
+  deliveryOptions: string[];
+  idleStatus: number;
 }
 
 export const initialState: R2C2State = {
-  deliverStatus: '',
+  deliverStatus: 0,
+  idleStatus: 0,
   taskConfig: {
     pickup_location: '',
     pickup_message: '',
@@ -18,9 +25,13 @@ export const initialState: R2C2State = {
     dropoff_message: '',
   },
   displayState: {
+    refresh: false,
     hostname: '',
     nickname: '',
     connected: false,
+    config: {
+      primary_color: '',
+    },
     battery: {
       voltage: 0,
       percent: 0,
@@ -34,6 +45,11 @@ export const initialState: R2C2State = {
     org: '',
   },
   favorites: [],
+  utilities: [],
+  goals: [],
+  maps: [],
+  dashboardOptions: [],
+  deliveryOptions: [],
 };
 
 const r2c2Slice = createSlice({
@@ -55,10 +71,43 @@ const r2c2Slice = createSlice({
     setFavorites: (state, { payload }) => {
       state.favorites = payload;
     },
+    setUtilities: (state, { payload }) => {
+      state.utilities = payload;
+    },
+    setGoals: (state, { payload }) => {
+      state.goals = payload;
+    },
+    setMaps: (state, { payload }) => {
+      state.maps = payload;
+    },
+    setDashboardOptions: (state, { payload }) => {
+      state.dashboardOptions = payload;
+    },
+    setDeliveryOptions: (state, { payload }) => {
+      state.deliveryOptions = payload;
+    },
+    setIdleStatus: (state, { payload }) => {
+      state.idleStatus = payload;
+    },
+    resetTaskConfig: (state) => {
+      state.taskConfig = initialState.taskConfig;
+    },
   },
 });
 
-export const { setTaskConfig, setDisplayState, setDeliverStatus, setUser, setFavorites } =
-  r2c2Slice.actions;
+export const {
+  setTaskConfig,
+  setDisplayState,
+  setDeliverStatus,
+  setUser,
+  setFavorites,
+  setUtilities,
+  setGoals,
+  setMaps,
+  setDashboardOptions,
+  setDeliveryOptions,
+  setIdleStatus,
+  resetTaskConfig,
+} = r2c2Slice.actions;
 
 export default r2c2Slice.reducer;

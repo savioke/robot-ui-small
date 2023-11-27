@@ -12,6 +12,9 @@ import DeliveryMessage from 'components/RobotFace/MessageDisplay/DeliveryDashboa
 import DeliverySummary from 'components/RobotFace/MessageDisplay/DeliveryDashboard/DeliverySummary/DeliverySummary';
 import Search from 'components/RobotFace/MessageDisplay/DeliveryDashboard/Search/Search';
 import Status from 'components/RobotFace/MessageDisplay/Utilities/Status/Status';
+import GoToSearch from 'components/RobotFace/MessageDisplay/GoToSearch/GoToSearch';
+import CreateMap from 'components/RobotFace/MessageDisplay/CreateMap/CreateMap';
+import OverrideMap from 'components/RobotFace/MessageDisplay/OverrideMap/OverrideMap';
 
 /** styles */
 import { styles } from './RobotUi.styles';
@@ -25,7 +28,10 @@ import { DisplayScreenOptions } from 'appConstants';
 export default function RobotUi() {
   const displayScreen = useSelector(getDisplayScreen);
 
-  if (displayScreen === DisplayScreenOptions.PassCode) {
+  if (
+    displayScreen === DisplayScreenOptions.PassCode ||
+    displayScreen === DisplayScreenOptions.AuthorizePin
+  ) {
     return (
       <Box sx={styles.container}>
         <Box sx={styles.messageContainer}>
@@ -90,6 +96,19 @@ export default function RobotUi() {
         </Box>
       </Box>
     );
+  } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <GoToSearch />
+          </Paper>
+        </Box>
+      </Box>
+    );
   } else if (displayScreen === DisplayScreenOptions.Status) {
     return (
       <Box sx={styles.container}>
@@ -99,6 +118,32 @@ export default function RobotUi() {
             sx={styles.paper}
           >
             <Status />
+          </Paper>
+        </Box>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.OverrideMap) {
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <OverrideMap />
+          </Paper>
+        </Box>
+      </Box>
+    );
+  } else if (displayScreen === DisplayScreenOptions.CreateMap) {
+    return (
+      <Box sx={styles.container}>
+        <Box sx={styles.messageContainer}>
+          <Paper
+            elevation={5}
+            sx={styles.paper}
+          >
+            <CreateMap />
           </Paper>
         </Box>
       </Box>

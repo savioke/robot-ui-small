@@ -14,20 +14,21 @@ import { english, spanish, japanese } from 'lang';
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 
 /** Components */
+import CommonHead from 'components/CommonHead/CommonHead';
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
+import ScreenContainer from 'components/ScreenContainer/ScreenContainer';
 import Footer from 'components/Footer/Footer';
-import TopBar from 'components/TopBar/TopBar';
 
 /** actions */
-import { setTheme, setIsScreenTouched } from 'state/ui/ui.slice';
+import { setTheme } from 'state/ui/ui.slice';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 export default function App({ Component, ...rest }: AppProps) {
   const router = useRouter();
   const { store, props } = wrapper.useWrappedStore(rest);
   const stateTheme = store.getState().ui.theme;
-  useSocketIo();
+  const [primaryColor, setPrimaryColor] = React.useState('');
 
   React.useEffect(() => {
     const languagePreference = localStorage.getItem('languagePreference');
@@ -44,10 +45,12 @@ export default function App({ Component, ...rest }: AppProps) {
     const theme = localStorage.getItem('theme');
 
     if (theme) {
-      store.dispatch(setTheme(theme));
-    } else {
-      store.dispatch(setTheme(`url(/images/robot-ui-background.jpg)`));
+      store.dispatch(setTheme(`linear-gradient(#ffffff, #00558c, #03173e)`));
     }
+
+    // else {
+    //   store.dispatch(setTheme(`url(/images/robot-ui-background.jpg)`));
+    // }
   }, [store]);
 
   const messages = React.useMemo(() => {
@@ -70,34 +73,26 @@ export default function App({ Component, ...rest }: AppProps) {
       defaultLocale={router.defaultLocale}
     >
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme(primaryColor)}>
           <CssBaseline />
-          {/* <ErrorBoundary> */}
-          <Box
-            sx={{
-              display: 'flex',
-              minHeight: '100vh',
-              flexDirection: 'column',
-              backgroundImage: `${stateTheme}`,
-              backgroundSize: 'cover',
-              paddingRight: 2,
-              paddingLeft: 1,
-            }}
-            onClick={() => store.dispatch(setIsScreenTouched(true))}
-          >
-            <TopBar />
-            <Box
-              component='main'
-              sx={{
-                display: 'flex',
-                flexGrow: 1,
-              }}
+          <CommonHead />
+          <ErrorBoundary>
+            <ScreenContainer
+              stateTheme={stateTheme}
+              setPrimaryColor={setPrimaryColor}
             >
-              <Component {...props.pageProps} />
-            </Box>
-            <Footer />
-          </Box>
-          {/* </ErrorBoundary> */}
+              <Box
+                component='main'
+                sx={{
+                  display: 'flex',
+                  flexGrow: 1,
+                }}
+              >
+                <Component {...props.pageProps} />
+              </Box>
+              <Footer />
+            </ScreenContainer>
+          </ErrorBoundary>
         </ThemeProvider>
       </Provider>
     </IntlProvider>

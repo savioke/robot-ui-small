@@ -43,14 +43,13 @@ export const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: 1,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
   goButton: {
     width: '350px',
     fontSize: '24px',
-    backgroundColor: '#0AA15B',
-    '&:hover': {
-      backgroundColor: '#0AA15B',
-    },
   },
   buttonContainer: {
     display: 'flex',

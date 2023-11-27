@@ -14,7 +14,7 @@ import { styles } from './PassCode.styles';
 
 /** redux */
 import { setAuthorized, setPasscode } from 'state/ui/ui.slice';
-import { getPasscode, getAuthorized } from 'state/ui/ui.selectors';
+import { getPasscode, getAuthorized, getNotificationMessage } from 'state/ui/ui.selectors';
 
 /** helpers */
 
@@ -22,15 +22,21 @@ export default function PassCode() {
   const dispatch = useDispatch();
   const passCode = useSelector(getPasscode);
   const authorized = useSelector(getAuthorized);
+  const notificationMessage = useSelector(getNotificationMessage);
 
   React.useEffect(() => {
     if (!passCode) {
-      dispatch(setAuthorized(null));
+      dispatch(
+        setAuthorized({
+          method: '',
+          state: null,
+        }),
+      );
     }
   }, [dispatch, passCode]);
 
   const handleSetPassCode = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (passCode.length === 16) {
+    if (passCode.length === 12) {
       return passCode;
     }
 
@@ -41,29 +47,51 @@ export default function PassCode() {
     dispatch(setPasscode(passCode.slice(0, -1)));
   };
 
+  const handleClear = () => {
+    dispatch(setPasscode(''));
+  };
+
+  const getHelperText = (authorized: { method: 'badge' | 'pin' | ''; state: boolean | null }) => {
+    if (authorized.method === 'badge' && authorized.state === false) {
+      return 'Unauthorized badge';
+    } else if (authorized.method === 'pin' && authorized.state === false) {
+      return 'Unauthorized PIN';
+    }
+
+    return <Box sx={styles.emptyHelperText}></Box>;
+  };
+
   return (
     <Box sx={styles.innerPaper}>
       <Box sx={styles.leftSideContent}>
         <ArrowBackTopBar />
         <Box sx={styles.contentContainer}>
-          <Text
-            variant='h5'
-            component='h1'
-            id='couldYouEnterThePasscode?'
-            sx={styles.title}
-          />
+          {notificationMessage ? (
+            <Text
+              variant='h2'
+              component='h1'
+              sx={{ fontWeight: 400 }}
+            >
+              {notificationMessage}
+            </Text>
+          ) : (
+            <Text
+              variant='h2'
+              component='h1'
+              id='couldYouEnterThePasscode?'
+              sx={{ fontWeight: 400 }}
+            />
+          )}
           <Box sx={styles.textFieldContainer}>
             <TextField
               fullWidth
-              error={authorized === false}
+              error={authorized.state === false}
               FormHelperTextProps={{
                 sx: {
                   fontSize: '24px',
                 },
               }}
-              helperText={
-                authorized === false ? 'Unauthorized' : <Box sx={styles.emptyHelperText}></Box>
-              }
+              helperText={getHelperText(authorized)}
               variant='standard'
               type='password'
               value={passCode}
@@ -78,9 +106,9 @@ export default function PassCode() {
         </Box>
       </Box>
       <Keypad
-        isContinueDisabled={!passCode.length}
         handleSetValues={handleSetPassCode}
         setValues={handleBackspace}
+        handleClear={handleClear}
       />
     </Box>
   );

@@ -7,19 +7,30 @@ export type TaskType =
   | 'SEND_TO'
   | 'SEND_TO_DOCK'
   | 'REGISTER_RFID'
+  | 'RUN_MAPPING'
   | '';
 
 export type DeliverStatus =
   | 'NONE'
   | 'GO_TO_PICKUP'
   | 'NOTIFY_PICKUP'
+  | 'AUTHORIZE_PICKUP'
   | 'LOAD_PACKAGE'
   | 'GO_TO_DROPOFF'
   | 'NOTIFY_DROPOFF'
+  | 'AUTHORIZE_DROPOFF'
   | 'TAKE_PACKAGE'
   | 'SUCCESS'
   | 'FAILURE'
   | 'DONE';
+
+export type GoToLocationStatus = 'NONE' | 'GO_TO' | 'ARRIVED';
+
+export type IdleStatus = 'NONE' | 'GO_TO_DOCK' | 'DOCKED' | 'IDLE';
+
+export type UtilityActions = 'open lid' | 'close lid' | 'go to' | 'dock' | 'map' | 'all';
+
+export type DeliverInteruptResult = 'cancel_task' | 'take_package' | 'resume';
 
 export interface TaskConfig {
   pickup_location: string;
@@ -39,19 +50,41 @@ export interface NavigationGoal {
   tags: string[];
 }
 
-export interface DeliverValues {
-  type: 'DELIVER';
+export interface TaskFormValues<T> {
+  type: TaskType;
   version: '2.0';
-  config: {
-    dropoff_location: string;
-    dropoff_message: string;
-  };
+  config: T;
+}
+
+export interface TaskConfigDeliver {
+  dropoff_location: string;
+  dropoff_message: string;
+  pickup_message;
+}
+
+export interface TaskConfigGoTo {
+  destination: string;
+  transit_message: string;
+}
+
+export interface TaskConfigMapping {
+  name: string;
+  override_existing: boolean;
+}
+
+export interface TaskFormValuesWithoutConfig {
+  type: TaskType;
+  version: string;
 }
 
 export interface DisplayState {
+  refresh: boolean;
   hostname: string;
   nickname: string;
   connected: boolean;
+  config: {
+    primary_color: string;
+  };
   battery: {
     voltage: number;
     percent: number;
@@ -88,6 +121,12 @@ export interface AuthUser {
   org: string;
 }
 
+export interface Favorite {
+  dropoff_location: string;
+  dropoff_message: string;
+  pickup_message: string;
+}
+
 export interface SiteConfig {
   auth: {
     org?: string[];
@@ -95,11 +134,14 @@ export interface SiteConfig {
     method?: string[];
     group?: string[];
   };
-  favorites: {
-    dropoff_location: string;
-    dropoff_message: string;
-  }[];
+  favorites: Favorite[];
   name: string;
   screen: '/favorites' | '/dashboard';
-  utilities: string[];
+  utilities: UtilityActions[];
+  dashboard: string[];
+  delivery: string[];
+}
+
+export interface Auth {
+  method: readonly ['badge', 'pin'];
 }

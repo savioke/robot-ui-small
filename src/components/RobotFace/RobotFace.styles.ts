@@ -11,7 +11,7 @@ export const styles = {
     alignItems: 'center',
   },
   messageContainer: {
-    minWidth: '1060px',
+    minWidth: '1100px',
     position: 'relative',
     marginBottom: 7,
   },

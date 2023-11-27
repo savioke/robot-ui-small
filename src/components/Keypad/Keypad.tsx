@@ -3,35 +3,54 @@ import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Grid, Button } from '@mui/material';
-import { Backspace } from '@mui/icons-material';
+import { Box, Grid } from '@mui/material';
+import { Backspace, Clear } from '@mui/icons-material';
 
 /** Components */
+import Button from 'sharedComponents/Button/Button';
+import KeypadButton from 'sharedComponents/KeypadButton/KeypadButton';
 
 /** styles */
 import { styles } from './Keypad.styles';
 
 /** redux */
-import { setDisplayScreen, setPasscode } from 'state/ui/ui.slice';
-import { getDisplayScreen, getPasscode } from 'state/ui/ui.selectors';
+import {
+  setDisplayScreen,
+  setIsIdleBehaviorInterrupted,
+  setNotificationMessage,
+} from 'state/ui/ui.slice';
+import {
+  getDisplayScreen,
+  getPasscode,
+  getNotificationMessage,
+  getIsIdleBehaviorInterrupted,
+} from 'state/ui/ui.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 
 interface KeypadProps {
-  isContinueDisabled: boolean;
+  isContinueDisabled?: boolean;
   setValues: React.Dispatch<React.SetStateAction<string>>;
+  handleClear: () => void;
   // eslint-disable-next-line no-unused-vars
   handleSetValues: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export default function Keypad({ isContinueDisabled, setValues, handleSetValues }: KeypadProps) {
+export default function Keypad({
+  isContinueDisabled,
+  setValues,
+  handleSetValues,
+  handleClear,
+}: KeypadProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const socket = useSocketIo();
+  const socket = useSelector(getSocket);
   const displayScreen = useSelector(getDisplayScreen);
   const passCode = useSelector(getPasscode);
+  const notificationMessage = useSelector(getNotificationMessage);
+  const isIdleBehaviorInterrupted = useSelector(getIsIdleBehaviorInterrupted);
 
   return (
     <Box sx={styles.keypadContainer}>
@@ -51,40 +70,37 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={1}
             >
               {intl.formatMessage({ id: '1' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={2}
             >
               {intl.formatMessage({ id: '2' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={3}
             >
               {intl.formatMessage({ id: '3' })}
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid
@@ -98,40 +114,37 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={4}
             >
               {intl.formatMessage({ id: '4' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={5}
             >
               {intl.formatMessage({ id: '5' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={6}
             >
               {intl.formatMessage({ id: '6' })}
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid
@@ -145,40 +158,37 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={7}
             >
               {intl.formatMessage({ id: '7' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={8}
             >
               {intl.formatMessage({ id: '8' })}
-            </Button>
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
               onClick={handleSetValues}
               value={9}
             >
               {intl.formatMessage({ id: '9' })}
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid
@@ -191,35 +201,42 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
           <Grid
             item
             xs={3}
-            sx={styles.iconButtonContainer}
-          ></Grid>
-          <Grid
-            item
-            xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
-              onClick={handleSetValues}
-              value={0}
+              onClick={handleClear}
             >
-              {intl.formatMessage({ id: '0' })}
-            </Button>
+              <Clear
+                fontSize='large'
+                sx={styles.backSpaceIcon}
+              />
+            </KeypadButton>
           </Grid>
           <Grid
             item
             xs={3}
           >
-            <Button
+            <KeypadButton
               variant='contained'
-              sx={styles.numberButtons}
+              onClick={handleSetValues}
+              value={0}
+            >
+              {intl.formatMessage({ id: '0' })}
+            </KeypadButton>
+          </Grid>
+          <Grid
+            item
+            xs={3}
+          >
+            <KeypadButton
+              variant='contained'
               onClick={() => setValues((previousValues) => previousValues.slice(0, -1))}
             >
               <Backspace
                 fontSize='large'
                 sx={styles.backSpaceIcon}
               />
-            </Button>
+            </KeypadButton>
           </Grid>
         </Grid>
         <Grid
@@ -241,7 +258,14 @@ export default function Keypad({ isContinueDisabled, setValues, handleSetValues 
               onClick={() => {
                 if (displayScreen === DisplayScreenOptions.RoomNumber) {
                   return dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+                  // TODO: If notification message means its Authorize Pickup or Dropoff - need to clean this logic up.
+                } else if (notificationMessage && !isIdleBehaviorInterrupted) {
+                  return socket?.emit('authorize', passCode);
                 }
+
+                // Resets notification message and idle interrupted boolean - this is used for idle interrupt -> favorites delivery
+                dispatch(setNotificationMessage(''));
+                dispatch(setIsIdleBehaviorInterrupted(false));
 
                 return socket?.emit('login_pin', passCode);
               }}

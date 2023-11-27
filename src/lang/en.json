@@ -136,5 +136,20 @@
   "battery:": "Battery: {battery}%",
   "batteryVoltage:": "Battery Voltage: {batteryVoltage}",
   "chargingDock:": "Charging Dock: {chargingDock}",
-  "chargingPlug:": "Charging Plug: {chargingPlug}"
+  "chargingPlug:": "Charging Plug: {chargingPlug}",
+  "relayRobotics": "Relay Robotics",
+  "startMapping": "Start mapping",
+  "stopMapping": "Stop mapping",
+  "location": "Location",
+  "overrideMap": "Override map",
+  "createMap": "Create map",
+  "mapName": "Map name",
+  "oopsSomethingWentWrong": "Oops! Something went wrong",
+  "pleaseTryRefreshingThePage": "Please try refreshing the page.",
+  "ifTheProblemPersists": "If the problem persists, please contact us.",
+  "thereIsAPackageInRobot": "There is currently a package in the robot.",
+  "retrievePackage": "Retrieve package",
+  "continueDelivery": "Continue delivery",
+  "areYouSureYouWantToCancelTask": "Are you sure you want to cancel the task?",
+  "cancelTask": "Cancel task"
 }

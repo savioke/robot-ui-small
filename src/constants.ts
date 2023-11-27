@@ -11,7 +11,6 @@ export const DisplayScreenOptions = {
   DeliverySummary: 'Delivery summary' as const,
   RoomNumber: 'Room number' as const,
   Favorites: 'Favorites' as const,
-  MultipleSelectFavorites: 'Multiple select favorites' as const,
   Utilities: 'Utilities' as const,
   Actions: 'Actions' as const,
   CancelTask: 'CancelTask' as const,
@@ -19,6 +18,11 @@ export const DisplayScreenOptions = {
   Search: 'Search' as const,
   Status: 'Status' as const,
   Help: 'Help' as const,
+  MappingChoice: 'Mapping Choice' as const,
+  OverrideMap: 'Override Map' as const,
+  CreateMap: 'Create Map' as const,
+  GoToSearch: 'GoToSearch' as const,
+  AuthorizePin: 'Authorize PIN' as const,
 };
 
 export const Themes = {
@@ -60,3 +64,34 @@ export const AvatarBackgroundColors = [
   '#186212',
   '#4B0AA1',
 ];
+
+export const DeliverStatus = {
+  NONE: 0,
+  GO_TO_PICKUP: 1,
+  NOTIFY_PICKUP: 2,
+  AUTHORIZE_PICKUP: 3,
+  LOAD_PACKAGE: 4,
+  GO_TO_DROPOFF: 5,
+  NOTIFY_DROPOFF: 6,
+  AUTHORIZE_DROPOFF: 7,
+  TAKE_PACKAGE: 8,
+  DONE: 9,
+  GO_TO_RETURN: 10,
+  NOTIFY_RETURN: 11,
+  AUTHORIZE_RETURN: 12,
+  RETURN_PACKAGE: 13,
+  RETURNED: 14,
+};
+
+export const GoToLocationStatus = {
+  NONE: 0,
+  GO_TO: 1,
+  ARRIVED: 2,
+};
+
+export const IdleStatus = {
+  NONE: 0,
+  GO_TO_DOCK: 1,
+  DOCKED: 2,
+  IDLE: 3,
+};

@@ -26,17 +26,13 @@ export const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     '&:hover': {
-      backgroundColor: '#BBBBBB',
+      backgroundColor: '#414141',
     },
   },
   confirmButton: {
     width: '100%',
     height: '65px',
     fontSize: '24px',
-    backgroundColor: '#0AA15B',
-    '&:hover': {
-      backgroundColor: '#0AA15B',
-    },
   },
   spaceButton: {
     width: '100%',

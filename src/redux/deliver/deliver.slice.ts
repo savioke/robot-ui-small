@@ -1,19 +1,18 @@
 import { createSlice } from 'typeDux';
-import { NavigationGoal, DeliverValues } from 'types/r2c2';
+import { TaskConfigDeliver, TaskFormValues } from 'types/r2c2';
 
 interface DeliverState {
-  deliverLocations: NavigationGoal[];
-  formValues: DeliverValues;
+  formValues: TaskFormValues<TaskConfigDeliver>;
 }
 
 export const initialState: DeliverState = {
-  deliverLocations: [],
   formValues: {
     type: 'DELIVER',
     version: '2.0',
     config: {
       dropoff_location: '',
       dropoff_message: '',
+      pickup_message: '',
     },
   },
 };
@@ -22,11 +21,6 @@ const deliverSlice = createSlice({
   name: 'deliverSlice',
   initialState,
   reducers: {
-    setDeliverLocations: (state, { payload }) => {
-      state.deliverLocations = payload.filter(
-        (location: NavigationGoal) => !location?.tags?.includes('internal'),
-      );
-    },
     setDeliverFormValues: (state, { payload }) => {
       state.formValues = {
         ...state.formValues,
@@ -42,7 +36,6 @@ const deliverSlice = createSlice({
   },
 });
 
-export const { setDeliverFormValues, resetDeliverFormValues, setDeliverLocations } =
-  deliverSlice.actions;
+export const { setDeliverFormValues, resetDeliverFormValues } = deliverSlice.actions;
 
 export default deliverSlice.reducer;

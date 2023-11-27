@@ -16,4 +16,9 @@ export type DisplayScreen =
   | 'CancelTaskConfirmation'
   | 'Search'
   | 'Status'
-  | 'Help';
+  | 'Help'
+  | 'Mapping Choice'
+  | 'Override Map'
+  | 'Create Map'
+  | 'GoToSearch'
+  | 'Authorize PIN';

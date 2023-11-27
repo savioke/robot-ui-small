@@ -3,19 +3,24 @@ import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
-import { Box, Grid, Button } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { Backspace } from '@mui/icons-material';
 
 /** Components */
+import Button from 'sharedComponents/Button/Button';
+import KeyboardButton from 'sharedComponents/KeyboardButton/KeyboardButton';
 
 /** styles */
 import { styles } from '../Keyboard.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
+import { setDisplayScreen, setTransitMessage, setConfirmationMessage } from 'state/ui/ui.slice';
 import { getDisplayScreen } from 'state/ui/ui.selectors';
 import { getDeliverFormValues } from 'state/deliver/deliver.selectors';
 import { setDeliverFormValues } from 'state/deliver/deliver.slice';
+import { getGoToFormValues } from 'state/goTo/goTo.selectors';
+import { getMappingFormValues } from 'state/mapping/mapping.selectors';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
 import { DisplayScreenOptions } from 'appConstants';
@@ -36,8 +41,13 @@ export default function NumberDisplay({
 }: NumberDisplayProps) {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const socket = useSelector(getSocket);
   const displayScreen = useSelector(getDisplayScreen);
   const deliverFormValues = useSelector(getDeliverFormValues);
+  const goToFormValues = useSelector(getGoToFormValues);
+  const mappingFormValues = useSelector(getMappingFormValues);
+  const isGoToConfirmDisabled =
+    displayScreen === DisplayScreenOptions.GoToSearch && !goToFormValues.config.destination;
 
   return (
     <Box sx={styles.keyboardContainer}>
@@ -56,79 +66,79 @@ export default function NumberDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={1}
             >
               {intl.formatMessage({ id: '1' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={2}
             >
               {intl.formatMessage({ id: '2' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={3}
             >
               {intl.formatMessage({ id: '3' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={4}
             >
               {intl.formatMessage({ id: '4' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={5}
             >
               {intl.formatMessage({ id: '5' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={6}
             >
               {intl.formatMessage({ id: '6' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -141,79 +151,79 @@ export default function NumberDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={7}
             >
               {intl.formatMessage({ id: '7' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={8}
             >
               {intl.formatMessage({ id: '8' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={9}
             >
               {intl.formatMessage({ id: '9' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value={0}
             >
               {intl.formatMessage({ id: '0' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='+'
             >
               {intl.formatMessage({ id: '+' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='-'
             >
               {intl.formatMessage({ id: '-' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -226,79 +236,79 @@ export default function NumberDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='.'
             >
               {intl.formatMessage({ id: '.' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value=','
             >
               {intl.formatMessage({ id: ',' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='!'
             >
               {intl.formatMessage({ id: '!' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='?'
             >
               {intl.formatMessage({ id: '?' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='('
             >
               {intl.formatMessage({ id: '(' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value=')'
             >
               {intl.formatMessage({ id: ')' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -311,79 +321,79 @@ export default function NumberDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='\'
             >
               \
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='/'
             >
               /
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value=':'
             >
               {intl.formatMessage({ id: ':' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value=';'
             >
               {intl.formatMessage({ id: ';' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='~'
             >
               {intl.formatMessage({ id: '~' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='*'
             >
               {intl.formatMessage({ id: '*' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -396,79 +406,79 @@ export default function NumberDisplay({
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='&'
             >
               {intl.formatMessage({ id: '&' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='@'
             >
               {intl.formatMessage({ id: '@' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='#'
             >
               {intl.formatMessage({ id: '#' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='%'
             >
               {intl.formatMessage({ id: '%' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='='
             >
               {intl.formatMessage({ id: '=' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.numberButtons}
               onClick={setValues}
               value='$'
             >
               {intl.formatMessage({ id: '$' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -481,20 +491,20 @@ export default function NumberDisplay({
             item
             xs={10}
           >
-            <Button
+            <KeyboardButton
               variant='contained'
               sx={styles.spaceButton}
               onClick={setValues}
               value=' '
             >
               {intl.formatMessage({ id: 'space' })}
-            </Button>
+            </KeyboardButton>
           </Grid>
           <Grid
             item
             xs={2}
           >
-            <Button
+            <KeyboardButton
               sx={[
                 styles.numberButtons,
                 {
@@ -509,7 +519,7 @@ export default function NumberDisplay({
                 fontSize='large'
                 sx={styles.backspaceIcon}
               />
-            </Button>
+            </KeyboardButton>
           </Grid>
         </Grid>
         <Grid
@@ -535,7 +545,7 @@ export default function NumberDisplay({
             xs={10}
           >
             <Button
-              disabled={isContinueDisabled}
+              disabled={isContinueDisabled || isGoToConfirmDisabled}
               variant='contained'
               sx={styles.confirmButton}
               onClick={() => {
@@ -543,6 +553,16 @@ export default function NumberDisplay({
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliverySummary));
                 } else if (displayScreen === DisplayScreenOptions.Search) {
                   dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
+                } else if (displayScreen === DisplayScreenOptions.GoToSearch) {
+                  socket?.emit('queue_tasks', goToFormValues);
+                  dispatch(setTransitMessage(goToFormValues.config.transit_message));
+                  return dispatch(setDisplayScreen(DisplayScreenOptions.Home));
+                } else if (
+                  displayScreen === DisplayScreenOptions.OverrideMap ||
+                  displayScreen === DisplayScreenOptions.CreateMap
+                ) {
+                  socket?.emit('queue_tasks', mappingFormValues);
+                  return dispatch(setConfirmationMessage('Mapping in progress'));
                 }
 
                 if (!deliverFormValues.config.dropoff_message) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'typeDux';
 
 /** Mui Components */
 import { Avatar, Box, Button, Checkbox } from '@mui/material';
@@ -13,43 +14,63 @@ import { styles } from './Favorites.styles';
 
 /** redux */
 import { getFavorites } from 'state/r2c2/r2c2.selectors';
+import { setTransitMessage } from 'state/ui/ui.slice';
+import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
-import useSocketIo from 'utilities/useSocketIo/useSocketIo';
 import { AvatarBackgroundColors } from 'appConstants';
-import { DeliverValues } from 'types/r2c2';
-import { useSelector } from 'typeDux';
+import { TaskConfigDeliver, TaskFormValues } from 'types/r2c2';
 
-const stringAvatar = ({ name, index }: { name: string; index: number }) => {
-  const initials = name.includes(' ')
-    ? name
-        .split(' ')
-        .map((word) => word[0])
-        .join('')
-    : name.split('')[0];
+const stringAvatar = ({ dropoff_location, index }: { dropoff_location: string; index: number }) => {
+  if (dropoff_location) {
+    const initials = dropoff_location.includes(' ')
+      ? dropoff_location
+          .split(' ')
+          .map((word) => word[0])
+          .join('')
+      : dropoff_location.split('')[0];
 
-  return {
-    sx: {
-      bgcolor: AvatarBackgroundColors[index],
-      minWidth: '132px',
-      minHeight: '132px',
-      borderRadius: '30px',
-      fontSize: '70px',
-    },
-    children: initials,
-  };
+    return {
+      sx: {
+        bgcolor: AvatarBackgroundColors[index],
+        minWidth: '132px',
+        minHeight: '132px',
+        borderRadius: '30px',
+        fontSize: '70px',
+      },
+      children: initials,
+    };
+  }
 };
 
 export default function Favorites() {
   const intl = useIntl();
-  const socket = useSocketIo();
+  const dispatch = useDispatch();
   const [checked, setChecked] = React.useState<number[]>([]);
-  const [tasks, setTasks] = React.useState<DeliverValues[]>([]);
+  const [tasks, setTasks] = React.useState<TaskFormValues<TaskConfigDeliver>[]>([]);
+  const socket = useSelector(getSocket);
   const favorites = useSelector(getFavorites);
+  // const favorites = [
+  //   {
+  //     pickup_message: 'Please load your sample(s)',
+  //     dropoff_message: 'Please collect your sample(s)',
+  //     dropoff_location: 'desk 1',
+  //   },
+  //   {
+  //     pickup_message: 'Please load your sample(s)',
+  //     dropoff_message: 'Please collect your sample(s)',
+  //     dropoff_location: 'desk 2',
+  //   },
+  //   {
+  //     pickup_message: 'Please load your sample(s)',
+  //     dropoff_message: 'Please collect your sample(s)',
+  //     dropoff_location: 'desk 3',
+  //   },
+  // ];
 
   // TODO: This function can be cleaned up.
   const handleToggle =
-    ({ index, task }: { index: number; task: DeliverValues }) =>
+    ({ index, task }: { index: number; task: TaskFormValues<TaskConfigDeliver> }) =>
     () => {
       const currentIndex = checked.indexOf(index);
       const newChecked = [...checked];
@@ -69,9 +90,9 @@ export default function Favorites() {
 
   return (
     <Box sx={styles.rootContainer}>
-      <ArrowBackTopBar />
+      <ArrowBackTopBar favorites={tasks} />
       <Box sx={styles.dashboardContainer}>
-        {['Front Desk', 'Tent', 'Pickup'].map((favorite, index) => (
+        {favorites.map(({ dropoff_location, dropoff_message, pickup_message }, index) => (
           <Box
             key={index}
             sx={styles.paperContainer}
@@ -80,9 +101,9 @@ export default function Favorites() {
                 type: 'DELIVER',
                 version: '2.0',
                 config: {
-                  dropoff_location: favorite,
-                  // TODO: This should be returned from the favorites array after parsing..
-                  dropoff_message: 'Please take your package',
+                  dropoff_location,
+                  dropoff_message,
+                  pickup_message,
                 },
               },
               index,
@@ -91,13 +112,13 @@ export default function Favorites() {
             <Button sx={styles.favoriteButton}>
               <Avatar
                 variant='square'
-                {...stringAvatar({ name: favorite, index })}
+                {...stringAvatar({ dropoff_location, index })}
               />
               <Text
                 variant='h5'
                 sx={[styles.boldFont, { textTransform: 'capitalize' }]}
               >
-                {favorite}
+                {dropoff_location}
               </Text>
               <Checkbox
                 checked={checked.indexOf(index) !== -1}
@@ -113,7 +134,20 @@ export default function Favorites() {
           variant='contained'
           onClick={(event) => {
             event.preventDefault();
-            socket?.emit('queue_tasks', tasks);
+            // Adds load_package to first task to bulk load all items for multi-stop capabilities.
+            const updatedTasks = [
+              {
+                ...tasks[0],
+                config: {
+                  ...tasks[0].config,
+                  load_package: true,
+                },
+              },
+              ...tasks.slice(1),
+            ];
+
+            socket?.emit('queue_tasks', updatedTasks);
+            dispatch(setTransitMessage('Queuing Tasks...'));
           }}
         >
           {intl.formatMessage({ id: 'go' })}

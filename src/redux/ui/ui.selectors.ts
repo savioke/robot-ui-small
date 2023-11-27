@@ -39,3 +39,15 @@ export const getNotificationMessage = (state: RootState) => {
 export const getConfirmationMessage = (state: RootState) => {
   return state.ui.confirmationMessage;
 };
+
+export const getPlayShimmySound = (state: RootState) => {
+  return state.ui.playShimmySound;
+};
+
+export const getPlayNavStartSound = (state: RootState) => {
+  return state.ui.playNavStartSound;
+};
+
+export const getIsIdleBehaviorInterrupted = (state: RootState) => {
+  return state.ui.isIdleBehaviorInterrupted;
+};

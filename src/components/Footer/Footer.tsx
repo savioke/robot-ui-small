@@ -14,23 +14,29 @@ import { styles } from './Footer.styles';
 /** redux */
 import { setDisplayScreen } from 'state/ui/ui.slice';
 import { getDisplayScreen, getIsScreenTouched } from 'state/ui/ui.selectors';
+import { getDeliverStatus } from 'state/r2c2/r2c2.selectors';
 
 /** helpers */
-import { DisplayScreenOptions } from 'appConstants';
+import { DeliverStatus, DisplayScreenOptions } from 'appConstants';
 
 export default function Footer() {
   const intl = useIntl();
   const dispatch = useDispatch();
   const displayScreen = useSelector(getDisplayScreen);
   const isScreenTouched = useSelector(getIsScreenTouched);
+  const deliverStatus = useSelector(getDeliverStatus);
 
   if (
     displayScreen === DisplayScreenOptions.PassCode ||
+    displayScreen === DisplayScreenOptions.AuthorizePin ||
     displayScreen === DisplayScreenOptions.RoomNumber ||
     displayScreen === DisplayScreenOptions.DeliveryMessage ||
     displayScreen === DisplayScreenOptions.DeliverySummary ||
     displayScreen === DisplayScreenOptions.Search ||
-    displayScreen === DisplayScreenOptions.Status
+    displayScreen === DisplayScreenOptions.GoToSearch ||
+    displayScreen === DisplayScreenOptions.Status ||
+    displayScreen === DisplayScreenOptions.CreateMap ||
+    displayScreen === DisplayScreenOptions.OverrideMap
   ) {
     return (
       <Image
@@ -41,7 +47,7 @@ export default function Footer() {
         alt={intl.formatMessage({ id: 'miniRobotFace' })}
       />
     );
-  } else if (displayScreen === DisplayScreenOptions.Home) {
+  } else if (displayScreen === DisplayScreenOptions.Home && deliverStatus === DeliverStatus.NONE) {
     return (
       <Fade
         in={isScreenTouched}

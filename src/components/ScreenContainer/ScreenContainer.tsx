@@ -22,7 +22,12 @@ import {
   setTransitMessage,
 } from 'state/ui/ui.slice';
 import { getDisplayScreen, getPlayNavStartSound, getPlayShimmySound } from 'state/ui/ui.selectors';
-import { getDeliverStatus, getDisplayState, getIdleStatus } from 'state/r2c2/r2c2.selectors';
+import {
+  getDeliverStatus,
+  getDisplayState,
+  getIdleStatus,
+  getUser,
+} from 'state/r2c2/r2c2.selectors';
 import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
@@ -48,6 +53,7 @@ export default function ScreenContainer({
   const socket = useSelector(getSocket);
   const playShimmySound = useSelector(getPlayShimmySound);
   const playNavStartSound = useSelector(getPlayNavStartSound);
+  const user = useSelector(getUser);
   const [navStartPlay] = useSound('/sounds/nav-start.mp3');
   const [shimmyPlay] = useSound('/sounds/shimmy.wav');
   const isRobotNavigating =
@@ -93,7 +99,8 @@ export default function ScreenContainer({
           dispatch(setDisplayScreen(DisplayScreenOptions.CancelTaskConfirmation));
         } else if (
           idleStatus === IdleStatus.GO_TO_DOCK &&
-          displayScreen !== DisplayScreenOptions.PassCode
+          displayScreen !== DisplayScreenOptions.PassCode &&
+          !user.id
         ) {
           socket?.emit('idle_interrupt');
           dispatch(setIsIdleBehaviorInterrupted(true));

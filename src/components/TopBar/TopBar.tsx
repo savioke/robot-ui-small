@@ -21,6 +21,7 @@ import {
   setAuthorized,
   setNotificationMessage,
   setTransitMessage,
+  setIsIdleBehaviorInterrupted,
 } from 'state/ui/ui.slice';
 import {
   getDisplayScreen,
@@ -57,6 +58,7 @@ export default function TopBar() {
       dispatch(resetGoToFormValues());
       dispatch(resetMappingFormValues());
       dispatch(setPasscode(''));
+      dispatch(setIsIdleBehaviorInterrupted(false));
       socket?.emit('logout');
     }
   }, [dispatch, displayScreen, socket]);

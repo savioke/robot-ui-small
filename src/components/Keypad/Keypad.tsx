@@ -14,8 +14,17 @@ import KeypadButton from 'sharedComponents/KeypadButton/KeypadButton';
 import { styles } from './Keypad.styles';
 
 /** redux */
-import { setDisplayScreen } from 'state/ui/ui.slice';
-import { getDisplayScreen, getPasscode, getNotificationMessage } from 'state/ui/ui.selectors';
+import {
+  setDisplayScreen,
+  setIsIdleBehaviorInterrupted,
+  setNotificationMessage,
+} from 'state/ui/ui.slice';
+import {
+  getDisplayScreen,
+  getPasscode,
+  getNotificationMessage,
+  getIsIdleBehaviorInterrupted,
+} from 'state/ui/ui.selectors';
 import { getSocket } from 'state/socket/socket.selectors';
 
 /** helpers */
@@ -41,6 +50,7 @@ export default function Keypad({
   const displayScreen = useSelector(getDisplayScreen);
   const passCode = useSelector(getPasscode);
   const notificationMessage = useSelector(getNotificationMessage);
+  const isIdleBehaviorInterrupted = useSelector(getIsIdleBehaviorInterrupted);
 
   return (
     <Box sx={styles.keypadContainer}>
@@ -249,9 +259,13 @@ export default function Keypad({
                 if (displayScreen === DisplayScreenOptions.RoomNumber) {
                   return dispatch(setDisplayScreen(DisplayScreenOptions.DeliveryMessage));
                   // TODO: If notification message means its Authorize Pickup or Dropoff - need to clean this logic up.
-                } else if (notificationMessage) {
+                } else if (notificationMessage && !isIdleBehaviorInterrupted) {
                   return socket?.emit('authorize', passCode);
                 }
+
+                // Resets notification message and idle interrupted boolean - this is used for idle interrupt -> favorites delivery
+                dispatch(setNotificationMessage(''));
+                dispatch(setIsIdleBehaviorInterrupted(false));
 
                 return socket?.emit('login_pin', passCode);
               }}

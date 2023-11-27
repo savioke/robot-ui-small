@@ -1,7 +1,8 @@
 export const styles = {
   container: (stateTheme: string) => ({
     display: 'flex',
-    minHeight: '100vh',
+    height: '100vh',
+    overflow: 'hidden',
     flexDirection: 'column',
     // backgroundImage: `${stateTheme}`,
     // background: `linear-gradient(#0085ca, #00558c)`,

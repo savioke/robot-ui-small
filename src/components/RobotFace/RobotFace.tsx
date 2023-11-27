@@ -31,17 +31,23 @@ export default function RobotFace() {
       <Box sx={styles.eyesContainer}>
         {/* TODO: Update eye files to match the correct eye. */}
         <Image
+          // fill
           priority
+          // objectFit='contain'
           src='images/eye_right_v3.svg'
-          height={158}
-          width={112}
+          width={0}
+          height={0}
+          style={{ width: '100%', height: '40%' }} // optional
           alt={intl.formatMessage({ id: 'leftEye' })}
         />
         <Image
+          // fill
           priority
+          // objectFit='contain'
           src='/images/eye_left_v3.svg'
-          height={158}
-          width={112}
+          width={0}
+          height={0}
+          style={{ width: '100%', height: '40%' }} // optional
           alt={intl.formatMessage({ id: 'rightEye' })}
         />
       </Box>

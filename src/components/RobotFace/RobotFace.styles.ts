@@ -1,17 +1,21 @@
 export const styles = {
   eyesContainer: {
-    width: '40%',
+    overflow: 'hidden',
     display: 'flex',
     justifyContent: 'space-between',
+    // alignItems: 'center',
+    maxHeight: '50%',
+    width: '50%',
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    height: '100%',
   },
   messageContainer: {
-    minWidth: '1100px',
+    minWidth: '90%',
     position: 'relative',
     marginBottom: 7,
   },

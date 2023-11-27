@@ -8,7 +8,7 @@ User=savibot
 Group=savibot
 Restart=always
 RestartSec=5
-WorkingDirectory=/opt/robot-ui/
+WorkingDirectory=/opt/robot-ui-small/
 ExecStart=yarn start
 
 [Install]

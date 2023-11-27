@@ -5,7 +5,7 @@
 set -e
 
 # Variable PR_NUMBER set in action
-NAME="robot-ui-pr.${1}"
+NAME="robot-ui-small-pr.${1}"
 
 # Always increasing. Also a human-readable datetime.
 BUILD=$(date +'%Y%m%d%H%M')
@@ -27,16 +27,16 @@ yarn build
 # FIXME: nextjs is unreasonable, so we have to do hacky things to get cache in a
 # place that is writable and reasonable.
 mkdir -p tmp
-# This depends on debian/install knowing about this change, and debian/robot-ui.links.
+# This depends on debian/install knowing about this change, and debian/robot-ui-small.links.
 mv .next/cache tmp
 
 # This bit is tricky/weird.
 # See https://manpages.debian.org/stretch/debhelper/dh_systemd_enable.1.en.html
-if [ -f "debian/robot-ui.service" ]; then
-  mv debian/robot-ui.service "debian/${NAME}.robot-ui.service"
+if [ -f "debian/robot-ui-small.service" ]; then
+  mv debian/robot-ui.service "debian/${NAME}.robot-ui-small.service"
 fi
 
-mv debian/robot-ui.links "debian/${NAME}.links"
+mv debian/robot-ui-small.links "debian/${NAME}.links"
 
 # Change to PR name
 sed -i "s/Package:.*/Package: $NAME/" debian/control
@@ -55,10 +55,10 @@ if [ -n "$APTLY_USER" ]; then
 else
   # Cleanup (only needed for local builds)
   # Change name throughout debian dir
-  rm -f "debian/${NAME}.robot-ui.service"
-  git checkout debian/robot-ui.service
+  rm -f "debian/${NAME}.robot-ui-small.service"
+  git checkout debian/robot-ui-small.service
   rm -f "debian/${NAME}.links"
-  git checkout debian/robot-ui.links
+  git checkout debian/robot-ui-small.links
   git checkout debian/control
   git checkout debian/changelog
   rm -rf debian/.debhelper

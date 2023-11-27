@@ -1,17 +1,17 @@
-Source: robot-ui
+Source: robot-ui-small
 Section: non-free/javascript
 Priority: optional
 Maintainer: Joe Cooper <jcooper@savioke.com>
 Build-Depends: debhelper (>= 9), nodejs (>=20)
 Standards-Version: 3.9.5
 
-Package: robot-ui
+Package: robot-ui-small
 Architecture: all
 Section: non-free/python
 Priority: optional
 Depends: ${misc:Depends}, relaycore
 Pre-Depends: dpkg (>= 1.16.1), nodejs (>=20), ${misc:Pre-Depends}
-Provides: robot-ui
-Conflicts: robot-ui, r2c2-ui, relaycore-ui
-Replaces: robot-ui, r2c2-ui, relaycore-ui
-Description: Web UI for RelayCore
+Provides: robot-ui-small
+Conflicts: robot-ui-small, r2c2-ui, relaycore-ui
+Replaces: robot-ui-small, r2c2-ui, relaycore-ui
+Description: Web UI for RelayCore 7" screens

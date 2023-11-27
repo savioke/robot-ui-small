@@ -4,7 +4,7 @@
 # Exit on errors
 set -e
 
-NAME="robot-ui"
+NAME="robot-ui-small"
 
 # Always increasing. Also a human-readable datetime.
 BUILD=$(date +'%Y%m%d%H%M')
@@ -26,7 +26,7 @@ yarn build
 # FIXME: nextjs is unreasonable, so we have to do hacky things to get cache in a 
 # place that is writable and reasonable.
 mkdir -p tmp
-# This depends on debian/install knowing about this change, and debian/robot-ui.links.
+# This depends on debian/install knowing about this change, and debian/robot-ui-small.links.
 mv .next/cache tmp
 
 echo " * Packaging stage -------------------------------------------------"

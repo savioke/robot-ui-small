@@ -17,4 +17,4 @@
 	dh $@ --with systemd
 
 override_dh_installinit:
-	dh_installinit --noscripts --name=robot-ui
+	dh_installinit --noscripts --name=robot-ui-small

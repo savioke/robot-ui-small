@@ -1,6 +1,6 @@
-# robot-ui
+# robot-ui-small
 
-Web UI for RelayCore
+Web UI for RelayCore 7" screens
 
 ## Building a package locally on Ubuntu 20.04
 
